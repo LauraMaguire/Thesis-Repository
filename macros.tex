@@ -12,11 +12,23 @@
 \newcommand{\appxref}[2][]{Appendix~\ref{#2}#1}
 \newcommand{\appxrefp}[2][]{(Appendix~\ref{#2}#1)}
 \newcommand{\cref}[1]{Ref.~\cite{#1}}
+
+% Laura's commands
+\newcommand{\tx}[1]{\mathrm{#1}}
+\newcommand{\ev}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\un}[1]{\mathrm{#1}}
+
+% biology
+\def\vitro{\textit{in vitro}}
+\def\vivo{\textit{in vivo}}
+\def\kon{k_{\rm on}}
+\def\koff{k_{\rm off}}
+
+%  reference macros
+\newcommand{\siref}[1]{(Supporting Information, section \ref{#1})}
 % math shortcuts
 \newcommand{\diff}[2]{\frac{\partial#1}{\partial#2}}
 \newcommand{\secdiff}[2]{\frac{\partial^2 #1}{\partial#2 ^2}}
-\newcommand{\tx}[1]{\mathrm{#1}}
-\newcommand{\ev}[1]{\ensuremath{\left\langle #1 \right\rangle}}
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
 % vertical line for block matrices
 \newcommand{\rvline}{\hspace*{-\arraycolsep}\vline\hspace*{-\arraycolsep}}
@@ -34,6 +46,3 @@
 \newcommand{\peclet}{P\'{e}clet }
 \newcommand{\pe}{\text{Pe} }
 
-% biology
-\def\vitro{\textit{in vitro}}
-\def\vivo{\textit{in vivo}}

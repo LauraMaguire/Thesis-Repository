@@ -1,12 +1,11 @@
 \chapter{Introduction}~\label{ch01_introduction}
 
-\section{Introduction}
-\subsection{The nuclear pore complex is a unique filter}
+\section{The nuclear pore complex is a unique filter}
 How many pores are there in a typical yeast cell? Human cell?
-\subsubsection{Structure}
+\subsection{Structure}
 The nuclear pore is a very large complex, about 120 MDa total.  It has eightfold symmetry.  It consists of a ring of ordered proteins and disordered proteins filling the center of the ring.  The disordered proteins are called FG Nups.  Some of the ring proteins are also called Nups, but not FG nups.  There's an inner and an outer ring that I need to learn more about.  There's a structure called the nuclear basket on the nuclear side and the cytoplasmic filaments on the cytoplasm side.  Dimensions vary but are about 50 nm in diameter and maybe 50 nm high for the rings but I'm not sure about that.  There is disagreement about how far the Nups extend out of the pore, so the total height of the complex might be anything between 50 and 200 nm.  There are some recent cryo EM studies of the pore that are probably going to be very useful here (Rout, I think, and at least one other group.)
 
-\subsubsection{Transport factors}
+\subsection{Transport factors}
 
 Transport factors (TFs) are ordered proteins that carry cargo through the NPC.  While there are various types, they share several features in common, most notably the fact that all known transport factors have more than one hydrophobic binding pocket which binds to FG repeats.  In fact, many TFs have several binding pockets.  Likewise, the binding affinity between TFs and FG Nups remains unknown for most TFs.  Estimates of dissociation constant $K_D$ vary from nanomolar to millimolar, depending on the environment (cellular, buffer, etc.) in which the measurement is made \cite{things}. There are many types of TF, of which some of the most important are the importins and exportins (karyopherins), NTF2, and mRNA exporters.
 
@@ -15,45 +14,45 @@ The karyopherins (Kaps) are the most-studied family of TFs.  They are also known
 Unlike the karyopherins, nuclear transport factor 2 (NTF2) does not transport a wide variety of cargo across the NPC.  Instead, NFT2 is focused on maintaining the Ran gradient needed for transport.  It transports 
 
 I need to decide whether to call them transport factors (TFs) or nuclear transport receptors (NTRs) throughout my paper.  We exclusively call them TFs in my lab and a few other labs but I think NTR is more common in the field as a whole.  For now I will call them TFs.  TFs carry cargo in and out of the nucleus, through the NPC.  All known TFs have at least two sites that bind to the FG repeats on the Nups, and many have more than that (up to 10 or so, it's unclear).  The importins (called karyopherins in yeast, and I'm not sure whether exportins are also karyopherins) are a major set of transport factors.  They are 95 kDa or larger and do most of the carrying of proteins (I think).  They are formed from many HEAT repeats, which are flexible helical structures, and have many binding sites.  I didn't study these.  I studied NTF2, which is a much smaller protein.  It's a homodimer whose components are each 14 kDa, so it's a 28 kDa dimer.  Each dimer has one FG binding site.  NTF2 carries Ran through the nuclear pore.  I need a section about the Ran cycle, which means I actually need to understand the Ran cycle.  NTF2 is near the cutoff for passively crossing through the pore, but it still travels through at least 30 times faster than similarly-sized inert proteins.  I've also worked with domains of Mex67, which I think is an mRNA exporter.  I need to learn more about mRNA export, as well as transport of large cargo with multiple TFs bound at once.  TFs bind to cargo since cargo has a nuclear localization signal (for entering the nucleus, NLS) or a nuclear export signal (for leaving the nucleus, NES), which is a short peptide tag that binds to transport factors.
-\subsubsection{FG nucleoporins}
+\subsection{FG nucleoporins}
 The central channel of the pore is filled with disordered FG nucleoporins (FG Nups).  Disordered proteins have no secondary structure.  FG Nups typically consist of an ordered domain that anchors them to the wall of the channel, and a totally disordered domain that sticks out into the channel.  The disordered domain has several to tens of phenylalanine-glycine binding motifs which bind to TFs.  There are several binding motifs, which all incorporate FGs; for instance, FSFG, GLFG, etc (from that figure I always use in my slides).  There are about a hundred FG nups total (number of individual proteins) in the pore, and maybe ten or so different types of Nups.  Since each FG Nup has many binding sites, there are about 1000 FG binding motifs in each pore.  The Nups are hard to visualize since they are disordered.  Averaging techniques tend to smear them out into nothing.  Early research suggested that they formed a central plug or "transporter", but more recent work suggests that there is no central structure, just disordered proteins (the AFM study from Lim or Lemke group).
-\subsubsection{Ran cycle}
+\subsection{Ran cycle}
 I don't know nearly as much about the Ran cycle as I should.  I always forget which way it works.  Basically, the chemical energy needed for selective transport comes from a gradient in RanGTP/GDP. Ran can carry either GTP or GDP.  One form helps the cargo unbind from the TF once it has transited the pore, then the state needs to change (GTP/GDP) so that Ran unbinds from the TF.  NTF2 doesn't work this way because it's job is to carry Ran through the pore to maintain the gradient.  The proteins that cause Ran to change phosphorylation state are called RanGAP and RanGEF.  All of this means that the selective transport itself doesn't use external energy sources; it is driven by a concentration gradient set up by the Ran cycle.
-\subsection{IDPs are important}
+\section{IDPs are important}
 I'm not sure whether this should be a section or subsection or where exactly it should go.  I want to give some broader context for intrinsically disordered proteins (IDPs) and their cellular functions.  IDPs play a role in phase separation.  Intrinsically disordered regions of proteins are also very important.  About 30\% of eukaryotic proteins are disordered or contain significant disordered regions.  Selectivity through weak, multivalent binding is a hallmark of disordered protein function.  IDPs can form ``fuzzy'' complexes or act as hubs, since they can often bind to multiple binding partners.  Some become ordered upon binding and some do not.  I don't know exactly what other cellular functions IDPs are involved in - signaling pathways, I think.
-\subsection{Experimental observations} Should I have a separate section for computational studies, or include them in experimenal work?
-\subsubsection{Passive permeability barrier}
+\section{Experimental observations} Should I have a separate section for computational studies, or include them in experimenal work?
+\subsection{Passive permeability barrier}
 There is a cutoff around 30 kDa where molecules stop being able to passively transit the pore at any appreciable rate.  Work from the Timney lab suggests that the passive permeability barrier is not a sharp cutoff, but broad.
-\subsubsection{Single-molecule studies (Kinetics of transport?)}
+\subsection{Single-molecule studies (Kinetics of transport?)}
 Lots of people have done single-molecule studies of the NPC.  They need to use superresolution microscopy and can't really see more than the length of time that it takes to passage the pore.  They measure things like dwell time in the pore and the proportion of successful transit attempts.  Some of these studies lead to estimations of the transport kinetics, i.e. on and off rates for Nup and transport factor interactions.  Many of these come from SPR studies or stopped-flow anisotropy measurements.  The SPR measurements also lead to estimations of layer height compaction or extension when various TFs are flowed across a grafted monolayer of FG Nups.  These experiments can often result in contradictory data.  There are some good review articles for single-molecule studies, and also some of the techniques I've described here aren't single molecule.
-\subsubsection{Effect of transport factors}
+\subsection{Effect of transport factors}
 The presence of transport factors may make the selectivity barrier more robust.  SPR measurements as discussed above give estimates of layer compaction or extension, and populations of tight- or weak-binding TFs.  Other studies (?) suggest that crowding with TFs might help reduce non-specific interactions and increase the selectivity of transport.
-\subsubsection{Permeability barrier/flux studies}
+\subsection{Permeability barrier/flux studies}
 People have measured the flux through the pore in vitro and in vivo in various ways.  One group developed OSTR, where they seal an NPC to the pore of a membrane and measure fluorescence flux of TFs through that pore.  The Gorlich group (Ribbeck) have permeabilized cells and injected fluorescent transport factors and watched how long it took them to localize to the nucleus.  These measurements show selectivities of 20-150 (ish) fold flux of TFs as compared to inert proteins.
-\subsubsection{Nup deletion, etc.}
+\subsection{Nup deletion, etc.}
 Some people have deleted subsets of Nups to see which are necessary for transport.  I don't know much about these studies.  None of the asymmetric Nups are necessary.  I think that about half of the mass of Nups can be deleted without significant consquences to transport, showing how robust the NPC is.
-\subsection{Theoretical models of the NPC}
+\section{Theoretical models of the NPC}
 Many theoretical models exist, both qualitative and quantitative.
-\subsubsection{Entropic barrier model}
+\subsection{Entropic barrier model}
 The entropic barrier model postulates that Nups remain disordered within the pore (should talk about experimental evidence for and against).  In this model, inert proteins are kept out of the pore through an entropic barrier, because their entry into the pore would restrict the possible conformations of the disordered Nups.  TFs can get into the pore, in contrast, because the binding energy offsets the entropic penalty.  This is one of the two main qualitative models of the pore, the other being the hydrogel or selective phase model.  The Rout lab supports this model.  I think most labs other than the Gorlich lab are beginning to support this model, but I'm not sure.
-\subsubsection{Hydrogel model}
+\subsection{Hydrogel model}
 The hydrogel model is the other main qualitative NPC model.  The Gorlich group supports this model.  This model postulates that the Nups interact via their FG motifs (discuss evidence in previous section, maybe?) and form a hydrogel.  A dynamic hydrogel.  Inert proteins are kept from passing through because they can't get through the gel mesh, but transport factors disrupt the crosslinks by binding to FGs and "melt" through.
-\subsubsection{“Forest”/intermediate models}
+\subsection{“Forest”/intermediate models}
 This model proposes that a mix of the entropic barrier model and selective phase model are at play.
-\subsubsection{Effect of crowding}
+\subsection{Effect of crowding}
 Some people (Zilman paper, etc) have modeled the effect of crowding on the selectivity barrier.  A lot of overlap with effect of transport factors.
-\subsubsection{Effect of transport factors}
+\subsection{Effect of transport factors}
 Same as previous section sort of.  Kap-centric models of the NPC (short for karyopherin-centric, for the class of TFs called karyopherins) propose that a permanent population of Kaps lives within the NPC.  This strengthens the selectivity barrier.
-\subsubsection{Energy landscape models}
+\subsection{Energy landscape models}
 Most quantitative models of the nuclear pore are energy landscape models.  These are typically computational studies that require a fair amount of detail and assumptions about the pore.  They incorporate effects of charge, hydrophobicity, specific binding interactions, etc.  Generally the result is a picture of the free energy landscape encountered by TFs and by inert proteins as the travel along the axis of the pore.
-\subsection{Synthetic NPCs}
+\section{Synthetic NPCs}
 Many different groups have attempted to make synthetic nuclear pore complexes, but they are generally not very successful.
-\subsubsection{Gold nanopores (Rout group)}
+\subsection{Gold nanopores (Rout group)}
 One of Loren's colleagues in New York grafted FG Nups onto a gold-coated nanopore and monitored flux through the pore.  She saw low (less than 10-fold) selectivity.  I'm not sure whether other nanopore-based approaches have been tried.
-\subsubsection{Hydrogels (Gorlich)}
+\subsection{Hydrogels (Gorlich)}
 The Gorlich group keeps making hydrogels out of Nups and testing the entry of various proteins.  They take Nsp1 or fragments of it or other Nups that spontaneously form hydrogels in buffer, and let them form a gel.  Then they introduce fluorescently-tagged TFs and inert proteins and monitor the progression of the fluorescent front into the gel.  They see very high (100 or more) partition coefficients, indicating that the TFs really bind very strongly to the gel.  They do not see rapid exit from the gel as would be required for rapid transport.
-\subsubsection{Other models (peptide hydrogels, DNA origami, etc)}
+\subsection{Other models (peptide hydrogels, DNA origami, etc)}
 There are a grab-bag of other models that I need to learn more about.  Some groups have done similar things to what we want to do, making hydrogels out of non-aggregating Nup peptides and a pentameric crosslinking domain.  There was a group that made an NPC ring out of DNA origami and attached Nups at particular points, though I'm not sure how that can be used to test selectivity because I can't see how to anchor the rings into a membrane.
-\subsection{Conclusions of introduction?}
+\section{Conclusions of introduction?}
 NPCs are interesting and important.
 
