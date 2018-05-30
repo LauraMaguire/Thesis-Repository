@@ -1,431 +1,59 @@
-help and laughs\chapter{Introduction}~\label{ch01_introduction}
+\chapter{Introduction}~\label{ch01_introduction}
 
-Interactions, either between particles or with the environment, play a crucial
-role in the dynamics of biological systems.  For example, there are biological
-polymeric filters which facilitate the transport of molecules, nanoparticles,
-viruses and other organisms through interactions between the polymers and
-particles~\cite{witten_particle_17}.  In biological crowded media, obstacles can
-inhibit motion and introduce anomalous subdiffusion~\cite{hofling_anomalous_13}.
-This has implications for the motion of lipids or macromolecules in
-membranes~\cite{schutz_singlemolecule_97,schutz_properties_00,
-  nicolau_sources_07, weigel_ergodic_11, javanainen_anomalous_13,
-  krapf_mechanisms_15, jeon_protein_16, sadegh_plasma_17} and the cell
-interior~\cite{stylianidou_cytoplasmic_14}.  Active matter systems,
-\textit{e.g.}, a bacterial swarm~\cite{zhang_collective_10,
-  cisneros_dynamics_11,thutupalli_directional_15}, can exhibit an array of
-exotic phenomena: dynamical phases, self assembly, and collective
-motion~\cite{marchetti_hydrodynamics_13} because of the interplay between
-particle-particle interactions and nonequilibrium activity.  Understanding how
-microscopic interactions influence particle dynamics, transport, and macroscopic
-phases could assist in designing and tuning these systems.
+\section{Introduction}
+\subsection{The nuclear pore complex is a unique filter}
+How many pores are there in a typical yeast cell? Human cell?
+\subsubsection{Structure}
+The nuclear pore is a very large complex, about 120 MDa total.  It has eightfold symmetry.  It consists of a ring of ordered proteins and disordered proteins filling the center of the ring.  The disordered proteins are called FG Nups.  Some of the ring proteins are also called Nups, but not FG nups.  There's an inner and an outer ring that I need to learn more about.  There's a structure called the nuclear basket on the nuclear side and the cytoplasmic filaments on the cytoplasm side.  Dimensions vary but are about 50 nm in diameter and maybe 50 nm high for the rings but I'm not sure about that.  There is disagreement about how far the Nups extend out of the pore, so the total height of the complex might be anything between 50 and 200 nm.  There are some recent cryo EM studies of the pore that are probably going to be very useful here (Rout, I think, and at least one other group.)
 
-The commonality between these crowded and active systems is Brownian motion.  A
-particle is considered Brownian if it undergoes random motion in an environment,
-typically called a heat bath.  The heat bath exerts two forces on the Brownian
-particle: a random fluctuating force and frictional
-drag force~\cite{zwanzig_nonequilibrium_01}. Note, the term heat bath, solvent, and
-solution will be used interchangeably to describe the surrounding fluid
-environment.  Brownian motion was first reported by Robert Brown in 1827 when he
-observed the random motion of pollen in water.  Einstein's interpretation that
-the phenomenon could be described by water molecules  bumping into the pollen
-provided further evidence of the existence of atoms and
-molecules~\cite{einstein_uber_05}. If we knew all the trajectories of a solvent
-particles, we could in principle calculate the motion of the Brownian particle.
-However, these degrees of freedom are intractable.  Instead, we approximate the
-effect of the solvent particles as a random fluctuating and damping force.  The
-equation which describes this motion is the Langevin
-equation~\cite{zwanzig_nonequilibrium_01}. In most cases, we are interested in
-the overdamped limit, which gives us Brownian dynamics (BD).
+\subsubsection{Transport factors}
 
-The study of Brownian dynamics is ubiquitous in physics: diffusion of holes and
-electrons in semiconductors~\cite{ashcroft_solid_76}, Doppler cooling of neutral
-atoms~\cite{lett_optical_89}, and motion of macromolecules in biological
-systems~\cite{berg_random_93}.  The primary focus of this thesis is analyzing
-different Brownian systems found in biology.  I will examine the role of binding
-and bound motion in crowded environments, transport of proteins across the
-nuclear pore complex (NPC), and dynamical phases in active matter systems.  I
-will use Brownian dynamics simulations, lattice Monte Carlo models, kinetic
-Monte Carlo, and numerical analysis of partial differential equations and
-describe how I implemented and advanced these tools.
+Transport factors (TFs) are ordered proteins that carry cargo through the NPC.  While there are various types, they share several features in common, most notably the fact that all known transport factors have more than one hydrophobic binding pocket which binds to FG repeats.  In fact, many TFs have several binding pockets.  Likewise, the binding affinity between TFs and FG Nups remains unknown for most TFs.  Estimates of dissociation constant $K_D$ vary from nanomolar to millimolar, depending on the environment (cellular, buffer, etc.) in which the measurement is made \cite{things}. There are many types of TF, of which some of the most important are the importins and exportins (karyopherins), NTF2, and mRNA exporters.
 
-In this thesis, I will begin by first discussing various Brownian systems and
-providing the essential theory.  I will then discuss a lattice Monte Carlo
-model, which studied the effects of binding and bound motion on diffusion in a
-crowded environment~\cite{stefferson_effects_17}; results that have
-implications for various biological systems.  Next, I will discuss transport
-across biofilters like the nuclear pore complex.  I will present a minimal
-reaction diffusion equation that can predict the selectivity (\textit{i.e.},
-what proteins can and cannot easily pass through) of the NPC in terms of
-measurable parameters.  I then move to active matter systems: nonequilibrium
-systems which can convert some source of stored energy into (kinetic)
-motion~\cite{marchetti_hydrodynamics_13}.  I will discuss how to derive
-macroscopic equations of motion starting from microscopic interactions using
-dynamic density functional theory (DDFT)~\cite{marconi_dynamic_99,
-  marconi_dynamic_00, archer_dynamical_04, archer_dynamical_05}, and how a
-pseudospectral theory was implemented to numerically evaluate them.  Finally, I
-will apply this theory to a system of self-propelled hard needles and conclude.
+The karyopherins (Kaps) are the most-studied family of TFs.  They are also known (in human cells?) as importins and exportins.  The twenty or so different Kaps are responsible for most nucleocytoplasmic transport \cite{kapinos17}.  Kaps typically consist of multiple HEAT repeats, a helical motif which conveys structural flexibility \cite{yoshimura16}.  Most Kaps bind their cargo directly via a nuclear localization signal (NLS, for nuclear import) or nuclear export signal (NES, for nuclear export).  NLS and NES are 5-7 amino acid tags found on cargo \cite{}.  However, Kap95? (importin $\beta$) uses the adaptor protein Kap60? (importin $\alpha$) to bind its cargo. In general, Kaps are on the order of 100 kDa in size, well above the passive permeability limit \cite{}. Kaps may contribute to the selectivity barrier.
 
+Unlike the karyopherins, nuclear transport factor 2 (NTF2) does not transport a wide variety of cargo across the NPC.  Instead, NFT2 is focused on maintaining the Ran gradient needed for transport.  It transports 
 
-%%%%%%%% SECTION: BROWNIAN SYSTEMS  %%%%%
-\section{Brownian dynamics}
+I need to decide whether to call them transport factors (TFs) or nuclear transport receptors (NTRs) throughout my paper.  We exclusively call them TFs in my lab and a few other labs but I think NTR is more common in the field as a whole.  For now I will call them TFs.  TFs carry cargo in and out of the nucleus, through the NPC.  All known TFs have at least two sites that bind to the FG repeats on the Nups, and many have more than that (up to 10 or so, it's unclear).  The importins (called karyopherins in yeast, and I'm not sure whether exportins are also karyopherins) are a major set of transport factors.  They are 95 kDa or larger and do most of the carrying of proteins (I think).  They are formed from many HEAT repeats, which are flexible helical structures, and have many binding sites.  I didn't study these.  I studied NTF2, which is a much smaller protein.  It's a homodimer whose components are each 14 kDa, so it's a 28 kDa dimer.  Each dimer has one FG binding site.  NTF2 carries Ran through the nuclear pore.  I need a section about the Ran cycle, which means I actually need to understand the Ran cycle.  NTF2 is near the cutoff for passively crossing through the pore, but it still travels through at least 30 times faster than similarly-sized inert proteins.  I've also worked with domains of Mex67, which I think is an mRNA exporter.  I need to learn more about mRNA export, as well as transport of large cargo with multiple TFs bound at once.  TFs bind to cargo since cargo has a nuclear localization signal (for entering the nucleus, NLS) or a nuclear export signal (for leaving the nucleus, NES), which is a short peptide tag that binds to transport factors.
+\subsubsection{FG nucleoporins}
+The central channel of the pore is filled with disordered FG nucleoporins (FG Nups).  Disordered proteins have no secondary structure.  FG Nups typically consist of an ordered domain that anchors them to the wall of the channel, and a totally disordered domain that sticks out into the channel.  The disordered domain has several to tens of phenylalanine-glycine binding motifs which bind to TFs.  There are several binding motifs, which all incorporate FGs; for instance, FSFG, GLFG, etc (from that figure I always use in my slides).  There are about a hundred FG nups total (number of individual proteins) in the pore, and maybe ten or so different types of Nups.  Since each FG Nup has many binding sites, there are about 1000 FG binding motifs in each pore.  The Nups are hard to visualize since they are disordered.  Averaging techniques tend to smear them out into nothing.  Early research suggested that they formed a central plug or "transporter", but more recent work suggests that there is no central structure, just disordered proteins (the AFM study from Lim or Lemke group).
+\subsubsection{Ran cycle}
+I don't know nearly as much about the Ran cycle as I should.  I always forget which way it works.  Basically, the chemical energy needed for selective transport comes from a gradient in RanGTP/GDP. Ran can carry either GTP or GDP.  One form helps the cargo unbind from the TF once it has transited the pore, then the state needs to change (GTP/GDP) so that Ran unbinds from the TF.  NTF2 doesn't work this way because it's job is to carry Ran through the pore to maintain the gradient.  The proteins that cause Ran to change phosphorylation state are called RanGAP and RanGEF.  All of this means that the selective transport itself doesn't use external energy sources; it is driven by a concentration gradient set up by the Ran cycle.
+\subsection{IDPs are important}
+I'm not sure whether this should be a section or subsection or where exactly it should go.  I want to give some broader context for intrinsically disordered proteins (IDPs) and their cellular functions.  IDPs play a role in phase separation.  Intrinsically disordered regions of proteins are also very important.  About 30\% of eukaryotic proteins are disordered or contain significant disordered regions.  Selectivity through weak, multivalent binding is a hallmark of disordered protein function.  IDPs can form ``fuzzy'' complexes or act as hubs, since they can often bind to multiple binding partners.  Some become ordered upon binding and some do not.  I don't know exactly what other cellular functions IDPs are involved in - signaling pathways, I think.
+\subsection{Experimental observations} Should I have a separate section for computational studies, or include them in experimenal work?
+\subsubsection{Passive permeability barrier}
+There is a cutoff around 30 kDa where molecules stop being able to passively transit the pore at any appreciable rate.  Work from the Timney lab suggests that the passive permeability barrier is not a sharp cutoff, but broad.
+\subsubsection{Single-molecule studies (Kinetics of transport?)}
+Lots of people have done single-molecule studies of the NPC.  They need to use superresolution microscopy and can't really see more than the length of time that it takes to passage the pore.  They measure things like dwell time in the pore and the proportion of successful transit attempts.  Some of these studies lead to estimations of the transport kinetics, i.e. on and off rates for Nup and transport factor interactions.  Many of these come from SPR studies or stopped-flow anisotropy measurements.  The SPR measurements also lead to estimations of layer height compaction or extension when various TFs are flowed across a grafted monolayer of FG Nups.  These experiments can often result in contradictory data.  There are some good review articles for single-molecule studies, and also some of the techniques I've described here aren't single molecule.
+\subsubsection{Effect of transport factors}
+The presence of transport factors may make the selectivity barrier more robust.  SPR measurements as discussed above give estimates of layer compaction or extension, and populations of tight- or weak-binding TFs.  Other studies (?) suggest that crowding with TFs might help reduce non-specific interactions and increase the selectivity of transport.
+\subsubsection{Permeability barrier/flux studies}
+People have measured the flux through the pore in vitro and in vivo in various ways.  One group developed OSTR, where they seal an NPC to the pore of a membrane and measure fluorescence flux of TFs through that pore.  The Gorlich group (Ribbeck) have permeabilized cells and injected fluorescent transport factors and watched how long it took them to localize to the nucleus.  These measurements show selectivities of 20-150 (ish) fold flux of TFs as compared to inert proteins.
+\subsubsection{Nup deletion, etc.}
+Some people have deleted subsets of Nups to see which are necessary for transport.  I don't know much about these studies.  None of the asymmetric Nups are necessary.  I think that about half of the mass of Nups can be deleted without significant consquences to transport, showing how robust the NPC is.
+\subsection{Theoretical models of the NPC}
+Many theoretical models exist, both qualitative and quantitative.
+\subsubsection{Entropic barrier model}
+The entropic barrier model postulates that Nups remain disordered within the pore (should talk about experimental evidence for and against).  In this model, inert proteins are kept out of the pore through an entropic barrier, because their entry into the pore would restrict the possible conformations of the disordered Nups.  TFs can get into the pore, in contrast, because the binding energy offsets the entropic penalty.  This is one of the two main qualitative models of the pore, the other being the hydrogel or selective phase model.  The Rout lab supports this model.  I think most labs other than the Gorlich lab are beginning to support this model, but I'm not sure.
+\subsubsection{Hydrogel model}
+The hydrogel model is the other main qualitative NPC model.  The Gorlich group supports this model.  This model postulates that the Nups interact via their FG motifs (discuss evidence in previous section, maybe?) and form a hydrogel.  A dynamic hydrogel.  Inert proteins are kept from passing through because they can't get through the gel mesh, but transport factors disrupt the crosslinks by binding to FGs and "melt" through.
+\subsubsection{“Forest”/intermediate models}
+This model proposes that a mix of the entropic barrier model and selective phase model are at play.
+\subsubsection{Effect of crowding}
+Some people (Zilman paper, etc) have modeled the effect of crowding on the selectivity barrier.  A lot of overlap with effect of transport factors.
+\subsubsection{Effect of transport factors}
+Same as previous section sort of.  Kap-centric models of the NPC (short for karyopherin-centric, for the class of TFs called karyopherins) propose that a permanent population of Kaps lives within the NPC.  This strengthens the selectivity barrier.
+\subsubsection{Energy landscape models}
+Most quantitative models of the nuclear pore are energy landscape models.  These are typically computational studies that require a fair amount of detail and assumptions about the pore.  They incorporate effects of charge, hydrophobicity, specific binding interactions, etc.  Generally the result is a picture of the free energy landscape encountered by TFs and by inert proteins as the travel along the axis of the pore.
+\subsection{Synthetic NPCs}
+Many different groups have attempted to make synthetic nuclear pore complexes, but they are generally not very successful.
+\subsubsection{Gold nanopores (Rout group)}
+One of Loren's colleagues in New York grafted FG Nups onto a gold-coated nanopore and monitored flux through the pore.  She saw low (less than 10-fold) selectivity.  I'm not sure whether other nanopore-based approaches have been tried.
+\subsubsection{Hydrogels (Gorlich)}
+The Gorlich group keeps making hydrogels out of Nups and testing the entry of various proteins.  They take Nsp1 or fragments of it or other Nups that spontaneously form hydrogels in buffer, and let them form a gel.  Then they introduce fluorescently-tagged TFs and inert proteins and monitor the progression of the fluorescent front into the gel.  They see very high (100 or more) partition coefficients, indicating that the TFs really bind very strongly to the gel.  They do not see rapid exit from the gel as would be required for rapid transport.
+\subsubsection{Other models (peptide hydrogels, DNA origami, etc)}
+There are a grab-bag of other models that I need to learn more about.  Some groups have done similar things to what we want to do, making hydrogels out of non-aggregating Nup peptides and a pentameric crosslinking domain.  There was a group that made an NPC ring out of DNA origami and attached Nups at particular points, though I'm not sure how that can be used to test selectivity because I can't see how to anchor the rings into a membrane.
+\subsection{Conclusions of introduction?}
+NPCs are interesting and important.
 
-The equation of motion of a particle in a one dimensional heat bath is given by
-the Langevin equation~\cite{zwanzig_nonequilibrium_01} 
-%
-\begin{equation}
-  \label{eqn:langevin}
-   m \ddot{x} = -\frac{d U(x)}{dx} -\zeta \dot{x} + \xi(t),
-\end{equation}
-%
-where $x$ is the position, $\zeta$ the drag coefficient, $U(x)$ the potential
-energy from external fields, $\xi$ the random uncorrelated fluctuating force,
-or noise, and the overdot means derivative with respect to time. The  average
-properties of the noise are
-% Noise
-\begin{gather}
-  \langle \xi( t ) \rangle = 0, \\
-  \label{eqn:noise}
-  \langle \xi( t ) \xi( t') \rangle 
-  = 2 \zeta k_B T \delta(t-t'),
-\end{gather}
-%
-where $k_B$ is the Boltzmann factor, $T$ the temperature, $\delta$ the Dirac
-delta function, and $\ev{\ldots}$ the ensemble average over all noise
-realizations.  Here, we assumed that the drag is homogeneous (constant in
-space).  The Langevin equation is Newton's second law with
-forces from gradients in potential energy and the drag
-and random force provided by the heat bath.  The drag and random force are
-connected through the drag coefficient (\eqn~\ref{eqn:langevin}
-and~\ref{eqn:noise}).  This is a consequence of the fluctuation-dissipation
-theorem~\cite{zwanzig_nonequilibrium_01}, which is derived for Brownian motion in
-\appxref{appx:fluct_dissipation}.
-
-To understand the overdamped limit, assume the particle experiences a constant
-force $f$ from an external field and temporarily ignore the random force to
-determine the behavior of the average velocity.  Solving the linear
-ordinary differential equation for the velocity, we get
-%
-\begin{equation}
-  \dot{x}(t) = f / \zeta + e^{-\zeta t/m} 
-    \left[ \dot{x}(0) - f / \zeta \right].
-\end{equation}
-%
-The particle's velocity exponentially decays with rate $\zeta /m $ from its
-initial value to a steady state value $ f / \zeta $.  Now, if we are interested
-in time scales larger than $ \tau_r = m / \zeta $, the velocity is constant.
-These time scales can be extremely small, $ \tau_r \sim 10^{-7}$--$10^{-9}
-\sec$, in colloidal and biological systems~\cite{dhont_introduction_96,
-  berg_random_93}.  Brownian dynamics is this overdamped limit: the velocity
-decays so quickly to a steady state value that we can drop the inertial terms
-from the Langevin equation.  In the overdamped limit, the Langevin equation
-describing Brownian dynamics~\cite{doi_theory_88, zwanzig_nonequilibrium_01} is
-%
-\begin{equation}
-  \label{eqn:brownian_1d}
-  \dot{x} = \zeta ^{-1} \left[  -\frac{d U (x)}{dx } + \xi(t) \right].
-\end{equation}
-%
-\eqnref{eqn:brownian_1d} resembles a biased random walk, allowing us to discover
-the connection between the Langevin equation and diffusion.
-
-%%%%%%%% SECTION: RANDOM WALKS 101  %%%%%
-\section{Random walks 101}
-The random fluctuating force leads to a connection between Brownian dynamics and
-a discrete random walk. By discrete, I mean that the particle will take a random
-step $\Delta x$ at a rate $ 1 / \tau $. On average, $\langle \Delta x \rangle =
-0$ and $\langle \Delta x^2 \rangle = l^2$ where $l$ is the characteristic step
-length scale.  After $N$ steps, the particle's total displacement is a sum over
-$i$ steps
-%
-\begin{equation}
-  x_N - x_0 = \sum^N_{i=1} \Delta x_i.
-\end{equation}
-%
-This equation is at the heart of the lattice Monte Carlo models and BD
-simulations we will discuss later.  Let's imagine repeating this experiment
-several times.  In doing so, we hope to say something meaningful about the
-average behavior of the motion by exploiting the properties of the random step.
-Upon averaging over experiments, the mean squared displacement (MSD) is
-%
-\begin{equation}
-  \langle x_N - x_0 \rangle^2 = 
-  \left \langle \sum_i^N \Delta x_i\sum_j^N \Delta x_j \right \rangle 
-  = N l^2  = 2 D t,
-\end{equation}
-%
-where $D = \frac{l^2}{2 \tau}$. Here, we used the fact that steps at different
-times are uncorrelated $ \langle \Delta x_i \Delta x_j \rangle = \delta_{ij} l^2
-$ and that $N = \frac{t}{\tau}$ where $t$ is the total time of the random walk.
-$D$ is the diffusion coefficient; it connects the measurable spread of a random
-walk, \textit{i.e.}, $\langle x^2 \rangle$, to time.  For arbitrary dimension
-$d$, the MSD is
-%
-\begin{equation}
-  \label{eqn:msd}
-  \langle r^2(t) \rangle = 2dDt,
-\end{equation}
-%
-where now $ D = \frac{l^2}{2d\tau} $, $\tau$ the step frequency along any
-dimension, and $r$ the total displacement, $r^2 = \sum_{i=1}^d x_i^2$.
-
-A brief comment on what we mean by averaging $\langle \ldots \rangle$.
-Typically, this is called an ensemble or noise average.  This means repeating
-the experiment with the same initial conditions and averaging the results.  By
-doing this, we are exploiting the average properties of the noise.
-
-Now that we explained the connection between random walks and the diffusion
-coefficient, we can return to \eqnref{eqn:brownian_1d}. In the absence of
-interactions and fields, the overdamped Langevin equation is
-%
-\begin{equation}
-  \dot{x} = \zeta^{-1} \xi(t).
-\end{equation}
-%
-Upon integration with respect to time, we get
-%
-\begin{equation}
-  \label{eqn:brownian_int}
-  x(t) - x(0) =  \int_0^t \zeta^{-1} \xi(t') \dif t'.
-\end{equation}
-%
-Since $\xi$ is a random force, we can interpret this integral as a sum of random
-steps of length $ \zeta^{-1} \xi(t') dt'$~\cite{doi_theory_88}. 
-
-Let's write the integral as a sum over $N_t$ time steps of length $\delta
-t$, \textit{i.e.}, $t = N_t \delta t$. This discretization gives
-%
-\begin{equation}
-  x(t) - x(0) =  \int_0^t \zeta^{-1} \xi(t') \dif t' 
-  \approx \sum_{i=1}^{N_t} \zeta^{-1} \xi_i \delta t.
-\end{equation}
-%
-When we discretize time, we are assuming that the noise is constant over the
-length of a time step. Since $\xi$ is uncorrelated in time, we are summing
-uncorrelated steps just like in the discrete random walk. We can also translate
-$\xi$ into a time discretization framework, $ \langle \xi_i \xi_j \rangle =
-\frac{ 2 \zeta k_B T }{ \delta t} \delta_{ij}$~\cite{grassia_computer_95}.
-Thus, the mean squared displacement can be written as
-%
-\begin{equation}
-  \label{eqn:brownian_sum}
-  \langle {(x(t) - x(0))}^2 \rangle 
-  \approx \sum_{i=1}^{N_t} \sum_{j=1}^{N_t} 
-  \zeta^{-2} \langle \xi_j \xi_j \rangle \delta t^2
-  \approx = \frac{2 k_B T \delta t}{\zeta} N_t 
-  =\frac{2 k_B T }{\zeta} t.
-\end{equation}
-%
-Comparing \eqnref{eqn:brownian_sum} to \eqnref{eqn:msd}, we see the Einstein
-relation~\cite{einstein_uber_05},
-%
-\begin{equation}
-  \label{eqn:einstein}
-  D =\frac{k_B T }{\zeta}.
-\end{equation}
-%
-It is common to express the inverse friction as the mobility $\mu =
-\frac{1}{\zeta}$.  I will mention the mobility throughout the thesis while
-avoiding the use of the symbol $\mu$ for mobility to avoid confusion with the
-chemical potential, also called $\mu$. \eqnref{eqn:einstein} can be derived
-through other means~\cite{zwanzig_nonequilibrium_01, doi_theory_88}.  Typically,
-we are looking at something a little more interesting: interacting particles,
-external fields, etc.  Regardless, we imagine discretizing time and adding up
-small positional changes that occurred over a time
-interval~\cite{grassia_computer_95}.  The basic methods behind Brownian dynamic
-simulations are summarized in \appxref{appx:brownian_dyn_sim}.
-
-Finally, I connect the Brownian dynamics to a continuity
-equation, \textit{i.e}, instead of examining a single random walk, what can we
-say about the probability of finding the particle at a given location and time?
-Since a Brownian particle undergoes a random walk, its position is a sum of
-independent random variables.  By the central limit theorem, the distribution of
-positions is Gaussian~\cite{doi_theory_88}.  The variance along any given
-dimension $i$ must be $ \sigma_i^2 = \langle x_i^2(t) \rangle = 2Dt $.  Thus,
-the probability density in $d$ dimensions is
-%
-\begin{equation}
-  p(\bm{r},t) = 
-  \frac{1}{{(4 \pi d D t)}^{d/2}} e ^ {-\frac{r^2}{4Dt}}.
-\end{equation}
-%
-Here, I have assumed that the particle has started at origin; the $t
-\rightarrow 0$ limit recovers a delta function centered at the origin.  This
-distribution satisfies the diffusion equation
-%
-\begin{equation}
-  \diff{p(\bm{r},t)}{t} = D \bm{\nabla} ^2 p(\bm{r},t).
-\end{equation}
-%
-We are interested in tracking noninteracting Brownian particles.  The
-single-particle probability distribution and concentration differ by a factor of
-the particle number $N$ since there are no correlations between particles.  We
-can therefore write the diffusion equation as
-%
-\begin{equation}
-  \label{eqn:smoluchowski_diff}
-  \diff{c(\bm{r},t)}{t}
-  = -\bm{\nabla} \cdot \bm{j}_{\text{diff}}
-  = \bm{\nabla} \cdot D \bm{\nabla} c(\bm{r},t).
-\end{equation}
-%
-From this,  we can extract Fick's law of diffusion~\cite{doi_theory_88}
-%
-\begin{equation}
-  \bm{j}_{\text{diff}} = -D \bm{\nabla} c(\bm{r},t).
-\end{equation}
-%
-The diffusion coefficient is a constant scalar in our derivation because we
-assumed that the friction coefficient is isotropic and homogeneous.  From here,
-I briefly introduce obstacles and interactions.
-
-%%%%%%%%%%%%% SECTION: EFFECTS OF OBSTACLES %%%%%%%%%%%%%
-\section{Effects of obstacles}
-
-While random walks are useful for describing dynamics of particle in many
-situations, it is not complete.  Particle dynamics can by altered from
-interactions with either other particles or the environment.  In crowded media,
-obstacles impede tracer motion, \textit{e.g.}, diffusion of macromolecules in a
-cell~\cite{hofling_anomalous_13}.  A profound effect of these obstacles is that
-the random walk can become anomalous~\cite{metzler_random_00}.
-
-One of the key assumptions in a normal random walk is that steps are attempted
-at a constant frequency. When this occurs, the MSD is linear in time
-\eqnrefp{eqn:msd}, which is referred to as Fickian or normal diffusion. If this
-assumption is relaxed and the MSD is no longer linear in
-time~\cite{metzler_random_00}, 
-%
-\begin{equation}
-  \label{eqn:msd_anomal}
-  \langle r^2 \rangle =  2dD t ^ {\alpha},
-\end{equation}
-%
-the diffusion is said to be anomalous.  Randomly placed obstacles can
-impede motion and cause a variable step frequency~\cite{sokolov_fractional_02,
-  saxton_anomalous_94}.  In biological systems, anomalous diffusion has been
-measured due to the presence of obstacles~\cite{feder_constrained_96,
-  weiss_anomalous_04, ghosh_automated_94}.  Since the early work of
-Saxton~\cite{saxton_lateral_87}, lattice Monte Carlo models have been an
-important tool for studying diffusion in crowded environments.  Obstacles affect
-the probability to move to a certain location.
-
-While there are myriad lattice models for static obstacles with single-site hard
-steric repulsion~\cite{saxton_lateral_87, saxton_anomalous_94}, multi-site hard
-obstacles~\cite{ellery_characterizing_14, ellery_modeling_16}, and surface
-binding~\cite{saxton_anomalous_96, ellery_analytical_16}, previous work did not
-address bound motion and soft obstacles.  There are several biological systems
-that suggest bound motion and soft obstacles, \textit{i.e.}, particles and
-obstacles can occupy the same spatial region~\cite{brangwynne_germline_09,
-  molliex_phase_15, hough_molecular_15,
-  raveh_slideandexchange_16,timney_simple_16}.  The model we developed
-in~\cite{stefferson_effects_17} studied how bound motion and binding affect
-tracer dynamics. 
-
-Another type of obstacle is a homogeneous distribution of binding sites that a
-particle can attach to. The binding is controlled by binding kinetics
-%
-\begin{equation}
-  T + B \rightleftharpoons C,
-\end{equation}
-%
-where $T$ is the concentration of unbound particles, $B$ the concentration of
-binding sites, and $C$ the concentration of the bound complex.  A diffusing
-particle could bind to the uniform background of binding sites that alter its
-motion. This was the model we developed to understand how biofilters select
-which particles are allowed to pass through~\cite{maguire_design_18}.
-
-%%%%%%%% SECTION: EFFECTS OF INTERACTIONS AND ACTIVITY  %%%%%
-\section{Effects of interactions and activity}
-
-Active matter is collections of interacting particles which are propelled by a
-nonconservative force.  These novel systems illuminate how particle interactions
-and activity can lead to new properties, such as giant number fluctuations and
-unusual mechanical responses~\cite{marchetti_hydrodynamics_13}, that are not
-present in equilibrium systems.  We are interested in how microscopic
-interactions lead to bulk behavior.  Introducing interactions and activity to
-the Langevin equation is straightforward.  In a simulation,  one can imagine
-calculating forces on each particle, updating the positions, and analyzing the
-results.  A single simulation, however, was just one possible
-outcome, \textit{i.e.}, one realization of the noise.  To say something about
-the average behavior, we would have to repeat the simulation many times.
-Another method would be to evolve a probability density in time, like in the
-diffusion equation \eqnrefp{eqn:smoluchowski_diff}, and I will refer to these as
-continuity, continuous, or macroscopic equations.
-
-When evolving the Langevin equation, the corresponding microscopic density of a
-system of point-like particles is~\cite{hansen_theory_06}
-%
-\begin{equation}
-  \label{eqn:density_operator}
-  \hat{\rho}(\bm{r}) = \sum_{i=1}^N \delta( \bm{r} - \bm{r}_i ).
-\end{equation}
-%
-This density is an operator since it is only truly meaningful in an integral.
-The ensemble averaged density describes how the system behaves after averaging
-over noise,
-%
-\begin{equation}
-  \rho^{(1)}(\bm{r}) = \left\langle \hat{\rho}(\bm{r}) \right\rangle = 
-  \left\langle \sum_{i=1}^N \delta( \bm{r} - \bm{r}_i
-  ) \right\rangle,
-\end{equation}
-%
-where $\rho^{(1)}(\bm{r})$ is the one-body density. Typically, the $(1)$
-superscript is dropped or it is denoted as $c(\bm{r})$, and it is also referred
-to as the density profile or concentration.  The one-body density is the noise
-ensemble averaged probability of finding a particle at location $\bm{r}$. As $N$
-increases, the BD numerics become unwieldy.  Solving continuous equations allows
-us to evolve the dynamics at specified spatial coordinates instead of for all
-$N$ particles.   
-
-A technique for solving the temporal evolution of density is dynamical density
-functional theory (DDFT)~\cite{marconi_dynamic_99, marconi_dynamic_00,
-  archer_dynamical_04, archer_dynamical_05}.  Using DDFT, a continuity equation
-for the evolution of the one-body density is expressed in terms of functional
-derivatives  of the free energy $\mathcal{F}$
-%
-\begin{align}
-  \label{eqn:ddft_intro}
-  \diff{\rho(\bm{r,t})}{t} = 
-  -\bm{\nabla} \cdot \bm{j} =
-  \bm{\nabla}  \cdot \left[ \zeta^{-1} \rho(\bm{r},t) \bm{\nabla}
-    \frac{\delta \mathcal{F} \left[ \rho(\bm{r}, t ) \right]}
-  {\delta \rho(\bm{r}, t ) } \right].
-\end{align}
-%
-We can interpret the DDFT flux $\bm{j}^{\mathcal{F}} = - \zeta^{-1} \rho(\bm{r},
-t) \bm{\nabla} \frac{ \delta \mathcal{F} \left[ \rho \right]}{\delta \rho
-  (\bm{r}, t) }$ as a concentration $ \rho(\bm{r},t ) $ times a velocity $
-\bm{v} = - \zeta^{-1} \bm{\nabla} \frac{ \delta \mathcal{F} \left[ \rho \right]
-} {\delta \rho (\bm{r}, t ) } $. The velocity term arises from the gradients of
-chemical potential $ \mu( \bm{r} ) = \frac{ \delta\mathcal{F} \left[ \rho
-  \right] } {\delta \rho (\bm{r} )} $.
-
-The nonconservative active force cannot be expressed as a gradient of a chemical
-potential.  However, it can described by an active flux $ \bm{j}^{D} =
-\rho(\bm{r},t)\bm{v}^{\text{D}} $.  Our total flux will therefore be given by
-%
-\begin{equation}
-  \bm{j} = \bm{j}^{\mathcal{F}} + \bm{j}^{\text{D}}.
-\end{equation}
-%
-We can separate the free energy into contributions from ideal gas entropy
-$\mathcal{F}^{\text{id}}$, interactions or excess $\mathcal{F}^{\text{ex}}$, and
-external fields $\mathcal{F}^{\text{ext}}$~\cite{hansen_theory_06}, 
-%
-\begin{equation}
-  \mathcal{F} = \mathcal{F}^{\tx{id}} + \mathcal{F}^{\tx{ex}} 
-  +\mathcal{F}^{\tx{ext}}.
-\end{equation}
-%
-The ideal gas and external field contributions are known exactly. The crux of
-DDFT is approximating a functional for the
-interactions~\cite{archer_dynamical_05}.
-
-In this thesis, I will describe how the DDFT framework can be used to solve for
-the temporal evolution of active systems. I will then apply it to a
-self-propelled hard needle
-system~\cite{baskaran_hydrodynamics_08,baskaran_enhanced_08,
-  wensink_aggregation_08, baskaran_selfregulation_12, ginelli_largescale_10,
-  kuan_hysteresis_15}. I will present novel results including a banding
-instability and discuss where my work fits into the larger body of
-work~\cite{stefferson_selforganized_18}.
