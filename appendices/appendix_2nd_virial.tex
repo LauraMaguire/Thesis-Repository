@@ -1,0 +1,63 @@
+\chapter{Second virial approximation}~\label{appx:2nd_virial}
+DDFT requires approximation of the excess free energy~\cite{archer_dynamical_05}. 
+In general, the excess free energy can be expressed as a perturbative expansion
+of integrals of the one-body density and the Mayer
+function~\cite{hansen_theory_06}
+%
+\begin{align}
+  \mathcal{F}^{\tx{ex}} &= \frac{1}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
+  F_M( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r} \\
+    &+ \frac{1}{6} \int \int \int 
+    \rho( \bm{r} ) \rho( \bm{r}') \rho( \bm{r}'')
+    F_M( \bm{r} -\bm{r}' ) F_M( \bm{r}' -\bm{r}'' ) F_M( \bm{r} -\bm{r}'' ) 
+    \dif \bm{r} \dif \bm{r}' \dif \bm{r}'' \\
+   &+ \ldots
+\end{align}
+%
+where $F_M = \exp( -\beta V ) - 1 $ is the Mayer function.  This is the virial expansion.  At low density, the free energy is given
+by the second virial approximation
+%
+\begin{equation}~\label{eqn:2nd_virial}
+  \mathcal{F}^{\tx{ex}} \approx -\frac{k_B T}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
+  F_M( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r}.
+\end{equation}
+%
+In the second virial approximation,  the direct pair correlation function is
+%
+\begin{equation}
+  c^{(2)}(\bm{r},\bm{r}') = 
+  -\beta \frac{\delta ^2 \mathcal{F}}{\delta \rho(\bm{r}) \delta \rho(\bm{r}')}
+  \approx  F_M( \bm{r} -\bm{r}' ).
+\end{equation}
+%
+Consider steric interactions where overlap is forbidden. In this
+approximation, 
+%
+\begin{equation}
+  c^{(2)}(\bm{r}-\bm{r}') = 
+  \begin{cases}
+    -1 & \text{particles overlap} \\
+    0  & \text{no overlap}
+  \end{cases}.
+\end{equation}
+%
+Thus in the second virial approximation, the correlations are approximated as
+correlation holes at distances corresponding to particle overlap, and
+non-overlapping particles are completely uncorrelated.  Note that for a finite
+potential at high
+temperature, we can Taylor expand the Mayer function to give
+%
+\begin{equation}
+  -\beta \mathcal{F}^{\tx{ex}} \approx \frac{1}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
+  V( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r},
+\end{equation}
+%
+which is the mean field (random-phase) approximation~\cite{hansen_theory_06}.
+For anisotropic particles, the Mayer function depends on the orientation
+$\bm{\hat{u}}$ of each particle, $F_M(\bm{r} -\bm{r}') \rightarrow F_M(\bm{r}
+-\bm{r}', \bm{\hat{u}}, \bm{\hat{u}}')$.
+
+For spherocylinders in 2D, including finite width in the Mayer function in
+\eqnref{eqn:2nd_virial} amounts to adding a constant to the free energy, which 
+drops when taking the functional derivative.  Therefore, the second virial
+approximation can only model the infinitely thin rod system.

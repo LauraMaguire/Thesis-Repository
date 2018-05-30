@@ -1,0 +1,431 @@
+help and laughs\chapter{Introduction}~\label{ch01_introduction}
+
+Interactions, either between particles or with the environment, play a crucial
+role in the dynamics of biological systems.  For example, there are biological
+polymeric filters which facilitate the transport of molecules, nanoparticles,
+viruses and other organisms through interactions between the polymers and
+particles~\cite{witten_particle_17}.  In biological crowded media, obstacles can
+inhibit motion and introduce anomalous subdiffusion~\cite{hofling_anomalous_13}.
+This has implications for the motion of lipids or macromolecules in
+membranes~\cite{schutz_singlemolecule_97,schutz_properties_00,
+  nicolau_sources_07, weigel_ergodic_11, javanainen_anomalous_13,
+  krapf_mechanisms_15, jeon_protein_16, sadegh_plasma_17} and the cell
+interior~\cite{stylianidou_cytoplasmic_14}.  Active matter systems,
+\textit{e.g.}, a bacterial swarm~\cite{zhang_collective_10,
+  cisneros_dynamics_11,thutupalli_directional_15}, can exhibit an array of
+exotic phenomena: dynamical phases, self assembly, and collective
+motion~\cite{marchetti_hydrodynamics_13} because of the interplay between
+particle-particle interactions and nonequilibrium activity.  Understanding how
+microscopic interactions influence particle dynamics, transport, and macroscopic
+phases could assist in designing and tuning these systems.
+
+The commonality between these crowded and active systems is Brownian motion.  A
+particle is considered Brownian if it undergoes random motion in an environment,
+typically called a heat bath.  The heat bath exerts two forces on the Brownian
+particle: a random fluctuating force and frictional
+drag force~\cite{zwanzig_nonequilibrium_01}. Note, the term heat bath, solvent, and
+solution will be used interchangeably to describe the surrounding fluid
+environment.  Brownian motion was first reported by Robert Brown in 1827 when he
+observed the random motion of pollen in water.  Einstein's interpretation that
+the phenomenon could be described by water molecules  bumping into the pollen
+provided further evidence of the existence of atoms and
+molecules~\cite{einstein_uber_05}. If we knew all the trajectories of a solvent
+particles, we could in principle calculate the motion of the Brownian particle.
+However, these degrees of freedom are intractable.  Instead, we approximate the
+effect of the solvent particles as a random fluctuating and damping force.  The
+equation which describes this motion is the Langevin
+equation~\cite{zwanzig_nonequilibrium_01}. In most cases, we are interested in
+the overdamped limit, which gives us Brownian dynamics (BD).
+
+The study of Brownian dynamics is ubiquitous in physics: diffusion of holes and
+electrons in semiconductors~\cite{ashcroft_solid_76}, Doppler cooling of neutral
+atoms~\cite{lett_optical_89}, and motion of macromolecules in biological
+systems~\cite{berg_random_93}.  The primary focus of this thesis is analyzing
+different Brownian systems found in biology.  I will examine the role of binding
+and bound motion in crowded environments, transport of proteins across the
+nuclear pore complex (NPC), and dynamical phases in active matter systems.  I
+will use Brownian dynamics simulations, lattice Monte Carlo models, kinetic
+Monte Carlo, and numerical analysis of partial differential equations and
+describe how I implemented and advanced these tools.
+
+In this thesis, I will begin by first discussing various Brownian systems and
+providing the essential theory.  I will then discuss a lattice Monte Carlo
+model, which studied the effects of binding and bound motion on diffusion in a
+crowded environment~\cite{stefferson_effects_17}; results that have
+implications for various biological systems.  Next, I will discuss transport
+across biofilters like the nuclear pore complex.  I will present a minimal
+reaction diffusion equation that can predict the selectivity (\textit{i.e.},
+what proteins can and cannot easily pass through) of the NPC in terms of
+measurable parameters.  I then move to active matter systems: nonequilibrium
+systems which can convert some source of stored energy into (kinetic)
+motion~\cite{marchetti_hydrodynamics_13}.  I will discuss how to derive
+macroscopic equations of motion starting from microscopic interactions using
+dynamic density functional theory (DDFT)~\cite{marconi_dynamic_99,
+  marconi_dynamic_00, archer_dynamical_04, archer_dynamical_05}, and how a
+pseudospectral theory was implemented to numerically evaluate them.  Finally, I
+will apply this theory to a system of self-propelled hard needles and conclude.
+
+
+%%%%%%%% SECTION: BROWNIAN SYSTEMS  %%%%%
+\section{Brownian dynamics}
+
+The equation of motion of a particle in a one dimensional heat bath is given by
+the Langevin equation~\cite{zwanzig_nonequilibrium_01} 
+%
+\begin{equation}
+  \label{eqn:langevin}
+   m \ddot{x} = -\frac{d U(x)}{dx} -\zeta \dot{x} + \xi(t),
+\end{equation}
+%
+where $x$ is the position, $\zeta$ the drag coefficient, $U(x)$ the potential
+energy from external fields, $\xi$ the random uncorrelated fluctuating force,
+or noise, and the overdot means derivative with respect to time. The  average
+properties of the noise are
+% Noise
+\begin{gather}
+  \langle \xi( t ) \rangle = 0, \\
+  \label{eqn:noise}
+  \langle \xi( t ) \xi( t') \rangle 
+  = 2 \zeta k_B T \delta(t-t'),
+\end{gather}
+%
+where $k_B$ is the Boltzmann factor, $T$ the temperature, $\delta$ the Dirac
+delta function, and $\ev{\ldots}$ the ensemble average over all noise
+realizations.  Here, we assumed that the drag is homogeneous (constant in
+space).  The Langevin equation is Newton's second law with
+forces from gradients in potential energy and the drag
+and random force provided by the heat bath.  The drag and random force are
+connected through the drag coefficient (\eqn~\ref{eqn:langevin}
+and~\ref{eqn:noise}).  This is a consequence of the fluctuation-dissipation
+theorem~\cite{zwanzig_nonequilibrium_01}, which is derived for Brownian motion in
+\appxref{appx:fluct_dissipation}.
+
+To understand the overdamped limit, assume the particle experiences a constant
+force $f$ from an external field and temporarily ignore the random force to
+determine the behavior of the average velocity.  Solving the linear
+ordinary differential equation for the velocity, we get
+%
+\begin{equation}
+  \dot{x}(t) = f / \zeta + e^{-\zeta t/m} 
+    \left[ \dot{x}(0) - f / \zeta \right].
+\end{equation}
+%
+The particle's velocity exponentially decays with rate $\zeta /m $ from its
+initial value to a steady state value $ f / \zeta $.  Now, if we are interested
+in time scales larger than $ \tau_r = m / \zeta $, the velocity is constant.
+These time scales can be extremely small, $ \tau_r \sim 10^{-7}$--$10^{-9}
+\sec$, in colloidal and biological systems~\cite{dhont_introduction_96,
+  berg_random_93}.  Brownian dynamics is this overdamped limit: the velocity
+decays so quickly to a steady state value that we can drop the inertial terms
+from the Langevin equation.  In the overdamped limit, the Langevin equation
+describing Brownian dynamics~\cite{doi_theory_88, zwanzig_nonequilibrium_01} is
+%
+\begin{equation}
+  \label{eqn:brownian_1d}
+  \dot{x} = \zeta ^{-1} \left[  -\frac{d U (x)}{dx } + \xi(t) \right].
+\end{equation}
+%
+\eqnref{eqn:brownian_1d} resembles a biased random walk, allowing us to discover
+the connection between the Langevin equation and diffusion.
+
+%%%%%%%% SECTION: RANDOM WALKS 101  %%%%%
+\section{Random walks 101}
+The random fluctuating force leads to a connection between Brownian dynamics and
+a discrete random walk. By discrete, I mean that the particle will take a random
+step $\Delta x$ at a rate $ 1 / \tau $. On average, $\langle \Delta x \rangle =
+0$ and $\langle \Delta x^2 \rangle = l^2$ where $l$ is the characteristic step
+length scale.  After $N$ steps, the particle's total displacement is a sum over
+$i$ steps
+%
+\begin{equation}
+  x_N - x_0 = \sum^N_{i=1} \Delta x_i.
+\end{equation}
+%
+This equation is at the heart of the lattice Monte Carlo models and BD
+simulations we will discuss later.  Let's imagine repeating this experiment
+several times.  In doing so, we hope to say something meaningful about the
+average behavior of the motion by exploiting the properties of the random step.
+Upon averaging over experiments, the mean squared displacement (MSD) is
+%
+\begin{equation}
+  \langle x_N - x_0 \rangle^2 = 
+  \left \langle \sum_i^N \Delta x_i\sum_j^N \Delta x_j \right \rangle 
+  = N l^2  = 2 D t,
+\end{equation}
+%
+where $D = \frac{l^2}{2 \tau}$. Here, we used the fact that steps at different
+times are uncorrelated $ \langle \Delta x_i \Delta x_j \rangle = \delta_{ij} l^2
+$ and that $N = \frac{t}{\tau}$ where $t$ is the total time of the random walk.
+$D$ is the diffusion coefficient; it connects the measurable spread of a random
+walk, \textit{i.e.}, $\langle x^2 \rangle$, to time.  For arbitrary dimension
+$d$, the MSD is
+%
+\begin{equation}
+  \label{eqn:msd}
+  \langle r^2(t) \rangle = 2dDt,
+\end{equation}
+%
+where now $ D = \frac{l^2}{2d\tau} $, $\tau$ the step frequency along any
+dimension, and $r$ the total displacement, $r^2 = \sum_{i=1}^d x_i^2$.
+
+A brief comment on what we mean by averaging $\langle \ldots \rangle$.
+Typically, this is called an ensemble or noise average.  This means repeating
+the experiment with the same initial conditions and averaging the results.  By
+doing this, we are exploiting the average properties of the noise.
+
+Now that we explained the connection between random walks and the diffusion
+coefficient, we can return to \eqnref{eqn:brownian_1d}. In the absence of
+interactions and fields, the overdamped Langevin equation is
+%
+\begin{equation}
+  \dot{x} = \zeta^{-1} \xi(t).
+\end{equation}
+%
+Upon integration with respect to time, we get
+%
+\begin{equation}
+  \label{eqn:brownian_int}
+  x(t) - x(0) =  \int_0^t \zeta^{-1} \xi(t') \dif t'.
+\end{equation}
+%
+Since $\xi$ is a random force, we can interpret this integral as a sum of random
+steps of length $ \zeta^{-1} \xi(t') dt'$~\cite{doi_theory_88}. 
+
+Let's write the integral as a sum over $N_t$ time steps of length $\delta
+t$, \textit{i.e.}, $t = N_t \delta t$. This discretization gives
+%
+\begin{equation}
+  x(t) - x(0) =  \int_0^t \zeta^{-1} \xi(t') \dif t' 
+  \approx \sum_{i=1}^{N_t} \zeta^{-1} \xi_i \delta t.
+\end{equation}
+%
+When we discretize time, we are assuming that the noise is constant over the
+length of a time step. Since $\xi$ is uncorrelated in time, we are summing
+uncorrelated steps just like in the discrete random walk. We can also translate
+$\xi$ into a time discretization framework, $ \langle \xi_i \xi_j \rangle =
+\frac{ 2 \zeta k_B T }{ \delta t} \delta_{ij}$~\cite{grassia_computer_95}.
+Thus, the mean squared displacement can be written as
+%
+\begin{equation}
+  \label{eqn:brownian_sum}
+  \langle {(x(t) - x(0))}^2 \rangle 
+  \approx \sum_{i=1}^{N_t} \sum_{j=1}^{N_t} 
+  \zeta^{-2} \langle \xi_j \xi_j \rangle \delta t^2
+  \approx = \frac{2 k_B T \delta t}{\zeta} N_t 
+  =\frac{2 k_B T }{\zeta} t.
+\end{equation}
+%
+Comparing \eqnref{eqn:brownian_sum} to \eqnref{eqn:msd}, we see the Einstein
+relation~\cite{einstein_uber_05},
+%
+\begin{equation}
+  \label{eqn:einstein}
+  D =\frac{k_B T }{\zeta}.
+\end{equation}
+%
+It is common to express the inverse friction as the mobility $\mu =
+\frac{1}{\zeta}$.  I will mention the mobility throughout the thesis while
+avoiding the use of the symbol $\mu$ for mobility to avoid confusion with the
+chemical potential, also called $\mu$. \eqnref{eqn:einstein} can be derived
+through other means~\cite{zwanzig_nonequilibrium_01, doi_theory_88}.  Typically,
+we are looking at something a little more interesting: interacting particles,
+external fields, etc.  Regardless, we imagine discretizing time and adding up
+small positional changes that occurred over a time
+interval~\cite{grassia_computer_95}.  The basic methods behind Brownian dynamic
+simulations are summarized in \appxref{appx:brownian_dyn_sim}.
+
+Finally, I connect the Brownian dynamics to a continuity
+equation, \textit{i.e}, instead of examining a single random walk, what can we
+say about the probability of finding the particle at a given location and time?
+Since a Brownian particle undergoes a random walk, its position is a sum of
+independent random variables.  By the central limit theorem, the distribution of
+positions is Gaussian~\cite{doi_theory_88}.  The variance along any given
+dimension $i$ must be $ \sigma_i^2 = \langle x_i^2(t) \rangle = 2Dt $.  Thus,
+the probability density in $d$ dimensions is
+%
+\begin{equation}
+  p(\bm{r},t) = 
+  \frac{1}{{(4 \pi d D t)}^{d/2}} e ^ {-\frac{r^2}{4Dt}}.
+\end{equation}
+%
+Here, I have assumed that the particle has started at origin; the $t
+\rightarrow 0$ limit recovers a delta function centered at the origin.  This
+distribution satisfies the diffusion equation
+%
+\begin{equation}
+  \diff{p(\bm{r},t)}{t} = D \bm{\nabla} ^2 p(\bm{r},t).
+\end{equation}
+%
+We are interested in tracking noninteracting Brownian particles.  The
+single-particle probability distribution and concentration differ by a factor of
+the particle number $N$ since there are no correlations between particles.  We
+can therefore write the diffusion equation as
+%
+\begin{equation}
+  \label{eqn:smoluchowski_diff}
+  \diff{c(\bm{r},t)}{t}
+  = -\bm{\nabla} \cdot \bm{j}_{\text{diff}}
+  = \bm{\nabla} \cdot D \bm{\nabla} c(\bm{r},t).
+\end{equation}
+%
+From this,  we can extract Fick's law of diffusion~\cite{doi_theory_88}
+%
+\begin{equation}
+  \bm{j}_{\text{diff}} = -D \bm{\nabla} c(\bm{r},t).
+\end{equation}
+%
+The diffusion coefficient is a constant scalar in our derivation because we
+assumed that the friction coefficient is isotropic and homogeneous.  From here,
+I briefly introduce obstacles and interactions.
+
+%%%%%%%%%%%%% SECTION: EFFECTS OF OBSTACLES %%%%%%%%%%%%%
+\section{Effects of obstacles}
+
+While random walks are useful for describing dynamics of particle in many
+situations, it is not complete.  Particle dynamics can by altered from
+interactions with either other particles or the environment.  In crowded media,
+obstacles impede tracer motion, \textit{e.g.}, diffusion of macromolecules in a
+cell~\cite{hofling_anomalous_13}.  A profound effect of these obstacles is that
+the random walk can become anomalous~\cite{metzler_random_00}.
+
+One of the key assumptions in a normal random walk is that steps are attempted
+at a constant frequency. When this occurs, the MSD is linear in time
+\eqnrefp{eqn:msd}, which is referred to as Fickian or normal diffusion. If this
+assumption is relaxed and the MSD is no longer linear in
+time~\cite{metzler_random_00}, 
+%
+\begin{equation}
+  \label{eqn:msd_anomal}
+  \langle r^2 \rangle =  2dD t ^ {\alpha},
+\end{equation}
+%
+the diffusion is said to be anomalous.  Randomly placed obstacles can
+impede motion and cause a variable step frequency~\cite{sokolov_fractional_02,
+  saxton_anomalous_94}.  In biological systems, anomalous diffusion has been
+measured due to the presence of obstacles~\cite{feder_constrained_96,
+  weiss_anomalous_04, ghosh_automated_94}.  Since the early work of
+Saxton~\cite{saxton_lateral_87}, lattice Monte Carlo models have been an
+important tool for studying diffusion in crowded environments.  Obstacles affect
+the probability to move to a certain location.
+
+While there are myriad lattice models for static obstacles with single-site hard
+steric repulsion~\cite{saxton_lateral_87, saxton_anomalous_94}, multi-site hard
+obstacles~\cite{ellery_characterizing_14, ellery_modeling_16}, and surface
+binding~\cite{saxton_anomalous_96, ellery_analytical_16}, previous work did not
+address bound motion and soft obstacles.  There are several biological systems
+that suggest bound motion and soft obstacles, \textit{i.e.}, particles and
+obstacles can occupy the same spatial region~\cite{brangwynne_germline_09,
+  molliex_phase_15, hough_molecular_15,
+  raveh_slideandexchange_16,timney_simple_16}.  The model we developed
+in~\cite{stefferson_effects_17} studied how bound motion and binding affect
+tracer dynamics. 
+
+Another type of obstacle is a homogeneous distribution of binding sites that a
+particle can attach to. The binding is controlled by binding kinetics
+%
+\begin{equation}
+  T + B \rightleftharpoons C,
+\end{equation}
+%
+where $T$ is the concentration of unbound particles, $B$ the concentration of
+binding sites, and $C$ the concentration of the bound complex.  A diffusing
+particle could bind to the uniform background of binding sites that alter its
+motion. This was the model we developed to understand how biofilters select
+which particles are allowed to pass through~\cite{maguire_design_18}.
+
+%%%%%%%% SECTION: EFFECTS OF INTERACTIONS AND ACTIVITY  %%%%%
+\section{Effects of interactions and activity}
+
+Active matter is collections of interacting particles which are propelled by a
+nonconservative force.  These novel systems illuminate how particle interactions
+and activity can lead to new properties, such as giant number fluctuations and
+unusual mechanical responses~\cite{marchetti_hydrodynamics_13}, that are not
+present in equilibrium systems.  We are interested in how microscopic
+interactions lead to bulk behavior.  Introducing interactions and activity to
+the Langevin equation is straightforward.  In a simulation,  one can imagine
+calculating forces on each particle, updating the positions, and analyzing the
+results.  A single simulation, however, was just one possible
+outcome, \textit{i.e.}, one realization of the noise.  To say something about
+the average behavior, we would have to repeat the simulation many times.
+Another method would be to evolve a probability density in time, like in the
+diffusion equation \eqnrefp{eqn:smoluchowski_diff}, and I will refer to these as
+continuity, continuous, or macroscopic equations.
+
+When evolving the Langevin equation, the corresponding microscopic density of a
+system of point-like particles is~\cite{hansen_theory_06}
+%
+\begin{equation}
+  \label{eqn:density_operator}
+  \hat{\rho}(\bm{r}) = \sum_{i=1}^N \delta( \bm{r} - \bm{r}_i ).
+\end{equation}
+%
+This density is an operator since it is only truly meaningful in an integral.
+The ensemble averaged density describes how the system behaves after averaging
+over noise,
+%
+\begin{equation}
+  \rho^{(1)}(\bm{r}) = \left\langle \hat{\rho}(\bm{r}) \right\rangle = 
+  \left\langle \sum_{i=1}^N \delta( \bm{r} - \bm{r}_i
+  ) \right\rangle,
+\end{equation}
+%
+where $\rho^{(1)}(\bm{r})$ is the one-body density. Typically, the $(1)$
+superscript is dropped or it is denoted as $c(\bm{r})$, and it is also referred
+to as the density profile or concentration.  The one-body density is the noise
+ensemble averaged probability of finding a particle at location $\bm{r}$. As $N$
+increases, the BD numerics become unwieldy.  Solving continuous equations allows
+us to evolve the dynamics at specified spatial coordinates instead of for all
+$N$ particles.   
+
+A technique for solving the temporal evolution of density is dynamical density
+functional theory (DDFT)~\cite{marconi_dynamic_99, marconi_dynamic_00,
+  archer_dynamical_04, archer_dynamical_05}.  Using DDFT, a continuity equation
+for the evolution of the one-body density is expressed in terms of functional
+derivatives  of the free energy $\mathcal{F}$
+%
+\begin{align}
+  \label{eqn:ddft_intro}
+  \diff{\rho(\bm{r,t})}{t} = 
+  -\bm{\nabla} \cdot \bm{j} =
+  \bm{\nabla}  \cdot \left[ \zeta^{-1} \rho(\bm{r},t) \bm{\nabla}
+    \frac{\delta \mathcal{F} \left[ \rho(\bm{r}, t ) \right]}
+  {\delta \rho(\bm{r}, t ) } \right].
+\end{align}
+%
+We can interpret the DDFT flux $\bm{j}^{\mathcal{F}} = - \zeta^{-1} \rho(\bm{r},
+t) \bm{\nabla} \frac{ \delta \mathcal{F} \left[ \rho \right]}{\delta \rho
+  (\bm{r}, t) }$ as a concentration $ \rho(\bm{r},t ) $ times a velocity $
+\bm{v} = - \zeta^{-1} \bm{\nabla} \frac{ \delta \mathcal{F} \left[ \rho \right]
+} {\delta \rho (\bm{r}, t ) } $. The velocity term arises from the gradients of
+chemical potential $ \mu( \bm{r} ) = \frac{ \delta\mathcal{F} \left[ \rho
+  \right] } {\delta \rho (\bm{r} )} $.
+
+The nonconservative active force cannot be expressed as a gradient of a chemical
+potential.  However, it can described by an active flux $ \bm{j}^{D} =
+\rho(\bm{r},t)\bm{v}^{\text{D}} $.  Our total flux will therefore be given by
+%
+\begin{equation}
+  \bm{j} = \bm{j}^{\mathcal{F}} + \bm{j}^{\text{D}}.
+\end{equation}
+%
+We can separate the free energy into contributions from ideal gas entropy
+$\mathcal{F}^{\text{id}}$, interactions or excess $\mathcal{F}^{\text{ex}}$, and
+external fields $\mathcal{F}^{\text{ext}}$~\cite{hansen_theory_06}, 
+%
+\begin{equation}
+  \mathcal{F} = \mathcal{F}^{\tx{id}} + \mathcal{F}^{\tx{ex}} 
+  +\mathcal{F}^{\tx{ext}}.
+\end{equation}
+%
+The ideal gas and external field contributions are known exactly. The crux of
+DDFT is approximating a functional for the
+interactions~\cite{archer_dynamical_05}.
+
+In this thesis, I will describe how the DDFT framework can be used to solve for
+the temporal evolution of active systems. I will then apply it to a
+self-propelled hard needle
+system~\cite{baskaran_hydrodynamics_08,baskaran_enhanced_08,
+  wensink_aggregation_08, baskaran_selfregulation_12, ginelli_largescale_10,
+  kuan_hysteresis_15}. I will present novel results including a banding
+instability and discuss where my work fits into the larger body of
+work~\cite{stefferson_selforganized_18}.

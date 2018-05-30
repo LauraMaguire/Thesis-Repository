@@ -1,0 +1,97 @@
+\chapter{Conclusions and future directions}~\label{ch10_conclusions}
+\section{Conclusions}
+In this thesis, I have presented my advances to the understanding of particle
+dynamics in crowded media and active matter.  For crowded media, I have shown
+how soft obstacles affect tracer diffusion.  An obstacle's influence on tracer
+dynamics is highly dependent on the stickiness of the obstacle, \text{i.e.},
+the bound mobility.  Bound mobility can minimize the effects of inhibited motion
+and anomalous subdiffusion.  The role of binding and bound motion was also
+studied for transport of across biofilters.  I presented a minimal model in
+terms of measurable parameters and studied the selectivity
+of the nuclear pore complex.  Finally, I studied dynamical phases of an active
+matter system.  I presented a macroscopic model, built from a microscopic
+picture, using dynamical density functional theory.  I applied this theory to
+study the banding instability of self-propelled needles. I contributed to and
+independently wrote several software packages my various projects, summarized in
+\appxref{appx:repos}.
+
+For all of these systems, I developed models starting from microscopic
+Brownian dynamics.  Studying particle dynamics  naturally lends itself
+to two of the main tools discussed in this thesis: lattice Monte Carlo and
+Brownian dynamics simulations.  I discussed how these tools were advanced and
+applied to both crowded and active systems.  I also connected microscopic models
+to macroscopic equations, \textit{i.e.}, nonlinear diffusion equations, through
+DDFT\@.  In doing this, I've hoped to illustrate a general approach to solving
+biophysics problems.  We start with a question or system of interest and try to
+use our hammer, Brownian dynamics simulations (off or on lattice).  The
+Langevin equations of motion, either with full interactions or making
+approximations, are analyzed and refined until we have a minimal model that
+describes some phenomena.  Deriving a theory for the continuum equations is a
+harder task, but in doing so, larger systems and ensemble averaged behavior can
+be studied. DDFT is one tool for obtaining these equations that has a direct
+connection to the microscopic picture.
+
+My final comment is a reflection on my graduate experience. All of my projects
+have been substantially computational: involving collaborating on ideas,
+distributing and receiving code, and working in shared repositories on projects.
+From my experience, I really have come to value writing modular code that is
+user-friendly and generalizable for other projects. For example, my repository
+\textit{ActiveDDFT} can easily handle any external field or interaction (in the
+mean-field or second virial approximation) with just a few lines of additional
+code.  By implementing a mix of object-oriented and procedural code, I hope
+that future students could easily use, adapt, and advance my software packages.
+Gaining this perspective was a valuable lesson learned in graduate school. I
+found that developing computational and problem solving skills, improving
+communication, and gaining the confidence to tackle hard problems were the most
+indispensable tools I gained in graduate school. 
+
+\section{Future directions}
+
+When thinking about future directions, I have some short term goals for my
+research group and broader goals of the field. For my group, I wrote all
+of my code with the intent that it can be applied to other related problems. I
+believe there is further work that can easily be built onto my existing software
+packages.
+
+For the crowded media projects, including inter-particle interactions is what
+I would look at next. For the lattice model, excluded interactions is not tough
+to do. For a continuum model, a scaled particle
+theory~\cite{helfand_theory_61} for steric interactions would be the first thing
+to try. Long range interactions and external potentials could also be
+implemented with DDFT to study the effects of charge. These improvements are
+aligned with a broader goal for the field: directly modeling the temporal
+evolution of experimentally measured density profiles in hydrogels.  No one
+knows for sure how filters like the NPC work. I believe that accurately modeling
+the temporal behavior of experimental results, \textit{e.g.}, TFs diffusing
+across a hydrogel, will be the key to understanding these systems better.
+
+My \textit{ActiveDDFT} repository, used in the active needle project, is well
+equipped to handle other excess functionals. I believe studying active systems
+with softer potentials, like a Gaussian core~\cite{lang_fluid_00,
+dzubiella_meanfield_03} or soft shoulder~\cite{archer_quasicrystalline_13,
+archer_softcore_15} (where DDFT has shown success), would be a natural next
+step. For broader directions, relatively little work is being done to improve
+models starting from microscopic interactions.  While models similar to our
+active needle project claimed to see evidence of
+flocking~\cite{baskaran_hydrodynamics_08}, we did not.  I think more work to
+improve the microscopic functionals is necessary to describe the physics seen in
+simulations. In a symmetry based model (which many groups use), it is not clear
+how microscopic interactions can lead to macroscopic collective behavior. Also,
+using a theory based on equilibrium systems may be suspect for active systems
+far from equilibrium. One promising approach for nonequilibrium systems is
+power functional theory~\cite{schmidt_power_13} which builds dissipation into
+the model.
+
+A final direction that is appealing is to unify my work on crowded and active
+systems. One could imagine that obstacles could facilitate the self-assembly
+process, and in reality, active biological systems can be
+crowded~\cite{hofling_anomalous_13}.  The easiest way forward would be to
+include obstacles in interacting active Brownian simulations. I
+believe DDFT with external fields mimicking obstacles is feasible. 
+
+After my Ph.D., I am off to industry to start a career in data science.  Machine
+learning and statistical modeling are quickly advancing fields, and we are
+living in an exciting time where technology is rapidly changing the world at an
+unprecedented rate. I look forward to learning, growing, and continuing to solve
+problems in a new field. If I help the machines take over, I am sorry.  But,
+hey, at least we had a good run.

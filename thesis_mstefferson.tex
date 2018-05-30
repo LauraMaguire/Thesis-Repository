@@ -1,0 +1,71 @@
+\documentclass[defaultstyle,11pt]{thesis}
+\usepackage{amssymb}		% to get all AMS symbs
+\usepackage{graphicx}		% to insert figures
+\usepackage{float}      % forcing figures
+\usepackage{hyperref}		% PDF hyperreferences??
+\usepackage{bm}         % bold math
+\usepackage{amsmath}   %math package
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{cite}
+
+%%%%%%%%%%%%   All the preamble material:   %%%%%%%%%%%%
+\title{Dynamics of crowded and active biological systems}
+\author{Michael W.}{Stefferson}
+
+\otherdegrees{B.S., University of Arizona, 2012 \\
+	      M.S., University of Colorado, 2015}
+
+\degree{Doctor of Philosophy} % #1 {long descr.}
+	{Ph.D., Physics} %  #2 {short descr.}
+
+\dept{Department of} %  #1 {designation}
+	{Physics} %  #2 {name}
+
+\advisor{Professor} %  #1 {title}
+	{Meredith Betterton} %  #2 {name}
+
+\reader{Professor Attendant Rank Matthew Glaser} % 2nd reader
+%\readerThree{Assistant Professor Loren Hough} % 3rd reader
+%\readerFour{Associate Professor Franck Vernerey} % 4th reader
+%\readerFive{Professor Attendant Rank Joseph MacLennan} %  5th reader
+
+% intro material
+\input abstract.tex
+\dedication[Dedication]{To my family and the Bro-op.}
+\input acknowledgements.tex
+
+\ToCisShort% use this only for 1-page Table of Contents
+\LoFisShort% use this only for 1-page Table of Figures
+\LoTisShort% use this only for 1-page Table of Tables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%       BEGIN DOCUMENT...         %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\input macros.tex
+\input chapters/ch01_introduction.tex
+\input chapters/ch02_soft.tex
+\input chapters/ch03_bio.tex
+\input chapters/ch04_active_matter.tex
+\input chapters/ch05_valid.tex
+\input chapters/ch06_conclusions.tex
+
+% if using cite (bibtex)
+%%%%%%%%%   then the Bibliography, if any   %%%%%%%%%
+\bibliographystyle{unsrt_cje.bst}	% or "siam", or "alpha", etc.
+\bibliography{PhD_mws.bib}		% Bib database in "refs.bib"
+% if using biblatex
+%\printbibliography
+
+%%%%%%%%%   then the Appendices, if any   %%%%%%%%%
+\appendix
+\input appendices/appendix_fluct_dissipation.tex
+\input appendices/appendix_brownian_dyn_sim.tex
+\input appendices/appendix_smoluchowski.tex
+\input appendices/appendix_ddft.tex
+\input appendices/appendix_2nd_virial.tex
+\input appendices/appendix_repos.tex
+
+\end{document}
