@@ -1,52 +1,52 @@
 \chapter{Modeling}\label{ch02}
 
-Selective filters made of biopolymers are used in living and
-synthetic systems to control the localization and movement of
-molecules, nanoparticles, viruses and other organisms \cite{witten17}.
-These filters regulate access to genetic material (the nuclear pore
-complex, or NPC), cells (the pericellular matrix), tissues (the
-extracellular matrix), and organs (mucus). In addition to their
-protective role, polymeric biomaterials are physical barriers that can
-inhibit drug delivery. Microbial biofilms can sequester antibiotics in
-their pericellular matrix, hindering treatment of infections
-\cite{hoiby10}. The extracellular matrix and mucosal layers limit drug
-delivery in cancer and other diseases \cite{witten17}. How particle
-binding affects motion and filtering is unclear. Binding to the
-pericellular matrix facilitates uptake of nanoparticles by single
-cells \cite{zhou12}, and transport factors that bind to proteins in
-the NPC move rapidly through it \cite{strambio-de-castillia10}.  In
-contrast, binding inhibits the uptake of nanoparticles that bind to
-airway mucus \cite{schneider17, huang17, mastorakos15}. Many viruses
-minimize binding interactions, allowing human papillomavirus and human
-immunodifficiency virus to move nearly unrestricted in cervical mucus
-under certain conditions \cite{olmsted01,lai09}, although antibody binding 
-can slow these interactions \cite{chen14}.  Improved design of
-drug delivery vehicles and synthetic selective filters requires
-understanding what distinguishes these behaviors.  While particle
-size, charge, and binding interactions are known to affect filtering
-\cite{witten17}, the physical principles that underlie mobility and
-transport in polymeric biomaterials are not fully understood.
+%Selective filters made of biopolymers are used in living and
+%synthetic systems to control the localization and movement of
+%molecules, nanoparticles, viruses and other organisms \cite{witten17}.
+%These filters regulate access to genetic material (the nuclear pore
+%complex, or NPC), cells (the pericellular matrix), tissues (the
+%extracellular matrix), and organs (mucus). In addition to their
+%protective role, polymeric biomaterials are physical barriers that can
+%inhibit drug delivery. Microbial biofilms can sequester antibiotics in
+%their pericellular matrix, hindering treatment of infections
+%\cite{hoiby10}. The extracellular matrix and mucosal layers limit drug
+%delivery in cancer and other diseases \cite{witten17}. How particle
+%binding affects motion and filtering is unclear. Binding to the
+%pericellular matrix facilitates uptake of nanoparticles by single
+%cells \cite{zhou12}, and transport factors that bind to proteins in
+%the NPC move rapidly through it \cite{strambio-de-castillia10}.  In
+%contrast, binding inhibits the uptake of nanoparticles that bind to
+%airway mucus \cite{schneider17, huang17, mastorakos15}. Many viruses
+%minimize binding interactions, allowing human papillomavirus and human
+%immunodifficiency virus to move nearly unrestricted in cervical mucus
+%under certain conditions \cite{olmsted01,lai09}, although antibody binding 
+%can slow these interactions \cite{chen14}.  Improved design of
+%drug delivery vehicles and synthetic selective filters requires
+%understanding what distinguishes these behaviors.  While particle
+%size, charge, and binding interactions are known to affect filtering
+%\cite{witten17}, the physical principles that underlie mobility and
+%transport in polymeric biomaterials are not fully understood.
+%
+%Among these filters, the NPC is tuned for selective passage enabled by
+%binding.  The NPC selectively filters molecular traffic between the
+%nucleus and cytoplasm of eukaryotic cells, making it important for
+%diverse processes including gene regulation and translation
+%\cite{strambio-de-castillia10}. Transport occurs through the central
+%channel, $\sim$50 nm in diameter and $\sim$100 nm long. The selective
+%barrier filling the central channel is made from disordered proteins,
+%the FG nucleoporins (FG Nups), which contain repeated
+%phenylalanine-glycine (FG) motifs \figref{fig:cartoon}.  Transport
+%factors (TFs) that directly bind to the FG repeats can cross the NPC
+%and carry cargo with them \cite{strambio-de-castillia10}.  Transport
+%through the NPC is remarkably fast, with pore residence times $\sim$10
+%ms \cite{yang04}.  Binding between FG Nups and TFs shows
+%diffusion-limited on-rates and transient binding of individual FG
+%repeats to TFs \cite{milles15, hough15}.  How the FG Nups both block
+%passage (of non-binding molecules) and facilitate passage (of binding
+%molecules) is not fully understood, making the NPC an ideal system to
+%dissect the principles of binding-controlled selective transport.
 
-Among these filters, the NPC is tuned for selective passage enabled by
-binding.  The NPC selectively filters molecular traffic between the
-nucleus and cytoplasm of eukaryotic cells, making it important for
-diverse processes including gene regulation and translation
-\cite{strambio-de-castillia10}. Transport occurs through the central
-channel, $\sim$50 nm in diameter and $\sim$100 nm long. The selective
-barrier filling the central channel is made from disordered proteins,
-the FG nucleoporins (FG Nups), which contain repeated
-phenylalanine-glycine (FG) motifs \figref{fig:cartoon}.  Transport
-factors (TFs) that directly bind to the FG repeats can cross the NPC
-and carry cargo with them \cite{strambio-de-castillia10}.  Transport
-through the NPC is remarkably fast, with pore residence times $\sim$10
-ms \cite{yang04}.  Binding between FG Nups and TFs shows
-diffusion-limited on-rates and transient binding of individual FG
-repeats to TFs \cite{milles15, hough15}.  How the FG Nups both block
-passage (of non-binding molecules) and facilitate passage (of binding
-molecules) is not fully understood, making the NPC an ideal system to
-dissect the principles of binding-controlled selective transport.
-
-\begin{figure*}[t!]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=17.8cm]{figs/ch02/fig1.pdf}
 \caption{Schematics of the nuclear-pore complex and model. (A) The
@@ -63,7 +63,7 @@ dissect the principles of binding-controlled selective transport.
   mobility of a bound transport factor.  A transport factor may be
   immobile (top) or mobile (lower) when bound. }
 \label{fig:cartoon}
-\end{figure*}
+\end{figure}
 
 Models of the NPC selective barrier have proposed that the FG Nups may
 form an entropic brush \cite{rout00}, a dynamic hydrogel
@@ -97,7 +97,7 @@ sufficient particle mobility to produce selectivity similar to
 experimental measurements.  Tether flexibility also allows bound TFs
 to hop between tethers, further enhancing selectivity.
 
-\section*{Biophysical model of transport through the NPC}
+\section{Biophysical model of transport through the NPC}
 
 We consider a minimal model of the central channel of the NPC
 containing FG Nups homogeneously anchored \figref{fig:cartoon}.  This
@@ -188,7 +188,7 @@ binding versus a non-binding species \figref[B]{fig:cartoon}
   S =  \frac{J_{\rm binding}(t \to \infty)}{J_{\rm non-binding}(t \to \infty)} .
 \end{equation}
 
-\subsection*{No selective transport occurs if bound TFs are immobile}
+\subsection{No selective transport occurs if bound TFs are immobile}
 If TF-FG Nup binding immobilizes the TF, the bound-state diffusion
 coefficient $D_B = 0$.  For immobile bound TFs, transport is not
 selective: the steady-state flux $J = D_F T_L/L $ for both binding and
@@ -237,7 +237,7 @@ whether TFs may be mobile while bound to FG Nups.
 \end{figure*}
 
 
-\subsection*{Bound-state diffusion allows selective transport}
+\subsection{Bound-state diffusion allows selective transport}
 When bound TFs are mobile, selective transport occurs with a
 selectivity up to 240 for a conservative set of parameters
 (figs.~\ref{fig:transient}B,C, \ref{fig:linear-selectivity},
@@ -288,66 +288,25 @@ diffusion coefficient and pore length involves a trade-off between
 transit time and selectivity.
 
 
-\section*{Mechanisms of  bound transport factor mobility}
+\section{Mechanisms of  bound transport factor mobility}
 
-Our result that bound-state diffusion is required for selective
-transport raises a mechanistic question: how can TFs move while bound
-to FG Nups? Here we consider two experimentally based mechanisms:
-movement of the bound TF due to the intrinsic flexibility of the FG
-Nups \cite{patel07} and multivalent binding that allows hopping of TFs
-between neighboring Nups \cite{raveh16}.
+Our result that bound-state diffusion is required for selective transport raises a mechanistic question: how can TFs move while bound to FG Nups? Here we consider two experimentally based mechanisms: movement of the bound TF due to the intrinsic flexibility of the FG Nups \cite{patel07} and multivalent binding that allows hopping of TFs between neighboring Nups \cite{raveh16}.
 
-\subsection*{FG Nup flexibility allows tethered diffusion}
-Previous measurements have found that FG Nups are flexible and dynamic
-\cite{lim07, milles14, hough15}. Although FG Nups are attached at one
-end to the inner surface of the NPC scaffold, chain flexibility allows
-a  TF bound far from the tethered end to move.  Flexible polymers
-behave as entropic springs \cite{howard01} if they are not highly
-stretched. Therefore, a bound TF diffuses while attached to a
-spring-like tether, which can be represented as diffusion in a
-harmonic potential well \figref[A]{fig:tethers}.  The width of the
-harmonic well is related to the effective length of the flexible
-domain: if FG Nups are not crosslinked, the effective length is the full FG Nup
-length, while if they are crosslinked or entangled, the length is
-reduced \cite{ribbeck01}.  The probability density of a TF that binds
-to the center of a well at $x=0$ is
-$P(x,t) = e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}$, where
-$ \alpha(t) = (1-e^{-2kD_F\beta t})/(k\beta)$, $k$ is the spring
-constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal
-energy \cite{cau12}.  The TF mean-squared displacement (MSD) is then
-$\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)$.
-The typical TF MSD during a binding event can be determined from the
-probability density of binding time
-$\rho (t) = \exp(-t/\tau)/\tau$, where $\tau = 1/\koff$ is the mean
-bound lifetime:
+\subsection{FG Nup flexibility allows tethered diffusion}
+Previous measurements have found that FG Nups are flexible and dynamic \cite{lim07, milles14, hough15}. Although FG Nups are attached at one end to the inner surface of the NPC scaffold, chain flexibility allows a TF bound far from the tethered end to move.  Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound TF diffuses while attached to a spring-like tether, which can be represented as diffusion in a
+harmonic potential well \figref[A]{fig:tethers}.  The width of the harmonic well is related to the effective length of the flexible domain: if FG Nups are not crosslinked, the effective length is the full FG Nup length, while if they are crosslinked or entangled, the length is reduced \cite{ribbeck01}.  The probability density of a TF that binds to the center of a well at $x=0$ is $P(x,t) = e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}$, where $ \alpha(t) = (1-e^{-2kD_F\beta t})/(k\beta)$, $k$ is the spring constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal energy \cite{cau12}.  The TF mean-squared displacement (MSD) is then $\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)$. The typical TF MSD during a binding event can be determined from the probability density of binding time $\rho (t) = \exp(-t/\tau)/\tau$, where $\tau = 1/\koff$ is the mean bound lifetime:
 \begin{equation}\label{eq:sho}
   \overline{\ev{x^2}} = \int_0^{\infty} \rho(t') \ev{x^2(t')} dt' = \frac{2D_F L_c
     \ell_p}{L_c \ell_p \koff+ 3D_F}. 
 \end{equation} 
-Here we assume that the spring constant is that of a worm-like chain
-polymer $k = 3/(2\beta L_c \ell_p)$, where $L_c$ is the contour length
-and $\ell_p$ the persistence length \cite{howard01}.
+Here we assume that the spring constant is that of a worm-like chain polymer $k = 3/(2\beta L_c \ell_p)$, where $L_c$ is the contour length and $\ell_p$ the persistence length \cite{howard01}.
 
-Because FG-TF interactions have fast binding kinetics \cite{milles15,
-  hough15}, we estimate the bound diffusion coefficient by averaging
-over many binding events, while considering only bound motion, giving
-\begin{equation}\label{eq:dbound}
+Because FG-TF interactions have fast binding kinetics \cite{milles15, hough15}, we estimate the bound diffusion coefficient by averaging over many binding events, while considering only bound motion, giving \begin{equation}\label{eq:dbound}
   D_B \approx \frac{\overline{\ev{x^2}}}{2\tau} = \frac{D_F L_c \ell_p
     k_\un{off}}{L_c \ell_p k_\un{off} + 3D_F} =
   \frac{D_F}{1+3\frac{D_F}{D_{P}}}.  
 \end{equation}
-Here $D_P = L_c \ell_p k_\un{off}$ controls the bound-state diffusion
-coefficient: higher $D_P$ corresponds to a lower constraint of the TF
-by the tether and greater bound mobility. Bound mobility increases
-with increasing chain length, flexibility of the polymer, or
-decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$),
-$D_B$ approaches $D_F$, since the long, flexible chains barely affect
-TF motion during the short binding event. For small $D_P$
-($D_F/D_P\gg1$), TF motion is inhibited by a short tether, giving
-$D_B\approx D_P/3\ll D_F$.  This result highlights that the kinetics
-of TF-FG Nup interaction are a primary determinant of the bound
-mobility: the faster the binding kinetics, the higher the bound
-diffusion constant.
+Here $D_P = L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the TF by the tether and greater bound mobility. Bound mobility increases with increasing chain length, flexibility of the polymer, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long, flexible chains barely affect TF motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), TF motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  This result highlights that the kinetics of TF-FG Nup interaction are a primary determinant of the bound mobility: the faster the binding kinetics, the higher the bound diffusion constant.
 
 \begin{figure*}
 \centering
@@ -366,17 +325,9 @@ diffusion constant.
 \end{figure*}
 
 
-Flexible disordered proteins typically have low persistence lengths
-\cite{receveur-brechot12}, so we estimate $\ell_p \approx 1$ nm.  If
-the on-rate constant is diffusion limited,
-$\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15,
-  hough15}, the binding affinity determines the off rate.  Disordered
-FG Nups have $L_c\approx$ 100--280 nm (250--700 amino acids long
-\cite{patel07} with a contour length per amino acid $\approx 0.4$
-nm). For our conservative parameters, tethered diffusion alone
-predicts significant selectivity $\sim$200.
+Flexible disordered proteins typically have low persistence lengths \cite{receveur-brechot12}, so we estimate $\ell_p \approx 1$ nm.  If the on-rate constant is diffusion limited, $\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15, hough15}, the binding affinity determines the off rate.  Disordered FG Nups have $L_c\approx$ 100--280 nm (250--700 amino acids long \cite{patel07} with a contour length per amino acid $\approx 0.4$ nm). For our conservative parameters, tethered diffusion alone predicts significant selectivity $\sim$200.
 
-\subsection*{Inter-chain hopping increases selectivity}
+\subsection{Inter-chain hopping increases selectivity}
 The tethered diffusion mechanism is constrained by a trade-off:
 tighter binding increases the TF concentration in the pore, but
 hinders motion.  Multivalent TF-FG interactions can relax this
@@ -395,21 +346,61 @@ coefficient (fig.~\ref{fig:integrand}, Supporting Information, section
 flux, since the anchor point of the tethering chain is not changed;
 therefore we neglect it.
 
-Inter-chain hopping increases selectivity most for tight binding and
-short chains, the parameter regime where tethered diffusion gives
-limited selectivity (figs.~\ref{fig:hopping}, \ref{fig:partitioningB},
-\ref{fig:partitioningC}). Hopping may therefore be important for FGs
-that form transient crosslinks: if FG Nups are highly crosslinked, our
-model suggests that inter-chain hopping is the key mechanism of TF
-movement.  For weaker binding and longer chains, inter-chain hopping
-leads to a modest increase in selectivity.
+\subsection{Detailed explanation of hopping simulation}
+In our simulation of TF motion with hopping between FG Nups while bound, we represented each FG Nup as an entropic spring (i.e. as a harmonic potential well).  Well positions were randomly chosen from a uniform distribution, with the exception that we always placed one well at the starting position of the TF.  The particle (the TF) started the simulation bound to this FG Nup, and remained bound throughout the simulation.  While bound to one FG Nup, the TF diffused within the harmonic well representing that FG Nup. We recorded the position and mean-squared displacement of the TF from its starting location, which we then used to determine a bound diffusion coefficient, as described in more detail below.  The TF could hop between tethers by changing which well it moved in.
 
-\section*{Discussion}
+\subsubsection{Diffusion in a potential well}
 
-A key puzzle of the NPC is how transport-factor binding allows rapid
-transport through the pore.  Binding typically immobilizes the bound
-particle, and so the increase in concentration resulting from binding
-does not, in general, result in increased flux. The biophysical theory
+The TF moved in the harmonic potential of the FG Nup according to Brownian dynamics. At each timestep, the TF position was updated using a force-dependent diffusive step \cite{blackwell17}.
+\begin{equation}
+  x(t+\delta t) = x(t) + \frac{F}{\Gamma} \delta t + \delta x\,,
+\end{equation} 
+where $F$ is the force acting on the particle, $\Gamma$ is the drag coefficient, $\delta t$ is the timestep, and $\delta x$ is a random Brownian step drawn from a Gaussian distribution with variance $\sigma^2 = 2 D \delta t$. The drag coefficient of a spherical particle at low Reynolds number is given by Stokes' Law as $\Gamma = 6 \pi \eta r$, where $\eta$ is the fluid's viscosity and $r$ is the sphere's radius.  This result can be combined with the Einstein relation $D = k_B T / (6\pi \eta r)$ to give
+\begin{equation}
+\Gamma= \frac{k_B T}{D}\,.
+\end{equation}
+ 
+The force $F = -k\Delta x$, where $k$ is the spring constant of the FG Nup and $\Delta x$ is the displacement of the particle from the Nup attachment point.  We model the FG Nup as a worm-like-chain at small extension, so that $k = 3 k_B T/(2\ell_pL_c)$, where $\ell_p$ is the tether persistence length and $L_c$ is the contour length.  Then 
+\begin{equation}
+  x(t+\delta t) = x(t) - \frac{3 D \Delta x \delta t}{2\ell_p L_c }+
+  \delta x = x(t) - D K \Delta x \delta t+ \delta x\,,
+\end{equation}
+where $K$ is the normalized spring constant $K = k/k_B T = 3/(2 \ell_p L_c)$.
+
+\subsubsection{Hopping probability}
+
+We designed the hopping probability $\Phop$ in order to satisfy the principle of detailed balance.  During every iteration of the simulation, we picked an FG Nup at random from a list of the $M$  Nups near enough to have a reasonable probability of hopping. TF hopping to the new FG Nup was attempted with success probability
+\begin{equation}
+\Phop = r_\tx{hop} M \delta t e^{-\Delta G /2}.
+\end{equation}
+Here the base hopping rate $r_\tx{hop}$ is a dimensionless input parameter, and the change in free energy (in units of $k_BT$) between the current Nup and the proposed new Nup is
+\begin{equation}
+  \Delta G = \frac{1}{2} K (x-x_\tx{new})^2 - \frac{1}{2} K (x -
+  x_\tx{cur})^2,
+\end{equation}
+where $K$ is the normalized spring constant, $x$ is the particle's current position, $x_\tx{cur}$ is the anchor location of the Nup to which the particle is currently bound, and $x_\tx{new}$ is the anchor location of the proposed new Nup. Note that when a hop succeeds, the energy landscape changes to that of the new Nup, but the TF's position does not change during the hop.  There is no upper bound on $\Phop$, but we adjusted the timestep to ensure that $\Phop$ was greater than
+unity no more than 0.5\% of the time that a hop was attempted.
+
+\subsubsection{Mean-squared displacement and diffusion coefficient calculation}
+We ran each simulation for $10^7$ time steps with $\delta t = 0.01$ $\mu$s, and recorded the particle's position every 100 time steps.  We calculated the mean-squared displacement $\ev{x^2}$ (MSD) of the TF and averaged it over 100 runs \figref[A]{fig:integrand}.  We then computed
+\begin{equation}
+\rho_\tx{MSD} (t)= \ev{x^2(t)} \rho(\koff,t) = \koff \ev{x^2(t)}
+e^{-\koff t}, 
+\end{equation}
+as shown in fig.~\ref{fig:integrand}B, and numerically integrated the distribution in time. We determined the bound diffusion coefficient from the typical MSD-per-binding-event $\overline{\ev{x^2}}$ using
+\begin{equation}
+D_B = \frac{\koff \overline{\ev{x^2}}}{2}. 
+\end{equation}   
+Here, the factor of $1/2$ is appropriate because we consider a one-dimensional random walk.
+
+\subsection{Hopping simulation results}
+Inter-chain hopping increases selectivity most for tight binding and short chains, the parameter regime where tethered diffusion gives limited selectivity (figs.~\ref{fig:hopping}, \ref{fig:partitioningB}, \ref{fig:partitioningC}). Hopping may therefore be important for FGs that form transient crosslinks: if FG Nups are highly crosslinked, our model suggests that inter-chain hopping is the key mechanism of TF movement.  For weaker binding and longer chains, inter-chain hopping leads to a modest increase in selectivity.
+
+\subsection{Fickian diffusion}
+Talk about how diffusion is almost but not quite Fickian, and show the anomalous diffusion plots (made with Mike's script) for various parameters. Talk about timescales and how this might affect the results.
+
+\section{Discussion}
+A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
 we developed includes diffusion of TFs due to thermal fluctuations,
 binding to polymeric tethers, and the hopping of bound species between
 these tethers.  Thus we identified principles of selective transport
