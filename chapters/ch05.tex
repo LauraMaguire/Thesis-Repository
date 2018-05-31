@@ -1,0 +1,61 @@
+\chapter{FG Nup aggregation under crowded conditions}\label{ch05}
+
+\section{Results}
+\subsection{Thioflavin timecourses}
+
+We analyzed aggregation dynamics using thioflavin T, a fluorophore whose excitation and emission maxima shift and which grows much brighter in the presence of thioflavin.  Samples containing FG124, crowding agent, and thioflavin T were incubated while shaking overnight in a 96-well plate and their fluorescence intensity recorded every ten minutes.  The resulting traces show a typical aggregation pattern, with a lag phase, burst phase, and saturation phase.
+
+The final concentration of crowding agent was 19\% serine w/v, 13\% PEG, and 13\% PVP.  Lysate concentration varied between time courses and was in the 1-10 mg/mL range.  Two timecourses were run with varying PEG and PVP concentrations: 25\%, 20\%, 13\%, and 5\%.  Samples with no crowding agent ('buffer" samples) were run as a reference, and samples in 7M guanidine hydrochloride (GuHCl) with no crowding agent were run as negative controls in each timecourse.  No aggregation was observed in the GuHCl samples.  In every case, blanks were run alongside the sample conditions.  In the blanks, the FG124 was omitted.
+
+First the data were normalized to the blanks.  In nearly all cases, the blank intensity remained steady over time, as expected.  In those cases, the mean blank intensity was subtracted from the corresponding data.  (In cases where the blank intensity changed over time, it was subtracted pointwise from the data.)
+
+Then the normalized curves were fit to a sigmoid given by
+\begin{equation}
+I(t) = C + \frac{A}{1+\exp \left(-k(t-T_{1/2})\right)}
+\label{eq:fit}
+\end{equation}
+where $I(t)$ is the normalized fluoresence intensity as a function of time.  The useful physical parameters for our purposes are the time constant $k$, which gives a measurement of the steepness of the slope at the beginning of the burst phase, and the lag time $T_l$.  The lag time is calculated as
+\begin{equation}
+T_l = T_{1/2} - \frac{2}{k}
+\end{equation}
+and represents the duration of the lag phase \cite{}.  
+
+Ideally, we expect $C=1$, as aggregation should not have begun at the start of the experiment, so there should be no increase in sample fluorescence over that of the blank.  Experimentally, $C$ usually ranged between 1 and 2, up to about 10 for some sample conditions.  This might have been because aggregation had already begun, but this seems unlikely because the lag phase continued for some time.  I don't know why  $C$ wasn't close to unity for all conditions and replicates.
+
+The saturation phase asymptotes to an intensity given by $I_\tx{sat}=C+A$.  We found significant variation in $I_\tx{sat}$ for the same condition between timecourses, and the relative magnitudes of different conditions also varied between timecourses.  I think this is a limitation of the thioflavin tests.  Therefore, we do not consider $I_\tx{sat}$ in our analysis, leaving $k$ and $T_l$ as parameters of interest.
+
+Next we normalized once again to account for differences between timecourses.  It was impossible to hold the concentration exactly fixed between timecourses, and there were probably some other environmental variables we couldn't control perfectly, so it was important to normalize again.  Within each timecourse, we averaged the fit parameters for all buffer replicates and subtracted that average from each other replicate.
+
+\begin{figure}
+\caption{test}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/barCharts}
+\label{fig:fitParams}
+\end{figure}
+
+We then combined replicates from all timecourses by condition and took the final average and standard error of the mean for both fit parameters.  The results are shown in Fig.~\ref{fig:fitParams}.  I ran a one-factor ANOVA to reject the null hypothesis that all means were the same, and then two-sample t-tests on each pair of conditions to find which differences were statistically significant.  For the time constant, all pairs of conditions were significantly different from each other with $p < 0.05$ \emph{except} buffer-PVP.   For the lag time, all pairs of conditions were significantly different from each other with $p < 0.05$ \emph{except} buffer-PEG and serine-PVP.
+
+\begin{figure}
+\caption{test}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/peg-and-pvp-charts}
+\label{fig:peg-pvp}
+\end{figure}
+
+I followed the same process for the timecourses involving the concentration series for PEG and PVP, but there were fewer significant differences between concentrations, as seen in Fig.~\ref{fig:peg-pvp}.  The ANOVA for the PEG time constants gave $p=0.0024$ with the t-test showing differences between: buffer-25\% PEG, buffer-13\% PEG, and 25\% PEG-20\% PEG. The ANOVA for the PEG lag times was likewise significant with $p = 0.0102$.  The significant pairs were: buffer-25\% PEG, buffer-20\% PEG, buffer-5\% PEG, and 25\% PEG-13\% PEG.
+
+For PVP, there were no significant differences in the time constant.  For the lag time, after the ANOVA and t-tests, there were differences between: buffer and everything except 5\% PVP, 25\% PVP and everything but 20\% PVP, and 20\%PVP-13\% PVP.
+
+For both conditions, it looks roughly like the lag time increases with the crowder concentration, but given the large error bars, I wouldn't read too much into it.  The time constants don't follow any particular trend and are mostly indistinguishable anyway.
+
+\subsection{Fluorescence microscopy}
+\subsection{NMR}
+
+\section{Discussion}
+
+\section{Materials and Methods}
+\subsection{Buffers} Potassium transport buffer (PTB) (150 mM KCl, 20 mM HEPES, 2 mM $\tx{MgCl}_2$) was used for all timecourse and NMR samples.
+\subsection{FG124 preparation} His-tagged FG124 was expressed in \emph{E. coli} in the plasmid pRSF.  Cultures were grown in LB and  induced at 37 degrees C for 2-4 hr with 1 mM IPTG at OD 0.6-0.8.  Periplasmic matrix was removed prior to lysis.  Cells were then lysed via sonication and FG124 purified using TALON cobalt resin.  All purification buffers were PTB with 7M GuHCl and PIC.  The elution buffer also contained 250 mM imidazole.
+\subsection{Timecourse preparation} Stocks of PEG and PVP in PTB were prepared at 20 or 40\% w/v; serine stocks were prepared at 30\% w/v.  PEG and serine were at pH 7; PVP was pH 7 or pH 5.  A pH series with no crowding agent showed no significant differences based on pH.  Lyophilized lysate was prepared by homogenizing BL21 DE3 Gold cells and spinning them down.  The supernatant was lyophilized in a decomposing ammonium bicarbonate buffer and resuspended in PTB to the desired concentration when needed.  A 10 mM stock solution of ThT in PTB was prepared and filtered no more than a week before the timecourse, stored at room temperature and protected from light.  Immediately prior to starting the timecourse, FG124 was desalted into PTB to remove the imidazole and GuHCl.  Samples were promptly prepared containing the appropriate percentage of crowder, a final concentration of 1-2 mg/mL FG124, and 200 uM thioflavin T.  All samples in the same timecourse had the same concentration of FG124, including the buffer sample, which contained no crowding agent.  Blanks were prepared with crowding agent and thioflavin T, but no FG124.  Samples were pipetted into black, flat-bottomed, clear-bottomed 96-well plates with 150 uL per replicate.  Each sample yielded four to six replicates.  Only one blank replicate was used per condition.  One negative control and corresponding blank were prepared per timecourse containing 7M GuHCl and no crowding agent but using the same protein sample as all other conditions.  Each well contained a 3mm-diameter glass or teflon bead.  The plate was sealed with a PCR seal and taken to a Safire II plate reader.  The fluoresence was measured from the bottom at 10-minute intervals with an excitation wavelength of 450 nm, emission wavelength of 482 nm, and 5 nm bandwidths.  The plate shoook orbitally at high speed between measurements and was held at a temperature of 30 degrees C.  The time between desalting and beginning the plate reader measurements was typically about an hour; the time of desalting was taken as $t=0$ for the purposes of calculating lag time. In parallel with the sample preparation, the concentration of the desalted FG124 was measured with a BCA assay.
+\subsection{NMR sample preparation}
+\subsection{NMR experiments}
