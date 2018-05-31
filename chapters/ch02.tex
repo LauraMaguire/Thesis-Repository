@@ -293,8 +293,23 @@ transit time and selectivity.
 Our result that bound-state diffusion is required for selective transport raises a mechanistic question: how can TFs move while bound to FG Nups? Here we consider two experimentally based mechanisms: movement of the bound TF due to the intrinsic flexibility of the FG Nups \cite{patel07} and multivalent binding that allows hopping of TFs between neighboring Nups \cite{raveh16}.
 
 \subsection{FG Nup flexibility allows tethered diffusion}
-Previous measurements have found that FG Nups are flexible and dynamic \cite{lim07, milles14, hough15}. Although FG Nups are attached at one end to the inner surface of the NPC scaffold, chain flexibility allows a TF bound far from the tethered end to move.  Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound TF diffuses while attached to a spring-like tether, which can be represented as diffusion in a
-harmonic potential well \figref[A]{fig:tethers}.  The width of the harmonic well is related to the effective length of the flexible domain: if FG Nups are not crosslinked, the effective length is the full FG Nup length, while if they are crosslinked or entangled, the length is reduced \cite{ribbeck01}.  The probability density of a TF that binds to the center of a well at $x=0$ is $P(x,t) = e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}$, where $ \alpha(t) = (1-e^{-2kD_F\beta t})/(k\beta)$, $k$ is the spring constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal energy \cite{cau12}.  The TF mean-squared displacement (MSD) is then $\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)$. The typical TF MSD during a binding event can be determined from the probability density of binding time $\rho (t) = \exp(-t/\tau)/\tau$, where $\tau = 1/\koff$ is the mean bound lifetime:
+Previous measurements have found that FG Nups are flexible and dynamic \cite{lim07, milles14, hough15}.  One end of an FG Nup is attached to the inner ring of the NPC scaffold.  However, the Nup's flexibility means that a TF which binds far from the scaffold-attachment point is mobile.  Tethered diffusion therefore provides a mechanism of bound-state diffusion and selectivity.
+
+\subsubsection{Bound-state diffusion depends on polymer and kinetic properties.}
+Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound TF diffuses while attached to a spring-like tether, which can be represented as diffusion in a harmonic potential well \figref[A]{fig:tethers}.  The width of the harmonic well is related to the length of the flexible domain.  The effective length is the full FG Nup length if the FG Nups are not crosslinked, while the effective length is reduced if they are crosslinked or entangled\cite{ribbeck01}.  From the Fokker-Planck equation, the positional probability density of a bound TF is 
+\begin{eqnarray}
+P(x,t) &=& e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}\,,\\
+\alpha(t) &=& (1-e^{-2kD_F\beta t})/(k\beta)
+\end{eqnarray}
+ where $k$ is the spring constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal energy \cite{doi88}.  The center of the well is set at $x=0$.  
+
+The mean-squared displacement (MSD) of the TF as a function of time is calculated with the integral
+$\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)$.  
+
+
+
+
+The typical TF MSD during a binding event can be determined from the probability density of binding time $\rho (t) = \exp(-t/\tau)/\tau$, where $\tau = 1/\koff$ is the mean bound lifetime:
 \begin{equation}\label{eq:sho}
   \overline{\ev{x^2}} = \int_0^{\infty} \rho(t') \ev{x^2(t')} dt' = \frac{2D_F L_c
     \ell_p}{L_c \ell_p \koff+ 3D_F}. 
@@ -393,8 +408,37 @@ D_B = \frac{\koff \overline{\ev{x^2}}}{2}.
 \end{equation}   
 Here, the factor of $1/2$ is appropriate because we consider a one-dimensional random walk.
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/ch02/integrand-example-plots.pdf}
+\caption{(A) Examples of mean-squared displacement (MSD) of a simulated TF in the inter-chain hopping model, with varying hopping rate.  (B) Examples of MSD distributions $\rho_\tx{MSD} (t)$ used in estimating the diffusion coefficient, with varying unbinding rate. Tethers have 40 nm contour length; other parameters are as discussed in the text.}
+\label{fig:integrand}
+\end{figure}
+
 \subsection{Hopping simulation results}
 Inter-chain hopping increases selectivity most for tight binding and short chains, the parameter regime where tethered diffusion gives limited selectivity (figs.~\ref{fig:hopping}, \ref{fig:partitioningB}, \ref{fig:partitioningC}). Hopping may therefore be important for FGs that form transient crosslinks: if FG Nups are highly crosslinked, our model suggests that inter-chain hopping is the key mechanism of TF movement.  For weaker binding and longer chains, inter-chain hopping leads to a modest increase in selectivity.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc4-fig.pdf}
+\caption{Bound diffusion and selectivity as a function of dissociation
+  constant, with varying hopping rate for FG Nups with $L_c = 4$ nm.}
+\label{fig:partitioningB}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc12-fig.pdf}
+\caption{Bound diffusion and selectivity as a function of dissociation
+  constant, with varying hopping rate for FG Nups with $L_c = 12$ nm.}
+\label{fig:partitioningC}
+\end{figure}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc120-fig.pdf}
+\caption{Bound diffusion and selectivity as a function of dissociation
+  constant, with varying hopping rate for FG Nups with $L_c = 120$ nm.}
+\label{fig:partitioningD}
+\end{figure}
 
 \subsection{Fickian diffusion}
 Talk about how diffusion is almost but not quite Fickian, and show the anomalous diffusion plots (made with Mike's script) for various parameters. Talk about timescales and how this might affect the results.
@@ -442,7 +486,7 @@ predicted selectivity of one hydrogel is $S\approx200$, apparently the
 most selective synthetic gel to date \cite{frey07}.
 
 
-\subsection*{Overcoming the limitations of binding}
+\subsection{Overcoming the limitations of binding}
 Binding, even in the presence of bound-state motion, limits
 selectivity.  Biological systems appear to have developed strategies
 to avoid this, for example, by using true partitioning.  Lipid domains
@@ -466,7 +510,7 @@ has been used to enhance drug delivery \cite{zhou13}. Unfortunately,
 this approach may not be universally applicable: breaking down the ECM
 surrounding tumors may promote cancer metastasis \cite{miao15}.
 
-\subsection*{Design principles of selective transport by binding}
+\subsection{Design principles of selective transport by binding}
 
 Filtering by polymeric biomaterials occurs in many systems for
 particles of different sizes: for example, nutrients reach our
