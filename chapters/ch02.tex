@@ -296,51 +296,47 @@ Our result that bound-state diffusion is required for selective transport raises
 Previous measurements have found that FG Nups are flexible and dynamic \cite{lim07, milles14, hough15}.  One end of an FG Nup is attached to the inner ring of the NPC scaffold.  However, the Nup's flexibility means that a TF which binds far from the scaffold-attachment point is mobile.  Tethered diffusion therefore provides a mechanism of bound-state diffusion and selectivity.
 
 \subsubsection{Bound-state diffusion depends on polymer and kinetic properties.}
-Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound TF diffuses while attached to a spring-like tether, which can be represented as diffusion in a harmonic potential well \figref[A]{fig:tethers}.  The width of the harmonic well is related to the length of the flexible domain.  The effective length is the full FG Nup length if the FG Nups are not crosslinked, while the effective length is reduced if they are crosslinked or entangled\cite{ribbeck01}.  From the Fokker-Planck equation, the positional probability density of a bound TF is 
+Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound TF diffuses while attached to a spring-like tether, which can be represented as diffusion in a harmonic potential well \figref[A]{fig:tethers}.  The width of the harmonic well is related to the length of the flexible domain.  The effective length is the full FG Nup length if the FG Nups are not crosslinked, while the effective length is reduced if they are crosslinked or entangled\cite{ribbeck01}.  
+
+In order to calculate the bound diffusion coefficient of the TFs, an averaging procedure is followed.  First, the diffusion is assumed to be Fickian, which is a reasonably good though not perfect assumption (see section on Fickian diffusion).  In the Fickian diffusion case, the diffusion coefficient is proportional to a mean-squared displacement (MSD) divided by time.  We calculate the mean binding lifetime $\tau$ and the MSD corresponding to this ``typical'' binding event and divide them.
+
+%Because FG-TF interactions have fast binding kinetics \cite{milles15, hough15}, we estimate the bound diffusion coefficient by averaging over many binding events, while considering only bound motion, giving 
+
+To begin, note that the duration of a binding event follows the exponential distribution 
+\begin{equation}
+\rho (t) = \exp(-t/\tau)/\tau\,,
+\end{equation}
+where $\tau = 1/\koff$ is the mean binding lifetime.
+
+Next, the positional probability density of a bound TF is 
 \begin{eqnarray}
 P(x,t) &=& e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}\,,\\
 \alpha(t) &=& (1-e^{-2kD_F\beta t})/(k\beta)
 \end{eqnarray}
- where $k$ is the spring constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal energy \cite{doi88}.  The center of the well is set at $x=0$.  
+ where $k$ is the spring constant of FG Nup tethering and $1/\beta = k_BT$ is the thermal energy \cite{doi88}.  The center of the well is set at $x=0$.
 
-The mean-squared displacement (MSD) of the TF as a function of time is calculated with the integral
-$\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)$.  
+The mean-squared displacement (MSD) of the TF as a function of time is calculated, as any expected value, with the integral
+\begin{equation}
+\ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)\,.
+\end{equation}
 
-
-
-
-The typical TF MSD during a binding event can be determined from the probability density of binding time $\rho (t) = \exp(-t/\tau)/\tau$, where $\tau = 1/\koff$ is the mean bound lifetime:
+Finally, the typical TF MSD during a binding event can be determined by evaluating
 \begin{equation}\label{eq:sho}
   \overline{\ev{x^2}} = \int_0^{\infty} \rho(t') \ev{x^2(t')} dt' = \frac{2D_F L_c
-    \ell_p}{L_c \ell_p \koff+ 3D_F}. 
+    \ell_p}{L_c \ell_p \koff+ 3D_F}\,. 
 \end{equation} 
 Here we assume that the spring constant is that of a worm-like chain polymer $k = 3/(2\beta L_c \ell_p)$, where $L_c$ is the contour length and $\ell_p$ the persistence length \cite{howard01}.
 
-Because FG-TF interactions have fast binding kinetics \cite{milles15, hough15}, we estimate the bound diffusion coefficient by averaging over many binding events, while considering only bound motion, giving \begin{equation}\label{eq:dbound}
+
+Combining these results, the one-dimensional bound diffusion coefficient is
+\begin{equation}\label{eq:dbound}
   D_B \approx \frac{\overline{\ev{x^2}}}{2\tau} = \frac{D_F L_c \ell_p
     k_\un{off}}{L_c \ell_p k_\un{off} + 3D_F} =
   \frac{D_F}{1+3\frac{D_F}{D_{P}}}.  
 \end{equation}
-Here $D_P = L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the TF by the tether and greater bound mobility. Bound mobility increases with increasing chain length, flexibility of the polymer, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long, flexible chains barely affect TF motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), TF motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  This result highlights that the kinetics of TF-FG Nup interaction are a primary determinant of the bound mobility: the faster the binding kinetics, the higher the bound diffusion constant.
+Here $D_P = L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the TF by the tether and greater bound mobility. Bound mobility increases with increasing chain length and persistence length, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long chains barely affect TF motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), TF motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  This result highlights that the kinetics of TF-FG Nup interaction are a primary determinant of the bound mobility: the faster the binding kinetics, the higher the bound diffusion constant.
 
-\begin{figure*}
-\centering
-\includegraphics[width = \textwidth]{figs/ch02/fig4.pdf}
-\caption{(A) Schematic of the inter-chain hopping model of bound-state
-  diffusion. FG Nups are treated as entropic springs that constrain
-  the motion of TFs, and inter-chain hopping allows a TF to move from
-  one FG Nup (top and center left, green Nup) to another (top and
-  center right, red Nup) without unbinding, which corresponds to
-  switching from one harmonic potential well to another (lower). (B)
-  Ratio of bound to free diffusion coefficient as a function of
-  dissociation constant, with varying hopping rate in the inter-chain
-  hopping model.  (C) Selectivity as a function of $K_D$ with varying
-  hopping rate. FG Nup contour length $L_c = 40$ nm in (B, C). }
-\label{fig:hopping}
-\end{figure*}
-
-
-Flexible disordered proteins typically have low persistence lengths \cite{receveur-brechot12}, so we estimate $\ell_p \approx 1$ nm.  If the on-rate constant is diffusion limited, $\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15, hough15}, the binding affinity determines the off rate.  Disordered FG Nups have $L_c\approx$ 100--280 nm (250--700 amino acids long \cite{patel07} with a contour length per amino acid $\approx 0.4$ nm). For our conservative parameters, tethered diffusion alone predicts significant selectivity $\sim$200.
+Flexible disordered proteins typically have low persistence lengths \cite{receveur-brechot12}, so we estimate $\ell_p \approx 1$ nm.  If the on-rate constant is diffusion limited, $\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15, hough15}, the binding affinity determines the off rate.  Disordered FG Nups have $L_c\approx$ 100--280 nm (250--700 amino acids long \cite{patel07} with a contour length per amino acid $\approx 0.4$ nm). For our conservative parameters, tethered diffusion alone predicts selectivity $S \approx 200$, a large flux enhancement for TFs over nonbinding proteins.
 
 \subsection{Inter-chain hopping increases selectivity}
 The tethered diffusion mechanism is constrained by a trade-off:
@@ -360,6 +356,14 @@ coefficient (fig.~\ref{fig:integrand}, Supporting Information, section
 \ref{sec:sim}). We note that intra-chain hopping does not change the
 flux, since the anchor point of the tethering chain is not changed;
 therefore we neglect it.
+
+
+\begin{figure*}
+\centering
+\includegraphics[width = \textwidth]{figs/ch02/fig4.pdf}
+\caption{(A) Schematic of the inter-chain hopping model of bound-state diffusion. FG Nups are treated as entropic springs that constrain the motion of TFs, and inter-chain hopping allows a TF to move from one FG Nup (top and center left, green Nup) to another (top and center right, red Nup) without unbinding, which corresponds to switching from one harmonic potential well to another (lower). (B) Ratio of bound to free diffusion coefficient as a function of dissociation constant, with varying hopping rate in the inter-chain hopping model.  (C) Selectivity as a function of $K_D$ with varying hopping rate. FG Nup contour length $L_c = 40$ nm in (B, C). }
+\label{fig:hopping}
+\end{figure*}
 
 \subsection{Detailed explanation of hopping simulation}
 In our simulation of TF motion with hopping between FG Nups while bound, we represented each FG Nup as an entropic spring (i.e. as a harmonic potential well).  Well positions were randomly chosen from a uniform distribution, with the exception that we always placed one well at the starting position of the TF.  The particle (the TF) started the simulation bound to this FG Nup, and remained bound throughout the simulation.  While bound to one FG Nup, the TF diffused within the harmonic well representing that FG Nup. We recorded the position and mean-squared displacement of the TF from its starting location, which we then used to determine a bound diffusion coefficient, as described in more detail below.  The TF could hop between tethers by changing which well it moved in.
