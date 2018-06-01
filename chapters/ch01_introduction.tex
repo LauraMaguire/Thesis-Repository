@@ -76,12 +76,19 @@ There are other TFs such as Mex67 and CRM, but I don't really know what they do.
 
 \section{Observed features of nucleocytoplasmic transport} 
 The nuclear pore has been the subject of investigation since the 1950s \cite{hapensomething16 or another review article with timeline}.  During that time, many different experimental techniques have been used, from in vivo studies to single molecule fluoresecence to SPR to NMR.  Likewise, simulations have attempted to explain the selectivity properties of the NPC using a broad array of techniques, such as more or less coarse-grained molecular dynamics simulations.  These studies together shed light on the mechanisms of selective transport, but are also all hindered by the small size and rapid timescale of transport.  Many of the studies produce results that seem, at least at first glance, to contradict those of other studies.  A comprehensive picture of the facts of nuclear transport has yet to emerge, although there are some universally accepted features.
-%Should I have a separate section for computational studies, or include them in experimenal work?
+
 \subsection{Flux through the NPC is very high.}
 The high macromolecular traffic between nucleus and cytoplasm requires high flux through each NPC.  Experiments with permeabilized cells estimate that the total molecular flow through the NPC could be as high as 10-20 MDa per pore per second, corresponding to roughly 1000 transport events per pore per second \cite{ribbeck01}.  Experiments focusing particularly on NTF2 report fluxes between 50 and 250 molecules per pore per second \cite{ribbeck01, siebrasse02, kiskin03}.  Fluxes this high mean a continuously high occupancy of the NPC, estimated at around 100 karyopherins at once \cite{paradise07}.  It is unclear whether the effect of crowding with TFs in the pore has an impact on selectivity.
 
 \subsection{TFs show millisecond dwell times.}
-One reason that individual NPCs can accomodate such high flux is the rapidity with which molecules transit the pore.  
+One reason that individual NPCs can accomodate such high flux is the rapidity with which molecules transit the pore.  A wide range of molecules, such as NTF2, Importin $\beta$, and GFP-NLS cargoes, have a dwell time of less than 10 ms in the pore \cite{tu11, yang06, dange08, kubitscheck05}.  Typically, this is determined using single-molecule tracking with superresolution microscopy \cite{tu11}.  There is some evidence that a subpopulation of karyopherins resides in the pore over long timescales, potentially contributing to the selectivity barrier \cite{kapinos17}.
+
+The flux through an NPC is determined not only by the transit time, but also by the success rate of transit attempts.  Single-molecule microscopy suggests that the nuclear import efficiency of Importin $\beta$ ranges from \%50 to \%80, depending on concentration \cite{yang06}.  Modeling supports these numbers \cite{zilman07}.
+
+\subsection{TF-FG Nup binding kinetics are ultrafast.}
+The short dwell time of transport factors and cargo at the pore contributes to a source of confusion in the NPC community: the binding kinetics of TFs and FG Nups.  Measurements of dissociation constant $K_D$ and its components $\kon$ and $\koff$ ($K_D = \koff/\kon$) span several orders of magnitude, depending on the measurement conditions.  Original in vitro measurements, performed in buffer, show low $K_D$ values in the nanomolar range, indicating tight binding between TFs and FG Nups.  However, these values were not compatible with a transit time around 10 ms, as a typical binding event as calculated from the off-rate would last much longer than 10 ms.
+
+More recent measurements are converging on a consensus that TF-FG Nup binding kinetics are in fact much faster than previously estimated.  Diffusion-limited on-rates and $K_D$ values around 1 mM would permit rapid transit through the pore.
 
 \subsection{Passive permeability barrier}
 There is a cutoff around 30 kDa where molecules stop being able to passively transit the pore at any appreciable rate.  Work from the Timney lab suggests that the passive permeability barrier is not a sharp cutoff, but broad.
