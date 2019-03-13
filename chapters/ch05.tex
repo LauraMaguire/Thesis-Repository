@@ -48,8 +48,51 @@ For PVP, there were no significant differences in the time constant.  For the la
 
 For both conditions, it looks roughly like the lag time increases with the crowder concentration, but given the large error bars, I wouldn't read too much into it.  The time constants don't follow any particular trend and are mostly indistinguishable anyway.
 
-\subsection{Fluorescence microscopy}
-\subsection{NMR}
+We tested the effects of pH on FG124 aggregation by running several experiments in buffer at varying pH.  We ran six replicates of each condition, for pH values between 5 and 8.  No significant differences were found in the lifetimes or lag times of any pH condition.  Results are summarized in Table \ref{table:FG124-pH}. We concluded that aggregation is not affected by pH in the range 5-8.
+
+\begin{table}[b!]
+  \caption{FG124 aggregation lifetime and lag time with varying pH. Each condition run with 6 replicates in PTB buffer.  One-way ANOVAs show no statistically significant differences between conditions.  Standard errors are shown.}
+    \label{table:FG124-pH}
+    \begin{tabular}{p{1cm}p{3cm}p{3cm}}
+      pH & Lifetime $\tau$ (hr) & Lag time $T_{lag}$ (hr) \\
+      \hline
+      5 & $0.34 \pm 0.09$ & $6.8 \pm 0.1$ \\
+      6 & $0.35 \pm 0.12$ & $6.2 \pm 0.2$ \\
+      7 & $0.38 \pm 0.14$ & $6.8 \pm 0.4$ \\
+      8 & $0.50 \pm 0.14$ & $6.6 \pm 0.2$ \\
+    \end{tabular}
+\end{table}
+\subsection{Fluorimetry}
+We hypothesized that the crowder-dependent difference in aggregation might arise from the aromatic ring in PVP, which could interact with the phenylalanine in FG124 in a ring-stacking interaction.  To test this idea, I collected emission spectra of fresh and aggregated FG124 in PEG and PVP crowders near the phenylalanine peak wavelength (see Fig. \ref{fig:FG124-fresh-vs-agg}).  Only 5\% PEG and PVP in PTB were tested because PEG has a peak near the FG124 peak which dominates at higher PEG concentrations.  Data were normalized by averaging over two runs and subtracting a blank run (containing crowder and buffer but no protein).
+\begin{figure}
+\caption{Emission scan of fresh and aggregated FG124 in crowded conditions.  Data normalized by subtracting blank sample.}
+\centering
+\includegraphics[width=1.1\textwidth]{figs/ch05/FG124-fresh-vs-agg}
+\label{fig:FG124-fresh-vs-agg}
+\end{figure}
+The PEG sample showed the largest difference upon aggregation, both in peak height and location.  Figure \ref{fig:stacked-FG124-fluorimetry} shows the same data, normalized to a maximum amplitude of one and offset, in order to emphasize the changes in peak shape.
+\begin{figure}
+\caption{Emission scan of phenylalanine, FSFG, and FG124. Excited at 240 nm.  Phe data is not mine, need to check reference. Data normalized to a maximum amplitude of 1.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/stacked-FG124-fluorimetry}
+\label{fig:stacked-FG124-fluorimetry}
+\end{figure}
+In both crowder conditions, but not in the buffer condition, a small peak appears in the aggregated FG124 near 310 nm.
+
+Additionally, I compared the phenylalanine peaks in FSFG and fresh and aggregated FG124 to those of pure phenylalanine \cite{zotero-5177}, as seen in Fig. \ref{fig:phe-comparison}.  Data are blanked and normalized to a maximum intensity of one.  The peak slightly shifts toward longer wavelengths as the data progress from phenylalanine to FSFG to fresh and aggregated FG124.
+\begin{figure}
+\caption{Emission scan of phenylalanine, FSFG, and FG124. Excited at 240 nm.  Phe data is not mine, need to check reference. Data normalized to a maximum amplitude of 1.}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch05/phe-comparison}
+\label{fig:phe-comparison}
+\end{figure}
+I also measured PEG and PVP absorbance near 240 nm (see Fig.~\ref{fig:crowder-absorbance}).  PVP has a very high absorbance in that range, which might explain why the recorded counts were lowest for the PVP conditions.
+\begin{figure}
+\caption{Absorbance of 5\% PEG and PVP solutions in PTB.  Normalized by subtracting PTB absorbance.}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch05/crowder-absorbance}
+\label{fig:crowder-absorbance}
+\end{figure}
 
 \section{Discussion}
 
@@ -59,3 +102,7 @@ For both conditions, it looks roughly like the lag time increases with the crowd
 \subsection{Timecourse preparation} Stocks of PEG and PVP in PTB were prepared at 20 or 40\% w/v; serine stocks were prepared at 30\% w/v.  PEG and serine were at pH 7; PVP was pH 7 or pH 5.  A pH series with no crowding agent showed no significant differences based on pH.  Lyophilized lysate was prepared by homogenizing BL21 DE3 Gold cells and spinning them down.  The supernatant was lyophilized in a decomposing ammonium bicarbonate buffer and resuspended in PTB to the desired concentration when needed.  A 10 mM stock solution of ThT in PTB was prepared and filtered no more than a week before the timecourse, stored at room temperature and protected from light.  Immediately prior to starting the timecourse, FG124 was desalted into PTB to remove the imidazole and GuHCl.  Samples were promptly prepared containing the appropriate percentage of crowder, a final concentration of 1-2 mg/mL FG124, and 200 uM thioflavin T.  All samples in the same timecourse had the same concentration of FG124, including the buffer sample, which contained no crowding agent.  Blanks were prepared with crowding agent and thioflavin T, but no FG124.  Samples were pipetted into black, flat-bottomed, clear-bottomed 96-well plates with 150 uL per replicate.  Each sample yielded four to six replicates.  Only one blank replicate was used per condition.  One negative control and corresponding blank were prepared per timecourse containing 7M GuHCl and no crowding agent but using the same protein sample as all other conditions.  Each well contained a 3mm-diameter glass or teflon bead.  The plate was sealed with a PCR seal and taken to a Safire II plate reader.  The fluoresence was measured from the bottom at 10-minute intervals with an excitation wavelength of 450 nm, emission wavelength of 482 nm, and 5 nm bandwidths.  The plate shoook orbitally at high speed between measurements and was held at a temperature of 30 degrees C.  The time between desalting and beginning the plate reader measurements was typically about an hour; the time of desalting was taken as $t=0$ for the purposes of calculating lag time. In parallel with the sample preparation, the concentration of the desalted FG124 was measured with a BCA assay.
 \subsection{NMR sample preparation}
 \subsection{NMR experiments}
+\subsection{Fluorimetry}
+
+FG124 was purified as described above and stored in PTB with 7M GuHCl.  Immediately before use, 130 uL of 520 uM FG124 was desalted with a Zeba spin desalting column to remove the GuHCl.  The resulting stock was used in the crowder samples, which had a final concentration of 340 uM Fg124.  I used the shared-instrumentation fluorimeter.  I tested PTB, 5\% PEG (MW, source, purity?) in PTB, and 5\% PVP (same questions?) in PTB as blanks.  I measured 340 uM FG124 in PTB and the two crowders as well.  Between runs, I cleaned the cuvette (micro quartz cuvette from Kaar lab (sample volume?)) with ethanol 3x, then 5x with DI water, and gently blotted the outside with ethanol.  Fluorimeter settings: 4 nm slits, 1000 V PMT, excitation wavelength of 240 nm.  Step size  = 1nm, average over 2 runs.  After taking this data with fresh FG124, I let the samples sit at room temp overnight to aggregate (no shaking) and most were cloudy in the morning.  I took similar data with the aggregated samples.  I needed to rinse with 7M GuHCl, let soak in 7M GuHCl for 5 minutes, and then perform the same cleaning procedure as the previous day in order to remove the aggregates from the cuvette.
+
