@@ -88,6 +88,13 @@ Crosslinking with the confocal has several advantages over LED crosslinking.  Si
 
 The most appealing geometry made possible with confocal crosslinking is the hydrogel ring, as shown in Figs.~\ref{fig:LW-gel-images} and \ref{fig:LW-NTF2-images}.  Unlike all other hydrogel-chamber geometries, the inner reservoir is small enough to equilibrate in only a few hours (Fig.~\ref{fig:ring-acc-and-profile}).  Ideally, the hydrogel rings could have been used to test selective flux through the NPC mimics, a possibility not offered by other hydrogel-chamber geometries, which are optimized for testing influx into the hydrogels only.  Long thin lines can also be written with the confocal by repeatedly moving the field of view and re-crosslinking, overlapping the new segment with the previous.  This geometry could be useful in creating counter-propagating flow chambers with hydrogel windows.
 
+\begin{figure} % LKM book 4 pg 65
+\caption{Example accumulation and profile plots for a 50 $\mu$m thick ring}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch03/ring-acc-and-profile}
+\label{fig:ring-acc-and-profile}
+\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) 
+
 Confocal crosslinking does not damage FSFG, as demonstrated in Fig.~\ref{fig:LW-NTF2-images}.  Hydrogels were made using the precursor solution described above with the addition of 10 mg/mL FSFG-cys.  After soaking in PTB buffer overnight, a mixture of 25 $\mu$m each NTF2-Alexa488 and mCherry was added to the outer reservoir.  After two hours of equilibration, the FSFG hydrogels showed a partition coefficient greater than one for NTF2-Alexa488 but smaller than one for mCherry.  This indicates that FSFG is anchored into the gel and that NTF2-A488 is able to bind it.
 
 Finally, Norland Optical Adhesive (NOA) can also be crosslinked using this method.  Complicated flow chambers can be created, although it is labor-intensive and difficult to remove all of the excess NOA afterwards.
@@ -103,10 +110,12 @@ Finally, Norland Optical Adhesive (NOA) can also be crosslinked using this metho
 
 Despite the advantages of confocal crosslinking, several obstacles combined to ultimately make this method unusable for our purposes.  The most serious problem was that of stray crosslinking.  Areas outside of the defined region of interest were often unpredictably crosslinked, as can be seen in Fig.~\ref{fig:LW-gel-images}.  Stray crosslinking outside of the rings is limited by rinsing the gels within 5 minutes of crosslinking, removing any excess precursor solution \cite{paustian13}.  However, rinsing the chamber does not remove precursor solution from the ring's inner reservoir.  Stray crosslinking in this reservoir is often more difficult to detect and more damaging to the experimental results. Figure~\ref{fig:LW-NTF2-images} illustrates the problem: the ring has been equilibrated with NTF2-A488, which has preferentially entered the inner reservoir over mCherry.  The concentration of NTF2-A488 is, in fact, higher in the inner than the outer reservoir, indicating that there is some low concentration of FSFG available in the inner reservoir for binding to NTF2.  As the hydrogel was soaked in buffer overnight after crosslinking, any mobile FSFG remaining from the precursor solution has been removed, meaning that the remaining FSFG is most likely anchored into a lightly-crosslinked hydrogel that fills the inner reservoir.  The presence of this gel alters the results of an equilibration experiment by artificially increasing the final NTF2 concentration in the inner reservoir.
 
-With help from Dani Konetski in Chris Bowman's group, I attempted to address the stray crosslinking by adding a photoinhibitor to the precursor solution.
+With help from Dani Konetski in Chris Bowman's group, I attempted to address the stray crosslinking by adding a photoinhibitor to the precursor solution.  The radical inhibitor 2,2,6,6-tetramethylpiperidine 1-oxyl (TEMPO) can be used in aqueous solution to limit crosslinking \cite{chatani14}.  I tested the effect of the photoinhibitor using a precursor solution as described above with the addition of 0.5 mM TEMPO.  While the edges of the resulting hydrogels became marginally sharper, stray crosslinking was still evident, especially in the inner reservoir.
 
- I also added TEMPO (look up concentration and actual name), a photoinhibitor, to try to limit crosslinking to areas that were directly exposed to UV light.  This helped but clearly didn't fix the problem.  
-%Help from Dani Konetski in Bowman lab with TEMPO and mirror setup
+%Help from Dani Konetski in Bowman lab with TEMPO and digital light projector (didn't work)
+% TEMPO - LKM book 4 pgs 83-93
+
+Another significant problem was swelling and buckling of the hydrogels.  Despite the hope that thinner hydrogels would swell and equilibrate more easily, buckling of the rings and lines was pervasive and difficult to predict (Fig.~\ref{fig:LW-gel-images}).  Ring hydrogels in particular often developed minor leaks due to buckling.  Despite a great many attempts to improve the swelling problem (see various other sections), the rings ultimately could not be used for selective transport experiments.
 
 \begin{figure} % LKM book 4 pg 60
 \caption{Comparison of edge dip for different dwell times, loop numbers}
@@ -115,41 +124,66 @@ With help from Dani Konetski in Chris Bowman's group, I attempted to address the
 \label{fig:dwell-time-effect}
 \end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) compared to #6 (1 dwell time, 64 loops)
 
-\begin{figure} % LKM book 4 pg 65
-\caption{Example accumulation and profile plots for a 50 $\mu$m thick ring}
-\centering
-\includegraphics[width=\textwidth]{figs/ch03/ring-acc-and-profile}
-\label{fig:ring-acc-and-profile}
-\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) 
+One interesting feature of confocal crosslinking is the degree of control it affords over the illumination method.  In the A1R's photobleaching mode, the 405 nm laser is raster-scanned over each pixel in the field of view.  The shutter is toggled in order to illuminate only pixels within the predefined region of interest.  The controls permit the laser intensity, dwell time at each pixel, and number of raster scan loops to be varied.  The laser intensity was always kept at 100\%, but changing the dwell time and loop number had a dramatic effect on the final properties of the hydrogel.
 
+Generally speaking, a longer dwell time at each pixel and a low number of loops gave the best results.  (See if I can try to get dwell times in absolute time instead of fold change.)  Figure~\ref{fig:dwell-time-effect} shows post-equilibration profiles for two hydrogel rings made with different illumination settings.  Each gel received the same total illumination time, but in one case the dwell time was reduced 32-fold and the loop number increased by the same factor.  In both cases, the hydrogels were soaked in PTB buffer overnight and then challenged with 25 $\mu$M NTF2-Alexa488 and mCherry.  After 70 minutes, sufficient NTF2 had accumulated in the gel to make the differences between gels obvious.  The low-dwell-time hydrogel accumulated less NTF2 and displayed noticeable dips in NTF2 accumulation at both its inner and outer edges.  The edge-dip is reminiscent of those noted in the gels crosslinked by photomasking and the UV LED.  While the cause of the dip is unclear, it may be the result of diffusion of fresh precursor solution into the edge region over the course of the crosslinking process.  The fresh precursor then crosslinks, leading to a dense hydrogel edge that excludes NTF2 and mCherry.  This hypothesis is consistent with the observation that a longer dwell time and fewer raster loops largely eliminated the edge dip.  With fewer raster loops, there is less opportunity for diffusion of uncrosslinked precursor solution into the gel edge.  It should also be noted that the edge dip does not form when an entire droplet of precursor solution is crosslinked with the UV LED (i.e. no mask is used), further supporting the diffusion explanation.  In any case, long dwell times and low loop numbers are clearly preferable with confocal crosslinking.
 
-Another problem was swelling and buckling.  It was difficult to predict, and we tried to mitigate it with porogens but that didn't really work.  Sometimes the gels would buckle and leak.  We also couldn't solve this problem in the end.
+In conclusion, confocal crosslinking has a number of advantages over LED crosslinking, and a corresponding number of obstacles.  Despite the attraction of testing selective transport using small hydrogel rings, we ultimately chose to use a much simpler hydrogel geometry and crosslinking method.
 
 \section{Nup and transport factor constructs}
 Figures
 \begin{enumerate}
-\item picture and accumulation of SSSG gel compared to control gel
+\item cartoon of various NTF2 constructs
 \item table of NTF2 linker sequences
 \item SDS-PAGE of covalently-tethered NTF2 if possible
 \item picture and accumulation of covalently-tethered NTF2 if possible
 \item SDS-PAGE and Typhoon image of NTF2-GFP
 \item picture and accumulation of NTF2-GFP
-\item picture and profiles of Kap121 + GFP-NLS
 \item table with FSFG variant sequences?
 \item SDS-PAGE with FSFG cct2?
 \end{enumerate}
+
 \subsection{SSSG negative control}
-We created a negative control for FSFG which is identical except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. (Put in a figure.) Hopefully, this control accounts for any difference in pore size or diffusion caused by the presence of the peptide in the hydrogel.  (There's no reason in particular that we stopped using it for the FRAP bound-diffusion gels, just that it would be more work to grow and bis-label.) I think Eric did most of the cloning work on this project and/or we bought the gene.
+The behavior of NTF2 and mCherry in FSFG hydrogels can be compared to that in hydrogels containing no Nups.  However, it is possible that the presence of FSFG in the precursor solution changes the final gel properties such as pore size, or that non-specific interactions between the Nup peptide and test proteins alter the behavior of the test proteins.  To account for these possibilities, we designed a negative control peptide which is identical to FSFG except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. Figure~\ref{fig:SSSG-control-comparison} compares the intensity profile of a 10 wt\% PEG hydrogel containing a nominal 10 mg/mL SSSG to that of a hydrogel with no nups.  There is no dramatic difference between the two profiles, suggesting that the presence of peptide in the hydrogel does not itself alter the diffusion of NTF2 and mCherry.  Following the initial tests, SSSG gels were used periodically to confirm that no-Nup gels served well as negative controls, but they were not used regularly as controls.
+
+The SSSG peptide was used in an identical manner to FSFG: SSSG-cys was his-tagged, inserted into pRSF, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column using the same procedure as FSFG variants and had a high yield.  As with FSFG, SSSG is stable and non-aggregating over a wide range of conditions.
+%I think Eric did most of the cloning work on this project and/or we bought the gene.
+\begin{figure} % 6/9/15 for both SSSG and control (no-nup) gels, not sure whether or not I ran it personally, LKM book 2 pg 24
+\caption{Comparison of intensity profiles for SSSG and no-nup (control) gels.}
+\centering
+\includegraphics[width=0.8\textwidth]{figs/ch03/SSSG-control-comparison}
+\label{fig:SSSG-control-comparison}
+\end{figure} 
 \subsection{Covalently-tethered NTF2 dimer}
 One recurring problem we observed was that NTF2 moves faster in the hydrogels and equilibrates to a higher level than mCherry, even in SSSG gels or gels with no Nups.  This could be because NTF2 is dissociating into two monomers which are smaller and move faster than mCherry.  This shouldn't be happening, because the $K_D$ of mammalian NTF2 is about 1 $\mu$M \cite{chaillan-huntington01}, which should be about the same for our yeast NTF2.  However, to avoid this problem, we tried to make a covalently-tethered version of NTF2, consisting of two NTF2 monomers connected by a flexible amino-acid tether.  (Look up tether compositions and put in a table.)  We tried tethers of several lengths, including 15, 12, and smaller (look this up, it was a mutagenesis accident).  Unfortunately, the tether probably messed up the dimerization interface.  Look up whether we ever got these expressed and purified.  If so, they didn't bind.  Maybe show an SDS-PAGE gel for the purification and an accumulation plot/ picture to show they didn't bind. Eric and Scott did most of the cloning work on this project.
 \subsection{NTF2-GFP}
-Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, we made a version of NTF2 tethered to GFP (maybe put in a cartoon of what the dimer of this version would look like).  We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  (Show SDS-PAGE and typhoon gel if possible, and accumulation plot).
+
+Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, Eric Verbeke and I created a version of NTF2 tethered to GFP by a short linker.  
+
+This construct is in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column in PTB and 1:1000 PIC and eluted with 250 mM imidazole, yielding ample protein with moderate degradation products.
+
+
+
+We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  (Show SDS-PAGE and typhoon gel if possible, and accumulation plot).
+
 \subsection{Kap121 and NLS-GFP}
-The karyopherins (Kaps) are a canonical class of transport factors.  They transport proteins tagged with nuclear localization signals (NLS) through the nuclear pore.  We were interested in testing Kaps because they are widely studied and much larger than NTF2, so selective transport would be more apparent.  We added an NLS to GFP to act as a fluorescent cargo for  Kap121.  (Eric did this cloning.)  He made two separate constructs, one with the Spo NLS and one with Pho.  Both expressed and could easily be purified using a his tag and TALON resin.
+% Kap121 growth and purification - LKM book 2 pg 79, LKM book 3 pg 13, Chris Lawton book 1 pg 65, Loren's protocols in Google Drive, Jackie's paper
+The karyopherins (Kaps) are a canonical class of transport factors.  They transport proteins tagged with nuclear localization signals (NLS) through the nuclear pore.  We were interested in testing Kaps because they are widely studied and much larger than NTF2, so selective transport would be more apparent.  Eric Verbeke engineered two GFP-NLS constructs: GFP-Spo12 and GFP-Pho4.  These constructs were his-tagged, inserted into pET21b, expressed in BL21-DE3 Gold cells, and purified using a cobalt affinity column. 
+% GFP-NLS LKM book 2 pg 133
+Kap121-GST was expressed and purified following \cite{tetenbaum-novatt12} and the GST subsequently cleaved with thrombin resin (Fig.~\ref{fig:Kap121}~a).
+\begin{figure} % LKM book 4 pg 60
+\caption{SDS-PAGE showing Kap121 purification (purified by Chris Lawton), picture of influx, intensity profiles}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/Kap121}
+\label{fig:Kap121}
+\end{figure} % 12 polyacrylamide gel, 2hr, 100V, 10uL samples, purified by Chris Lawton, 5/28/15, saved in Laura's folder on lab desktop
 
-We got the Kap121 from Loren's old lab, I think, and didn't modify it.  It expressed, albeit at low levels, and we used Loren's purification protocol, which I need to look up and put here.
+% microscopy of Kap121 and Pho4 on 150602, LKM book 3 pg 19, used final frame of Kap121_Pho4 03 movie
 
-We tried the Kap121 and GFP-NLS together in a FSFG PEG-ene gel once and saw a bright band right at the edge of the gel.  I concluded that the Kap121 was probably binding to the FSFG (and the GFP-NLS) but that the pore size of the gels was too small.  We never improved the pore size to the extent that the Kap121 would be able to diffuse within the gel.
+Kap121 binding and influx was tested using a hydrogel made from precursor solution containing 0.05 wt\% Irgacure2959, 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB, crosslinked for 2 minutes under the UV LED.  After soaking in PTB overnight, 5 $\mu$M Kap121, 10 $\mu$M GFP-Pho4, and 100 $\mu$M mCherry in PTB were added to the inlet reservoir.  Selective influx of the Kap121/GFP-Pho4 complex was evident, since the complex accumulated at the edge of the hydrogel (Fig.~\ref{fig:Kap121}~b and~c).  The bright band demonstrates binding of FSFG to Kap121 as well as of Kap121 to GFP-Pho4.  Over the course of several hours, the GFP front remained localized at the edge of the gel, likely indicating that the pore size of the hydrogel was too small to accomodate the Kap121/GFP-Pho4 complex.  Given the large size of this complex, the pore size was never increased sufficiently for influx into the hydrogels.
+
+ % same as 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB;
+%same as 10 wt% PEG, 0.5 thiol:ene ratio (LKM book 2 pg 73)
 
 \subsection{FSFG concat 2 and concat 3}
 In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
