@@ -1,35 +1,176 @@
-\chapter{Hydrogels yay}\label{ch03}
+\chapter{Hydrogel design for protein separation}\label{ch03}
 \section{Pore size}
 \section{Porogens}
 I tried to make gels with a larger pore size by using porogens.  These are nanoscale particles that can be mixed into the gel precursor solution and then removed/dissolved after crosslinking.  The idea is that then they would leave pores of a better size and also make it easier for the gel to swell to equilibrium.  I tried alginate nanospheres (which could then be removed by chelating the calcium ions) and large molecular-weight dextrans that could be removed by digesting with dextranase.  Neither of these options worked out.  I couldn't get the nanospheres to reliably resuspend in the precusor solution.  The dextran/dextranase system was more promising, but too much dextran remained in the hydrogels even after dextranase digestion.  Also the dextranase chewed up the FSFG.
+
 \subsection{Alginate nanospheres}
-Figures:
-\begin{enumerate}
-\item diagram of fabrication process
-\item DLS results on size distribution
-\end{enumerate}
-\subsection{Dextran/dextranase system}
-Figures:
-\begin{enumerate}
-\item diagram of porogen process + molecular structure of dextran, dextranase?
-\item removal of fluorescent dextran from gel
-\item comparison of gels with and without 250 kD and 70kD dextran
-\item weird mCherry suppression?
-\end{enumerate}
+% LKM book 5, pgs 26-36
+\begin{figure}
+\caption{Alginate crosslinking from \cite{bruchet15}. Alginate is composed of alternating guluronate (G) and mannuronate (M) blocks.  Addition of calcium ions leads to an ``egg-box'' crosslinked structure. Add a cartoon of spheres in our gel (with positive poly-L-lysine coating around negative alginate gel) and the spaces they should leave upon depolymerization.}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch03/alginate-crosslinking}
+\label{fig:alginate}
+\end{figure}
+Alginate is a monomer that can be made to polymerize by adding calcium ions (or other divalent ions?).  Include a picture of the alginate structure with and without calcium.  It's inert (and edible) and the polymerization can be reversed by adding EDTA or another chelating agent to remove the calcium.  Alginate salts are available in a number of average molecular weights and viscosities.
+
+A number of protocols exist for creating alginate microspheres, but fewer are appropriate for nanospheres, which is the scale that we would need in order to use them as a porogen.  I did make spheres following the method described in \cite{de03}.
+
+I prepared 10 mL of 0.6 mg/mL alginic acid sodium salt (Sigma, low-viscosity, product number A0628) in water.  Even a small amount of sodium alginate added to water creates a viscous solution that takes a lot of time and stirring to dissolve.  I used the Garcea lab sonicator with the microtip at 40\% amplitude to sonicate the sodium alginate solution while adding 2 mL of 0.67 mg/mL calcium chloride in water drop-by-drop.  I then stirred the solution on a magnetic stir plate for 30 minutes before adding 2 mL of 0.3 mg/mL poly-L-lysine in water.  The solution was stirred 30 more minutes before finally being spun down (check spinning conditions in lab book).
+
+I tested several methods of preparing the nanospheres for addition to the hydrogel precursor solution.  First, the nanospheres were left in the solution in which they were made.  Second, the nanospheres were spun down out of that solution at 14400g for 10 minutes and immediately resuspended in deionized water.  (The pellet becomes more difficult to resuspend if it is not immediately resuspended.) Finally, the nanospheres were lyophilized and resuspended in water.  The resuspended solution remained cloudy even after several days, and so I didn't pursue lyophilizing the nanospheres.
+
+The radius and diffusion coefficients of the both the non-spun and spun nanospheres were determined using a Titan DynaPro dynamic light scattering (DLS) system.  The non-spun nanospheres had an average radius of 170 $\pm$ 10 nm, with an estimated diffusion constant of 1.1~$\pm$~0.1~$\mu$m$^2$/s.  The nanospheres that had been spun and resuspended had two populations: almost entirely particles of radius 210~$\pm$~10~nm and diffusion constant 1.05~$\pm$~0.06~$\mu$m$^2$/s, and a small number of very large particles.  The large particles are probably aggregates from centrifugation.
+
+After measuring the size distribution of the two samples, I added EDTA in an effort to depolymerize the nanospheres.  The maximum final EDTA concentration was 25~mM, and the samples were left to sit up to 30 minutes.  Re-running the DLS data gave inconclusive results as to the presence or size of remaining particles.  The fits did not change much, although the large aggregates appeared to have vanished from the spun sample.  It appeared that at least some nanospheres remained.
+
+Next, the nanospheres were added to hydrogel precursor solution, which was then crosslinked.  Several nanosphere concentrations were tested before a condition was found in which the nanospheres appeared by eye to resuspend.  An approximately 2 $\mu$L nanosphere pellet (spun down from 10 mL of solution) was resuspended in a final concentration of 0.11 mg/mL PEG-ene, 0.09 mg/mL 8K PEG dithiol linker, and 5 mM LAP, all in 50 mM MOPS buffer pH 7.4.  The MOPS buffer was chosen because it has no divalent cations (and thus will not interfere with the alginate nanospheres).  The isoelectric point of poly-L-lysine is at about pH 5, and the nanospheres should be kept above that pH so their coating remains intact.
+
+However, even these gels were clearly inhomogeneous under 4x magnification.  In an attempt to depolymerize the nanospheres, the resulting hydrogels were rinsed with PTB pH 5 (to remove any possible poly-L-lysine coating) and then soaked in 100~mM EDTA for two days.  No change was observed under 4x magnification.  For comparison, a macroscopic alginate droplet dissolved after 20 minutes in 100 mM EDTA and vortexing.  New gels were made and soaked in a pH 5 buffer (to remove any poly-L-lysine coating) and then in a solution containing 100 mM EDTA and 200 mM sodium citrate.  Gels remained cloudy and no change was observed.
+
+Given the difficulty in resuspending and depolymerizing the alginate nanospheres, our focus shifted to developing a dextran/dextranase porogen system.
+
+\subsection{Dextran/dextranase porogen system}
+% First proof of concept: LKM book 5 pgs. 37-47
+% add diagram of porogen process + molecular structure of dextran, dextranase?
+Following the alginate nanospheres attempt, we tried creating nanopores using high-molecular-weight (high-MW) dextran.  Dextran is a branched, inert polymer that is commerically available at molecular weights up to 250 kD.  We used two sizes as porogens, 70 kD ($R_H \approx 10$ nm) and 250 kD ($R_H \approx 15$ nm) \cite{masuelli13}.  
+
+As a proof of concept, I made and crosslinked precursor solutions containing 100~$\mu$M 70~kD dextran-rhodamine or 250~kD dextran-fluorescein.  The precursor contained 12\% acrylamide and 3.3\% bisacrylamide in 50~mM sodium acetate (NaOAc) buffer pH~5 as well as 2~mM LAP.  The precursor solution was crosslinked as 1-$\mu$L hydrogels in a 400-$\mu$m tall PDMS gasket chamber for 20~s using the UV LED.  After rinsing with NaOAc buffer, the chamber was filled with a freshly-made solution of 20~mg/mL dextranase (Sigma, D5884, dextranase from \textit{Penicillium sp.}) in NaOAc buffer.  Chamber was immediately placed in the Olympus widefield's environmental chamber, held at 37$^\circ$C, and imaged overnight. The fluorescence intensity in the dextranase-treated gels decreased significantly more rapidly than that of gels which contained dextran but were not treated with dextranase (Fig.~\ref{fig:dxase-equilibration}).  In the case of 70~kD dextran, the fluorescence reached a steady value (equilibrated, same as that in the reservoir) in approximately 100 minutes, while the non-treated case wasn't equilibrated after an overnight incubation.  For the 250~kD dextran, both the treated and non-treated gels reached an equilibrium in approximately the same amount of time, but the treated gel equilibrated much closer to the reservoir level than the non-treated gel.  Both sets of gels indicate that dextranase is able to digest the dextran within the hydrogels, allowing a significant amount of dextran and digest products to leave the gel, as expected.
+\begin{figure}
+\caption{Exit of fluorescent dextran from hydrogels after digestion with dextranase.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/dxase-equilibration}
+\label{fig:dxase-equilibration}
+\end{figure}
+% dextranase gels from 1/24/18; control gels from 1/22/18
+% I also seem to have a replicate from 3/6/18
+
+The next step in attempting this porogen system was recreating the effect in FSFG gels.  Unfortunately, it became clear that the dextranase was digesting the FSFG as well as the dextran (Fig.~\ref{fig:dxase-FSFG}).  
+\begin{figure} % gel is from 6/19/18
+\caption{Dextranase digestion of FSFG}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch03/180619_LKM_dx+FSFG}
+\label{fig:dxase-FSFG}
+\end{figure}
+ At this point, we stopped trying to use the dextran-dextranase porogen system for FSFG gels.  However, we did investigate the effect of dextran-dextranase treatment on the pore size in acrylamide hydrogels without anchored proteins.  Contrary to expectations, dextran-dextranase treatment did not increase subsequent diffusion of fluorescent proteins into the treated hydrogels.  For these experiments, I used 200~kD non-fluorescent dextran in the acrylamide precursor solution.  After the gels (either 12\% or 6\% final acrylamide concentration) were crosslinked, I treated them with 20~mg/mL dextranase solution in sodium acetate buffer (freshly made solution) for 2 hours at 37$^\circ$C in an incubator.  Then I rinsed the gels with buffer and let them sit in fresh buffer in the fridge overnight.  (Check this - sometimes I used a syringe pump to flow 10~mL of PTB through overnight, instead of letting the chamber sit.) The next day, I challenged the gels with a solution containing 10~$\mu$M each IgG-Alexa488 (150~kD) and mCherry (28~kD).  I monitored the accumulation of each protein in the gel over time (Fig.~\ref{fig:dxase-results}).  In both the 12\% and 6\% acrylamide gels, dextran-dextranase treatment did not improve influx of IgG-Alexa488 over corresponding non-treated gels.  In 6\% acrylamide gels, the influx of mCherry also remained approximately the same for treated and non-treated gels.  This indicates that dextran-dextranase treatment does not significantly increase the pore size in acrylamide hydrogels.  This is probably because significant dextran remains in the gel even after dextranase treatment, as suggested by Fig.~\ref{fig:dxase-equilibration}.
+\begin{figure}
+\caption{Accumulation of fluorescent proteins in gels treated with dextranase.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/dxase-results}
+\label{fig:dxase-results}
+\end{figure}
+Unusually, the 12\% acrylamide gels showed an odd effect with mCherry accumulation.  In two separate instances, dextranase treatment appeared to suppress the entry of mCherry into both the dextran-containing hydrogel and the no-dextran control gel in the same chamber (Fig.~{fig:mCherry-suppression}).  IgG-Alexa488 accumulation remained the same as a non-treated gel.  Tests of gels without dextran but treated with dextranase did not show this mCherry suppression.  I didn't thoroughly investigate this effect.  The only thing I can think of that's different between the gels that did and didn't show mCherry suppression is that the gels that suppressed mCherry were in the presence of both dextran and dextranase, and therefore also dextran digestion products (which are mostly maltose, I believe).  Maybe the presence of maltose (despite the fact that it should have been thoroughly rinsed away) interfered with the accumulation of mCherry.  It's odd.
+\begin{figure}
+\caption{Suppression of mCherry in control gels that were in the presence of dextranase, dextran, and dextran digestion products (maltose).}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/mCherry-suppression}
+\label{fig:mCherry-suppression}
+\end{figure}
+In conclusion, dextranase is capable of digesting a significant fraction of high-MW dextran within an acrylamide hydrogel.  However, a significant amount of the dextran still remains in the gel even after an overnight rinse, meaning that dextran-dextranase treatment does not result in noticeably larger pores overall.  In addition, the dextranase we used digested the FSFG peptide as well as dextran.  Dextran-dextranase treatment is not suitable as a porogen system for our hydrogels.
+
 \section{Polymerization using confocal microscope}
-5)	Writing thin gels with confocal microscope
-a.	50 um minimum line thickness – good
-b.	Wrote thin lines and donuts
-c.	Tried using photoinhibitors to reduce stray crosslinking, but didn’t work well enough
-d.	Swelling/buckling was a problem
+ Make a cartoon figure explaining confocal setup and Bowman lab setup.
+
+Given the problems that arose using photomasks and a UV LED to make hydrogels, I tested a crosslinking method using a 405 nm laser on the Nikon A1R spinning disc confocal microscope in the JSCBB microscopy facility.  Once a region of interest has been defined with the Nikon software, the photobleaching setting can be used to selectively expose regions of the field of view to UV light.  The precursor solution therefore crosslinks in the region of interest only.  This method is similar to that used in \cite{paustian13}, but the masking is done using the A1R software instead of a physical mask in the back focal plane.
+
+I was able to ``draw'' hydrogels of arbitrary shapes using the 10x objective on the confocal along with the 405 nm laser at 100\% power.  Figure~\ref{fig:LW-gel-images} shows hollow rings with an outer diameter of about 600 $\mu$m and an inner diameter of 500 $\mu$m, as well as lines with a width of about 50 $\mu$m.  In order to crosslink the precursor solution, two raster-scans of the laser across the region of interest were needed, with the longest-allowable dwell time per pixel.  (In the microscope settings, the shortest dwell time is set as `1' and the longest as `1/32'.)  The precursor solution contained 0.5 mM LAP, 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB; it was used to fill 70-$\mu$m-thick sticky-tape or NOA flow chambers.
+
+% hydrogel recipes on LKM book 4 pg 47, 56
+
+Crosslinking with the confocal has several advantages over LED crosslinking.  Significantly smaller features are possible using the confocal.  50-$\mu$m features are consistent and reproducible, and features down to approximately 25 $\mu$m are possible, in contrast with the effective 100-$\mu$m lower limit using the LED and photomasks.  Additionally, arbitrary shapes, including shapes with inner cavities, are possible using the confocal.  Multiple small hydrogels can be created in the same chamber, including hydrogels of varying composition, created by removing the excess precursor solution and refilling the chamber with a different solution.  Finally, the degree of crosslinking can potentially be varied by changing the photobleaching settings.
+
+\begin{figure} % LKM book 4 pg 81 (rings), LKM book 4 pg 77 (lines)
+\caption{Image of laser-written ring control hydrogels. 9/6/16, and FSFG-A647 lines 8/25/16}
+\centering
+%\includegraphics[width=0.5\textwidth]{figs/ch03/160906_laserGelImage_200umscale.pdf}
+\includegraphics[width=0.7\textwidth]{figs/ch03/example-LW-gels}
+\label{fig:LW-gel-images}
+\end{figure} % microscope settings for rings: 1/32 dwell, 2 loops, 100% photobleaching intensity, nominal outer diameter = 600 um, nominal inner diameter = 500 um
+
+The most appealing geometry made possible with confocal crosslinking is the hydrogel ring, as shown in Figs.~\ref{fig:LW-gel-images} and \ref{fig:LW-NTF2-images}.  Unlike all other hydrogel-chamber geometries, the inner reservoir is small enough to equilibrate in only a few hours (Fig.~\ref{fig:ring-acc-and-profile}).  Ideally, the hydrogel rings could have been used to test selective flux through the NPC mimics, a possibility not offered by other hydrogel-chamber geometries, which are optimized for testing influx into the hydrogels only.  Long thin lines can also be written with the confocal by repeatedly moving the field of view and re-crosslinking, overlapping the new segment with the previous.  This geometry could be useful in creating counter-propagating flow chambers with hydrogel windows.
+
+Confocal crosslinking does not damage FSFG, as demonstrated in Fig.~\ref{fig:LW-NTF2-images}.  Hydrogels were made using the precursor solution described above with the addition of 10 mg/mL FSFG-cys.  After soaking in PTB buffer overnight, a mixture of 25 $\mu$m each NTF2-Alexa488 and mCherry was added to the outer reservoir.  After two hours of equilibration, the FSFG hydrogels showed a partition coefficient greater than one for NTF2-Alexa488 but smaller than one for mCherry.  This indicates that FSFG is anchored into the gel and that NTF2-A488 is able to bind it.
+
+Finally, Norland Optical Adhesive (NOA) can also be crosslinked using this method.  Complicated flow chambers can be created, although it is labor-intensive and difficult to remove all of the excess NOA afterwards.
+
+\begin{figure} % LKM book 4 pg 57 (line); NEED TO FIND RING
+\caption{Image of laser-written line FSFG hydrogel. 8/17/16}
+\centering
+%\includegraphics[width=0.5\textwidth]{figs/ch03/160817-bar-image-100umScale.pdf}
+\includegraphics[width=0.8\textwidth]{figs/ch03/example-LW-gels-NTF2}
+\label{fig:LW-NTF2-images}
+\end{figure} % microscope settings for bar: 1/32 dwell, 2 loops, 100% photobleaching intensity, nominal thickness 50um, nominal concentration 50 mg/mL FSFG (slightly unclear? could be 10), 25 uM each NTF2-A488 and mCherry
+% I am confused as to the date of the bar image.  Saved as 160817 in the microscopy folder so that's probably right
+
+Despite the advantages of confocal crosslinking, several obstacles combined to ultimately make this method unusable for our purposes.  The most serious problem was that of stray crosslinking.  Areas outside of the defined region of interest were often unpredictably crosslinked, as can be seen in Fig.~\ref{fig:LW-gel-images}.  Stray crosslinking outside of the rings is limited by rinsing the gels within 5 minutes of crosslinking, removing any excess precursor solution \cite{paustian13}.  However, rinsing the chamber does not remove precursor solution from the ring's inner reservoir.  Stray crosslinking in this reservoir is often more difficult to detect and more damaging to the experimental results. Figure~\ref{fig:LW-NTF2-images} illustrates the problem: the ring has been equilibrated with NTF2-A488, which has preferentially entered the inner reservoir over mCherry.  The concentration of NTF2-A488 is, in fact, higher in the inner than the outer reservoir, indicating that there is some low concentration of FSFG available in the inner reservoir for binding to NTF2.  As the hydrogel was soaked in buffer overnight after crosslinking, any mobile FSFG remaining from the precursor solution has been removed, meaning that the remaining FSFG is most likely anchored into a lightly-crosslinked hydrogel that fills the inner reservoir.  The presence of this gel alters the results of an equilibration experiment by artificially increasing the final NTF2 concentration in the inner reservoir.
+
+With help from Dani Konetski in Chris Bowman's group, I attempted to address the stray crosslinking by adding a photoinhibitor to the precursor solution.
+
+ I also added TEMPO (look up concentration and actual name), a photoinhibitor, to try to limit crosslinking to areas that were directly exposed to UV light.  This helped but clearly didn't fix the problem.  
+%Help from Dani Konetski in Bowman lab with TEMPO and mirror setup
+
+\begin{figure} % LKM book 4 pg 60
+\caption{Comparison of edge dip for different dwell times, loop numbers}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch03/dwell-time-effect}
+\label{fig:dwell-time-effect}
+\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) compared to #6 (1 dwell time, 64 loops)
+
+\begin{figure} % LKM book 4 pg 65
+\caption{Example accumulation and profile plots for a 50 $\mu$m thick ring}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/ring-acc-and-profile}
+\label{fig:ring-acc-and-profile}
+\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) 
+
+
+Another problem was swelling and buckling.  It was difficult to predict, and we tried to mitigate it with porogens but that didn't really work.  Sometimes the gels would buckle and leak.  We also couldn't solve this problem in the end.
+
 \section{Nup and transport factor constructs}
-6)	Constructs
-a.	SSSG as a negative control for FSFG gels (this actually works)
-b.	Covalently-tethered NTF2 (didn’t work)
-c.	FSFG cct2 (works) and cct3 (doesn’t express)
-d.	Kap121 with GFP-NLS (only tested once, didn’t enter gel)
+Figures
+\begin{enumerate}
+\item picture and accumulation of SSSG gel compared to control gel
+\item table of NTF2 linker sequences
+\item SDS-PAGE of covalently-tethered NTF2 if possible
+\item picture and accumulation of covalently-tethered NTF2 if possible
+\item SDS-PAGE and Typhoon image of NTF2-GFP
+\item picture and accumulation of NTF2-GFP
+\item picture and profiles of Kap121 + GFP-NLS
+\item table with FSFG variant sequences?
+\item SDS-PAGE with FSFG cct2?
+\end{enumerate}
+\subsection{SSSG negative control}
+We created a negative control for FSFG which is identical except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. (Put in a figure.) Hopefully, this control accounts for any difference in pore size or diffusion caused by the presence of the peptide in the hydrogel.  (There's no reason in particular that we stopped using it for the FRAP bound-diffusion gels, just that it would be more work to grow and bis-label.) I think Eric did most of the cloning work on this project and/or we bought the gene.
+\subsection{Covalently-tethered NTF2 dimer}
+One recurring problem we observed was that NTF2 moves faster in the hydrogels and equilibrates to a higher level than mCherry, even in SSSG gels or gels with no Nups.  This could be because NTF2 is dissociating into two monomers which are smaller and move faster than mCherry.  This shouldn't be happening, because the $K_D$ of mammalian NTF2 is about 1 $\mu$M \cite{chaillan-huntington01}, which should be about the same for our yeast NTF2.  However, to avoid this problem, we tried to make a covalently-tethered version of NTF2, consisting of two NTF2 monomers connected by a flexible amino-acid tether.  (Look up tether compositions and put in a table.)  We tried tethers of several lengths, including 15, 12, and smaller (look this up, it was a mutagenesis accident).  Unfortunately, the tether probably messed up the dimerization interface.  Look up whether we ever got these expressed and purified.  If so, they didn't bind.  Maybe show an SDS-PAGE gel for the purification and an accumulation plot/ picture to show they didn't bind. Eric and Scott did most of the cloning work on this project.
+\subsection{NTF2-GFP}
+Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, we made a version of NTF2 tethered to GFP (maybe put in a cartoon of what the dimer of this version would look like).  We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  (Show SDS-PAGE and typhoon gel if possible, and accumulation plot).
+\subsection{Kap121 and NLS-GFP}
+The karyopherins (Kaps) are a canonical class of transport factors.  They transport proteins tagged with nuclear localization signals (NLS) through the nuclear pore.  We were interested in testing Kaps because they are widely studied and much larger than NTF2, so selective transport would be more apparent.  We added an NLS to GFP to act as a fluorescent cargo for  Kap121.  (Eric did this cloning.)  He made two separate constructs, one with the Spo NLS and one with Pho.  Both expressed and could easily be purified using a his tag and TALON resin.
+
+We got the Kap121 from Loren's old lab, I think, and didn't modify it.  It expressed, albeit at low levels, and we used Loren's purification protocol, which I need to look up and put here.
+
+We tried the Kap121 and GFP-NLS together in a FSFG PEG-ene gel once and saw a bright band right at the edge of the gel.  I concluded that the Kap121 was probably binding to the FSFG (and the GFP-NLS) but that the pore size of the gels was too small.  We never improved the pore size to the extent that the Kap121 would be able to diffuse within the gel.
+
+\subsection{FSFG concat 2 and concat 3}
+In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
+
 \section{Dye-labeling and free dye}
-7)	Fixed free dye problem
-a.	Rigorous labeling protocol and testing, keep frozen until use
-b.	Tried a few different labeling chemistries (maleimide, NHS and SDP esters)
-c.	Made GFP-NTF2 (didn’t bind to FSFG)
+Figures
+\begin{enumerate}
+\item Typhoon image of dye, Matlab peaks
+\item Example of single- and double- exponential fits
+\item goodness of fit measurements for single- and double- exponential fits
+\end{enumerate}
+We have to label NTF2 with a fluorescent dye to use it as a test transport factor.  For the most part, we've used Alexa Fluor 488 as the dye.  (Most recently we switched to fluorescein because it's easier to photobleach.)  There are several choices of labeling chemistry.  We've used both NHS and SDP esters, which label the exposed lysines of NTF2, of which there are several.  We've also tried using Alexa488-maleimide to label the cysteine of an engineered NTF2-cys.  Both labeling chemistries result in bonds that eventually hydrolyze, cleaving the dye from the protein.  This is a major problem for the experiments, since free dye (about 1kD) diffuses much faster than dye bound to a protein and is experimentally identical.  Non-negligible levels of free dye would give the impression that NTF2 is equilibrating significantly faster than it actually is.  The maleimide-labeling chemistry is more stable, but in practice not as efficient as the ester-labeling protocol.  It also requires using NTF2-cys, which could introduce other issues.  Mostly I stuck with the lysine-labeling protocol, which needed significant optimization to minimize free dye issues.  Eric did a lot of work in optimizing the cysteine-labeling protocol, and I took his work as a base in optimizing the lysine-labeling protocol.
+
+-list cysteine labeling protocol here
+-list lysine labeling protocol here
+
+The major change is the increased wash step, and the immediate aliquoting and freezing before use.  I also began to be much more careful with characterizing the results of the labeling.  Immediately after finishing dialysis, I run a BCA to quantify the protein concentration in the labeled sample.  The same day, I aliquot and freeze all the protein except a sample for the remaining tests.  As soon as possible, I run a native PAGE gel, including the labeled protein sample as well as a free dye sample.  After running the gel, I image it in the Alexa488 channel using the Typhoon, and then stain with Coomassie to make sure the protein hasn't degraded.  I use Matlab to compare the amplitude of the labeled-protein band and the free-dye band that remains in the labeled-protein sample.  Typically, the free dye band is 1-3\% the amplitude of the labeled-protein band.  Finally, I measure the absorbance of the labeled protein at 494 (check this wavelength) nm and use Beer's law to find the concentration of Alexa488.  I can compare this measurement with the protein measurement from the BCA to calculate a labeling efficiency.  Include some sample efficiencies here.  I typically get lower efficiencies than other people report.  I spoke to Annette and she had no major suggestions.  In principle, doing the reaction under nitrogen would help, but Annette gets something like 90\% efficiency without doing that.  I use the labeled NTF2 immediately after thawing if possible, and no more than a week after thawing.
+
+We also tried to make NTF2-GFP to fix the free dye problem (see section above).
+
+In addition to the tests I run on each batch of labeled NTF2, at one point I did some mathematical analysis to confirm that the free dye was only a minor problem in the experiments I had already run.  In order to confirm that, I fit the accumulation curves to single or double exponentials (they really should have been erfc functions but 
+
+
+Also made GFP-NTF2 (didn’t bind to FSFG)
