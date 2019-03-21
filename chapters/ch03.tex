@@ -134,11 +134,6 @@ In conclusion, confocal crosslinking has a number of advantages over LED crossli
 Figures
 \begin{enumerate}
 \item cartoon of various NTF2 constructs
-\item table of NTF2 linker sequences
-\item SDS-PAGE of covalently-tethered NTF2 if possible
-\item picture and accumulation of covalently-tethered NTF2 if possible
-\item SDS-PAGE and Typhoon image of NTF2-GFP
-\item picture and accumulation of NTF2-GFP
 \item table with FSFG variant sequences?
 \item SDS-PAGE with FSFG cct2?
 \end{enumerate}
@@ -156,6 +151,11 @@ The SSSG peptide was used in an identical manner to FSFG: SSSG-cys was his-tagge
 \end{figure} 
 \subsection{Covalently-tethered NTF2 dimer}
 One recurring problem we observed was that NTF2 moves faster in the hydrogels and equilibrates to a higher level than mCherry, even in SSSG gels or gels with no Nups.  This could be because NTF2 is dissociating into two monomers which are smaller and move faster than mCherry.  This shouldn't be happening, because the $K_D$ of mammalian NTF2 is about 1 $\mu$M \cite{chaillan-huntington01}, which should be about the same for our yeast NTF2.  However, to avoid this problem, we tried to make a covalently-tethered version of NTF2, consisting of two NTF2 monomers connected by a flexible amino-acid tether.  (Look up tether compositions and put in a table.)  We tried tethers of several lengths, including 15, 12, and smaller (look this up, it was a mutagenesis accident).  Unfortunately, the tether probably messed up the dimerization interface.  Look up whether we ever got these expressed and purified.  If so, they didn't bind.  Maybe show an SDS-PAGE gel for the purification and an accumulation plot/ picture to show they didn't bind. Eric and Scott did most of the cloning work on this project.
+\begin{align*}
+\mathrm{10aa-linker}&:&\mathrm{TSGSGSGSPG}\\
+\mathrm{15aa-linker}&:&\mathrm{TSGSPRGSSGSGSPG}\\
+\mathrm{18aa-linker}&:&\mathrm{TSPGLVSRGSGSGSGSPG}
+\end{align*}
 \subsection{NTF2-GFP}
 
 Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, Eric Verbeke and I created a version of NTF2 tethered to GFP by a short linker.  
@@ -163,8 +163,15 @@ Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling 
 This construct is in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column in PTB and 1:1000 PIC and eluted with 250 mM imidazole, yielding ample protein with moderate degradation products.
 
 
+\begin{figure} % GFP-NTF2 = 150917, GFP-NTF2x2 = 150928
+\caption{Intensity profile for GFP-NTF2 and mCherry showing no binding to FSFG hydrogel.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/GFP-NTF2-attempts.pdf}
+\label{fig:GFP-NTF2}
+\end{figure} 
+\subsection{Covalently-tethered NTF2 dimer}
 
-We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  (Show SDS-PAGE and typhoon gel if possible, and accumulation plot).
+We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  
 
 \subsection{Kap121 and NLS-GFP}
 % Kap121 growth and purification - LKM book 2 pg 79, LKM book 3 pg 13, Chris Lawton book 1 pg 65, Loren's protocols in Google Drive, Jackie's paper
@@ -189,6 +196,7 @@ Kap121 binding and influx was tested using a hydrogel made from precursor soluti
 In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
 
 \section{Dye-labeling and free dye}
+% matlab results are saved in /Volumes/houghgrp/Old Processed Images/Old Analysis/FSFG dataset/exponent-fits.mat
 Figures
 \begin{enumerate}
 \item Typhoon image of dye, Matlab peaks
@@ -200,11 +208,74 @@ We have to label NTF2 with a fluorescent dye to use it as a test transport facto
 -list cysteine labeling protocol here
 -list lysine labeling protocol here
 
+\subsection{Labeling NTF2 with fluorescein-NHS}
+\begin{enumerate}
+\item Resuspend lyophilized fluorescein-NHS at 100 mg/mL in anhydrous DMSO in the darkroom.  Discard the remaining DMSO aliquot.  Make 100-$\mu$L aliquots of dye solution. Store with desiccant in ultra-low freezer, protected from light.
+\item Mix NTF2 in PTB pH 7.0 and 100 mg/mL fluorescein-NHS in DMSO with around 15-fold molar excess dye.  Several other buffers can be used as well (see Thermo protocol).  A typical labeling reaction used 0.5 mL of 16 mg/mL NTF2 and 18.6 $\mu$L dye stock mixed in an Eppendorf with an Eppendorf stir bar.
+\item Incubate mixture, stirring, protected from light, at room temperature for one hour.
+\item Equilibrate TALON cobalt resin with PTB in a column that can be spun in a centrifuge.  TALON resin has a stated capacity of 5-15 mL protein per mL resin.  Using significantly more than needed can lead to nonspecfic binding of free dye.  A typical reaction required 1.6 mL of the resin slurry.  Equilibrate with at least 10 bed volumes PTB.
+\item Cap column and add reaction mixture.  Nutate at 4$^\circ$C for one hour, protected from light.
+\item Allow column to drain and wash with approximately 100 bed volumes of PTB, protected from light as best as possible.  Occasionally cap column and resuspend resin to remove free dye from column cap and sides.  Test flow-through using UV light to ensure that no dye is visible by the end of the wash.  Resin should still be bright yellow.
+\item Spin column 1000 rpm (convert to rpm, spun in 15 mL conical) for one minute to remove remaining wash buffer.  Immediately cap and elute with 1 mL of 300 mM imidazole in PTB.  Nutate 4$^\circ$C for half an hour and collect elution.  Resin should return to pink.
+\item Dialyze elution against PTB to remove imidazole.  No more than 24 hours after labeling, aliquot and freeze labeled NTF2.
+\item Run a sample of labeled NTF2 on a native PAGE gel along with a sample of fluorescein-NHS.  Use the Typhoon to compare the concentration of free dye to labeled protein in the protein sample.
+\end{enumerate}
+\subsection{Labeling NTF2 with Alexa Fluor 488 - SDP}
+\begin{enumerate}
+\item Resuspend lyophilized Alexa Fluor 488 at 10 mg/mL in anhydrous DMSO in the darkroom.  Discard the remaining DMSO aliquot.  Make 10-$\mu$L aliquots of dye solution. Store with desiccant in ultra-low freezer, protected from light.
+\item Mix NTF2 in 0.1 M sodium bicarbonate buffer and 10 mg/mL fluorescein-NHS in DMSO with around ??-fold molar excess dye.  A typical labeling reaction used 200 $\mu$L of 16 mg/mL NTF2 and 20 $\mu$L dye stock mixed in an Eppendorf with an Eppendorf stir bar.
+\item Incubate mixture, stirring, protected from light, at room temperature for one hour.
+\item Equilibrate TALON cobalt resin with PTB in a column that can be spun in a centrifuge.  TALON resin has a stated capacity of 5-15 mL protein per mL resin.  Using significantly more than needed can lead to nonspecfic binding of free dye.  Equilibrate with at least 10 bed volumes PTB.
+\item Cap column and add reaction mixture.  Nutate at 4$^\circ$C for one hour, protected from light.
+\item Allow column to drain and wash with approximately 100 bed volumes of PTB, protected from light as best as possible.  Occasionally cap column and resuspend resin to remove free dye from column cap and sides.  Test flow-through using UV light to ensure that no dye is visible by the end of the wash.  Resin should still be bright yellow.
+\item Spin column 500 rpm (convert to rpm, spun in mini centrifuge) for 20 s to remove remaining wash buffer.  Immediately cap and elute with 300 $\mu$L of 500 mM imidazole in PTB.  Nutate 4$^\circ$C for half an hour and collect elution.  Resin should return to pink.
+\item Dialyze elution against PTB to remove imidazole.  No more than 24 hours after labeling, aliquot and freeze labeled NTF2.
+\item Run a sample of labeled NTF2 on a native PAGE gel along with a sample of fluorescein-NHS.  Use the Typhoon to compare the concentration of free dye to labeled protein in the protein sample.
+\end{enumerate}
+\subsection{Labeling NTF2-cys or FSFG-cys with Alexa Fluor 488 - maleimide}
+\begin{enumerate}
+\item Resuspend lyophilized Alexa Fluor 488 at 10 mg/mL in anhydrous DMSO in the darkroom.  Discard the remaining DMSO aliquot.  Make 10-$\mu$L aliquots of dye solution. Store with desiccant in ultra-low freezer, protected from light.
+\item Mix protein in PTB pH 7.0 and 50 $\mu$M TCEP (with no other reducing agent present) and 10 mg/mL dye in DMSO.  Check molar ratios, pg 70 LKM book 5.
+\item Incubate mixture, stirring, protected from light, at room temperature for two hours.
+\item Equilibrate TALON cobalt resin with PTB in a column that can be spun in a centrifuge.  TALON resin has a stated capacity of 5-15 mL protein per mL resin.  Using significantly more than needed can lead to nonspecfic binding of free dye.  Equilibrate with at least 10 bed volumes PTB.
+\item Cap column and add reaction mixture.  Nutate at 4$^\circ$C for one hour, protected from light.
+\item Allow column to drain and wash with approximately 100 bed volumes of PTB, protected from light as best as possible.  Occasionally cap column and resuspend resin to remove free dye from column cap and sides.  Test flow-through using UV light to ensure that no dye is visible by the end of the wash.  Resin should still be bright yellow.
+\item Spin column 500 rpm (convert to rpm, spun in mini centrifuge) for 20 s to remove remaining wash buffer.  Immediately cap and elute with 300 $\mu$L of 500 mM imidazole in PTB.  Nutate 4$^\circ$C for half an hour and collect elution.  Resin should return to pink.
+\item Dialyze elution against PTB to remove imidazole.  No more than 24 hours after labeling, aliquot and freeze labeled NTF2.
+\item Run a sample of labeled NTF2 on a native PAGE gel along with a sample of fluorescein-NHS.  Use the Typhoon to compare the concentration of free dye to labeled protein in the protein sample.
+
+
+
+0.1 M sodium bicarbonate buffer and 10 mg/mL fluorescein-NHS in DMSO with around ??-fold molar excess dye.  A typical labeling reaction used 200 $\mu$L of 16 mg/mL NTF2 and 20 $\mu$L dye stock mixed in an Eppendorf with an Eppendorf stir bar.
+\end{enumerate}
+
 The major change is the increased wash step, and the immediate aliquoting and freezing before use.  I also began to be much more careful with characterizing the results of the labeling.  Immediately after finishing dialysis, I run a BCA to quantify the protein concentration in the labeled sample.  The same day, I aliquot and freeze all the protein except a sample for the remaining tests.  As soon as possible, I run a native PAGE gel, including the labeled protein sample as well as a free dye sample.  After running the gel, I image it in the Alexa488 channel using the Typhoon, and then stain with Coomassie to make sure the protein hasn't degraded.  I use Matlab to compare the amplitude of the labeled-protein band and the free-dye band that remains in the labeled-protein sample.  Typically, the free dye band is 1-3\% the amplitude of the labeled-protein band.  Finally, I measure the absorbance of the labeled protein at 494 (check this wavelength) nm and use Beer's law to find the concentration of Alexa488.  I can compare this measurement with the protein measurement from the BCA to calculate a labeling efficiency.  Include some sample efficiencies here.  I typically get lower efficiencies than other people report.  I spoke to Annette and she had no major suggestions.  In principle, doing the reaction under nitrogen would help, but Annette gets something like 90\% efficiency without doing that.  I use the labeled NTF2 immediately after thawing if possible, and no more than a week after thawing.
 
 We also tried to make NTF2-GFP to fix the free dye problem (see section above).
 
-In addition to the tests I run on each batch of labeled NTF2, at one point I did some mathematical analysis to confirm that the free dye was only a minor problem in the experiments I had already run.  In order to confirm that, I fit the accumulation curves to single or double exponentials (they really should have been erfc functions but 
+In addition to the tests I run on each batch of labeled NTF2, at one point I did some mathematical analysis to confirm that the free dye was only a minor problem in the experiments I had already run.  In order to confirm that, I fit the accumulation curves to single or double exponentials (they really should have been erfc functions but I approximated.)
+%%%%
+
+If there is no free dye, as in the case of the mCherry accumulation, the accumulated intensity $I(t)$ can be approximated as
+\begin{equation}
+I(t) = A_1\exp(-t/\tau_1) +C
+\label{eq:single-exp}
+\end{equation}
+with some amplitude $A_1$, equilibration lifetime $\tau_1$, and constant offset $C$.  In this case, a non-zero value of $C$ is likely due to background fluorescence.  If, on the other hand, a sample contains a population of small, free dye molecules as well as large labeled protein, both populations will equilibrate at different rates, leading to an accumulated intensity of
+\begin{equation}
+I(t) = A_1\exp(-t/\tau_1) + A_2\exp(-t/\tau_2)+C
+\label{eq:double-exp}
+\end{equation}
+where each population has an equilibration lifetime as well as an amplitude related to its abundance in the sample.
+
+I fit a collection of 43 accumulation experiments to both Eqns.~\ref{eq:single-exp} and \ref{eq:double-exp}.  I compared the resulting parameters as well as the adjusted R-square value of each fit.  Adding more parameters to the fit will always improve the fit, but the adjusted R-square is intended to account for the effect of adding more parameters to a model.  A higher adjusted R-square therefore means a better fit.
+
+The mCherry accumulation fits did not noticeably improve when moving from the single to the double exponential.  In addition, the lifetimes and amplitudes of each component of the two-component fit were apparently uncorrelated.  Both results support the fact that there is no free dye in the red channel, since the only fluorescence is coming from mCherry.
+
+On the other hand, the NTF2 fits did result in a higher adjusted R-square value on average with the double-exponential fit.  Strikingly, the two components sorted themselves into two categories: a low-amplitude, short-lifetime component and a high-amplitude, long-lifetime one.  The most straightforward interpretation is that the low-amplitude component is the free dye, which should be present in  low amounts and equilibrate much more rapidly than labeled protein, thanks to its small size.
+
+The median amplitude of the free-dye signal was 1.2\% that of the labeled-protein signal, using a sample of 43 experiments.  The median free-dye equilibration lifetime was 50 minutes, as compared to approximately 2000 minutes for the labeled-protein lifetime.  These results confirm that the new, more stringent dye-labeling protocol is successful in removing almost all free dye from the labeled-protein sample, and that the hydrolysis of the dye is negligible on the time scale of the experiment and enforced shelf life of the labeled protein.
+
 
 
 Also made GFP-NTF2 (didn’t bind to FSFG)
