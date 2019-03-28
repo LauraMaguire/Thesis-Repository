@@ -68,13 +68,31 @@ It's difficult to measure the total Nup concentration anchored to the hydrogels,
 T &=& \gamma_I c_0\\
 C & =& T_T - T = \gamma_Tc_0 - \gamma_I c_0
 \label{eq:gamma}
-\end{eqnarray} Therefore, within the gel, the chemical equilibrium condition can be expressed as
+\end{eqnarray} 
+The total transport factor concentration within the gel is $T_T = T + C$ and is a constant.
+Therefore, within the gel, the chemical equilibrium condition can be expressed as
 \begin{equation}
 \frac{K_D}{N_T} = \frac{T}{C} = \frac{\gamma_I c_0}{\gamma_T c_0 - \gamma_I c_0} = \frac{\gamma_I}{\gamma_T - \gamma_I}
 \label{eq:partition}
 \end{equation}
+Combining Eqns.~\ref{eq:bound-prob} and \ref{eq:partition}, the bound probability can be expressed only in terms of the partition coefficients as
+\begin{equation}
+p_B= \frac{1}{1+\frac{K_D}{N_T}} = \frac{1}{1+\frac{\gamma_I}{\gamma_T - \gamma_I}} = 1 - \frac{\gamma_I}{\gamma_T}
+\label{eq:bound-prob-final}
+\end{equation}
 
 \subsection{Bound-diffusion calculation}
+
+Once the observed diffusion constants for NTF2 and mCherry have been calculated, along with the bound probability (using the partition coefficients), the bound diffusion is given straightforwardly by the weighted average
+\begin{equation}
+D_\mathrm{obs, TF} = p_B D_B + (1-p_B) D_F
+\label{eq:weighted-average}
+\end{equation}
+Taking the free diffusion coefficient of the transport factor to be approximately equal to the observed diffusion of the inert protein ($D_F = D_\mathrm{obs,I})$, the bound diffusion coefficient of the transport factor is
+\begin{equation}
+D_B = \frac{D_\mathrm{obs, TF}-(1-p_B) D_\mathrm{obs,I}}{p_B}
+\label{eq:d-bound}
+\end{equation}
 
 \section{FRAP analysis}
 \section{Discussion}
