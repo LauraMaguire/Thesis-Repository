@@ -1,2 +1,80 @@
-\chapter{Actual real results}\label{ch04}
-I am going to have results from the hydrogel nuclear pore mimics.
+\chapter{Bound diffusion measurements}\label{ch04}
+
+Following up on the principles of the bound-diffusion theory, we wanted to see whether we could measure bound diffusion in a biomaterial inspired by the nuclear pore complex.  In order to do that, we made Nup-filled hydrogels and measured the diffusion of transport factors and inert proteins within them.  We measured the diffusion in a few different ways: monitoring the concentration profile and total accumulation as the proteins diffused into the cell, and using fluorescence recovery after photobleaching (FRAP).
+\section{Experimental setup}
+\subsection{Hydrogels}
+Applying the lessons learned in the previous chapter, the nuclear pore mimics were 6\% acrylamide hydrogels with FSFG-bis anchored in.  The precursor solution had a final concentration of 6\% premixed acrylamide/bisacrylamide (29:1) in PTB pH 7.0.  The crosslinker was either 1 mM LAP or 0.1\% ammonium persulfate and 0.5\% TEMED (check these concentrations).  Lyophilized FSFG-bis was resuspended in PTB, allowed to sit at room temperature for at least 20 minutes, and added to the precursor solution.  I used nominal FSFG concentrations between 5 and 10 mg/mL, depending on whether it was FSFG concat 1 or FSFG concat 2.  If a photoinitiator was used, it was added in the darkroom, and the solution was protected from light as much as possible afterwards.
+
+After the precursor solution was thoroughly mixed, it was degassed in a vacuum desiccator for 10 minutes and immediately pipetted into a disassembled 400-$\mu$m-thick PDMS gasket chamber. Drops between 0.5 and 2 $\mu$L were carefully pipetted onto the plastic slide and the chamber assembled around the drops.  Typically, each chamber measured a few centimeters on a side and contained a control gel with no Nups as well as one or more Nup-filled gels.  The chamber was then illuminated with UV light at some intensity that I will look up as uniformly as possible for 30 seconds using a ThorLabs etc. LED.  Condensation around the gels indicated that they had crosslinked.  The chamber was immediately rinsed with at least 100 $\mu$L of PTB, filled with fresh PTB, and sealed with PDMS and clingwrap.  The gels were left to soak at 4$^\circ$C for at least 12 hours so that any remaining precursor solution and protein could leave the gel.
+\subsection{Influx experiments}
+After soaking in buffer, the buffer solution was removed by pipette or wicking with a Kimwipe (not by aspirating) and a fluorescent reservoir solution added.  The reservoir solution contained 20 $\mu$M each NTF2-fluorescein (NTF2-F) and mCherry in PTB.  The chamber was resealed after adding the solution.  If a profile and accumulation experiment was being run, the experiment was run immediately after adding the reservoir solution.  Experiments were run on an Olympus widefield using a 4x objective with FITC and TRITC filter cubes (should I put exact specifications here).  Typical experiments were run for 120 minutes at a rate of one frame per minute.  Exposure times were usually 30-100 ms with 3-8 dB gain in both channels.  Minimal photobleaching took place over the course of these experiments.  Data was analyzed as described below.  After the end of an influx experiment, the chamber could be stored at 4$^\circ$C, protected from light, for a further 12-24 hours in order to equilibrate.  A FRAP experiment could then be performed.
+
+\subsection{Fluorescence recovery after photobleaching}
+Fluorescence recovery after photobleaching (FRAP) relies on the redistribution of fluorophores after patterned photobleaching in order to determine their diffusion constant.  After a small portion of the hydrogel is bleached, the bleached spot gradually exchanges with the non-bleached fluorophores outside, and the average fluorescence intensity within the bleached spot recovers.  The recovery lifetime can be used to determine the fluorophore's diffusion constant, and the final recovered intensity as compared to the intensity outside the bleach spot can be used to determine the mobile fraction of fluorophore.
+
+FRAP is often performed with a confocal microscope, but we were able to manage it with the Olympus widefield.  In order to photobleach the gel, a 40x objective was used and the field of view exposed to near-UV (the DAPI cube - find precise specifications) at maximum power for 5 seconds.  The objective was rapidly changed to 4x and a time series begun.  Typical time series consisted of 15-30 frames taken as rapidly as possible (5-10 seconds per frame) and 30-60 frames taken at a slower rate (1-2 minutes per frame).  Total experiment time ranged from 1 to 4 hours.  Typical exposure times were 10 ms for NTF2-F and 40 ms for mCherry with a gain of 3 dB for both channels.
+
+We had problems equilibrating the gels.  Sometimes the gels were crosslinked inhomogenously, and sometimes they didn't fully equilibrate even after 24 hours.  Smaller gels (0.5 $\mu$L) helped solve the equilibration problem, but then the exchange of fluorscent proteins with the buffer was a major problem, because a significant fraction of the gel area was being bleached.  We accounted for these problems during the data analysis, described below.
+
+\section{Influx analysis}
+In principle, the diffusion constants of NTF2-F and mCherry within the NPC mimics can be determined using the concentration profiles or total fluorescence accumulation within the hydrogel over time.  We used several mathematical models to fit the profiles and accumulation in an attempt to extract diffusion coefficients.  The noise inherent in the data made this difficult, and ultimately we used FRAP instead to find the diffusion constants.
+
+Fickian diffusion was always assumed, although in practice the presence of binding and of the hydrogel network lead to slightly non-Fickian behavior.  It was also assumed that the length of a binding event was negligible on the timescale of diffusion, so that the observed diffusion constant of the NTF2-F could be treated as Fickian diffusion and written as a weighted average of the diffusion constants while free and bound.  This is a good approximation because we think the dissociation constant of NTF2 and FSFG is $K_D \approx 1$ mM, with a diffusion-limited on-rate and correspondingly high off-rate.
+\subsection{Profile analysis}
+Using these assumptions, the method of \cite{mortensen06} was followed in order to fit the profile and accumulation data.  This method assumes that an arbitrary shape is initially empty but held in an infinite reservoir kept at a constant concentration.  The shape fills according to the diffusion equation.  Although there are slightly different numerical factors for different shapes, they show that a circle is a good approximation for many shapes.  Since our gels are usually nearly circular, the circular solution is a good one.  Using this method, the protein concentration $c(r,t)$ as a function of radial distance $r$ from the gel center and time $t$ is given by
+\begin{equation}
+\frac{c(r,t)}{c_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
+\label{eq:full-profile}
+\end{equation}
+where $c_0$ is the equilibrium concentration within the shape, $D$ is the diffusion constant, $a$ is the shape radius, and $\alpha_n a$ is the $n$th zero of the Bessel function of the first kind $J_0$.
+
+Mortensen et al define a characteristic timescale for equilibration $\tau = (\mathcal{A}/\mathcal{P})^2 (\pi/4D)$ where $\mathcal{A}$ and $\mathcal{P}$ are the shape's area and perimeter, respectively.  For a circle $\mathcal{A}/\mathcal{P} = a/2$, but this ratio can be numerically calculated for our hydrogels using their precise shapes.  For times $t \ll \tau$, the concentration profile can be approximated as 
+\begin{equation}
+c(r,t) = c_0 \,\mathrm{erfc}\left(\frac{r}{\sqrt{4Dt}}\right)
+\label{eq:approx-profile}
+\end{equation}
+
+In order to fit to these equations, I averaged the intensity of a thin slice cutting through the reservoir and the gel to the center of the gel.  I normalized the data by dividing by the average reservoir intensity (the entire reservoir in the field of view, not just the thin slice).  I normalized on a time-point basis to eliminate drift in the illumination or reservoir concentration.  After normalizing, I tried to fit the first time-points to Eqn.~\ref{eq:approx-profile}, both at a fixed time for many positions and vice versa.  The fits worked fairly well for the NTF2-F plots, as those had a well-defined gel edge.  It was more difficult for the mCherry fits.
+
+I also tried to use the full equation, Eqn.~\ref{eq:full-profile}.  I fit to the first 100 terms using Matlab, and that worked slightly better, but it was still difficult for the mCherry fits.
+\subsection{Accumulation analysis}
+Next, I tried to fit to the total accumulation.  From Mortensen et al, the averaged intensity inside the gel $N(t)$ is
+\begin{equation}
+\frac{N(t)}{N_0} = 1-\sum_{n=0}^\infty \frac{4}{(\alpha_na)^2}\exp\left(-\frac{(\alpha_na)^2\pi t}{16\tau}\right)
+\label{eq:full-accumulation}
+\end{equation}
+
+I fit the first 100 terms of this in Matlab, but it didn't work terribly well either.  This one worked better for mCherry than for NTF2-F, likely because binding was throwing off the NTF2 results.  Overall, the most important data points were near the edge of the gel and the beginning of the experiment, and the edge effects and uncertainty in experiment start time meant that both of those types of points had lower signal-to-noise than the rest of the experiment.
+
+\subsection{Gel dimension estimations}
+In order to fit the influx and FRAP data, I needed to estimate several parameters of the gel geometry: the radius of the gel, its perimeter, and its area.  Although the gels were not perfectly circular, most were close, and so I took the radius to be half of the longest dimension in the video's field of view.  Typically, the entire gel did not fit into the field of view.   To estimate the radius, I used the mask of the entire gel and counted the number of non-zero elements by row.  I took the maximum number of nonzero elements, divided by two, and multiplied by the pixel spacing: 1.58 $\mu$m per pixel for the 4x objective on the Olympus widefield.
+
+To estimate the area and perimeter, I embedded the image in a larger frame, and created a ROI that covered the entire gel, estimating where necessary.  I summed the non-zero elements of the ROI and scaled using the pixel spacing.  For the perimeter, I called the Matlab function that returns only the outline of an ROI, and summed and scaled that.
+
+\subsection{Partition coefficient and bound probability calculations}
+In order to calculate the bound diffusion coefficient, I needed to estimate the amount of time that a given transport factor spends bound to Nups.  When the system is in chemical equilibrium, the concentration of free transport factor ($T$), free Nup ($N$), and transport factor - Nup complex ($C$) is related to the dissociation constant $K_D$ by
+%\begin{equation}
+%K_D = \frac{TN}{C}
+%\label{eq:chem-equil}
+%\end{equation}
+$K_D = NT/C \approx N_TT/C$ in the linear approximation $N \approx N_T$ when $N_T$ is the total Nup concentration, both free and bound, and is a constant.  The fraction of transport factors that are bound is then given by
+\begin{equation}
+p_B = \frac{C}{C+T} = \frac{C}{C+\frac{CK_D}{N_T}} = \frac{1}{1+\frac{K_D}{N_T}} \approx 1 - \frac{K_D}{N_T}
+\label{eq:bound-prob}
+\end{equation} where the final step applies if $K_D \ll N_T$, which might be the case but now I'm confused again.
+
+It's difficult to measure the total Nup concentration anchored to the hydrogels, so we'd like to remove that term in favor of an experimental quantity that's easier to measure.  The partition coefficient is much easier to measure.  The partition coefficient is the ratio of a fluorescent protein's concentration just inside and just outside an equilibrated hydrogel.  To measure it, just take the ratio of the average intensity within the gel to that in the reservoir.  The concentration $c_0$ of the inert protein and the transport factor is equal in the reservoir.  If $\gamma_T$ is the partition coefficient of the transport factor and $\gamma_I$ that of the inert protein, then the transport factor concentrations can be expressed as
+\begin{eqnarray}
+T &=& \gamma_I c_0\\
+C & =& T_T - T = \gamma_Tc_0 - \gamma_I c_0
+\label{eq:gamma}
+\end{eqnarray} Therefore, within the gel, the chemical equilibrium condition can be expressed as
+\begin{equation}
+\frac{K_D}{N_T} = \frac{T}{C} = \frac{\gamma_I c_0}{\gamma_T c_0 - \gamma_I c_0} = \frac{\gamma_I}{\gamma_T - \gamma_I}
+\label{eq:partition}
+\end{equation}
+
+\subsection{Bound-diffusion calculation}
+
+\section{FRAP analysis}
+\section{Discussion}
