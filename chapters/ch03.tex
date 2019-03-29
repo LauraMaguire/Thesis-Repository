@@ -1,17 +1,82 @@
 \chapter{Hydrogel design for protein separation}\label{ch03}
-\section{How we made the hydrogels}
-We made hydrogels with anchored fragments of FG Nups.  We started with a precursor solution in an aqueous buffer containing the protein fragment, monomers and crosslinkers, and either a chemical initiator or photoinitiator.  Upon crosslinking, one end of the Nup fragment was anchored into the gel and the other left free, like the situation in the nuclear pore.
 
-We used two major types of hydrogel: PEG and acrylamide.  The PEG hydrogels were made with 20 kD 8-armed PEG-norbornene, a PEG dithiol crosslinker, and either lithium phenyl-2,4,6-trimethylbenzoylphosphinate (LAP) \cite{fairbanks09} or 1-[4-(2-hydroxyethoxy)-phenyl]-2-hydroxy-2-methyl-1-propane-1-one (sold as Irgacure 2959) %http://www.xtgchem.cn/upload/20110629045632.PDF
-as photoinitiators.  The acrylamide hydrogels were made in an aqueous buffer with dilutions of a 30\% solution of acrylamide and bis-acrylamide (29:1) ratio, the Nup fragment, and either a chemical initiator system (ammonium persulfate and TEMED) or LAP.
+In order to test the predictions of our bound-state diffusion model of selectivity, we needed to develop a biomaterial that could support bound diffusion and be used to test selectivity.  There are several biological examples which show selectivity that could be explained by bound-state diffusion, including nucleocytoplasmic transport, liquid-liquid phase separated droplets, diffusion of DNA-damage-repair proteins in the nucleus, and passage through mucus.  We decided to focus on making a material that mimics the nuclear pore.
 
-In order to crosslink the Nups into the hydrogel, we added a terminal cysteine to the Nups.  In the case of the PEG hydrogels, a Michael-thiol `click' reaction took place between the cysteine and norbornene upon crosslinking \cite{chatani14}.  For the acrylamide gels, another step was necessary.  I conjugated bisacrylamide to the cysteines using the reaction that Ben told us about with triethanolamine.  Then the bis-labeled Nups were able to link into the hydrogel when the precursor was crosslinked.
+One of the attractions of the bound-state diffusion model is that it does not rely on the geometry of the selective material.  As long as the dimensions of the material are significantly larger than the protein diffusing through it, there is no practical difference between a nanoscale cylindrical pore and a macroscale bulk material.  For ease of fabrication and testing, as well as in the hopes that it would scale up well, we opted to design a bulk material for protein separation.
 
-When a photoinitiator was used, we crosslinked the gels with UV light.  We used either a UV LED (look up typical intensity at gel plane from logbook) or a 405 laser on a confocal microscope.  Depending on the situation, we used photomasks to selectively expose regions of precursor to UV, or crosslinked entire droplets of precursor solution.  After crosslinking, hydrogels were rinsed with 10-100 times their volume with buffer and allowed to soak in fresh buffer solution overnight at 4$^\circ$C in order to approach swelling equilibrium and remove any remaining precursor solution.
+A hydrogel substrate was chosen as the basis of the nuclear pore mimic and protein fragments taken from FG Nups anchored into it.  Hydrogels are versatile materials, many of which are bio-compatible, whose properties can often be easily tuned.  We used a hydrogel substrate to provide an inert scaffold to which fragments of FG Nups were conjugated.  These Nups were conjugated to the hydrogel at one end and free at the other, mimicking the arrangement found in the nuclear pore and providing a mechanism of tethered bound diffusion.  The properties of these Nups, such as their length, number of transport factor binding motifs, and propensity towards aggregation, can be easily varied in order to test how these properties impact bound-state diffusion and thus protein selectivity.
 
-Following the buffer soak, typically a fluorescent solution of proteins was added to the gels.  Usually this consisted of a transport factor (typically NTF2) and a similarly-sized inert protein (typically the red fluorescent protein mCherry).  A typical experiment consisted of a video at 4x or 10x magnification the hydrogel, reservoir chamber, and (if applicable) an outlet/inner reservoir which slowly accumulated protein as it passed through the gel.  Experiments ranged from 1-24 hours, with 2 hours being the most common.  Typical data produced was a plot of accumulation in the inner reservoir or hydrogel over the course of the experiment, as well as a concentration profile through the gel and inner reservoir.
+This hydrogel model is therefore the simplest way we could think of to make a material to explore the effects of bound diffusion on protein separation.  It's inspired by the nuclear pore but does not attempt to reproduce its mechanism of selectivity exactly.  Instead, we hoped to show that bound-state diffusion was measurable and controllable in a biomaterial, paving the way for molecular filters that might make use of this principle.
+
+Over the course of making these materials, we ran into several significant roadblocks.  Although hydrogels with a wide range of properties have been well-studied, gels suitable for protein separation are harder to come by.  They require an intermediate pore size, large enough that the diffusion of a protein is not significantly hindered by the presence of the hydrogel meshwork, but small enough that the Nup peptides can easily reach the protein as it diffuses.  This average pore size of 5-20 nm is difficult to find, though much smaller and much larger pores are easy to make.  The swelling of the gels is also a problem, since we need them to be confined so that they pose an actual barrier to the proteins we are trying to separate.  The creation of a hydrogel for selective protein separation poses many stringent requirements, often in competition with each other.  This chapter describes the setbacks we faced and the progress we have made towards creating a hydrogel-based biomaterial suitable for selective separation of proteins.
+
+
+\section{Hydrogel fabrication}
+
+\begin{figure}
+\caption{Overview of hydrogel fabrication and fluorescent protein influx. A precursor solution is mixed, containing hydrogel monomers, crosslinkers, a photoinitiator, and the Nup fragment.  Upon exposure to UV light, the precursor solution crosslinks, and one end of each Nup is conjugated to the hydrogel.  The diffusion of a fluorescently-tagged transport factor can then be compared to that of a similarly-sized inert fluorescent protein.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/precursor}
+\label{fig:precursor}
+\end{figure}
+
+A wide range of hydrogels systems have been well-studied.  Many are not suitable for the addition of proteins, but both PEG and acrylamide hydrogels, among others, can be crosslinked in an aqueous solution that does not harm proteins.  We used both PEG and acrylamide hydrogels in our diffusion experiments.  Thanks to Stephanie Bryant, Sadhana Sharma, Christopher Bowman, Danielle Konetski, and Benjamin Fairbanks for their help as we learned to make these hydrogels.
+
+Whether using PEG or acrylamide, the basic hydrogel fabrication procedure was the same (Fig.~\ref{fig:precursor}).  First, a precursor solution was mixed, which contained the hydrogel monomer, a crosslinker, a radical generator, and the Nup fragment, labeled with a reactive group at one end that would conjugate it to the hydrogel.  The radical generator was almost always a photoinitiator, which caused the precursor solution to crosslink when exposed to UV illumination.  In a few cases, a chemical initiator was used, in which case the precursor solution crosslinked 10-30 minutes after mixing.  By the end of the crosslinking process, the hydrogel contained Nup fragments tethered to the gel at one end, mimicking the arrangement of Nups in the nuclear pore and providing a mechanism of tethered bound diffusion for transport factors but not for non-binding inert proteins.  The diffusion of both types of protein within the hydrogel could then be quantified using fluorescence microscopy.
+
+There were four major components to the precursor solution: monomers, crosslinkers, initiators, and Nup fragments.  To an extent, these components can be chosen independently of each other.  Bisacrylamide or PEG-diacrylate crosslinkers must be used with acrylamide monomers, and PEG-dithiol crosslinkers with PEG-norbornene monomers, but the initiators and Nup fragments can be varied.  There are many variations on crosslinker length as well, leading to a wide variety of possible hydrogels even using a relatively small set of components.
+
+The PEG hydrogels made use of 20-kD 8-armed PEG-norbornene monomers (synthesized by the Bryant lab and Nathan Crossette) and either a 1-kD or 8-kD PEG-dithiol crosslinker (Sigma) (Fig.~\ref{fig:monomer-crosslinker}).  To conjugate the Nup fragment to the PEG hydrogels, a cysteine was engineered at one end (lookup: which end?).  Both the crosslinker and Nup fragment made use of Michael-thiol ``click'' chemistry \cite{chatani14}\cite{nair14}.
+
+The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (lookup: Sigma) was conjugated to the terminal cysteine (see Sec.~\ref{sec:bisRxn})
+
+\begin{figure}
+\caption{Chemical structures of monomers and crosslinkers for PEG and acrylamide hydrogels. The total molecular weight of the 8-armed PEG-norbornene was 20 kD, and either a 1-kD or 8-kD PEG dithiol crosslinker was used.  Structures from Sigma and CreativePEGWorks.}
+\centering
+\includegraphics[width=0.8\textwidth]{figs/ch03/monomer-and-crosslinker}
+\label{fig:monomer-crosslinker}
+\end{figure}
+
+Regardless of the monomers and crosslinkers used, a radical generator is needed to initiate polymerization.  We used either a photoinitiator, activated by UV light, or a chemical initiator system which began polymerization upon its addition to the precursor solution.  Both systems have advantages: Photoinitiators are useful for patterned polymerization using photomasks and allow the precursor to be mixed prior to polymerization, while chemical crosslinkers do not require careful protection from light.  We nearly always used a photoinitiator.
+
+Two photoinitiators were tested: 1-[4-(2-hydroxyethoxy)-phenyl]-2-hydroxy-2-methyl-1-propane-1-one (commercially known as Irgacure 2959) and lithium phenyl-2,4,6-trimethylbenzoylphosphinate (LAP). %http://www.xtgchem.cn/upload/20110629045632.PDF
+Figure~\ref{fig:initiators} (A) and (B) shows the absorption spectra of each photoinitiator and that of its cleavage products \cite{fairbanks09}.  LAP has an absorbance peak in the near-IR / violet range, is highly water-soluble, and is more effective at crosslinking, so it was used most of the time.  However, due to its absorbance into the visible range, care must be taken to protect solutions containing LAP from ambient light wherever possible.  Our LAP was synthesized by the Bryant lab, but it is now commercially available from Sigma as well.
+
+\begin{figure}
+\caption{Absorption spectra of (A) Irgacure 2959 and (B) LAP (solid lines) and with that of their cleavage products (dotted lines) \cite{fairbanks09}. (C) Chemical structures of the APS/TEMED crosslinking system. Structures from Sigma.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/initiators}
+\label{fig:initiators}
+\end{figure}
+
+An APS/TEMED chemical crosslinking system was occasionally used in place of the photoinitiator.  Large numbers of hydrogels can be polymerized at once in this way, without the need for a large area of uniform UV illumination.  Figure~\ref{fig:initiators} (C) gives the chemical structure of ammonium persulfate (APS) and N,N,N′,N′-tetramethylethylenediamine (TEMED).  APS is the radical generator, and TEMED accelerates the radical formation.  The time to polymerize can be controlled by adjusting the concentration of both components (lookup: put this info in an appendix?).
+
+It should be noted that the presence of oxygen inhibits all the initiators discussed above.  Precursor solutions were degassed for 10 minutes before use in a vaccum desiccator and polymerized no more than 10 minutes after degassing.
+
+When a photoinitator was used, the hydrogels were polymerized using UV illumination at either (lookup: LED wavelength) (lookup: Thorlabs LED model) or 405 nm (laser on A1R confocal microscope) inside flow chambers as described in Sec.~\ref{sec:flow-chambers}.  The typical intensity of the LED was (lookup) and the typical crosslinking time 30 s.  Depending on the situation, photomasks were used to selectively expose regions of precursor to UV, or entire droplets of precursor solution were polymerized in an otherwise-empty chamber (Fig.~\ref{fig:photomask}).  After crosslinking, hydrogels were rinsed with 10-100 times their volume with buffer and allowed to soak in fresh buffer solution overnight at 4$^\circ$C in order to approach swelling equilibrium and remove any remaining precursor solution.
+
+\begin{figure}
+\caption{Procedure for photopolymerization with (A) or without (B) a photomask. (A) A flow chamber is filled with precursor solution.  The photomask is placed to hide all areas that should not be crosslinked, and the chamber is exposed to UV illumination.  Excess precursor solution is removed with a buffer rinse. (B) Microliter droplets of precursor solution are pipetted onto the slide surface before the chamber is assembled.  After assembly, the chamber is exposed to UV illumination.  The chamber is then filled with buffer.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch03/photomask}
+\label{fig:photomask}
+\end{figure}
+
+Following the buffer soak, typically a fluorescent solution of proteins was added to the gels.  Usually this consisted of a transport factor (typically NTF2) and a similarly-sized inert protein (typically the red fluorescent protein mCherry).  A typical experiment consisted of a video at 4x or 10x magnification of the hydrogel, reservoir chamber, and (if applicable) an outlet/inner reservoir which slowly accumulated protein as it passed through the gel.  Experiments ranged from 1-24 hours, with 2 hours being the most common.  Typical data produced was a plot of accumulation in the inner reservoir or hydrogel over the course of the experiment, as well as a concentration profile through the gel and inner reservoir.  Experiments are described in greater detail in Chapter~\ref{ch:bound-diffusion}.
+
+% Appendix - detailed gel-making procedureThe acrylamide hydrogels were made in an aqueous buffer with dilutions of a 30\% solution of acrylamide and bis-acrylamide (29:1) ratio, the Nup fragment, and either a chemical initiator system (ammonium persulfate (APS) and N,N,N',N'-Tetramethylethylenediamine (TEMED)) or LAP. 
+
+%\subsection{Preparing Nup fragment for conjugation to acrylamide gels} -appendix
+
+% appendix - effect of varying APS and TEMED concentration
+
+% appendix - sample precursor solution recipes
+
+% appendix - FSFG growth, purification, lyophilization
+%\label{sec:bisRxn}
 
 \section{Microfluidic flow chambers}
+\label{sec:flow-chambers}
 Most experiments took place in microfluidic flow chambers.  These were typically 70-500 $\mu$m thick and consisted of a plastic (acrylic?) slide with ports drilled into it and a glass coverslip, separated by a spacer made of double-stick tape, cured Norland Optical Adhesive (NOA), or polydimethylsiloxane (PDMS).  The precursor solution was pipetted into the chamber and masked, or a drop was placed into the the chamber before it was sealed.  After crosslinking, the chamber was filled with buffer as described above.
 
 Many different types of chamber were tried, and I will put in a picture of some of them.  The double-stick tape chambers are thin (70 $\mu$m per tape layer), of reliable thickness, and quick to make.  However, they often leak or dry overnight.  NOA ``sticker'' chambers are watertight and durable but they are difficult to make and to reuse \cite{bartolo08}\cite{paustian13}.  Chambers made with PDMS gaskets are thicker (100-400 $\mu$m) and their thickness is not as reproducible, but they are easy to reuse, often can last several days without drying out, and are quick to assemble.  Likewise, if liquid needs to be flowed through a chamber, short lengths of PEEK tubing can be glued into the ports and fitted with Tygon tubing.  For sufficiently gentle flows, however, ports can be left simply as holes in the plastic slide and pipette tips inserted.  Most of the chambers are thin enough that liquid wicks easily through to the other port(s).
@@ -51,6 +116,8 @@ We also made gels in a ring shape with an inner reservoir.  See the section on c
 
 Finally, we made gels out of single droplets of precursor solution squished into the chamber before crosslinking.  These have volumes of 0.5-2 $\mu$L.  These gels cannot be used to monitor selective transport through and exit from the gel, but we can use them to measure the diffusion constants of proteins within the gel and the selective influx of transport factors.  These gels have the advantage that they are easy to make and have much less severe edge effects than the gels made with a photomask.  The experimental chapter deals entirely with this type of hydrogel, which was typically made in a 400 $\mu$m PDMS gasket chamber with two PEEK-less ports.
 
+\section{FSFG}
+
 \section{Pore size}
 
 One of the biggest problems we faced was that of pore size.  Although there is a range of pore sizes in any hydrogel, and it's not actually always obvious how to define it, we wanted an average pore size large enough that we could be confident that any differences in the behavior of transport factor and inert protein were due to their interactions with the Nups, not slight differences in size or interactions with the hydrogel.  At the same time, we wanted the anchored Nups to fill a significant portion of the pore.  This meant that we wanted a hydrogel with pores somewhere between 10 and 20 nm on average.  It turns out that this is a difficult regime for hydrogels.  It's easy to get pores signicantly smaller using acrylamide or PEG systems, or significantly larger using systems like collagen, but the intermediate regime is difficult.  We tried many methods of increasing the pore size of our PEG and acrylamide hydrogels, including changing the composition and crosslinker, as well as adding porogens.  Finally, we settled on 6\% acrylamide hydrogels as being reasonably good for NTF2 and mCherry comparisons (both proteins are about 30 kD and we probably couldn't have used any larger ones in these gels).  This remained a source of frustration throughout the experiments.
@@ -70,7 +137,7 @@ I tried to make gels with a larger pore size by using porogens.  These are nanos
 \begin{figure}
 \caption{Alginate crosslinking from \cite{bruchet15}. Alginate is composed of alternating guluronate (G) and mannuronate (M) blocks.  Addition of calcium ions leads to an ``egg-box'' crosslinked structure. Add a cartoon of spheres in our gel (with positive poly-L-lysine coating around negative alginate gel) and the spaces they should leave upon depolymerization.}
 \centering
-\includegraphics[width=0.5\textwidth]{figs/ch03/alginate-crosslinking}
+\includegraphics[width=\textwidth]{figs/ch03/alginate-cartoon}
 \label{fig:alginate}
 \end{figure}
 Alginate is a monomer that can be made to polymerize by adding calcium ions (or other divalent ions?).  Include a picture of the alginate structure with and without calcium.  It's inert (and edible) and the polymerization can be reversed by adding EDTA or another chelating agent to remove the calcium.  Alginate salts are available in a number of average molecular weights and viscosities.
@@ -231,9 +298,13 @@ This construct is in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Go
 \includegraphics[width=\textwidth]{figs/ch03/GFP-NTF2-attempts.pdf}
 \label{fig:GFP-NTF2}
 \end{figure} 
-\subsection{Covalently-tethered NTF2 dimer}
 
-We were able to express and purify it, but it didn't bind to FSFG.  Probably the GFP was interfering with the binding site and/or dimerization interface?  
+\begin{figure} % LKM book 4 pg 60
+\caption{Cartoon of various NTF2 constructs}
+\centering
+\includegraphics[width=0.6\textwidth]{figs/ch03/NTF2-constructs}
+\label{fig:Kap121}
+\end{figure}
 
 \subsection{Kap121 and NLS-GFP}
 % Kap121 growth and purification - LKM book 2 pg 79, LKM book 3 pg 13, Chris Lawton book 1 pg 65, Loren's protocols in Google Drive, Jackie's paper
@@ -266,9 +337,6 @@ Figures
 \item goodness of fit measurements for single- and double- exponential fits
 \end{enumerate}
 We have to label NTF2 with a fluorescent dye to use it as a test transport factor.  For the most part, we've used Alexa Fluor 488 as the dye.  (Most recently we switched to fluorescein because it's easier to photobleach.)  There are several choices of labeling chemistry.  We've used both NHS and SDP esters, which label the exposed lysines of NTF2, of which there are several.  We've also tried using Alexa488-maleimide to label the cysteine of an engineered NTF2-cys.  Both labeling chemistries result in bonds that eventually hydrolyze, cleaving the dye from the protein.  This is a major problem for the experiments, since free dye (about 1kD) diffuses much faster than dye bound to a protein and is experimentally identical.  Non-negligible levels of free dye would give the impression that NTF2 is equilibrating significantly faster than it actually is.  The maleimide-labeling chemistry is more stable, but in practice not as efficient as the ester-labeling protocol.  It also requires using NTF2-cys, which could introduce other issues.  Mostly I stuck with the lysine-labeling protocol, which needed significant optimization to minimize free dye issues.  Eric did a lot of work in optimizing the cysteine-labeling protocol, and I took his work as a base in optimizing the lysine-labeling protocol.
-
--list cysteine labeling protocol here
--list lysine labeling protocol here
 
 \subsection{Labeling NTF2 with fluorescein-NHS}
 \begin{enumerate}

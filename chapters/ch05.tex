@@ -29,6 +29,13 @@ T_l = T_{1/2} - \frac{2}{k}
 \end{equation}
 and represents the duration of the lag phase \cite{}.  
 
+\begin{figure}
+\caption{Sample sigmoid fit. Look up conditions.  (Pulled this from Sophie's thesis but I did the fit)}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch05/sigmoid-fit}
+\label{fig:sigmoid-fit}
+\end{figure}
+
 Ideally, we expect $C=1$, as aggregation should not have begun at the start of the experiment, so there should be no increase in sample fluorescence over that of the blank.  Experimentally, $C$ usually ranged between 1 and 2, up to about 10 for some sample conditions.  This might have been because aggregation had already begun, but this seems unlikely because the lag phase continued for some time.  I don't know why  $C$ wasn't close to unity for all conditions and replicates.
 
 The saturation phase asymptotes to an intensity given by $I_\tx{sat}=C+A$.  We found significant variation in $I_\tx{sat}$ for the same condition between timecourses, and the relative magnitudes of different conditions also varied between timecourses.  I think this is a limitation of the thioflavin tests.  Therefore, we do not consider $I_\tx{sat}$ in our analysis, leaving $k$ and $T_l$ as parameters of interest.
@@ -104,6 +111,8 @@ I also measured PEG and PVP absorbance near 240 nm (see Fig.~\ref{fig:crowder-ab
 \end{figure}
 
 \section{Discussion}
+
+It's possible that the differences in aggregation time between PEG and PVP come from changes in viscosity.  The two samples do have widely different viscosity, as measured by Steve Whitten.  A 13\% PEG solution in PTB has a dynamic viscosity of 15.87 mPa s, while that of a 13\% PVP solution in PTB is 7.34 mPa s.  The literature doesn't entirely agree on what happens to aggregation as a function of viscosity, but what we see could be due to that change.  (Check in lab book where I have lit search notes.)
 
 \section{Materials and Methods}
 \subsection{Buffers} Potassium transport buffer (PTB) (150 mM KCl, 20 mM HEPES, 2 mM $\tx{MgCl}_2$) was used for all timecourse and NMR samples.
