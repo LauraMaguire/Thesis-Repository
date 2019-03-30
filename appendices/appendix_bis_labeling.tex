@@ -1,68 +1,13 @@
-\chapter{Numerics for Brownian dynamics simulations}~\label{appx:brownian_dyn_sim}
-Here, I connect the Langevin equation and Brownian dynamics
-simulations~\cite{grassia_computer_95}.  The Brownian equation of motion is
-%
-\begin{equation}
-  \dot{x} = - \zeta ^{-1} \left[  f(x,t) + \xi(t) \right],
-\end{equation}
-%
-where the force $ f(x,t) = -\frac{dU}{dx}  $ depends on time and the noise has
-the properties
-% Noise
-\begin{gather}
-  \langle \xi( t ) \rangle = 0,\\
-  \label{eqn:noise_delta}
-  \langle \xi( t ) \xi( t') \rangle 
-  = 2 \zeta k_B T \delta(t-t').
-\end{gather}
-%
-Integrating from $t$ to $t+\delta t$ gives
-%
-\begin{equation}
-  x(t+\delta t) = x(t) - \zeta ^{-1} 
-  \int_t^{t+\delta t} \dif t' f(x,t') + \xi(t').
-\end{equation}
-%
-To numerically evaluate this, we approximate the delta function in the
-noise term variance~\eqnrefp{eqn:noise_delta} as
-%
-\begin{equation}
-  \delta(t-t') \approx \delta(t,t') = 
-  \begin{cases}
-    \frac{1}{\delta t}, &\text{if $t$ and $t'$ are in the same
-  time step $\delta t$} \\
-    0, & \text{otherwise}
-  \end{cases}.
-\end{equation}
-%
-Thus, upon integration we get
-%
-\begin{equation}
-  x(t+\delta t) \approx x(t) - \zeta ^{-1} 
-  \delta t \left[ f(t) + c(t) \sqrt{\frac{2 \zeta k_B T}{\delta t}}  \right].
-\end{equation}
-%
-where $c(t)$ is a random number selected from a distribution with average zero
-and variance 1.  Typically, we select a number from the uniform distribution
-$r \in [-1/2, 1/2] $ which has a variance of $1/12$.  Thus, the position at time
-$t_{n+1}$ is
-%
-\begin{equation}
-   x_{n+1} \approx x_{n} - \zeta ^{-1} 
-  \delta t f_n + \sqrt{24 D \delta t} r_n,
-\end{equation}
-%
-where we have used the Einstein relation $D = \frac{k_B T}{\zeta}$. At each time
-step, $f_n$ is calculated, and $r_n$ is selected.  In the absence of forces, the
-MSD is
-%
-\begin{equation}
-   \langle x_{N} ^2  \rangle = 24 D \delta t \langle r^2 \rangle N = 2Dt,
-\end{equation}
-%
-after $N = t / \delta t$ steps.  A step is randomly selected from a uniform
-distribution  $\Delta x \in [ -\sqrt{6 D \delta t}, \sqrt{6 D \delta t} ] $ in a
-Brownian dynamics simulation.  Note that one can select a random
-number from a Gaussian distribution instead of a uniform distribution.  In that
-case, a random step length is selected from a Gaussian distribution with average
-$\mu = 0$ and variance $\sigma = \sqrt{2 D \delta t }$. 
+\chapter{Bis-labeling Nup fragments for incorporation into acrylamide hydrogels}~\label{appx:bis-labeling}
+
+Before FSFG-cys or any other cys-labeled Nup variant can be tethered to an acrylamide hydrogel, it needs to be labeled with bisacrylamide or PEG-DA.  This protocol describes the labeling procedure for either chemical group.  The cysteines must be fully reduced for the labeling to occur.  No BME, TCEP, or other reducing agent can be present in the reaction mixture.  FSFG and other disordered peptides form disulfide bonds within minutes of being removed from reducing agents, so begin the reaction as quickly as possible after reducing.  This protocol was developed with the help of Benjamin Fairbanks.
+
+\begin{enumerate}
+\item Begin with a stock of at least 1 mg/mL FSFG with a terminal cysteine in PBS pH 7.8.  Typical reactions use 1 mL of approximately 2 mg/mL FSFG.
+\item Equilibrate an equal amount of immobilized TCEP resin slurry in a disposable 5-mL column which can be spun in a conical tube.  Refer to Thermo-Pierce product reference sheet for resin volume and nutation time if necessary.  Equilibrate with 20-30 bed volumes of PBS pH 7.8 using gravity, then spin at 1000 rpm (lookup: G) for 10 s to remove remaining buffer.
+\item Immediately add the FSFG stock and nutate at 4$^\circ$C for 1 hour.
+\item Prepare a conical tube with (lookup: concentrations) of triethanolamine (in fume hood) and 2\% bisacrylamide solution.  Place column in conical tube and spin down 1000 rpm for 1 minute.
+\item Immediately vortex thoroughly.  Nutate at room temperature for 30 minutes.
+\item Dialyze into 25 mM ammonium bicarbonate buffer to remove excess bisacrylamide and prepare for lyophilizing.
+\item Perform a BCA to quantify protein concentration. Prepare 100 or 200 $\mu$g aliquots, freeze, and lyophilize.  Store lyophilized protein with a desiccant in ultra-low freezer.
+\end{enumerate}
