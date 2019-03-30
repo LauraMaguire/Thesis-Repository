@@ -128,6 +128,8 @@ The no-outlet hydrogel geometries shown in Fig~\ref{fig:chamber-geometries} (C) 
 
 \section{FSFG}
 
+
+
 \section{Pore size}
 
 One of the biggest problems we faced was that of pore size.  Although there is a range of pore sizes in any hydrogel, and it's not actually always obvious how to define it, we wanted an average pore size large enough that we could be confident that any differences in the behavior of transport factor and inert protein were due to their interactions with the Nups, not slight differences in size or interactions with the hydrogel.  At the same time, we wanted the anchored Nups to fill a significant portion of the pore.  This meant that we wanted a hydrogel with pores somewhere between 10 and 20 nm on average.  It turns out that this is a difficult regime for hydrogels.  It's easy to get pores signicantly smaller using acrylamide or PEG systems, or significantly larger using systems like collagen, but the intermediate regime is difficult.  We tried many methods of increasing the pore size of our PEG and acrylamide hydrogels, including changing the composition and crosslinker, as well as adding porogens.  Finally, we settled on 6\% acrylamide hydrogels as being reasonably good for NTF2 and mCherry comparisons (both proteins are about 30 kD and we probably couldn't have used any larger ones in these gels).  This remained a source of frustration throughout the experiments.
@@ -208,39 +210,39 @@ In conclusion, dextranase is capable of digesting a significant fraction of high
 
 \section{Polymerization using confocal microscope}
 \label{sec:confocal-crosslinking}
- Make a cartoon figure explaining confocal setup and Bowman lab setup.
 
-Given the problems that arose using photomasks and a UV LED to make hydrogels, I tested a crosslinking method using a 405 nm laser on the Nikon A1R spinning disc confocal microscope in the JSCBB microscopy facility.  Once a region of interest has been defined with the Nikon software, the photobleaching setting can be used to selectively expose regions of the field of view to UV light.  The precursor solution therefore crosslinks in the region of interest only.  This method is similar to that used in \cite{paustian13}, but the masking is done using the A1R software instead of a physical mask in the back focal plane.
+Given the problems that arose using photomasks and a UV LED to make hydrogels, we tested a crosslinking method using a 405 nm laser on the Nikon A1R spinning disc confocal microscope in the JSCBB microscopy facility.  Once a region of interest has been defined with the Nikon software, the photobleaching setting can be used to selectively expose regions of the field of view to UV light.  The precursor solution therefore crosslinks in the region of interest only.  This method is similar to that used in \cite{paustian13}, but the masking is done using the A1R software instead of a physical mask in the back focal plane.
 
-I was able to ``draw'' hydrogels of arbitrary shapes using the 10x objective on the confocal along with the 405 nm laser at 100\% power.  Figure~\ref{fig:LW-gel-images} shows hollow rings with an outer diameter of about 600 $\mu$m and an inner diameter of 500 $\mu$m, as well as lines with a width of about 50 $\mu$m.  In order to crosslink the precursor solution, two raster-scans of the laser across the region of interest were needed, with the longest-allowable dwell time per pixel.  (In the microscope settings, the shortest dwell time is set as `1' and the longest as `1/32'.)  The precursor solution contained 0.5 mM LAP, 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB; it was used to fill 70-$\mu$m-thick sticky-tape or NOA flow chambers.
+We were able to ``draw'' hydrogels of arbitrary shapes using the 10x objective on the confocal along with the 405 nm laser at 100\% power.  Figure~\ref{fig:LW-gel-images} shows hollow rings with an outer diameter of about 600 $\mu$m and an inner diameter of 500 $\mu$m, as well as lines with a width of about 50 $\mu$m.  In order to crosslink the precursor solution, two raster-scans of the laser across the region of interest were needed, with the longest-allowable dwell time per pixel.  (In the microscope settings, the shortest dwell time is set as `1' and the longest as `1/32'.)  The precursor solution contained 0.5 mM LAP, 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB; it was used to fill 70-$\mu$m-thick sticky-tape or NOA flow chambers.
 
 % hydrogel recipes on LKM book 4 pg 47, 56
 
 Crosslinking with the confocal has several advantages over LED crosslinking.  Significantly smaller features are possible using the confocal.  50-$\mu$m features are consistent and reproducible, and features down to approximately 25 $\mu$m are possible, in contrast with the effective 100-$\mu$m lower limit using the LED and photomasks.  Additionally, arbitrary shapes, including shapes with inner cavities, are possible using the confocal.  Multiple small hydrogels can be created in the same chamber, including hydrogels of varying composition, created by removing the excess precursor solution and refilling the chamber with a different solution.  Finally, the degree of crosslinking can potentially be varied by changing the photobleaching settings.
 
-\begin{figure} % LKM book 4 pg 81 (rings), LKM book 4 pg 77 (lines)
-\caption{Image of laser-written ring control hydrogels. 9/6/16, and FSFG-A647 lines 8/25/16}
+\begin{SCfigure} % LKM book 4 pg 81 9/6/16 (rings), LKM book 4 pg 77 8/25/16 (lines)
+\caption{Image of laser-written hydrogels. (A) Ring hydrogels containing no Nups.  Reservoir contains 20 $\mu$M NTF2-A488 and mCherry. (B) Line hydrogels containing FSFG-A647. Reservoir contains precursor solution with FSFG-A647. Photobleaching within gel by 405 nm laser is evident.}
 \centering
 %\includegraphics[width=0.5\textwidth]{figs/ch03/160906_laserGelImage_200umscale.pdf}
 \includegraphics[width=0.7\textwidth]{figs/ch03/example-LW-gels}
 \label{fig:LW-gel-images}
-\end{figure} % microscope settings for rings: 1/32 dwell, 2 loops, 100% photobleaching intensity, nominal outer diameter = 600 um, nominal inner diameter = 500 um
+\end{SCfigure} % microscope settings for rings: 1/32 dwell, 2 loops, 100% photobleaching intensity, nominal outer diameter = 600 um, nominal inner diameter = 500 um
 
 The most appealing geometry made possible with confocal crosslinking is the hydrogel ring, as shown in Figs.~\ref{fig:LW-gel-images} and \ref{fig:LW-NTF2-images}.  Unlike all other hydrogel-chamber geometries, the inner reservoir is small enough to equilibrate in only a few hours (Fig.~\ref{fig:ring-acc-and-profile}).  Ideally, the hydrogel rings could have been used to test selective flux through the NPC mimics, a possibility not offered by other hydrogel-chamber geometries, which are optimized for testing influx into the hydrogels only.  Long thin lines can also be written with the confocal by repeatedly moving the field of view and re-crosslinking, overlapping the new segment with the previous.  This geometry could be useful in creating counter-propagating flow chambers with hydrogel windows.
 
-\begin{figure} % LKM book 4 pg 65
-\caption{Example accumulation and profile plots for a 50 $\mu$m thick ring}
-\centering
-\includegraphics[width=0.7\textwidth]{figs/ch03/ring-acc-and-profile}
+\begin{SCfigure} % LKM book 4 pg 65
+  \centering
+  \caption{Sample (A) accumulation and (B) intensity profile plots for a 50 $\mu$m thick confocal-crosslinked ring nominally containing 10 mg/mL FSFG. Intensity normalized to inlet reservoir.  Inlet contains 25 $\mu$M NTF2-Alexa488 and mCherry in PTB.\\}
+  \includegraphics[width=0.7\textwidth]{figs/ch03/ring-acc-and-profile}
 \label{fig:ring-acc-and-profile}
-\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) 
+\end{SCfigure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) 
 
 Confocal crosslinking does not damage FSFG, as demonstrated in Fig.~\ref{fig:LW-NTF2-images}.  Hydrogels were made using the precursor solution described above with the addition of 10 mg/mL FSFG-cys.  After soaking in PTB buffer overnight, a mixture of 25 $\mu$m each NTF2-Alexa488 and mCherry was added to the outer reservoir.  After two hours of equilibration, the FSFG hydrogels showed a partition coefficient greater than one for NTF2-Alexa488 but smaller than one for mCherry.  This indicates that FSFG is anchored into the gel and that NTF2-A488 is able to bind it.
 
 Finally, Norland Optical Adhesive (NOA) can also be crosslinked using this method.  Complicated flow chambers can be created, although it is labor-intensive and difficult to remove all of the excess NOA afterwards.
 
-\begin{figure} % LKM book 4 pg 57 (line); NEED TO FIND RING
-\caption{Image of laser-written line FSFG hydrogel. 8/17/16}
+\begin{figure} % LKM book 4 pg 57 (line); NEED TO FIND RING lookup for info and scale
+%laser-written line FSFG hydrogel. 8/17/16
+\caption{Images of laser-written hydrogels nominally containing 10 mg/mL FSFG. Reservoirs contain 20 $\mu$M NTF2-A488 and mCherry. (A) Hydrogel ring, likely with lightly-crosslinked inner reservoir. (B) Hydrogel bar separating large inlet and small outlet.}
 \centering
 %\includegraphics[width=0.5\textwidth]{figs/ch03/160817-bar-image-100umScale.pdf}
 \includegraphics[width=0.8\textwidth]{figs/ch03/example-LW-gels-NTF2}
@@ -250,19 +252,19 @@ Finally, Norland Optical Adhesive (NOA) can also be crosslinked using this metho
 
 Despite the advantages of confocal crosslinking, several obstacles combined to ultimately make this method unusable for our purposes.  The most serious problem was that of stray crosslinking.  Areas outside of the defined region of interest were often unpredictably crosslinked, as can be seen in Fig.~\ref{fig:LW-gel-images}.  Stray crosslinking outside of the rings is limited by rinsing the gels within 5 minutes of crosslinking, removing any excess precursor solution \cite{paustian13}.  However, rinsing the chamber does not remove precursor solution from the ring's inner reservoir.  Stray crosslinking in this reservoir is often more difficult to detect and more damaging to the experimental results. Figure~\ref{fig:LW-NTF2-images} illustrates the problem: the ring has been equilibrated with NTF2-A488, which has preferentially entered the inner reservoir over mCherry.  The concentration of NTF2-A488 is, in fact, higher in the inner than the outer reservoir, indicating that there is some low concentration of FSFG available in the inner reservoir for binding to NTF2.  As the hydrogel was soaked in buffer overnight after crosslinking, any mobile FSFG remaining from the precursor solution has been removed, meaning that the remaining FSFG is most likely anchored into a lightly-crosslinked hydrogel that fills the inner reservoir.  The presence of this gel alters the results of an equilibration experiment by artificially increasing the final NTF2 concentration in the inner reservoir.
 
-With help from Dani Konetski in Chris Bowman's group, I attempted to address the stray crosslinking by adding a photoinhibitor to the precursor solution.  The radical inhibitor 2,2,6,6-tetramethylpiperidine 1-oxyl (TEMPO) can be used in aqueous solution to limit crosslinking \cite{chatani14}.  I tested the effect of the photoinhibitor using a precursor solution as described above with the addition of 0.5 mM TEMPO.  While the edges of the resulting hydrogels became marginally sharper, stray crosslinking was still evident, especially in the inner reservoir.
+With help from Danielle Konetski and Christopher Bowman, we attempted to address the stray crosslinking by adding a photoinhibitor to the precursor solution.  The radical inhibitor 2,2,6,6-tetramethylpiperidine 1-oxyl (TEMPO) can be used in aqueous solution to limit crosslinking \cite{chatani14}.  We tested the effect of the photoinhibitor using a precursor solution as described above with the addition of 0.5 mM TEMPO.  While the edges of the resulting hydrogels became marginally sharper, stray crosslinking was still evident, especially in the inner reservoir.
 
 %Help from Dani Konetski in Bowman lab with TEMPO and digital light projector (didn't work)
 % TEMPO - LKM book 4 pgs 83-93
 
 Another significant problem was swelling and buckling of the hydrogels.  Despite the hope that thinner hydrogels would swell and equilibrate more easily, buckling of the rings and lines was pervasive and difficult to predict (Fig.~\ref{fig:LW-gel-images}).  Ring hydrogels in particular often developed minor leaks due to buckling.  Despite a great many attempts to improve the swelling problem (see various other sections), the rings ultimately could not be used for selective transport experiments.
 
-\begin{figure} % LKM book 4 pg 60
-\caption{Comparison of edge dip for different dwell times, loop numbers}
+\begin{SCfigure} % LKM book 4 pg 60
+\caption{Effect of dwell time and loop number on edge-dip effect in equilibrated, confocal-crosslinked ring hydrogels.  Nominal FSFG concentration is 10 mg/mL.  Reservoirs contain 20 $mu$M NTF2-A488 and mCherry in PTB.  Intensity profiles are shown for a hydrogel polymerized with $t_\mathrm{dwell} = 1/32$ and two loops (solid lines) and a hydrogel polymerized with $t_\mathrm{dwell} = 1$ and 64 loops. \\}
 \centering
-\includegraphics[width=0.5\textwidth]{figs/ch03/dwell-time-effect}
+\includegraphics[width=0.62\textwidth]{figs/ch03/dwell-time-effect}
 \label{fig:dwell-time-effect}
-\end{figure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) compared to #6 (1 dwell time, 64 loops)
+\end{SCfigure} %16-08-19, chamber 1, #2 (1/32 dwell time, 2 loops) compared to #6 (1 dwell time, 64 loops)
 
 One interesting feature of confocal crosslinking is the degree of control it affords over the illumination method.  In the A1R's photobleaching mode, the 405 nm laser is raster-scanned over each pixel in the field of view.  The shutter is toggled in order to illuminate only pixels within the predefined region of interest.  The controls permit the laser intensity, dwell time at each pixel, and number of raster scan loops to be varied.  The laser intensity was always kept at 100\%, but changing the dwell time and loop number had a dramatic effect on the final properties of the hydrogel.
 
