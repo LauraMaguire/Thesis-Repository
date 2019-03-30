@@ -177,22 +177,22 @@ Given the difficulty in resuspending and depolymerizing the alginate nanospheres
 Following the alginate nanospheres attempt, we tried creating nanopores using high-molecular-weight (high-MW) dextran.  Dextran is a branched, inert polymer that is commerically available at molecular weights up to 250 kD.  We used two sizes as porogens, 70 kD ($R_H \approx 10$ nm) and 250 kD ($R_H \approx 15$ nm) \cite{masuelli13}.  
 
 As a proof of concept, I made and crosslinked precursor solutions containing 100~$\mu$M 70~kD dextran-rhodamine or 250~kD dextran-fluorescein.  The precursor contained 12\% acrylamide and 3.3\% bisacrylamide in 50~mM sodium acetate (NaOAc) buffer pH~5 as well as 2~mM LAP.  The precursor solution was crosslinked as 1-$\mu$L hydrogels in a 400-$\mu$m tall PDMS gasket chamber for 20~s using the UV LED.  After rinsing with NaOAc buffer, the chamber was filled with a freshly-made solution of 20~mg/mL dextranase (Sigma, D5884, dextranase from \textit{Penicillium sp.}) in NaOAc buffer.  Chamber was immediately placed in the Olympus widefield's environmental chamber, held at 37$^\circ$C, and imaged overnight. The fluorescence intensity in the dextranase-treated gels decreased significantly more rapidly than that of gels which contained dextran but were not treated with dextranase (Fig.~\ref{fig:dxase-equilibration}).  In the case of 70~kD dextran, the fluorescence reached a steady value (equilibrated, same as that in the reservoir) in approximately 100 minutes, while the non-treated case wasn't equilibrated after an overnight incubation.  For the 250~kD dextran, both the treated and non-treated gels reached an equilibrium in approximately the same amount of time, but the treated gel equilibrated much closer to the reservoir level than the non-treated gel.  Both sets of gels indicate that dextranase is able to digest the dextran within the hydrogels, allowing a significant amount of dextran and digest products to leave the gel, as expected.
-\begin{figure}
-\caption{Exit of fluorescent dextran from hydrogels after digestion with dextranase.}
+\begin{SCfigure}
+\caption{Exit of fluorescent dextran from hydrogels after digestion with dextranase.  Each hydrogel originally contained 100 $\mu$M dextran and was treated with 20 mg/mL dextranase as described in the text.  The total fluorescence intensity within the gel was monitored as a function of time as it approached equilibrium with the buffer in the reservoir.  Intensity was normalized to intial gel fluorescence.}
 \centering
-\includegraphics[width=\textwidth]{figs/ch03/dxase-equilibration}
+\includegraphics[width=0.7\textwidth]{figs/ch03/dxase-equilibration}
 \label{fig:dxase-equilibration}
-\end{figure}
+\end{SCfigure}
 % dextranase gels from 1/24/18; control gels from 1/22/18
 % I also seem to have a replicate from 3/6/18
 
 The next step in attempting this porogen system was recreating the effect in FSFG gels.  Unfortunately, it became clear that the dextranase was digesting the FSFG as well as the dextran (Fig.~\ref{fig:dxase-FSFG}).  
-\begin{figure} % gel is from 6/19/18
-\caption{Dextranase digestion of FSFG}
+\begin{SCfigure} % gel is from 6/19/18
+\caption{SDS-PAGE gel demonstrating dextranase digestion of FSFG.  Three conditions are shown, with and without dextranase: precursor solution with FSFG, FSFG only, and precursor with FSFG and dextran.  In each case, addition of dextranase destroys the FSFG band at 15 kDa and produces bands of smaller degradation products.  Dextranase alone is shown for reference.  AnyKd PAGE gel (BioRad), 100 V, 80 minutes.\\}
 \centering
-\includegraphics[width=0.5\textwidth]{figs/ch03/180619_LKM_dx+FSFG}
+\includegraphics[width=0.5\textwidth]{figs/ch03/FSFG+dxase_PAGE}
 \label{fig:dxase-FSFG}
-\end{figure}
+\end{SCfigure}
  At this point, we stopped trying to use the dextran-dextranase porogen system for FSFG gels.  However, we did investigate the effect of dextran-dextranase treatment on the pore size in acrylamide hydrogels without anchored proteins.  Contrary to expectations, dextran-dextranase treatment did not increase subsequent diffusion of fluorescent proteins into the treated hydrogels.  For these experiments, I used 200~kD non-fluorescent dextran in the acrylamide precursor solution.  After the gels (either 12\% or 6\% final acrylamide concentration) were crosslinked, I treated them with 20~mg/mL dextranase solution in sodium acetate buffer (freshly made solution) for 2 hours at 37$^\circ$C in an incubator.  Then I rinsed the gels with buffer and let them sit in fresh buffer in the fridge overnight.  (Check this - sometimes I used a syringe pump to flow 10~mL of PTB through overnight, instead of letting the chamber sit.) The next day, I challenged the gels with a solution containing 10~$\mu$M each IgG-Alexa488 (150~kD) and mCherry (28~kD).  I monitored the accumulation of each protein in the gel over time (Fig.~\ref{fig:dxase-results}).  In both the 12\% and 6\% acrylamide gels, dextran-dextranase treatment did not improve influx of IgG-Alexa488 over corresponding non-treated gels.  In 6\% acrylamide gels, the influx of mCherry also remained approximately the same for treated and non-treated gels.  This indicates that dextran-dextranase treatment does not significantly increase the pore size in acrylamide hydrogels.  This is probably because significant dextran remains in the gel even after dextranase treatment, as suggested by Fig.~\ref{fig:dxase-equilibration}.
 \begin{figure}
 \caption{Accumulation of fluorescent proteins in gels treated with dextranase.}
