@@ -30,12 +30,12 @@ The PEG hydrogels made use of 20-kD 8-armed PEG-norbornene monomers (synthesized
 
 The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (lookup: Sigma) was conjugated to the terminal cysteine (see Sec.~\ref{sec:bisRxn})
 
-\begin{figure}
+\begin{SCfigure}
 \caption{Chemical structures of monomers and crosslinkers for PEG and acrylamide hydrogels. The total molecular weight of the 8-armed PEG-norbornene was 20 kD, and either a 1-kD or 8-kD PEG dithiol crosslinker was used.  Structures from Sigma and CreativePEGWorks.}
 \centering
-\includegraphics[width=0.8\textwidth]{figs/ch03/monomer-and-crosslinker}
+\includegraphics[width=0.7\textwidth]{figs/ch03/monomer-and-crosslinker}
 \label{fig:monomer-crosslinker}
-\end{figure}
+\end{SCfigure}
 
 Regardless of the monomers and crosslinkers used, a radical generator is needed to initiate polymerization.  We used either a photoinitiator, activated by UV light, or a chemical initiator system which began polymerization upon its addition to the precursor solution.  Both systems have advantages: Photoinitiators are useful for patterned polymerization using photomasks and allow the precursor to be mixed prior to polymerization, while chemical crosslinkers do not require careful protection from light.  We nearly always used a photoinitiator.
 
@@ -128,7 +128,37 @@ The no-outlet hydrogel geometries shown in Fig~\ref{fig:chamber-geometries} (C) 
 
 \section{FSFG}
 
+We made fragments of Nups to tether to the hydrogels.  All of the Nups we used came from Nsp1, which is an essential Nup for selective transport (cite something about someone who tried to delete it).  Like all FG Nups, Nsp1 has an ordered domain which anchors it to the channel wall, and a disordered, FG-filled region.  As a whole, this region aggregates in buffer \cite{frey06, frey 07} but not in cells \cite{Loren's paper even though it's technically not the whole FG domain?} where nonspecific interactions stabilize it.  
 
+\begin{SCfigure}
+\caption{Nup fragments used in nuclear pore mimic experiments.  (A) The nuclear pore with FG Nups filling the central channel. (B) The essential FG Nup Nsp1 shown as a schematic sequence, with FG124 and FSFG fragments noted. (C) Variants of FSFG: FSFG-concat 1-cys with 6 FSFG motifs and a C-terminal cysteine; FSFG-concat 2-cys, as above but twice as long; SSSG-cys, like FSFG-concat 1-cys with the F's mutated to nonbinding S's.}
+\centering
+\includegraphics[width=0.6\textwidth]{figs/ch03/Nup-constructs.pdf}
+\label{fig:Nups}
+\end{SCfigure}
+
+We use two fragments of Nsp1 developed by Loren's old group, FSFG and FG124. Each are 124 amino acids long and contain six transport-factor binding motifs.  FSFG has six FSFG motifs and is designed not to aggregate.  It's entirely disordered, quite stable, expresses well, and can be concentrated up to about 30 mg/mL before crashing out.  FG124 contains six FG motifs but they're not all the same kind (lookup: find sequence).  It aggregates in buffer over the course of several hours. It needs to be kept in 7M guanidine hydrochloride at all times.  It also expresses well.
+
+Both proteins are expressed in Bl21 DE3 Gold cells in the pRSF plasmid, which is Kan resistant.  They are tagged with a his tag on the C-terminus and are usually purifed using a metal affinity column (see appendix).  They last a long time in the fridge but PIC should be added occasionally because they are disordered.  They can be kept in almost any buffer at a wide range of pH (certainly 3-8, maybe more).  We have versions of FSFG with one or two terminal cysteines, a cysteine and a ybbr labeling tag, concat 2 and concat 3 with and without single cysteines, 2-mer and 4-mer (with and without cysteines?).  FG124 we have with and without a single cysteine.  We have full-length Nsp1 and just the FG-domain as well, though I've maybe purified them once.  They don't express nearly as well as the shorter constructs.
+
+I've tested that they look fine on an SDS PAGE gel after lyophilizing and resuspending.  Usually I lyophilize them so I can control the final nominal concentration in the precursor solution.  I let them sit at room temp to resuspend for about 20 minutes.  The cysteines in cys-labeled FSFG form disulfide bonds extremely rapidly after being removed from reducing agents.  Put the Ellman's reagent protocol in the appendix about bis-labeling.  You can't use a Bradford on them because they don't have the right amino acids (?) so use a BCA.
+
+I need a figure for the variants.
+
+\subsection{FSFG concat 2 and concat 3}
+In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
+
+\subsection{SSSG negative control}
+The behavior of NTF2 and mCherry in FSFG hydrogels can be compared to that in hydrogels containing no Nups.  However, it is possible that the presence of FSFG in the precursor solution changes the final gel properties such as pore size, or that non-specific interactions between the Nup peptide and test proteins alter the behavior of the test proteins.  To account for these possibilities, we designed a negative control peptide which is identical to FSFG except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. Figure~\ref{fig:SSSG-control-comparison} compares the intensity profile of a 10 wt\% PEG hydrogel containing a nominal 10 mg/mL SSSG to that of a hydrogel with no nups.  There is no dramatic difference between the two profiles, suggesting that the presence of peptide in the hydrogel does not itself alter the diffusion of NTF2 and mCherry.  Following the initial tests, SSSG gels were used periodically to confirm that no-Nup gels served well as negative controls, but they were not used regularly as controls.
+
+The SSSG peptide was used in an identical manner to FSFG: SSSG-cys was his-tagged, inserted into pRSF, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column using the same procedure as FSFG variants and had a high yield.  As with FSFG, SSSG is stable and non-aggregating over a wide range of conditions.
+%I think Eric did most of the cloning work on this project and/or we bought the gene.
+\begin{SCfigure} % 6/9/15 for both SSSG and control (no-nup) gels, not sure whether or not I ran it personally, LKM book 2 pg 24
+\caption{Comparison of intensity profiles for SSSG and no-nup (control) gels.\\}
+\centering
+\includegraphics[width=0.4\textwidth]{figs/ch03/SSSG-control-comparison}
+\label{fig:SSSG-control-comparison}
+\end{SCfigure} 
 
 \section{Pore size}
 
@@ -142,7 +172,9 @@ Finally, we switched to acrylamide gels because the pore size was slightly bette
 
 \section{Porogens}
 
-I tried to make gels with a larger pore size by using porogens.  These are nanoscale particles that can be mixed into the gel precursor solution and then removed/dissolved after crosslinking.  The idea is that then they would leave pores of a better size and also make it easier for the gel to swell to equilibrium.  I tried alginate nanospheres (which could then be removed by chelating the calcium ions) and large molecular-weight dextrans that could be removed by digesting with dextranase.  Neither of these options worked out.  I couldn't get the nanospheres to reliably resuspend in the precusor solution.  The dextran/dextranase system was more promising, but too much dextran remained in the hydrogels even after dextranase digestion.  Also the dextranase chewed up the FSFG.
+Given the difficulties of increasing the average pore size by changing the hydrogel composition, we investigated the possibility of introducing a porogen into the precursor solution.  To be useful, the porogen would need to be a macromolecule or particle 10-100 nm in diameter that could be evenly distributed throughout the precursor solution and then hydrogel without disrupting polymerization.  The porogen would then be digested, dissolved, or otherwise removed from the hydrogel, as it would be too large to passively diffuse from the gel on a reasonable timescale.  The pores left behind would then increase the overall pore size of the gel as well as potentially allowing the hydrogel network to swell to equilibrium even while confined in a chamber.
+
+Two possible porogens were tried: Alginate nanospheres and high-molecular-weight dextran.  Alginate can be polymerized and depolymerized through the addition or removal of calcium ions, and dextran can be digested by dextranase.  Although both showed promise, neither was ultimately well-suited to increasing a hydrogel's pore size.
 
 \subsection{Alginate nanospheres}
 % LKM book 5, pgs 26-36
@@ -194,19 +226,20 @@ The next step in attempting this porogen system was recreating the effect in FSF
 \label{fig:dxase-FSFG}
 \end{SCfigure}
  At this point, we stopped trying to use the dextran-dextranase porogen system for FSFG gels.  However, we did investigate the effect of dextran-dextranase treatment on the pore size in acrylamide hydrogels without anchored proteins.  Contrary to expectations, dextran-dextranase treatment did not increase subsequent diffusion of fluorescent proteins into the treated hydrogels.  For these experiments, I used 200~kD non-fluorescent dextran in the acrylamide precursor solution.  After the gels (either 12\% or 6\% final acrylamide concentration) were crosslinked, I treated them with 20~mg/mL dextranase solution in sodium acetate buffer (freshly made solution) for 2 hours at 37$^\circ$C in an incubator.  Then I rinsed the gels with buffer and let them sit in fresh buffer in the fridge overnight.  (Check this - sometimes I used a syringe pump to flow 10~mL of PTB through overnight, instead of letting the chamber sit.) The next day, I challenged the gels with a solution containing 10~$\mu$M each IgG-Alexa488 (150~kD) and mCherry (28~kD).  I monitored the accumulation of each protein in the gel over time (Fig.~\ref{fig:dxase-results}).  In both the 12\% and 6\% acrylamide gels, dextran-dextranase treatment did not improve influx of IgG-Alexa488 over corresponding non-treated gels.  In 6\% acrylamide gels, the influx of mCherry also remained approximately the same for treated and non-treated gels.  This indicates that dextran-dextranase treatment does not significantly increase the pore size in acrylamide hydrogels.  This is probably because significant dextran remains in the gel even after dextranase treatment, as suggested by Fig.~\ref{fig:dxase-equilibration}.
-\begin{figure}
-\caption{Accumulation of fluorescent proteins in gels treated with dextranase.}
+\begin{SCfigure}
+\caption{Comparison of protein accumulation within hydrogels made with or without dextran.  Reservoirs contained 10 $\mu$M IgG-A488 and mCherry. (A) Accumulation in a 12\% acrylamide hydrogel containing no Nups or dextran. (B) Accumulation in a 12\% acrylamide hydrogel containing no Nups but made with 15\% w/v 200 kDa dextran and digested for 2 hours at 37$^\circ$C with 20 mg/mL dextranase.}
 \centering
-\includegraphics[width=\textwidth]{figs/ch03/dxase-results}
+\includegraphics[width=0.7\textwidth]{figs/ch03/dxase-results}
 \label{fig:dxase-results}
-\end{figure}
-Unusually, the 12\% acrylamide gels showed an odd effect with mCherry accumulation.  In two separate instances, dextranase treatment appeared to suppress the entry of mCherry into both the dextran-containing hydrogel and the no-dextran control gel in the same chamber (Fig.~{fig:mCherry-suppression}).  IgG-Alexa488 accumulation remained the same as a non-treated gel.  Tests of gels without dextran but treated with dextranase did not show this mCherry suppression.  I didn't thoroughly investigate this effect.  The only thing I can think of that's different between the gels that did and didn't show mCherry suppression is that the gels that suppressed mCherry were in the presence of both dextran and dextranase, and therefore also dextran digestion products (which are mostly maltose, I believe).  Maybe the presence of maltose (despite the fact that it should have been thoroughly rinsed away) interfered with the accumulation of mCherry.  It's odd.
-\begin{figure}
-\caption{Suppression of mCherry in control gels that were in the presence of dextranase, dextran, and dextran digestion products (maltose).}
-\centering
-\includegraphics[width=\textwidth]{figs/ch03/mCherry-suppression}
-\label{fig:mCherry-suppression}
-\end{figure}
+\end{SCfigure} %a - 2018-10-9_1 (no nups, no dx, 12% ac), b = 2018-10-9_2 (no nups, 15% dx 200 kD, dxase treated, 12% ac)
+%Unusually, the 12\% acrylamide gels showed an odd effect with mCherry accumulation.  In two separate instances, dextranase treatment appeared to suppress the entry of mCherry into both the dextran-containing hydrogel and the no-dextran control gel in the same chamber (Fig.~{fig:mCherry-suppression}).  IgG-Alexa488 accumulation remained the same as a non-treated gel.  Tests of gels without dextran but treated with dextranase did not show this mCherry suppression.  I didn't thoroughly investigate this effect.  The only thing I can think of that's different between the gels that did and didn't show mCherry suppression is that the gels that suppressed mCherry were in the presence of both dextran and dextranase, and therefore also dextran digestion products (which are mostly maltose, I believe).  Maybe the presence of maltose (despite the fact that it should have been thoroughly rinsed away) interfered with the accumulation of mCherry.  It's odd.
+%\begin{figure}
+%\caption{Suppression of mCherry in control gels that were in the presence of dextranase, dextran, and dextran digestion products (maltose).}
+%\centering
+%\includegraphics[width=\textwidth]{figs/ch03/mCherry-suppression}
+%\label{fig:mCherry-suppression}
+%\end{figure}
+
 In conclusion, dextranase is capable of digesting a significant fraction of high-MW dextran within an acrylamide hydrogel.  However, a significant amount of the dextran still remains in the gel even after an overnight rinse, meaning that dextran-dextranase treatment does not result in noticeably larger pores overall.  In addition, the dextranase we used digested the FSFG peptide as well as dextran.  Dextran-dextranase treatment is not suitable as a porogen system for our hydrogels.
 
 \section{Polymerization using confocal microscope}
@@ -273,32 +306,30 @@ Generally speaking, a longer dwell time at each pixel and a low number of loops 
 
 In conclusion, confocal crosslinking has a number of advantages over LED crosslinking, and a corresponding number of obstacles.  Despite the attraction of testing selective transport using small hydrogel rings, we ultimately chose to use a much simpler hydrogel geometry and crosslinking method.
 
-\section{Nup and transport factor constructs}
-Figures
-\begin{enumerate}
-\item cartoon of various NTF2 constructs
-\item table with FSFG variant sequences?
-\item SDS-PAGE with FSFG cct2?
-\end{enumerate}
+\section{Transport factor constructs}
 
-\subsection{SSSG negative control}
-The behavior of NTF2 and mCherry in FSFG hydrogels can be compared to that in hydrogels containing no Nups.  However, it is possible that the presence of FSFG in the precursor solution changes the final gel properties such as pore size, or that non-specific interactions between the Nup peptide and test proteins alter the behavior of the test proteins.  To account for these possibilities, we designed a negative control peptide which is identical to FSFG except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. Figure~\ref{fig:SSSG-control-comparison} compares the intensity profile of a 10 wt\% PEG hydrogel containing a nominal 10 mg/mL SSSG to that of a hydrogel with no nups.  There is no dramatic difference between the two profiles, suggesting that the presence of peptide in the hydrogel does not itself alter the diffusion of NTF2 and mCherry.  Following the initial tests, SSSG gels were used periodically to confirm that no-Nup gels served well as negative controls, but they were not used regularly as controls.
+A wide variety of transport factors exist, specialized for the import and export of particular cargo.  Almost all protein separation experiments we performed made use of Nuclear Transport Factor 2 (NTF2).  This transport factor is relatively small (28 kDa dimer) and, unlike most other transport factors, does not require active release of cargo after transport. NTF2 transports RanGDP as part of a mechanism which maintains a high RanGTP concentration in the nucleus, necessary for the active release of other protein cargos \cite{ribbeck98}.  The choice to focus on NTF2 was made for a number of reasons: the lack of facilitated release makes it a simple first choice to study, it is small enough to move reasonably quickly through hydrogels, and it is readily expressed in bacteria and purified.
 
-The SSSG peptide was used in an identical manner to FSFG: SSSG-cys was his-tagged, inserted into pRSF, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column using the same procedure as FSFG variants and had a high yield.  As with FSFG, SSSG is stable and non-aggregating over a wide range of conditions.
-%I think Eric did most of the cloning work on this project and/or we bought the gene.
-\begin{figure} % 6/9/15 for both SSSG and control (no-nup) gels, not sure whether or not I ran it personally, LKM book 2 pg 24
-\caption{Comparison of intensity profiles for SSSG and no-nup (control) gels.}
-\centering
-\includegraphics[width=0.8\textwidth]{figs/ch03/SSSG-control-comparison}
-\label{fig:SSSG-control-comparison}
-\end{figure} 
+His-tagged yeast NTF2 in the Kan-resistant plasmid pRSF was expressed in BL21 DE3 Gold cells and purified using the procedure described in Appendix~\ref{appx:protein-purification}.  When necessary, NTF2 was covalently labeled with fluorescent dyes as described in Appendix~\ref{appx:dye-labeling}.  In addition to wild-type yeast NTF2, several variants were created in order to address shortcomings of NTF2 in the experimental setup.  In particular, efforts were made to prevent the presence of any NTF2 monomers and to eliminate the need for dye labeling.  Finally, a point mutant of NTF2 was created with the intent of disrupting the binding pocket and providing another non-binding negative control protein to complement mCherry.
+
+Beyond NTF2, we briefly tested the influx of Kap121, a member of the well-studied karyopherin family of transport factors, into hydrogels.  Although the Kap121 and its fluorescent cargo protein clearly bound to the FSFG in the hydrogel, the pore size remained too small for significant import into the gel.
+
+The remainder of this section provides an overview of the transport factor constructs we created.  Much of the cloning work was done by Eric Verbeke and Scott Tilden.
+
 \subsection{Covalently-tethered NTF2 dimer}
-One recurring problem we observed was that NTF2 moves faster in the hydrogels and equilibrates to a higher level than mCherry, even in SSSG gels or gels with no Nups.  This could be because NTF2 is dissociating into two monomers which are smaller and move faster than mCherry.  This shouldn't be happening, because the $K_D$ of mammalian NTF2 is about 1 $\mu$M \cite{chaillan-huntington01}, which should be about the same for our yeast NTF2.  However, to avoid this problem, we tried to make a covalently-tethered version of NTF2, consisting of two NTF2 monomers connected by a flexible amino-acid tether.  (Look up tether compositions and put in a table.)  We tried tethers of several lengths, including 15, 12, and smaller (look this up, it was a mutagenesis accident).  Unfortunately, the tether probably messed up the dimerization interface.  Look up whether we ever got these expressed and purified.  If so, they didn't bind.  Maybe show an SDS-PAGE gel for the purification and an accumulation plot/ picture to show they didn't bind. Eric and Scott did most of the cloning work on this project.
+
+Despite the work done to increase the hydrogel's average pore size, we often observed that NTF2 and mCherry equilibrate to different extents and on different timescales even in hydrogels containing no Nups or nonbinding Nups.  As these proteins are nominally the same size, this implies that that they may be interacting differently with the hydrogel substrate, or that they may not be the same size after all. NTF2 is a 28 kDa homodimer whose monomers are 14 kDa.  If there exists an appreciable population of NTF2 monomers within the hydrogel, these will equilibrate more rapidly and to a higher concentration than the larger mCherry.  The dissociation constant $K_D$ of mammalian NTF2 is about 1 $\mu$M \cite{chaillan-huntington01}.  Assuming this is approximately true for yeast NTF2 as well, there should be very little monomeric NTF2 present at our typical reservoir concentration of 20 $\mu$M.
+
+However, we designed a covalently-tethered version of NTF2 to eliminate the possibility of monomerization.  This consisted of two NTF2 monomers connected by a flexible amino-acid tether (Fig.~\ref{fig:NTF2} (A)).  Several trial tethers with their length and composition are shown below:
+
 \begin{align*}
 \mathrm{10aa-linker}&:&\mathrm{TSGSGSGSPG}\\
 \mathrm{15aa-linker}&:&\mathrm{TSGSPRGSSGSGSPG}\\
 \mathrm{18aa-linker}&:&\mathrm{TSPGLVSRGSGSGSGSPG}
 \end{align*}
+
+Eric Verbeke and Scott Tilden successfully cloned covalently-tethered NTF2 with all three tethers.  Unfortunately, no binding was seen when the NTF2 was introduced to an FSFG hydrogel.  It is likely that the tether interferes with the binding pockets or dimerization interface. (lookup: did we get these to express?  any test?)
+
 \subsection{NTF2-GFP}
 
 Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, Eric Verbeke and I created a version of NTF2 tethered to GFP by a short linker.  
@@ -306,18 +337,18 @@ Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling 
 This construct is in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column in PTB and 1:1000 PIC and eluted with 250 mM imidazole, yielding ample protein with moderate degradation products.
 
 
-\begin{figure} % GFP-NTF2 = 150917, GFP-NTF2x2 = 150928
-\caption{Intensity profile for GFP-NTF2 and mCherry showing no binding to FSFG hydrogel.}
-\centering
-\includegraphics[width=\textwidth]{figs/ch03/GFP-NTF2-attempts.pdf}
-\label{fig:GFP-NTF2}
-\end{figure} 
+%\begin{figure} % GFP-NTF2 = 150917, GFP-NTF2x2 = 150928
+%\caption{Intensity profile for GFP-NTF2 and mCherry showing no binding to FSFG hydrogel.}
+%\centering
+%\includegraphics[width=\textwidth]{figs/ch03/GFP-NTF2-attempts.pdf}
+%\label{fig:GFP-NTF2}
+%\end{figure} 
 
 \begin{figure} % LKM book 4 pg 60
 \caption{Cartoon of various NTF2 constructs}
 \centering
-\includegraphics[width=0.6\textwidth]{figs/ch03/NTF2-constructs}
-\label{fig:Kap121}
+\includegraphics[width=\textwidth]{figs/ch03/NTF2-constructs}
+\label{fig:NTF2}
 \end{figure}
 
 \subsection{Kap121 and NLS-GFP}
@@ -328,7 +359,7 @@ Kap121-GST was expressed and purified following \cite{tetenbaum-novatt12} and th
 \begin{figure} % LKM book 4 pg 60
 \caption{SDS-PAGE showing Kap121 purification (purified by Chris Lawton), picture of influx, intensity profiles}
 \centering
-\includegraphics[width=\textwidth]{figs/ch03/Kap121}
+\includegraphics[width=0.8\textwidth]{figs/ch03/Kap121}
 \label{fig:Kap121}
 \end{figure} % 12 polyacrylamide gel, 2hr, 100V, 10uL samples, purified by Chris Lawton, 5/28/15, saved in Laura's folder on lab desktop
 
@@ -338,9 +369,6 @@ Kap121 binding and influx was tested using a hydrogel made from precursor soluti
 
  % same as 110 mg/mL 20kD 8-armed PEG-norbornene, 11 mg/mL 1kD PEG-dithiol, and 1 mM TCEP in PTB;
 %same as 10 wt% PEG, 0.5 thiol:ene ratio (LKM book 2 pg 73)
-
-\subsection{FSFG concat 2 and concat 3}
-In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
 
 \section{Dye-labeling and free dye}
 % matlab results are saved in /Volumes/houghgrp/Old Processed Images/Old Analysis/FSFG dataset/exponent-fits.mat
