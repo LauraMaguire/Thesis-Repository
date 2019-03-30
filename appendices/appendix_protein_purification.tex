@@ -1,63 +1,72 @@
-\chapter{Second virial approximation}~\label{appx:2nd_virial}
-DDFT requires approximation of the excess free energy~\cite{archer_dynamical_05}. 
-In general, the excess free energy can be expressed as a perturbative expansion
-of integrals of the one-body density and the Mayer
-function~\cite{hansen_theory_06}
-%
-\begin{align}
-  \mathcal{F}^{\tx{ex}} &= \frac{1}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
-  F_M( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r} \\
-    &+ \frac{1}{6} \int \int \int 
-    \rho( \bm{r} ) \rho( \bm{r}') \rho( \bm{r}'')
-    F_M( \bm{r} -\bm{r}' ) F_M( \bm{r}' -\bm{r}'' ) F_M( \bm{r} -\bm{r}'' ) 
-    \dif \bm{r} \dif \bm{r}' \dif \bm{r}'' \\
-   &+ \ldots
-\end{align}
-%
-where $F_M = \exp( -\beta V ) - 1 $ is the Mayer function.  This is the virial expansion.  At low density, the free energy is given
-by the second virial approximation
-%
-\begin{equation}~\label{eqn:2nd_virial}
-  \mathcal{F}^{\tx{ex}} \approx -\frac{k_B T}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
-  F_M( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r}.
-\end{equation}
-%
-In the second virial approximation,  the direct pair correlation function is
-%
-\begin{equation}
-  c^{(2)}(\bm{r},\bm{r}') = 
-  -\beta \frac{\delta ^2 \mathcal{F}}{\delta \rho(\bm{r}) \delta \rho(\bm{r}')}
-  \approx  F_M( \bm{r} -\bm{r}' ).
-\end{equation}
-%
-Consider steric interactions where overlap is forbidden. In this
-approximation, 
-%
-\begin{equation}
-  c^{(2)}(\bm{r}-\bm{r}') = 
-  \begin{cases}
-    -1 & \text{particles overlap} \\
-    0  & \text{no overlap}
-  \end{cases}.
-\end{equation}
-%
-Thus in the second virial approximation, the correlations are approximated as
-correlation holes at distances corresponding to particle overlap, and
-non-overlapping particles are completely uncorrelated.  Note that for a finite
-potential at high
-temperature, we can Taylor expand the Mayer function to give
-%
-\begin{equation}
-  -\beta \mathcal{F}^{\tx{ex}} \approx \frac{1}{2} \int \int \rho( \bm{r} ) \rho( \bm{r}') 
-  V( \bm{r} -\bm{r}' ) \dif \bm{r}' \dif \bm{r},
-\end{equation}
-%
-which is the mean field (random-phase) approximation~\cite{hansen_theory_06}.
-For anisotropic particles, the Mayer function depends on the orientation
-$\bm{\hat{u}}$ of each particle, $F_M(\bm{r} -\bm{r}') \rightarrow F_M(\bm{r}
--\bm{r}', \bm{\hat{u}}, \bm{\hat{u}}')$.
+\chapter{Protein expression and purification}~\label{appx:protein-purification}
 
-For spherocylinders in 2D, including finite width in the Mayer function in
-\eqnref{eqn:2nd_virial} amounts to adding a constant to the free energy, which 
-drops when taking the functional derivative.  Therefore, the second virial
-approximation can only model the infinitely thin rod system.
+\section{Purification of his-tagged protein with metal affinity column}
+
+Most proteins used in this work contain a C-terminal 6x histidine tag.  These proteins can be purified using a cobalt or nickel affinity column.  Proteins purified with this protocol include all Nup variants (FSFG, FG124, etc.), NTF2, mCherry, and GFP.  This protocol is designed for the purification of one 0.5-L cell pellet.  If running more than one column at once, adjust the total buffer volumes accordingly.
+
+This protocol is used for all Nup variants.  For FSFG variants, use the urea concentrations noted in the buffer table.  For FG124 purifications, use 7M guanidine hydrochloride in all buffers (including elution) instead of urea.  Always make urea and guanidine hydrochloride solutions the same day they will be used. \textbf{Do not use urea, guanidine hydrochloride, or other denaturants when purifying ordered proteins.}
+
+To prevent aggregation, BME must be used for any protein that contains two cysteines. \textbf{Do not use BME if not necessary; any BME solutions must be disposed of in the hazardous waste container in the fume hood.}
+
+Add the protease inhibitor cocktail (PIC) stock in DMSO immediately before using the buffer.  PIC has a lifetime of about 30 minutes in aqueous solution.  Store all buffers on ice before use.  Incubations should be done at 4$^\circ$, but the column can be used at room temperature.
+
+\begin{figure}
+\caption{Buffer guide for cobalt or nickel affinity column purifications.}
+\centering
+\includegraphics[width=0.8\textwidth]{figs/apps/TALON-table}
+\label{fig:TALON-table}
+\end{figure}
+\begin{enumerate}
+\item Remove the periplasmic matrix, if not already done (Sec.~\ref{sec:ppmr}).
+
+\item Lyse the cells. Add 15 mL of lysis buffer to thawed 0.5-L pellet. Resuspend pellet by pipetting up and down or vortexing and then lyse by sonicating.  Keep solution on ice. lookup: sonicator brand.  Sonicate for at least two minutes total, in 30s-on, 60s-off pulses.  Power delivered to sample should be at least 20 W.  Centrifuge resulting lysate for about 15 mins on top speed of either floor centrifuge to pellet cellular debris.
+ 
+\item Prepare the metal-affinity column.  Gently resuspend the resin into a slurry by slowly turning the bottle.  The beads will be crushed if shaken vigorously. Into a disposable plastic column, pipette enough slurry to contain 3.5-4 mL of beads once the storage buffer has drained out (typically 6-8 mL of slurry, if beads and buffer are stored in a one-to-one mixture).
+ 
+Equilibrate the column by running 5-10x the bed volume (25-50 mL ) of buffer through the column.  Do not let the column run dry at any point in the purification.
+ 
+\item Add supernatant to column and nutate for one hour at 4$^\circ$C.
+
+\item Drain the column. Add wash I buffer and nutate at 4$^\circ$C for 10 minutes.
+
+\item Drain the column. Add Wash II buffer, nutate at 4$^\circ$C for 10 minutes, and drain.
+
+\item Elute and collect the protein.  Three elution methods can be used:
+\begin{enumerate}
+\item \textit{Fractional elution:} Prepare a row of eppendorfs.  Add 5-10 mL elution buffer to open column and catch the draining liquid in fractions with 0.5-1.0 mL (8-16 drops) per eppendorf.  Do not let the column dry.  After all elutions are completed, use the Bradford test to pool the fractions with similar protein concentrations.  \textbf{The Bradford test is unreliable for Nup variants and batch elution should be used.} Fractional elution gives the highest protein concentration and should be used where possible.
+\item \textit{Batch elution:} Add a bed volume of elution buffer to column and let drain to remove waste buffer from column.  Watch resin color change carefully so as not to lose protein.  Add 3-5 mL of elution buffer and collect flow-through.
+\item \textit{Nutated elution:} Add 5-10 mL of elution buffer to sealed column and nutate for 10-30 minutes.  Collect flow-through.
+\end{enumerate}
+
+Early elutions should be fractional or batch elutions.
+
+9) Clean and store the column. Run 5 bed volumes of MES (lookup: precise components) through the column, then 5 bed volumes DI water. 
+Run about 20 mL MES buffer through the column, then 20 mL DI water.  Store 1:1 in 20\% ethanol.
+
+\end{enumerate}
+
+\section{Periplasmic matrix removal (PPMR)}
+\label{sec:ppmr}
+
+The periplasmic matrix (PPM) contains proteases and debris that binds to metal affinity columns.  Removing the PPM before protein purification significantly increase the yield of his-tagged disordered proteins.
+
+\textbf{Note:} Keep both solutions on ice.  Resuspension of pellets should be done by gently pipetting up and down and swirling the tubes.  Do not vortex to resuspend.  Rough treatment of the cells may lyse them.
+
+\begin{enumerate}
+
+\item Spin down cell culture at 5000 rpm (lookup: G and rotor, centrifuge brand) for 10 minutes at 4$^\circ$C.
+
+\item Resuspend pellets in at least 50 mL cold SHE buffer (20\% Sucrose, 50mM HEPES, 1mM EDTA pH 7.9) per liter of culture.  Keep tubes on ice.
+
+\item Spin down for 10 minutes at 5000 rpm at 4$^\circ$C.
+
+\item Resuspend pellets in at least 50 mL cold 5mM MgSO4 per liter of culture.
+
+\item Incubate tubes on ice for 10 minutes.
+
+\item Spin down for 10 minutes at 5000 rpm at 4$^\circ$C.
+
+\item Proceed to purification or flash-freeze tubes in liquid nitrogen and store in ultra-low freezer.
+\end{enumerate}
+
+
