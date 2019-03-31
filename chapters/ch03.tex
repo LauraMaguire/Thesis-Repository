@@ -1,17 +1,18 @@
 \chapter{Hydrogel design for protein separation}\label{ch03}
 
-In order to test the predictions of our bound-state diffusion model of selectivity, we needed to develop a biomaterial that could support bound diffusion and be used to test selectivity.  There are several biological examples which show selectivity that could be explained by bound-state diffusion, including nucleocytoplasmic transport, liquid-liquid phase separated droplets, diffusion of DNA-damage-repair proteins in the nucleus, and passage through mucus.  We decided to focus on making a material that mimics the nuclear pore.
+In order to test the predictions of our bound-state diffusion model of selectivity, we needed to develop a biomaterial that could support bound diffusion and be used to test selectivity.  There are several biological examples which show selectivity that could be explained by bound-state diffusion, including nucleocytoplasmic transport, liquid-liquid phase separated droplets, diffusion of DNA-damage-repair proteins in the nucleus, and passage through mucus\cite{zhou12,witten17,hoiby10, rudolph18}.  We decided to focus on making a material that mimics the environment of the nuclear pore.
 
-One of the attractions of the bound-state diffusion model is that it does not rely on the geometry of the selective material.  As long as the dimensions of the material are significantly larger than the protein diffusing through it, there is no practical difference between a nanoscale cylindrical pore and a macroscale bulk material.  For ease of fabrication and testing, as well as in the hopes that it would scale up well, we opted to design a bulk material for protein separation.
+One of the attractions of the bound-state diffusion model is that it does not rely on the geometry of the selective material.  As long as the dimensions of the material are significantly larger than the protein diffusing through it, there is no practical difference between a nanoscale cylindrical pore and a macroscale bulk material.  For ease of fabrication and testing, we opted to design a bulk material for protein separation.
 
-A hydrogel substrate was chosen as the basis of the nuclear pore mimic and protein fragments taken from FG Nups anchored into it.  Hydrogels are versatile materials, many of which are bio-compatible, whose properties can often be easily tuned.  We used a hydrogel substrate to provide an inert scaffold to which fragments of FG Nups were conjugated.  These Nups were conjugated to the hydrogel at one end and free at the other, mimicking the arrangement found in the nuclear pore and providing a mechanism of tethered bound diffusion.  The properties of these Nups, such as their length, number of transport factor binding motifs, and propensity towards aggregation, can be easily varied in order to test how these properties impact bound-state diffusion and thus protein selectivity.
+A hydrogel substrate was chosen as the basis of the nuclear pore mimic and protein fragments taken from FG Nups anchored into it.  Hydrogels are versatile materials, many of which are bio-compatible, many of whose properties can be easily tuned .  We used a hydrogel substrate to provide an inert scaffold to which fragments of FG Nups were conjugated.  These Nups were conjugated to the hydrogel at one end and free at the other, mimicking the arrangement found in the nuclear pore and providing a mechanism of tethered bound diffusion.  The properties of these Nups, such as their length, number of transport factor binding motifs, and propensity towards aggregation, can be easily varied in order to test how these properties impact bound-state diffusion and thus protein selectivity.
 
-This hydrogel model is therefore the simplest way we could think of to make a material to explore the effects of bound diffusion on protein separation.  It's inspired by the nuclear pore but does not attempt to reproduce its mechanism of selectivity exactly.  Instead, we hoped to show that bound-state diffusion was measurable and controllable in a biomaterial, paving the way for molecular filters that might make use of this principle.
+This hydrogel model is therefore the simplest way to make a material to explore the effects of bound diffusion on protein separation.  While it is inspired by the nuclear pore, the goal is not to directly reproduce the mechanism of nucleocytoplasmic transport.  Instead, we hoped to show that bound-state diffusion was measurable and controllable in a biomaterial, paving the way for molecular filters that might make use of this principle.
 
-Over the course of making these materials, we ran into several significant roadblocks.  Although hydrogels with a wide range of properties have been well-studied, gels suitable for protein separation are harder to come by.  They require an intermediate pore size, large enough that the diffusion of a protein is not significantly hindered by the presence of the hydrogel meshwork, but small enough that the Nup peptides can easily reach the protein as it diffuses.  This average pore size of 5-20 nm is difficult to find, though much smaller and much larger pores are easy to make.  The swelling of the gels is also a problem, since we need them to be confined so that they pose an actual barrier to the proteins we are trying to separate.  The creation of a hydrogel for selective protein separation poses many stringent requirements, often in competition with each other.  This chapter describes the setbacks we faced and the progress we have made towards creating a hydrogel-based biomaterial suitable for selective separation of proteins.
+Over the course of making these materials, we ran into several significant roadblocks.  Although hydrogels with a wide range of properties have been well-studied, gels suitable for protein separation are harder to come by.  They require an intermediate pore size, large enough that the diffusion of a protein is not significantly hindered by the presence of the hydrogel meshwork, but small enough that the Nup peptides can easily reach the protein as it diffuses.  This average pore size of 5-20 nm is difficult to find, though much smaller and much larger pores are easy to make.  The problem of pore size is made more difficult by the need to create a well-sealed hydrogel barrier in order to separate proteins; such a barrier must necessarily be confined and therefore unable to swell to its equilibrium size. The creation of a hydrogel for selective protein separation poses many stringent requirements, often in competition with each other.  This chapter describes the setbacks we faced and the progress we have made towards creating a hydrogel-based biomaterial suitable for selective separation of proteins.
 
 
 \section{Hydrogel fabrication}
+\label{sec:hydrogel-fabrication}
 
 \begin{figure}
 \caption{Overview of hydrogel fabrication and fluorescent protein influx. A precursor solution is mixed, containing hydrogel monomers, crosslinkers, a photoinitiator, and the Nup fragment.  Upon exposure to UV light, the precursor solution crosslinks, and one end of each Nup is conjugated to the hydrogel.  The diffusion of a fluorescently-tagged transport factor can then be compared to that of a similarly-sized inert fluorescent protein.}
@@ -28,7 +29,7 @@ There were four major components to the precursor solution: monomers, crosslinke
 
 The PEG hydrogels made use of 20-kD 8-armed PEG-norbornene monomers (synthesized by the Bryant lab and Nathan Crossette) and either a 1-kD or 8-kD PEG-dithiol crosslinker (Sigma) (Fig.~\ref{fig:monomer-crosslinker}).  To conjugate the Nup fragment to the PEG hydrogels, a cysteine was engineered at one end (lookup: which end?).  Both the crosslinker and Nup fragment made use of Michael-thiol ``click'' chemistry \cite{chatani14}\cite{nair14}.
 
-The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (lookup: Sigma) was conjugated to the terminal cysteine (see Sec.~\ref{sec:bisRxn})
+The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (lookup: Sigma) was conjugated to the terminal cysteine (see Appendix~\ref{appx:bis-labeling}).
 
 \begin{SCfigure}
 \caption{Chemical structures of monomers and crosslinkers for PEG and acrylamide hydrogels. The total molecular weight of the 8-armed PEG-norbornene was 20 kD, and either a 1-kD or 8-kD PEG dithiol crosslinker was used.  Structures from Sigma and CreativePEGWorks.}
@@ -126,9 +127,9 @@ Finally, Fig.~\ref{fig:chamber-geometries} (F) shows an x-shaped chamber with fo
 
 The no-outlet hydrogel geometries shown in Fig~\ref{fig:chamber-geometries} (C) and (E) are much simpler to make but do not allow for measurement of protein selectivity.  Panel (E) shows a variation on the small-outlet chamber in which the outlet is filled with hydrogel and crosslinked using a photomask. Finally, the droplet gels in panel (C) were added to the chamber before assembly and crosslinked without a mask (Fig.~\ref{fig:photomask} (B)).  These are the only hydrogels which were made without a mask, which greatly reduced the irreproducible edge effects (also seen in Sec.~\ref{sec:confocal-crosslinking}).  Droplet gels have volumes of 0.5-2 $\mu$L and equilibrate 30-kDa proteins in 24-48 hours.  While these gels cannot be used to monitor selective transport through and exit from the gel, we can use them to measure the diffusion constants of proteins within the gel and the selective influx of transport factors.  Chapter~\ref{ch:bound-diffusion} focuses entirely on droplet hydrogels made in 400-$\mu$m-thick PDMS gasket chambers with two PEEK-less ports.
 
-\section{FSFG}
+\section{FG Nup peptides}
 
-We made fragments of Nups to tether to the hydrogels.  All of the Nups we used came from Nsp1, which is an essential Nup for selective transport (cite something about someone who tried to delete it).  Like all FG Nups, Nsp1 has an ordered domain which anchors it to the channel wall, and a disordered, FG-filled region.  As a whole, this region aggregates in buffer \cite{frey06, frey 07} but not in cells \cite{Loren's paper even though it's technically not the whole FG domain?} where nonspecific interactions stabilize it.  
+The remaining components of the nuclear pore mimics are the FG Nup fragments which are tethered to the hydrogel scaffold.  There are a wide range of FG Nups, many of which can be deleted without apparently impacting nuclear transport \cite{strawn04, zeitler04}.  We chose to use Nsp1, an essential FG Nup for selective transport, as the basis for our Nup peptides. Like all FG Nups, Nsp1 has an ordered domain which anchors it to the channel wall, and a disordered region containing many FG motifs.  As a whole, the disordered region aggregates when isolated in buffer \cite{frey06, frey 07}.
 
 \begin{SCfigure}
 \caption{Nup fragments used in nuclear pore mimic experiments.  (A) The nuclear pore with FG Nups filling the central channel. (B) The essential FG Nup Nsp1 shown as a schematic sequence, with FG124 and FSFG fragments noted. (C) Variants of FSFG: FSFG-concat 1-cys with 6 FSFG motifs and a C-terminal cysteine; FSFG-concat 2-cys, as above but twice as long; SSSG-cys, like FSFG-concat 1-cys with the F's mutated to nonbinding S's.}
@@ -137,24 +138,49 @@ We made fragments of Nups to tether to the hydrogels.  All of the Nups we used c
 \label{fig:Nups}
 \end{SCfigure}
 
-We use two fragments of Nsp1 developed by Loren's old group, FSFG and FG124. Each are 124 amino acids long and contain six transport-factor binding motifs.  FSFG has six FSFG motifs and is designed not to aggregate.  It's entirely disordered, quite stable, expresses well, and can be concentrated up to about 30 mg/mL before crashing out.  FG124 contains six FG motifs but they're not all the same kind (lookup: find sequence).  It aggregates in buffer over the course of several hours. It needs to be kept in 7M guanidine hydrochloride at all times.  It also expresses well.
+As shown in Fig.~\ref{fig:Nups}, we make use of two distinct fragments of Nsp1, denoted FSFG and FG124 \cite{hough15}.  Each are entirely disordered, are approximately 120 amino acids (14 kDa) in length, and contain multiple FG motifs.  FSFG is so called because it possesses six FSFG repeats.  It is extremely stable and unlikely to aggregate, remaining unaggregated throughout a wide range of buffers, pH values, concentrations, and crowding conditions.  As an additional advantage, FSFG can easily be expressed and purified.  The other Nup fragment, FG124, contains a variety of FG motifs (lookup).  If not kept in 7M guanidine hydrochloride, FG124 will aggregate over the course of several hours.  However, FG124 does not aggregate in the cellular environment, suggesting that Nsp1 itself may not be aggregated in the nuclear pore \cite{hough15}. 
 
-Both proteins are expressed in Bl21 DE3 Gold cells in the pRSF plasmid, which is Kan resistant.  They are tagged with a his tag on the C-terminus and are usually purifed using a metal affinity column (see appendix).  They last a long time in the fridge but PIC should be added occasionally because they are disordered.  They can be kept in almost any buffer at a wide range of pH (certainly 3-8, maybe more).  We have versions of FSFG with one or two terminal cysteines, a cysteine and a ybbr labeling tag, concat 2 and concat 3 with and without single cysteines, 2-mer and 4-mer (with and without cysteines?).  FG124 we have with and without a single cysteine.  We have full-length Nsp1 and just the FG-domain as well, though I've maybe purified them once.  They don't express nearly as well as the shorter constructs.
+Both FSFG and FG124 are expressed in Bl21 DE3 Gold cells in the pRSF plasmid, which is Kan resistant.  Each has a C-terminus 6xhis tag and are purified using a metal affinity column as described in Appendix~\ref{appx:protein-purification}.  They are unharmed by lyophilization and resuspension.
 
-I've tested that they look fine on an SDS PAGE gel after lyophilizing and resuspending.  Usually I lyophilize them so I can control the final nominal concentration in the precursor solution.  I let them sit at room temp to resuspend for about 20 minutes.  The cysteines in cys-labeled FSFG form disulfide bonds extremely rapidly after being removed from reducing agents.  Put the Ellman's reagent protocol in the appendix about bis-labeling.  You can't use a Bradford on them because they don't have the right amino acids (?) so use a BCA.
+We have access to a wide library of FSFG and FG124 variants, few of which I helped to create. Many originate in Loren's old lab (lookup), and others were created by Andrea Egan, Nick Bax, Eric Verbeke, and myself. Table~\ref{table:Nups} shows the sequence of the most commonly-used Nup variants.
 
-I need a figure for the variants.
+\begin{table}[b!]
+\centering
+  \caption{Library of FG Nup fragments.}
+    \label{table:Nups}
+    \begin{tabular}{p{3.5cm}p{4cm}p{8cm}}
+      Description & Notes &Sequence \\
+      \hline
+      FSFG & (`FSFG concat-1') & MDNKTTNTTPSFSFGAKSDENKAGA TSKPAFSFGAKPEEKKDDNSSKPAFSF GAKSNEDKQDGTAKPAFSFGAKPAEKN NNETSKPAFSFGAKSDEKKDGDASKPAF SFGAKPDENKASATSKPALEHHHHHH\\
+	FSFG cys & & \\
+	FSFG 2-cys & Aggregates unless kept in reducing agent. & \\
+	ybbR FSFG cys & Most often used for hydrogel experiments; ybbR tag is intended for site-specific labeling but not used in the hydrogel experiments.& \\
+	FSFG concat-2 cys & & \\
+	FSFG concat-3 cys & Did not express well in my hands.& \\
+	FG124 & Aggregates unless kept in denaturant & MGTSAPNNTNNANSSITPAFGSNNTGNTA
+FGNSNPTSNVFGSNNSTTNTFGSNSAGTSLFGSSSAQQTKSNGTAGGNTFGSSS
+LFNNSTNSNTTKPAFGGLNFGGGNNTTPSSTGNANTSNNLFGATASHMHHHHHH\\
+	FG124 cys & Aggregates unless kept in denaturant. & \\
+	SSSG cys & & \\
 
-\subsection{FSFG concat 2 and concat 3}
-In order to test the effect of Nup length and number of binding sites, we used multiple versions of FSFG.  We got these versions from Loren's old lab and didn't really modify them.  Eric may have added a cysteine for labeling.  FSFG concat 2 is twice as long, and FSFG concat 3 is three times as long.  Maybe I should include sequences of all three FSFG variants.  Both variants express in principle, but I could only get FSFG concat 2 to express.  I purify it using the same method as FSFG concat 1 (the original form, with 124 amino acids and 6 FSFG repeats).  
+    \end{tabular}
+\end{table}
+
+In order to test the effect of Nup length and number of FG motifs, FSFG also exists in concatenated versions: FSFG concat-2 (twice as long as FSFG) and FSFG concat-3 (three times as long).  Although both have been expressed and purified, I was only able to express FSFG concat-2.  All of these FSFG variants, as well as FG124 and the nonbinding negative control SSSG (Sec.~\ref{sec:SSSG}), exist with one or both terminal cysteines as well.  The C-terminal cysteine version is the most commonly used, as a cysteine is necessary to tether the Nup fragment to a hydrogel (Sec.~\ref{sec:hydrogel-fabrication} and Appendix~\ref{appx:bis-labeling}).  It should be noted that ybbR FSFG cys is most commonly used in the nuclear pore mimics.  The ybbR tag is intended for site-specific labeling with a fluorophore or other tag but almost always goes unused in the context of FSFG hydrogels \cite{yin05}.
+
+The cysteines in all of the above Nup variants form disulfide bonds very rapidly (within minutes) after being removed from reducing agents.  In addition, the Bradford assay is unreliable for these Nup variants due to the relative lack of aromatic residues.  A BCA assay should be used instead to quantify protein concentration.
+
+In addition to the commonly-used Nup variants in Table~\ref{table:Nups}, we have access to several other Nup fragments and mutants.  These include shortened versions of FSFG with two or four FSFG motifs, FSFG variants with most but not all binding motifs removed with F to Y mutations, the full FG domain of Nsp1, and full-length Nsp1.
 
 \subsection{SSSG negative control}
-The behavior of NTF2 and mCherry in FSFG hydrogels can be compared to that in hydrogels containing no Nups.  However, it is possible that the presence of FSFG in the precursor solution changes the final gel properties such as pore size, or that non-specific interactions between the Nup peptide and test proteins alter the behavior of the test proteins.  To account for these possibilities, we designed a negative control peptide which is identical to FSFG except that the phenylalanine residues have been mutated to serine, so that the binding motifs become SSSG.  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing SSSG. Figure~\ref{fig:SSSG-control-comparison} compares the intensity profile of a 10 wt\% PEG hydrogel containing a nominal 10 mg/mL SSSG to that of a hydrogel with no nups.  There is no dramatic difference between the two profiles, suggesting that the presence of peptide in the hydrogel does not itself alter the diffusion of NTF2 and mCherry.  Following the initial tests, SSSG gels were used periodically to confirm that no-Nup gels served well as negative controls, but they were not used regularly as controls.
+\label{sec:SSSG}
 
-The SSSG peptide was used in an identical manner to FSFG: SSSG-cys was his-tagged, inserted into pRSF, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column using the same procedure as FSFG variants and had a high yield.  As with FSFG, SSSG is stable and non-aggregating over a wide range of conditions.
+The obvious negative control for a Nup-filled hydrogel is a hydrogel containing no Nups. However, it is possible that the presence of FSFG in the precursor solution changes the final gel properties such as pore size, or that non-specific interactions between the Nup peptide and test proteins alter the behavior of the test proteins.  To account for these possibilities, we designed a negative control peptide which is identical to FSFG except that the phenylalanine residues have been mutated to serine (i.e. FSFG goes to SSSG).  This mutant does not bind NTF2, as demonstrated by the lack of NTF2 accumulation in hydrogels containing tethered SSSG. Figure~\ref{fig:SSSG-control-comparison} compares the intensity profile of a 10 wt\% PEG hydrogel containing a nominal 10 mg/mL SSSG to that of a hydrogel with no nups.  There is no dramatic difference between the two profiles, suggesting that the presence of peptide in the hydrogel does not itself alter the diffusion of NTF2 and mCherry.  Following the initial tests, SSSG gels were used periodically to confirm that no-Nup gels served well as negative controls, but they were not used regularly as controls.
+
+The SSSG peptide was prepared in an identical manner to FSFG: SSSG-cys was his-tagged, inserted into pRSF, and expressed in BL21-DE3 Gold cells.  It was purified using a metal  affinity column using the same procedure as FSFG variants and had a high yield.  As with FSFG, SSSG is stable and non-aggregating over a wide range of conditions.
 %I think Eric did most of the cloning work on this project and/or we bought the gene.
 \begin{SCfigure} % 6/9/15 for both SSSG and control (no-nup) gels, not sure whether or not I ran it personally, LKM book 2 pg 24
-\caption{Comparison of intensity profiles for SSSG and no-nup (control) gels.\\}
+\caption{Comparison of intensity profiles for SSSG and no-nup (control) gels. Both hydrogels were 10\% wt PEG with a 1-kDa PEG dithiol linker.  The SSSG gel nominally contained 10 mg/mL SSSG.  Inlet reservoir contained 20 $\mu$M NTF2-A488 and mCherry in PTB.  As expected, no binding is seen in either gel.\\}
 \centering
 \includegraphics[width=0.4\textwidth]{figs/ch03/SSSG-control-comparison}
 \label{fig:SSSG-control-comparison}
@@ -332,24 +358,22 @@ Eric Verbeke and Scott Tilden successfully cloned covalently-tethered NTF2 with 
 
 \subsection{NTF2-GFP}
 
-Another reccuring problem was free dye in the NTF2 channel.  After dye-labeling (see next section), the dye slowly hydrolyzes and leaves the NTF2.  In an attempt to fix this problem, Eric Verbeke and I created a version of NTF2 tethered to GFP by a short linker.  
+In addition to the potential problem of NTF2 monomerization, the fluorophores that labeled NTF2 were prone to hydrolysis, leaving an unknown amount of free dye in the reservoir mixture.  Free dye is indistinguishable from labeled NTF2 in the influx and selectivity experiments, and it is important that not be present in appreciable amounts.  This problem is addressed through other means in Sec.~\ref{sec:free-dye}, but we also approached it by engineering a GFP-NTF2 fusion protein.  Such a protein would eliminate the need for dye-labeling the NTF2 and therefore eliminate free dye in the chamber entirely.  
 
-This construct is in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Gold cells.  It was purified using a cobalt affinity column in PTB and 1:1000 PIC and eluted with 250 mM imidazole, yielding ample protein with moderate degradation products.
+However, as GFP is also approximately 30 kDa, the fusion protein is much larger than NTF2 alone.  To mitigate this problem, a GFP-NTF2-NTF2 version was also created (Fig.~\ref{fig:NTF2} (A)).  While this is still larger than an NTF2 dimer, it contains only one copy of GFP.  Both constructs are in the pET21 plasmid, his-tagged, and expressed in BL21-DE3 Gold cells.  They were purified using a cobalt affinity column in PTB and 1:1000 PIC and eluted with 250 mM imidazole, yielding ample protein with moderate degradation products.
 
+Figure~\ref{fig:NTF2} (B) and (C) show that neither construct is able to bind to FSFG hydrogels.  Again, the binding pockets or dimerization interface may be disrupted by the tethers, or the fusion protein may simply be too large.
 
-%\begin{figure} % GFP-NTF2 = 150917, GFP-NTF2x2 = 150928
-%\caption{Intensity profile for GFP-NTF2 and mCherry showing no binding to FSFG hydrogel.}
-%\centering
-%\includegraphics[width=\textwidth]{figs/ch03/GFP-NTF2-attempts.pdf}
-%\label{fig:GFP-NTF2}
-%\end{figure} 
-
-\begin{figure} % LKM book 4 pg 60
+\begin{figure} % LKM book 4 pg 60 % GFP-NTF2 = 150917, GFP-NTF2x2 = 150928
 \caption{Cartoon of various NTF2 constructs}
 \centering
 \includegraphics[width=\textwidth]{figs/ch03/NTF2-constructs}
 \label{fig:NTF2}
 \end{figure}
+
+\subsection{Non-binding NTF2 F5R}
+
+Although mCherry is a similar size as the NTF2 dimer and makes an acceptable negative-control inert protein, it may well interact differently with the hydrogel scaffold than NTF2 does.  A better control would be a non-binding mutant form of NTF2.  (lookup: I wrote my reasoning for the F5R mutant in a lab book, I'm pretty sure) A W7A point mutant in mammalian NTF2 reduced its affinity for FG Nups \cite{bayliss99}.  A corresponding mutant in yeast NTF2 is F5R.  This mutant was cloned, expressed, and purified. (lookup: who did most of the work?)  Further tests, such as NMR, are needed to verify its binding affinity for FSFG.
 
 \subsection{Kap121 and NLS-GFP}
 % Kap121 growth and purification - LKM book 2 pg 79, LKM book 3 pg 13, Chris Lawton book 1 pg 65, Loren's protocols in Google Drive, Jackie's paper
@@ -371,6 +395,7 @@ Kap121 binding and influx was tested using a hydrogel made from precursor soluti
 %same as 10 wt% PEG, 0.5 thiol:ene ratio (LKM book 2 pg 73)
 
 \section{Dye-labeling and free dye}
+\label{sec:free-dye}
 % matlab results are saved in /Volumes/houghgrp/Old Processed Images/Old Analysis/FSFG dataset/exponent-fits.mat
 Figures
 \begin{enumerate}
