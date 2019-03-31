@@ -1,0 +1,46 @@
+\chapter{Calculation of PEG hydrogel pore size}~\label{appx:pore-calc}
+
+% LKM book 4 pg 47
+
+The following equation was used to estimate pore size in a 10 wt \% PEG hydrogel with 20-kDa 8-armed PEG-norbornene and 1-kDa PEG-dithiol crosslinker \cite{canal89}.
+\begin{equation}
+\frac{1}{M_c} = \frac{2}{M_n}- \frac{\left(\frac{\bar{v}}{v_1}\right) \left(\ln (1-v_{2,s}+ v_{2,s} + \chi v_{2,s}^2)\right)}{v_{2,r} \left(\left(\frac{v_{2,s}}{v_{2,r}}\right)^{1/3} - \frac{1}{2}\left(\frac{v_{2,s}}{v_{2,r}}\right)\right)}
+%\frac{1}{M_c} = \frac{2}{M_n} - \frac{\left(\frac{\bar{v}}{v_1}\right)\left(\ln (1-v_{2,s}) + v_{2,s} + \Chi v_{2,s}^2\right)}{1}
+\end{equation}
+with:
+
+The average molecular weight between crosslinks as $M_c$.
+
+The average polymer molecular weight before crosslinking $M_n = 20$ kDa.
+
+The specific volume of polymer $\bar{v} = 0.8$ cm$^3$/g for 1.5K PEG.
+
+The molar volume of the swelling agent $v_1 = 18$ g/mol for water.
+
+The Flory PEG-water interaction parameter $\chi = 0.4$ \cite{mellott01}.
+
+The polymer volume fraction before swelling $v_{2,r} = 0.10$ for a 10 wt \% hydrogel.
+
+The polymer volume fraction after swelling $v_{2,s} = (\rho_p(\frac{Q_M}{\rho_s}+\frac{1}{\rho_p}))^{-1}$ \cite{datta07} with:
+
+The solvent density $\rho_s = 1$ g/cm$^3$ for water.
+
+The polymer density $\rho_p = 1.2$ g/cm$^3$ for 20-kDa PEG (Santa Cruz Biotech).
+
+The mass ratio of solvent to polymer $Q_m = 9$.
+
+This calculation gives me $M_c \approx 210$ Da as the average molecular weight between crosslinks.  The mesh size $\xi$ can be estimated using \cite{canal89}
+
+\begin{equation}
+\xi = v_{2,s}^{-1/3} \ell \left(\frac{2M_c}{M_r}\right)^{1/2} c_n^{1/2}
+\end{equation}
+with:
+
+The carbon-carbon bond length $\ell = 1.54$ \AA.
+
+The molecular weight of the repeating polymer unit $M_r = 67$ Da for PEG.
+
+The ``characteristic ratio'' for PEG $c_n \approx 4$.
+
+The result is an estimated mesh size on the order of 1 nm.
+
