@@ -1,6 +1,6 @@
 \chapter{Hydrogel design for protein separation}\label{ch03}
 
-In order to test the predictions of our bound-state diffusion model of selectivity, we needed to develop a biomaterial that could support bound diffusion and be used to test selectivity.  There are several biological examples which show selectivity that could be explained by bound-state diffusion, including nucleocytoplasmic transport, liquid-liquid phase separated droplets, diffusion of DNA-damage-repair proteins in the nucleus, and passage through mucus\cite{zhou12,witten17,hoiby10, rudolph18}.  We decided to focus on making a material that mimics the environment of the nuclear pore.
+In order to test the predictions of our bound-state diffusion model of selectivity, we needed to develop a biomaterial that could support bound diffusion and be used to test selectivity.  There are several biological examples which show selectivity that could be explained by bound-state diffusion, including nucleocytoplasmic transport, liquid-liquid phase separated droplets, diffusion of DNA-damage-repair proteins in the nucleus, and passage through mucus\cite{witten17,hoiby10, rudolph18,zhou13}.  We decided to focus on making a material that mimics the environment of the nuclear pore.
 
 One of the attractions of the bound-state diffusion model is that it does not rely on the geometry of the selective material.  As long as the dimensions of the material are significantly larger than the protein diffusing through it, there is no practical difference between a nanoscale cylindrical pore and a macroscale bulk material.  For ease of fabrication and testing, we opted to design a bulk material for protein separation.
 
@@ -27,9 +27,9 @@ Whether using PEG or acrylamide, the basic hydrogel fabrication procedure was th
 
 There were four major components to the precursor solution: monomers, crosslinkers, initiators, and Nup fragments.  To an extent, these components can be chosen independently of each other.  Bisacrylamide or PEG-diacrylate crosslinkers must be used with acrylamide monomers, and PEG-dithiol crosslinkers with PEG-norbornene monomers, but the initiators and Nup fragments can be varied.  There are many variations on crosslinker length as well, leading to a wide variety of possible hydrogels even using a relatively small set of components.
 
-The PEG hydrogels made use of 20-kD 8-armed PEG-norbornene monomers (synthesized by the Bryant lab and Nathan Crossette) and either a 1-kD or 8-kD PEG-dithiol crosslinker (Sigma) (Fig.~\ref{fig:monomer-crosslinker}).  To conjugate the Nup fragment to the PEG hydrogels, a cysteine was engineered at one end (lookup: which end?).  Both the crosslinker and Nup fragment made use of Michael-thiol ``click'' chemistry \cite{chatani14}\cite{nair14}.
+The PEG hydrogels made use of 20-kD 8-armed PEG-norbornene monomers (synthesized by the Bryant lab and Nathan Crossette) and either a 1-kD or 8-kD PEG-dithiol crosslinker (Sigma) (Fig.~\ref{fig:monomer-crosslinker}).  To conjugate the Nup fragment to the PEG hydrogels, a C-terminal cysteine was added to the peptide.  Both the crosslinker and Nup fragment made use of Michael-thiol ``click'' chemistry \cite{chatani14}\cite{nair14}.
 
-The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (lookup: Sigma) was conjugated to the terminal cysteine (see Appendix~\ref{appx:bis-labeling}).
+The acrylamide hydrogels used an acrylamide monomer and bisacrylamide crosslinker (BioRad) (Fig.~\ref{fig:monomer-crosslinker}).  An additional step was needed to prepare the Nup fragment for tethering to the hydrogel: either bisacrylamide or 700-Da PEG-diacrylate (Sigma) was conjugated to the terminal cysteine (see Appendix~\ref{appx:bis-labeling}).
 
 \begin{SCfigure}
 \caption{Chemical structures of monomers and crosslinkers for PEG and acrylamide hydrogels. The total molecular weight of the 8-armed PEG-norbornene was 20 kD, and either a 1-kD or 8-kD PEG dithiol crosslinker was used.  Structures from Sigma and CreativePEGWorks.}
@@ -145,23 +145,63 @@ Both FSFG and FG124 are expressed in Bl21 DE3 Gold cells in the pRSF plasmid, wh
 We have access to a wide library of FSFG and FG124 variants, few of which I helped to create. Many originate in Loren's old lab (lookup), and others were created by Andrea Egan, Nick Bax, Eric Verbeke, and myself. Table~\ref{table:Nups} shows the sequence of the most commonly-used Nup variants.
 
 \begin{table}[b!]
-\centering
+%\centering
   \caption{Library of FG Nup fragments.}
     \label{table:Nups}
     \begin{tabular}{p{3.5cm}p{4cm}p{8cm}}
       Description & Notes &Sequence \\
       \hline
-      FSFG & (`FSFG concat-1') & MDNKTTNTTPSFSFGAKSDENKAGA TSKPAFSFGAKPEEKKDDNSSKPAFSF GAKSNEDKQDGTAKPAFSFGAKPAEKN NNETSKPAFSFGAKSDEKKDGDASKPAF SFGAKPDENKASATSKPALEHHHHHH\\
-	FSFG cys & & \\
-	FSFG 2-cys & Aggregates unless kept in reducing agent. & \\
-	ybbR FSFG cys & Most often used for hydrogel experiments; ybbR tag is intended for site-specific labeling but not used in the hydrogel experiments.& \\
-	FSFG concat-2 cys & & \\
-	FSFG concat-3 cys & Did not express well in my hands.& \\
-	FG124 & Aggregates unless kept in denaturant & MGTSAPNNTNNANSSITPAFGSNNTGNTA
-FGNSNPTSNVFGSNNSTTNTFGSNSAGTSLFGSSSAQQTKSNGTAGGNTFGSSS
-LFNNSTNSNTTKPAFGGLNFGGGNNTTPSSTGNANTSNNLFGATASHMHHHHHH\\
-	FG124 cys & Aggregates unless kept in denaturant. & \\
-	SSSG cys & & \\
+      FSFG his & (`FSFG concat-1') & MDNKTTNTTPSFSFGAKSDENKAGA TSKPAFSFGAKPEEKKDDNSSKPAFSF GAKSNEDKQDGTAKPAFSFGAKPAEKN NNETSKPAFSFGAKSDEKKDGDASKPAF SFGAKPDENKASATSKPALEHHHHHH\\
+      \hline
+	cys FSFG his & & MGCTSATSKPAFSFGAKSDENKAGATSKPA
+FSFGAKPEEKKDDNSSKPAFSFGAKSNED
+KQDGTAKPAFSFGAKPAEKNNNETSKPA
+FSFGAKSDEKKDGDASKPAFSFGAKPDEN
+KASATSKPASHHHHHH\\
+      \hline
+	cys FSFG cys his& Aggregates unless kept in reducing agent. & MGCTSATSKPAFSFGAKSDENKAGATSKPA
+FSFGAKPEEKKDDNSSKPAFSFGAKSNED
+KQDGTAKPAFSFGAKPAEKNNNETSKPA
+FSFGAKSDEKKDGDASKPAFSFGAKPDEN
+KACATSKPASHHHHHH \\
+      \hline
+	ybbR FSFG cys his & Most often used for hydrogel experiments; ybbR tag is intended for site-specific labeling but not used in the hydrogel experiments.& MGDSLEFIASKLATSATSKPAFSFGAKSDEN
+KAGATSKPAFSYGAKPEEKKDDNSSKPA
+FSYGAKSNEDKQDGTAKPAFSYGAK
+PAEKNNNETSKPAFSYGAKSDEKKDGDAS
+KPAFSFGAKPDENKACATSKPASHHHHHH\\
+\hline
+	ybbR FSFG concat-2 cys his& & MGDSLEFIASKLATSATSKPAFSFGAKSDEN
+KAGATSKPAFSFGAKPEEKKDDNSSKPA
+FSFGAKSNEDKQDGTAKPAFS
+FGAKPAEKNNNETSKPAFSFGAKSD
+EKKDGDASKPAFSFGAKPDENKASATSKPASATSKPAFSFGAKSDENKAGATSKPAFSFGAKPEEKKDDNSSKPAFSFGAKSNEDKQDGTAKPAFSFGAKPAEKNNNETSKPAFSFGAKSDEKKDGDASKPAFSFGAKPDENKACATSKPASHHHHHH\\
+\hline
+	ybbR FSFG concat-3 cys his& Did not express well in my hands.& MGDSLEFIASKLATSATSKPAFSFGAKSDEN
+KAGATSKPAFSFGAKPEEKKDDNSSKPA
+FSFGAKSNEDKQDGTAKPAFSFGAK
+PAEKNNNETSKPAFSFGAKSDEKKDGDASKPAFSFGAKPDENKASATSKPASATSKPAFSFGAKSDENKAGATSKPAFSFGAKPEEKKDDNSSKPAFSFGAKSNEDKQDGTAKPAFSFGAKPAEKNNNETSKPAFSFGAKSDEKKDGDASKPAFSFGAKPDENKASATSKPASATSKPAFSFGAKSDENKAGATSKPAFSFGAKPEEKKDDNSSKPAFSFGAKSNEDKQDGTAKPAFSFGAKPAEKNNNETSKPAFSFGAKSDEKKDGDASKPAFSFGAKPDENKACATSKPASHHHHHH\\
+\hline
+	FG124 his& Aggregates unless kept in denaturant & MAPNNTNNANSSITPAFGSNNTGNTAFGN
+SNPTSNVFGSNNSTTNTFGSNSAGT
+SLFGSSSAQQTKSNGTAGGNT
+FGSSSLFNNSTNSNTTKPAFGGLNFGGGN
+NTTPSSTGNANTSNNLFGATASHHHHHHH\\
+\hline
+	cys FG124 his& Aggregates unless kept in denaturant. & MGCTSAPNNTNNANSSITPAFGSNNTGN
+TAFGNSNPTSNVFGSNNSTTNT
+FGSNSAGTSLFGSSSAQQTKSNGTAGGNT
+FGSSSLFNNSTNSNTTKPAFGGLNFGGGN
+NTTPSSTGNANTSNNLFGATASHMHHH
+HHH\\
+	ybbR SSSG cys his & Nonbinding negative control. & MGDSLEFIASKLATSATSKPASSSGAKSDENKAGATSKPASSSGAKPEEKKDDNSSKPASSSGAKSNEDKQDGTAKPASSSGAKPAEKNNNETSKPASSSGAKSDEKKDGDASKPASSSGAKPDENKACATSKPASLEHHHHHH\\
+	\hline
+NTF2 his & Wild-type yeast NTF2. & MALDFNTLAQNFTQFYYNQFDTDRSQLGNLYRNESMLTFETSQLQGAKDIVEKLVSLPFQKVQHRITTLDAQPASPNGDVLVMITGDLLIDEEQNPQRFSQVFHLIPDGNSYYVFNDIFRLNYSAHHHHHH\\
+	\hline
+Pho4 & Nuclear localization sequence. & KVDKLGGSGSANKVTKNKSNSSPYLNKRRGKPGPDSLE \\
+Spo12 & Nuclear localization sequence. & KVDKLGGSGKSTSNLKSSHTTSNLVKKTMFKRDLLKQDPKRKLQLQQRFASPTDRLVSPCSLKLE
+ \\
+
 
     \end{tabular}
 \end{table}
