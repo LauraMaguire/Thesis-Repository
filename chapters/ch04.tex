@@ -22,6 +22,7 @@ In principle, the diffusion constants of NTF2-F and mCherry within the NPC mimic
 
 Fickian diffusion was always assumed, although in practice the presence of binding and of the hydrogel network lead to slightly non-Fickian behavior.  It was also assumed that the length of a binding event was negligible on the timescale of diffusion, so that the observed diffusion constant of the NTF2-F could be treated as Fickian diffusion and written as a weighted average of the diffusion constants while free and bound.  This is a good approximation because we think the dissociation constant of NTF2 and FSFG is $K_D \approx 1$ mM, with a diffusion-limited on-rate and correspondingly high off-rate.
 \subsection{Profile analysis}
+\label{sec:profile-analysis}
 Using these assumptions, the method of \cite{mortensen06} was followed in order to fit the profile and accumulation data.  This method assumes that an arbitrary shape is initially empty but held in an infinite reservoir kept at a constant concentration.  The shape fills according to the diffusion equation.  Although there are slightly different numerical factors for different shapes, they show that a circle is a good approximation for many shapes.  Since our gels are usually nearly circular, the circular solution is a good one.  Using this method, the protein concentration $c(r,t)$ as a function of radial distance $r$ from the gel center and time $t$ is given by
 \begin{equation}
 \frac{c(r,t)}{c_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
