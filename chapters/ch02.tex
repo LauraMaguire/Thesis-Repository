@@ -229,8 +229,6 @@ For a non-binding particle, $C(x) = 0$, $T = T_L x / L$, and
 The selectivity $J/J_n$ is then independent of $T_L$ in
 the linear approximation.
 
-%% end of section I've checked
-
 \subsection{Effect of bound-state diffusion constant}
 
 Upon looking at the solutions of the full nonlinear equations, the first thing we noticed was that bound-state diffusion played an important role.  We were unable to create a selective material if the bound diffusion constant $D_B$ was set to zero, i.e. if the Nup-transport factor complex was immobile while bound.  In those cases, the steady-state flux of transport factor and inert protein was identical regardless of the values chosen for $\kon$ or $\koff$. The selectivity was always equal to 1.  The transient flux ratio did depend on binding kinetics, as shown in Figure x.  As would be expected, the transient flux of transport factor out of the material was suppressed relative to that of the inert protein, as a population of the transport factor filled binding sites throughout the material.  Once binding equilibrium has been established, however, the immobile population of bound transport factors cannot contribute to the flux out of the pore, and the steady-state flux of binding and non-binding proteins is identical.
@@ -244,10 +242,8 @@ Experimental evidence suggests that the on-rate constant of Nup-transport factor
   milles15, timney16, vovk16}; therefore the off-rate constant is not well-determined.  Figure~\ref{fig:tethers}B and C show the bound diffusion coefficient and selectivity for a range of $K_D$ values spanning those measured experimentally, with a fixed, diffusion-limited on-rate.  Throughout this work, we consider a wide range of dissociation constants.
 
 
-Allowing the bound diffusion constant to approach the free diffusion constant
-
-
-
+Allowing the bound diffusion constant to approach the free diffusion constant, using the above parameters, selectivity can approach the values seen in experimental measurements (Table \ref{table:NTF2-flux}). The interplay between binding kinetics and diffusion leads to an optimal dissociation constant $\sim$1 $\mu$M for maximum selectivity \figref[C]{fig:transient}. Selectivity decreases for high $K_D$ because binding is too weak to
+significantly increase TF concentration in the pore.  For low $K_D$, tight binding causes the concentration of bound complexes to become approximately constant across the pore, eliminating the concentration gradient needed to provide flux across the pore.
 
 %In systems such as airway mucus,
 %immobilization may increase the time available for degradation or
@@ -273,22 +269,6 @@ Allowing the bound diffusion constant to approach the free diffusion constant
 %of binding affinity \cite{bickel02}.  This result led us to consider
 %whether TFs may be mobile while bound to FG Nups.
 
-
-When bound TFs are mobile, selective transport occurs with a
-selectivity up to 240 for a conservative set of parameters
-(figs.~\ref{fig:transient}B,C, \ref{fig:linear-selectivity},
-Supporting Information, section \ref{sec:param}).  Remarkably, this
-selectivity is comparable to experimental measurements of NTF2 versus
-GFP flux (Table \ref{table:NTF2-flux}).  The interplay between binding
-kinetics and diffusion leads to an optimal dissociation constant
-$\sim$1 $\mu$M for maximum selectivity \figref[C]{fig:transient}.
-Selectivity decreases for high $K_D$ because binding is too weak to
-significantly increase TF concentration in the pore.  For low $K_D$,
-tight binding causes the concentration of bound complexes to become
-approximately constant across the pore. Because diffusive flux is
-driven by a concentration gradient, this washing out of the gradient
-by tight binding decreases flux and selectivity.
-
 \begin{table}[b!]
   \caption{Comparison between experimental results for NTF2 and GFP
     (a similarly-sized non-binding protein) and model
@@ -307,7 +287,7 @@ by tight binding decreases flux and selectivity.
       Model & -- & \makecell[cl]{Binding\\Non-binding} & \makecell[cl]{2--480\\2} & 1--240 & \makecell[cl]{This\\work}\\
     \end{tabular}
 \end{table}
-%%%%%%% This portion is good I think
+
 \subsection{Bound diffusion in the linear model}
 
 In the linear approximation described in Sec.~\ref{sec:linear}, bound diffusion plays a similar role as in the full nonlinear model.  However, by definition, the Nup binding sites don't saturate.  This leads to a plateau in the selectivity at tighter binding, rather than a peak (Fig~\ref{fig:linear-selectivity}).  However, the linear model becomes non-physical for $K_D < N_t$, denoted by the dotted line in Fig.~\ref{fig:linear-selectivity}C.
