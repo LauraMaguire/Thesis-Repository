@@ -1,4 +1,4 @@
-\chapter{Modeling}\label{ch02}
+\chapter{Modeling bound-state diffusion in selective filters}\label{ch02}
 
 %Selective filters made of biopolymers are used in living and
 %synthetic systems to control the localization and movement of
@@ -46,6 +46,55 @@
 %molecules) is not fully understood, making the NPC an ideal system to
 %dissect the principles of binding-controlled selective transport.
 
+%Models of the NPC selective barrier have proposed that the FG Nups may
+%form an entropic brush \cite{rout00}, a dynamic hydrogel
+%\cite{ribbeck01, frey07}, an intermediate state between a brush and
+%gel \cite{vovk16}, or liquid droplets \cite{schmidt15}.  These
+%mechanisms may be modulated by spatial organization \cite{yamada10,
+%  ando14} and binding of TFs to multiple FG repeats \cite{lowe15,
+%  schoch12}.  Attempts to distinguish these models have been hindered
+%by the pore's small size, the redundancy and multiple copies of FG
+%Nups, and contradictory experimental results on FG Nups and TF binding
+%\cite{vovk16}. Some FG Nup fragments form less-dynamic hydrogels
+%\vitro\ \cite{frey07}, but remain highly dynamic within cells
+%\cite{hough15}. Molecular dynamics simulations find highly dynamic FG
+%Nups, though the degree and extent of motion depends on the affinity
+%of FG repeats for each other and for TFs \cite{pulupa17,
+%  vovk16}. Crowding and competition modulate affinity
+%\cite{tetenbaum-novatt10} and may contribute to selective transport
+%\cite{zilman07}.  However, the connection between the amino-acid level
+%behavior of the FG-TF interaction and macroscopic transport
+%selectivity remains unclear.  Here we address the central
+%contradiction of selective transport through the NPC: how does binding
+%of TFs to FG Nups within the pore increase the flux rather than
+%decreasing it \cite{bickel02, witten17}?
+%
+%Using a biophysical model, we demonstrate that TF diffusion and
+%binding are sufficient for selective transport, as long as binding
+%only partially immobilizes TFs. Binding increases the local
+%concentration, and these molecules contribute to the flux if mobile.
+%Thermally-driven diffusion of TFs bound to flexible tethers gives
+%sufficient particle mobility to produce selectivity similar to
+%experimental measurements.  Tether flexibility also allows bound TFs
+%to hop between tethers, further enhancing selectivity.
+%
+%We consider a minimal model of the central channel of the NPC
+%containing FG Nups homogeneously anchored \figref{fig:cartoon}.  This
+%model is sufficiently general to describe the common features of a
+%range of biopolymer filters.   A varying free energy landscape
+%along the axis of the NPC may play a role in selective transport
+%\cite{zilman07, tagliazucchi13, tu13, timney16}. 
+
+While the nuclear pore is an obvious example of a biological selective filter, many others exist as well.  These include mucus, liquid-liquid phase separation, PARP1 in the nucleus sort of, maybe that strep bacteria, and more.  The effect of particle binding on selectivity is not usually well understood.  We wanted to answer the question of why the binding of transport factors to the FG Nups within the nuclear pore enhances their flux through the pore compared to that of a non-binding protein.  Hopefully the answer will also help us understand how to manipulate binding in other biological filters to control what things get through, like with drug delivery.
+
+To answer this question, we developed a simple mathematical model of nuclear transport which has few enough parameters that we can actually understand what they are all doing.  People have made plenty of theoretical models, but almost all are simulations and/or use an effective potential which depends strongly on the details of Nup composition and location.  On the other hand, our model is applicable to the nuclear pore, bulk selective materials, and other biological systems.  It does not depend on the details of the nuclear pore.  A few other people have made similar models, but they have some serious flaws.  Especially the Olsen one.
+
+The most surprising thing about our model was that bound-state diffusion emerged as the key parameter.  Without allowing the Nup-transport factor complex to diffuse, we couldn't make a selective material.  However, allowing for reasonable values of bound-state diffusion, we could reproduced the experimentally-observed selectivity of the nuclear pore.  This suggests that bound-state diffusion might be important in many biological filters.  Maybe we can use this result in other cases as well.
+
+\section{Simplified model of nuclear transport}
+
+Despite the complexity of nuclear transport, we decided to model it as simply as possible.  To that end, we left out as much as possible.  We decided to treat the nuclear pore or selective membrane as a one-dimensional system uniformly filled with Nups anchored at one end and free at the other.  This is okay because people have deleted a lot of the Nups, including all of the asymmetric Nups, and transport still works pretty well \cite{strawn04, zeitler04,kowalczyk11, jovanovic-talisman09}.  We also do not include a capture area outside the pore, as some works do \cite{pagliara14}.  We do not consider facilitated release, which is necessary to release many transport factors from the pore and their cargo\cite{lowe15, mincer11, gorlich96, gilchrist02}.  This is okay because NTF2 \cite{ribbeck98}, the protein we are focusing on, still has a significantly higher flux through the pore than it would through passive diffusion alone \cite{mincer11, zilman07}. 
+
 \begin{figure}[t!]
 \centering
 \includegraphics[width=17.8cm]{figs/ch02/fig1.pdf}
@@ -64,63 +113,6 @@
   immobile (top) or mobile (lower) when bound. }
 \label{fig:cartoon}
 \end{figure}
-
-Models of the NPC selective barrier have proposed that the FG Nups may
-form an entropic brush \cite{rout00}, a dynamic hydrogel
-\cite{ribbeck01, frey07}, an intermediate state between a brush and
-gel \cite{vovk16}, or liquid droplets \cite{schmidt15}.  These
-mechanisms may be modulated by spatial organization \cite{yamada10,
-  ando14} and binding of TFs to multiple FG repeats \cite{lowe15,
-  schoch12}.  Attempts to distinguish these models have been hindered
-by the pore's small size, the redundancy and multiple copies of FG
-Nups, and contradictory experimental results on FG Nups and TF binding
-\cite{vovk16}. Some FG Nup fragments form less-dynamic hydrogels
-\vitro\ \cite{frey07}, but remain highly dynamic within cells
-\cite{hough15}. Molecular dynamics simulations find highly dynamic FG
-Nups, though the degree and extent of motion depends on the affinity
-of FG repeats for each other and for TFs \cite{pulupa17,
-  vovk16}. Crowding and competition modulate affinity
-\cite{tetenbaum-novatt10} and may contribute to selective transport
-\cite{zilman07}.  However, the connection between the amino-acid level
-behavior of the FG-TF interaction and macroscopic transport
-selectivity remains unclear.  Here we address the central
-contradiction of selective transport through the NPC: how does binding
-of TFs to FG Nups within the pore increase the flux rather than
-decreasing it \cite{bickel02, witten17}?
-
-Using a biophysical model, we demonstrate that TF diffusion and
-binding are sufficient for selective transport, as long as binding
-only partially immobilizes TFs. Binding increases the local
-concentration, and these molecules contribute to the flux if mobile.
-Thermally-driven diffusion of TFs bound to flexible tethers gives
-sufficient particle mobility to produce selectivity similar to
-experimental measurements.  Tether flexibility also allows bound TFs
-to hop between tethers, further enhancing selectivity.
-
-We consider a minimal model of the central channel of the NPC
-containing FG Nups homogeneously anchored \figref{fig:cartoon}.  This
-model is sufficiently general to describe the common features of a
-range of biopolymer filters.   A varying free energy landscape
-along the axis of the NPC may play a role in selective transport
-\cite{zilman07, tagliazucchi13, tu13, timney16}. 
-
-\begin{figure*}[t!]
-\centering
-\includegraphics[width=\textwidth]{figs/ch02/fig2.pdf}
-\caption{Flux through the pore and selectivity for TFs with varying
-  bound mobility. (A) Flux as a function of time when TFs are immobile
-  while bound, with varying binding affinity as in (B).  (B) Flux as a function
-  of time when TFs are mobile while bound with $D_B = D_F$, with
-  varying binding affinity.  (C) Selectivity as a function of
-  dissociation constant with varying bound diffusion coefficient. }
-\label{fig:transient}
-\end{figure*}
-
-%%% I think the following section is good
-
-\section{Simplified model of nuclear transport}
-
-Despite the complexity of nuclear transport, we decided to model it as simply as possible.  To that end, we left out as much as possible.  We decided to treat the nuclear pore or selective membrane as a one-dimensional system uniformly filled with Nups anchored at one end and free at the other.  This is okay because people have deleted a lot of the Nups, including all of the asymmetric Nups, and transport still works pretty well \cite{strawn04, zeitler04,kowalczyk11, jovanovic-talisman09}.  We also do not include a capture area outside the pore, as some works do \cite{pagliara14}.  We do not consider facilitated release, which is necessary to release many transport factors from the pore and their cargo\cite{lowe15, mincer11, gorlich96, gilchrist02}.  This is okay because NTF2 \cite{ribbeck98}, the protein we are focusing on, still has a significantly higher flux through the pore than it would through passive diffusion alone \cite{mincer11, zilman07}. 
 
 There are other good reasons to use NTF2 as our model protein: it's small (NTF2 is small ($\sim$5 nm) relative
 to the diameter ($\sim$50 nm) and length of the pore ($\sim$100 nm)), so the approximation of the pore as a bulk material is a good one and lets us ignore the effects of crowding \cite{zilman07}.
@@ -230,6 +222,18 @@ The selectivity $J/J_n$ is then independent of $T_L$ in
 the linear approximation.
 
 \subsection{Effect of bound-state diffusion constant}
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[width=\textwidth]{figs/ch02/fig2.pdf}
+\caption{Flux through the pore and selectivity for TFs with varying
+  bound mobility. (A) Flux as a function of time when TFs are immobile
+  while bound, with varying binding affinity as in (B).  (B) Flux as a function
+  of time when TFs are mobile while bound with $D_B = D_F$, with
+  varying binding affinity.  (C) Selectivity as a function of
+  dissociation constant with varying bound diffusion coefficient. }
+\label{fig:transient}
+\end{figure*}
 
 Upon looking at the solutions of the full nonlinear equations, the first thing we noticed was that bound-state diffusion played an important role.  We were unable to create a selective material if the bound diffusion constant $D_B$ was set to zero, i.e. if the Nup-transport factor complex was immobile while bound.  In those cases, the steady-state flux of transport factor and inert protein was identical regardless of the values chosen for $\kon$ or $\koff$. The selectivity was always equal to 1.  The transient flux ratio did depend on binding kinetics, as shown in Figure x.  As would be expected, the transient flux of transport factor out of the material was suppressed relative to that of the inert protein, as a population of the transport factor filled binding sites throughout the material.  Once binding equilibrium has been established, however, the immobile population of bound transport factors cannot contribute to the flux out of the pore, and the steady-state flux of binding and non-binding proteins is identical.
 
@@ -402,6 +406,7 @@ Using these parameters, along with those described in earlier sections, Mike Ste
  Using these realistic parameters, selectivity can reach 200-300, a large flux enhancement for TFs over nonbinding proteins.
 
 \section{Bound mobility through inter-chain hopping}
+\label{sec:hopping}
 
 Another possible mechanism of bound-state diffusion is inter-chain hopping enabled by multivalent binding interactions.  All known transport factors have at least two hydrophobic binding pockets which bind to FG motifs, and some have many more \cite{something?}.  FG Nups in turn each possess many FG motifs, leading to a highly multivalent binding interaction.  This feature allows a transport factor to bind to multiple Nups at once, moving between them with a hand-over-hand or sliding motion without ever fully unbinding \cite{raveh16, tetenbaum-novatt12}.  While binding to multiple FG motifs on the same Nup will not lead to bound diffusion, inter-chain hopping will cause the origin site of tethered transport factor diffusion to change over time.  In order to understand the effect of hopping on the overall bound diffusion constant, we model a TF that undergoes tethered diffusion when bound to an FG Nup and hops between neighboring, randomly distributed tethers \figref{fig:hopping}.
 
@@ -492,91 +497,108 @@ Upon calculating the bound diffusion constant using the hopping simulation descr
 \label{fig:partitioningD}
 \end{figure}
 
-%%%% end of portion I've checked
-
-\section{Fickian diffusion}
+\section{Fickian and anomalous diffusion}
 \label{sec:fickian}
-Talk about how diffusion is almost but not quite Fickian, and show the anomalous diffusion plots (made with Mike's script) for various parameters. Talk about timescales and how this might affect the results.
+A particle whose mean-squared displacement is proportional to time ($\langle x^2(t) \rangle \propto t$) is said to be undergoing normal or Fickian diffusion.  This is generally the case for a freely-diffusion particle with no driving forces acting upon it.  Anomalous diffusion is the more general case where $\langle x^2(t)\rangle \propto t^\alpha$.  When $\alpha > 1$, the motion is superdiffusive; $\alpha < 1$ is the subdiffusive regime, typically caused by confined diffusion or binding.
+
+Throughout this analysis, we have assumed that all proteins are experiencing Fickian diffusion.  For inert, nonbinding proteins, this is true provided we neglect any steric confinement from the presence of the FG Nups.  Additionally, transport factors should show normal diffusion over timescales much longer than their binding lifetime.  However, binding interactions will result in slightly subdiffusive motion on shorter timescales.
+
+In order to quantify the extent of anomalous diffusion, we ran a modified version of the hopping simulation described in Sec.~\ref{sec:hopping} in which the transport factor was not solely limited to hopping but also able to entirely unbind from and rebind to Nups with rates $\koff$ and $\kon$ respectively.  
+
+ In order to quantify the extent of anomalous diffusion, we ran the same simulations described above but allowed total unbinding and rebinding to occur, not just hopping while bound.  The resulting MSD $\langle x^2(t) \rangle$ can then be used to investigate anomalous diffusion.  Figure~\ref{fig:anomalous-diffusion} is a log-log plot of $\langle x^2(t) \rangle/t$ vs time $t$, generated using a script created by Mike Stefferson \cite{stefferson18}.  In such a plot, a horizontal asymptote indicates Fickian diffusion, while a non-zero slope $m$ indicates anomalous diffusion with $m = \alpha -1$.
+
+Figure~\ref{fig:anomalous-diffusion} shows several hopping rates.  When the transport factor is not able to hop between Nups, diffusion remains anomalous until well past the binding lifetime $1/\koff$ (not shown).  Larger hopping rates cause diffusion to become Fickian over shorter timescales.  The hopping lifetime $1/k_\mathrm{hop}$ is shown for each nonzero hopping rate, as well as the binding lifetime ($\koff = 10^{-4}$ $\mu$s in all cases).  The time to explore the potential well caused by binding to Nups is also shown.  The vertical line marks the experimentally-measured time for NTF2 to pass through the nuclear pore, $t_\mathrm{NTF2} = 10$ ms.
+
+The anomalous diffusion plot indicates that the diffusion of transport factors is not entirely Fickian, but that shorter binding lifetimes and higher hopping rates lead to less anomalous diffusion.
+
+\begin{SCfigure}
+\centering
+\includegraphics[width=0.5\linewidth]{figs/ch02/171103-DvsT-with-lifetimes.pdf}
+\caption{Anomalous diffusion of transport factors at several hopping rates.  The hopping, binding, and well-exploration lifetimes are also shown where applicable.  NTF2 transit time (10 ms) is indicated with a vertical line.\\}
+\label{fig:anomalous-diffusion}
+\end{SCfigure}
 
 \section{Discussion}
-A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
-we developed includes diffusion of TFs due to thermal fluctuations,
-binding to polymeric tethers, and the hopping of bound species between
-these tethers.  Thus we identified principles of selective transport
-resulting from binding \figref{fig:cartoon}, emphasizing that
-bound-state mobility is essential for selective transport
-\figref{fig:transient}.  Binding increases the local concentration,
-and any bound mobility increases the flux.  We characterized two
-mechanisms to obtain bound-state mobility and found that
-thermally-driven diffusion of TFs bound to flexible tethers and rapid
-binding kinetics \cite{hough15, milles15} allow TF mobility, leading
-to selectivity similar to that observed experimentally
-\figref{fig:tethers}.  In addition, tether flexibility enables
-multivalent bound particles to hop between binding regions
-\figref{fig:hopping} \cite{lowe15, schoch12}, further enhancing
-selectivity. Mobility of bound or partitioned molecules occurs in many
-biological contexts, suggesting that the mechanisms we study here may
-be broadly applicable \cite{stefferson17, braga07}.
+%A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
+%we developed includes diffusion of TFs due to thermal fluctuations,
+%binding to polymeric tethers, and the hopping of bound species between
+%these tethers.  Thus we identified principles of selective transport
+%resulting from binding \figref{fig:cartoon}, emphasizing that
+%bound-state mobility is essential for selective transport
+%\figref{fig:transient}.  Binding increases the local concentration,
+%and any bound mobility increases the flux.  We characterized two
+%mechanisms to obtain bound-state mobility and found that
+%thermally-driven diffusion of TFs bound to flexible tethers and rapid
+%binding kinetics \cite{hough15, milles15} allow TF mobility, leading
+%to selectivity similar to that observed experimentally
+%\figref{fig:tethers}.  In addition, tether flexibility enables
+%multivalent bound particles to hop between binding regions
+%\figref{fig:hopping} \cite{lowe15, schoch12}, further enhancing
+%selectivity. Mobility of bound or partitioned molecules occurs in many
+%biological contexts, suggesting that the mechanisms we study here may
+%be broadly applicable \cite{stefferson17, braga07}.
+%
+%
+%Our model for selective transport by tethered diffusion generalizes to
+%a range of FG-FG interactions \cite{vovk16}, if we decrease the
+%effective chain length $L_c$ for cohesive FG Nups.  For short chains
+%the selectivity simply due to chain flexibility is modest, suggesting
+%that other mechanisms, like hopping, may be important.  Our model
+%suggests that transient cross-linking of FG repeats proposed to occur
+%within the pore may serve to increase the viscosity and therefore the
+%selectivity. Crosslinks need not be actively melted by TFs to enhance
+%selectivity \figref{fig:parameter-variations}.
+%  
+%Our model provides a quantitative tool to evaluate selective
+%transport. Materials formed \textit{in vitro} by spontaneous
+%self-assembly of FG Nups \cite{frey07} or transient crosslinking by
+%alpha-helical peptides \cite{kim15} show strong selective
+%\textit{entry}.  Using published data, we predicted whether these gels
+%also showed selective \textit{transport} (table \ref{table:Gorlich}).
+%Most synthetic gels are predicted to have $S<10$, less than the
+%selectivity of NTF2 in cells (table \ref{table:NTF2-flux}). The
+%predicted selectivity of one hydrogel is $S\approx200$, apparently the
+%most selective synthetic gel to date \cite{frey07}.
+%
+%
+%\subsection{Overcoming the limitations of binding}
+%Binding, even in the presence of bound-state motion, limits
+%selectivity.  Biological systems appear to have developed strategies
+%to avoid this, for example, by using true partitioning.  Lipid domains
+%in complex membranes partition proteins \cite{simons11}.  Membraneless
+%organelles spontaneously assembled from low-complexity proteins and
+%nucleic acids can localize a molecule without immobilizing it
+%\cite{brangwynne15}.  Because membraneless organelles are fluid, the
+%constraints imposed in our NPC model by binding are released.  Our
+%work thereby suggests a benefit of phase-separated droplets to cells:
+%they provide significantly higher selectivity than can occur with
+%immobilizing binding. This may be especially important for spatially
+%complex assemblies \cite{feric16}.
+%
+%Though we show it is not necessary, the active dissolution of
+%polymeric biomaterials has been proposed to occur in the NPC
+%\cite{ribbeck01}. This strategy is used by \textit{Helicobacter
+%  pylori} to penetrate the gastric mucus \cite{celli09}. Because the
+%particularly dense extracellular matrix of solid tumors blocks the
+%motion of particles, especially larger nanoparticles, ECM dissolution
+%has been used to enhance drug delivery \cite{zhou13}. Unfortunately,
+%this approach may not be universally applicable: breaking down the ECM
+%surrounding tumors may promote cancer metastasis \cite{miao15}.
+%
+%\subsection{Design principles of selective transport by binding}
+%
+%Filtering by polymeric biomaterials occurs in many systems for
+%particles of different sizes: for example, nutrients reach our
+%intestinal walls while larger molecules are excluded.  However,
+%controlling the selective transport of similarly-sized molecules by
+%tuning specific interactions has proven elusive. In drug delivery
+%applications, inert nanoparticles are typically more effective at penetrating
+%extracellular spaces and reaching their cellular targets
+%\cite{witten17}. Because biopolymer filters are the first point of
+%contact of nanoparticles used for drug delivery, specific targeting of
+%transport through mucus may enhance the effectiveness of drug
+%delivery. If NPC-like bound mobility as described in our model could
+%be achieved in these systems, it would increase the rates of
+%transport and drug delivery. 
 
-
-Our model for selective transport by tethered diffusion generalizes to
-a range of FG-FG interactions \cite{vovk16}, if we decrease the
-effective chain length $L_c$ for cohesive FG Nups.  For short chains
-the selectivity simply due to chain flexibility is modest, suggesting
-that other mechanisms, like hopping, may be important.  Our model
-suggests that transient cross-linking of FG repeats proposed to occur
-within the pore may serve to increase the viscosity and therefore the
-selectivity. Crosslinks need not be actively melted by TFs to enhance
-selectivity \figref{fig:parameter-variations}.
-  
-Our model provides a quantitative tool to evaluate selective
-transport. Materials formed \textit{in vitro} by spontaneous
-self-assembly of FG Nups \cite{frey07} or transient crosslinking by
-alpha-helical peptides \cite{kim15} show strong selective
-\textit{entry}.  Using published data, we predicted whether these gels
-also showed selective \textit{transport} (table \ref{table:Gorlich}).
-Most synthetic gels are predicted to have $S<10$, less than the
-selectivity of NTF2 in cells (table \ref{table:NTF2-flux}). The
-predicted selectivity of one hydrogel is $S\approx200$, apparently the
-most selective synthetic gel to date \cite{frey07}.
-
-
-\subsection{Overcoming the limitations of binding}
-Binding, even in the presence of bound-state motion, limits
-selectivity.  Biological systems appear to have developed strategies
-to avoid this, for example, by using true partitioning.  Lipid domains
-in complex membranes partition proteins \cite{simons11}.  Membraneless
-organelles spontaneously assembled from low-complexity proteins and
-nucleic acids can localize a molecule without immobilizing it
-\cite{brangwynne15}.  Because membraneless organelles are fluid, the
-constraints imposed in our NPC model by binding are released.  Our
-work thereby suggests a benefit of phase-separated droplets to cells:
-they provide significantly higher selectivity than can occur with
-immobilizing binding. This may be especially important for spatially
-complex assemblies \cite{feric16}.
-
-Though we show it is not necessary, the active dissolution of
-polymeric biomaterials has been proposed to occur in the NPC
-\cite{ribbeck01}. This strategy is used by \textit{Helicobacter
-  pylori} to penetrate the gastric mucus \cite{celli09}. Because the
-particularly dense extracellular matrix of solid tumors blocks the
-motion of particles, especially larger nanoparticles, ECM dissolution
-has been used to enhance drug delivery \cite{zhou13}. Unfortunately,
-this approach may not be universally applicable: breaking down the ECM
-surrounding tumors may promote cancer metastasis \cite{miao15}.
-
-\subsection{Design principles of selective transport by binding}
-
-Filtering by polymeric biomaterials occurs in many systems for
-particles of different sizes: for example, nutrients reach our
-intestinal walls while larger molecules are excluded.  However,
-controlling the selective transport of similarly-sized molecules by
-tuning specific interactions has proven elusive. In drug delivery
-applications, inert nanoparticles are typically more effective at penetrating
-extracellular spaces and reaching their cellular targets
-\cite{witten17}. Because biopolymer filters are the first point of
-contact of nanoparticles used for drug delivery, specific targeting of
-transport through mucus may enhance the effectiveness of drug
-delivery. If NPC-like bound mobility as described in our model could
-be achieved in these systems, it would increase the rates of
-transport and drug delivery. 
+In conclusion, we have developed a simple model of nuclear transport which is general enough to apply to several other biological filters as well.  It's cool because it provides for high selectivity with a pretty simple mechanism controlled by bound diffusion.  There are several ways that this could be achieved in the nuclear pore or in other systems.  This is also a really interesting filtering technology because, unlike basically every other filter I know of, it doesn't just block undesired things from passing.  It also enhances the flux of the things that should pass through.  I should be more explicit about the other systems that this could apply to here.  Probably this is where I talk about PARP1 too.
