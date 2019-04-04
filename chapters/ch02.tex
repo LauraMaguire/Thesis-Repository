@@ -475,27 +475,27 @@ Here, the factor of $1/2$ is appropriate because we consider a one-dimensional r
 
 Upon calculating the bound diffusion constant using the hopping simulation described above, it was clear that inter-chain hopping could lead to relatively large bound diffusion constant, with a corresponding increase in selectivity (Figs.~\ref{fig:hopping}, \ref{fig:partitioningB}, \ref{fig:partitioningC}).  In the limit of a hopping rate of zero, the tethered-diffusion-only result is recovered, as anticipated.  Hopping most enhances selectivity when the Nup length or dissociation constant are small.  This is the regime where tethered diffusion is limited, corresponding to crosslinked Nups within the nuclear pore.  If the pore is highly crosslinked, binding multivalency may be essential to selectivity.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc4-fig.pdf}
 \caption{Bound diffusion and selectivity as a function of dissociation
-  constant, with varying hopping rate for FG Nups with $L_c = 4$ nm.}
+  constant, with varying hopping rate for FG Nups with (A,B) $L_c = 4$ nm; (C,D) $L_c = 12$ nm; (E,F) $L_c = 40$ nm; (G,H) $L_c = 120$ nm.}
 \label{fig:partitioningB}
 \end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc12-fig.pdf}
-\caption{Bound diffusion and selectivity as a function of dissociation
-  constant, with varying hopping rate for FG Nups with $L_c = 12$ nm.}
-\label{fig:partitioningC}
-\end{figure}
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc120-fig.pdf}
-\caption{Bound diffusion and selectivity as a function of dissociation
-  constant, with varying hopping rate for FG Nups with $L_c = 120$ nm.}
-\label{fig:partitioningD}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc12-fig.pdf}
+%\caption{Bound diffusion and selectivity as a function of dissociation
+%  constant, with varying hopping rate for FG Nups with $L_c = 12$ nm.}
+%\label{fig:partitioningC}
+%\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc120-fig.pdf}
+%\caption{Bound diffusion and selectivity as a function of dissociation
+%  constant, with varying hopping rate for FG Nups with $L_c = 120$ nm.}
+%\label{fig:partitioningD}
+%\end{figure}
 
 \section{Fickian and anomalous diffusion}
 \label{sec:fickian}
@@ -518,7 +518,7 @@ The anomalous diffusion plot indicates that the diffusion of transport factors i
 \label{fig:anomalous-diffusion}
 \end{SCfigure}
 
-\section{Discussion}
+\section{Bound diffusion in other biological systems}
 %A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
 %we developed includes diffusion of TFs due to thermal fluctuations,
 %binding to polymeric tethers, and the hopping of bound species between
@@ -601,4 +601,21 @@ The anomalous diffusion plot indicates that the diffusion of transport factors i
 %be achieved in these systems, it would increase the rates of
 %transport and drug delivery. 
 
-In conclusion, we have developed a simple model of nuclear transport which is general enough to apply to several other biological filters as well.  It's cool because it provides for high selectivity with a pretty simple mechanism controlled by bound diffusion.  There are several ways that this could be achieved in the nuclear pore or in other systems.  This is also a really interesting filtering technology because, unlike basically every other filter I know of, it doesn't just block undesired things from passing.  It also enhances the flux of the things that should pass through.  I should be more explicit about the other systems that this could apply to here.  Probably this is where I talk about PARP1 too.
+While the above model was inspired by nuclear transport, it is sufficiently general that it can be applied to other biological systems as well.  A variety of selective filters exist \textit{in vivo}, and bound-state diffusion could be relevant to many of them.  Our model predicts that higher bound diffusion will lead to higher selectivity in biofilters.  
+
+Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing bound-to-free diffusion ratio ($D_B/D_F$).  Mucus, such as the mucus which lines the lungs, permits very little bound diffusion of particles that bind to it.  Research in targeted drug delivery to lung cells has observed that inert nanoparticles are more effective at penetrating the mucus barrier than binding particles \cite{witten17}.  This observation agrees with the prediction that binding will only enhance transport if bound diffusion occurs.   On the other hand, Fig~\ref{fig:other-filters}C depicts a system with maximal bound-state diffusion: a phase-separated liquid droplet.  Such a droplet, consisting of a phase rich in an intrinsically disordered protein, may be used in order to concentrate binding partners and speed up reactions within the cell \cite{brangwynne15, feric16}.  In this case, complexes of IDPs and their binding partners would have approximately the same diffusion constant as free binding partners ($D_B/D_F \approx 1$), leading to high selectivity for binding partners to pass to the center of the droplet.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figs/ch02/concluding-cartoon-large.pdf}
+\caption{Possible effect of bound diffusion on other biological systems.}
+\label{fig:other-filters}
+\end{figure}
+
+Systems other than filters may make use of principles found in our model as well.  For example, the bacteria \textit{Staphylococcus aureus}, responsible for many antibiotic-resistant infections in hospitals, can exhibit resistance to the antibiotic vancomycin by constantly building and shedding its cell wall, to which vancomycin binds \cite{mcguinness17}.  Our model predicts that such a strategy should keep the vancomycin flux through the cell wall from reaching steady-state, in the transient regime where the flux of a binding molecule is suppressed (Fig.~\ref{fig:transient}).  The targeting of the DNA damage repair protein PARP1 to appropriate sites in the nucleus, described below, is another potential application of binding and diffusion principles.
+
+\subsection{DNA damage repair protein recruitment in the nucleus}
+
+\section{Conclusions}
+
+In the above chapter, we have developed a simple model of selective nuclear transport which may apply more broadly to other biofilters as well.  Remarkably, this simple model can reproduce the high selectivity shown experimentally by the nuclear pore for proteins which can bind to the filter.  The diffusion coefficient of the bound complex proved to be the most important factor in predicting selectivity.  In order to test the predictions of our model, we next began developing nuclear-pore-inspired biofilters to investigate the effect of bound-state diffusion on protein separation \textit{in vitro}.
