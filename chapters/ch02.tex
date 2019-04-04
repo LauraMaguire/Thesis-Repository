@@ -85,13 +85,11 @@
 %along the axis of the NPC may play a role in selective transport
 %\cite{zilman07, tagliazucchi13, tu13, timney16}.
 
-The nuclear pore is a clear example of a selective biofilter, but the precise mechanism of selectivity is not well understood.  In particular, an apparent paradox arises from the fact that transport factors, which bind to FG Nups within the pore, have a much higher flux through the pore than inert, nonbinding proteins.  This result is somewhat counterintuitive, given that binding must necessarily slow the passage of a transport factor through the pore.  In addition to nuclear transport, binding and diffusion are important in many other biofilters as well, including drug delivery through a mucus layer liquid-liquid phase separation (Sec.~\ref{sec:other-filters} \cite{schneider17, huang17, mastorakos15,brangwynne15, feric16,witten17}.  We wanted to understand how binding increases flux through selective biofilters.
+The nuclear pore is a clear example of a selective biofilter, but the precise mechanism of selectivity is not well understood.  In particular, an apparent paradox arises from the fact that transport factors, which bind to FG Nups within the pore, have a much higher flux through the pore than inert, nonbinding proteins.  This result is somewhat counterintuitive, given that binding must necessarily slow the passage of a transport factor through the pore.  In addition to nuclear transport, binding and diffusion are important in many other biofilters as well, including drug delivery through a mucus layer liquid-liquid phase separation (Sec.~\ref{sec:other-filters}) \cite{schneider17, huang17, mastorakos15,brangwynne15, feric16,witten17}.  We wanted to understand how binding increases flux through selective biofilters.
 
 To that end, we developed a simple mathematical model of selective transport inspired by the nuclear pore.  While the model is based on nuclear transport, it is general enough that it can be applied to a wide range of biological systems and synthetic biofilters.  Unlike most existing theoretical models of nuclear transport, which reduce transport to diffusion in a single effective one-dimensional potential, this model does not require simulations or a precise accounting of the locations and composition of Nups along the pore axis \cite{pulupa17, vovk16,tagliazucchi13, tu13, timney16}.  It is equally applicable to a bulk material as to a nanopore.  A few other first-principles models of the pore have been developed using similar differential equations but making different assumptions about boundary conditions and binding equilibrium \cite{zilman07,yang18}.
 
-The primary surprising result of 
-
-The most surprising thing about our model was that bound-state diffusion emerged as the key parameter.  Without allowing the Nup-transport factor complex to diffuse, we couldn't make a selective material.  However, allowing for reasonable values of bound-state diffusion, we could reproduced the experimentally-observed selectivity of the nuclear pore.  This suggests that bound-state diffusion might be important in many biological filters.  Maybe we can use this result in other cases as well.
+The primary surprising result of our model was the importance of bound-state diffusion for selectivity.  No selective filtering was possible if the transport factor - Nup complex was immobile, regardless of the other parameters.  However, if bound diffusion within the pore was permitted, the selective flux of transport factor through the pore as compared to that of an inert protein approached that measured experimentally.  These results suggest that bound-state diffusion is key to selective transport within the nuclear pore and perhaps to a number of other biofilters as well.
 
 \section{Simplified model of nuclear transport}
 
@@ -623,7 +621,24 @@ PARP1 is a protein which assists in DNA damage repair.  It rapidly diffuses to a
 
 Both mechanisms discussed here for the nuclear pore could potentially apply to PARP1 as well.  Johannes Rudoloph, Jyothi Mahadevan, and Karolin Lugar have investigated the possibility of a multivalent``monkey-bar'' mechanism equivalent to inter-chain hopping between DNA strands \cite{rudolph18,mahadevan18}.  While they provide good evidence for such a mechanism, it still doesn't provide enough bound diffusion to explain the PARP1 targeting paradox.
 
-I applied both tethered diffusion and other hopping mechanisms to the situation.  When I estimated the tethered diffusion using parameters appropriate to chromatin in the nucleus, I got a number that might suffice to explain the diffusion they see.  It's difficult to test, though.  There are also other possible hopping mechanisms, since there are a total of four binding sites for DNA on PARP1, although some of these sites may necessarily act together.
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figs/ch02/PARP1.pdf}
+\caption{PARP1 and its possible mechanisms of bound diffusion. (A) Schematic of PARP1 structure showing its four DNA-binding domains \cite{rudolph18}. (B) ``Monkey-bar'' inter-strand hopping mechanism cartoon and reaction showing on- and off- rates for binding two subsequent DNA strands \cite{rudolph18}.  (C) Flexible tether structure of chromatin within the nucleus.  (Image from Florida State University.)}
+\label{fig:parp1}
+\end{figure}
+
+Either tethered diffusion or additional hopping might provide the missing bound-state mobility.  To begin, assume that tethered diffusion is the only additional mechanism of bound diffusion.  The predicted off-rate $\koff$ of PARP1 from undamaged DNA can then be calculated assuming that the effective diffusion constant of PARP1 observed in the nucleus is $D_\mathrm{obs} = p_b D_B + (1-p_b)D_F$, a weighted average of free and bound diffusion constants where $p_b$ is the fraction of PARP1 bound.  If bound diffusion comes only from tethered motion, then $D_B$ is given by Eqn.~\ref{eq:dbound}.  The fraction of PARP1 bound in chemical equilibrium is 
+\begin{equation}
+p_B = \frac{1}{1+\frac{K_D}{N_T}} 
+\end{equation} where $K_D = \koff/\kon$ is the dissociation constant and $N_T$ is the total concentration of PARP1 binding sites on undamaged chromatin (assuming low occupancy by PARP1).
+
+The polymer properties of chromatin are estimated from single-molecule force spectroscopy as $L_c\ell_p = 2.5\times10^{-4}\ \mu$m  - $1.2\times 10^{-5}\ \mu$m \cite{kruithof09, norouzi18}.  Johannes Rudolph estimates a diffusion-limited on-rate of $\kon = 10^{9}\ \mathrm{M}^{-1}\ \mathrm{s}^{-1}$ and a total binding site concentration of up to 1 mM.  Finally, measurements of PARP1 diffusion in the nucleus and in buffer give $D_\mathrm{obs} \approx 3\ \mu\mathrm{m/s}^2$ and an upper bound of $D_F = 9D\mathrm{obs}$ \cite{mahadevan18}.  Using these parameters, we predict that an off-rate between $1.2\times 10^2$ and $1.2\times 10^3\ \mathrm{s}^{-1}$ would account for the observed diffusion, which is a bit larger than people think it is, but not too terrible.
+
+Apart from tethered diffusion, there could be a second mechanism of inter-strand hopping at work.  PARP1 contains four DNA binding domains (Fig.~\ref{fig:parp1}A), and though some may work in tandem, it is possible that additional multivalent interactions are taking place beyond the monkey-bar mechanism.  Analytic models of hopping are more complicated \cite{yang18}, but a highly-simplified model can be used to estimate the maximum expected contribution to bound diffusion from additional hopping.
+
+
+
 
 \section{Conclusions}
 
