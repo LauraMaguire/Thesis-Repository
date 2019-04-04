@@ -54,6 +54,7 @@ In order to fit the influx and FRAP data, I needed to estimate several parameter
 To estimate the area and perimeter, I embedded the image in a larger frame, and created a ROI that covered the entire gel, estimating where necessary.  I summed the non-zero elements of the ROI and scaled using the pixel spacing.  For the perimeter, I called the Matlab function that returns only the outline of an ROI, and summed and scaled that.
 
 \subsection{Partition coefficient and bound probability calculations}
+\label{sec:part-coeff}
 In order to calculate the bound diffusion coefficient, I needed to estimate the amount of time that a given transport factor spends bound to Nups.  When the system is in chemical equilibrium, the concentration of free transport factor ($T$), free Nup ($N$), and transport factor - Nup complex ($C$) is related to the dissociation constant $K_D$ by
 %\begin{equation}
 %K_D = \frac{TN}{C}

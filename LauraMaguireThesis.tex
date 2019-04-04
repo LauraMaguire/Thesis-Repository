@@ -10,7 +10,7 @@
 \usepackage{cite}
 \usepackage[font=small,labelfont=bf]{caption} %caption options
 \usepackage{sidecap} %side captions
-\usepackage{longtable}
+%\usepackage{longtable}
 
 %%%%%%%%%%%%   All the preamble material:   %%%%%%%%%%%%
 \title{Biologically-inspired selective filters}
@@ -59,12 +59,13 @@
 %%%%%%%%%   then the Bibliography, if any   %%%%%%%%%
 \bibliographystyle{unsrt_cje.bst}	% or "siam", or "alpha", etc.
 %\bibliography{zotero-bib.bib}		% Bib database in "refs.bib"
-\bibliography{zotero2.bib}		% Bib database in "refs.bib"
+\bibliography{zotero2,HoughLab}		% Bib database in "refs.bib"
 % if using biblatex
 %\printbibliography
 
 %%%%%%%%%   then the Appendices, if any   %%%%%%%%%
 \appendix
+\input appendices/appendix_npc-mimics.tex
 \input appendices/appendix_protein_purification.tex
 \input appendices/appendix_pore-calc.tex
 \input appendices/appendix_bis_labeling.tex
