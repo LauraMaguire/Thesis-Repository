@@ -83,11 +83,13 @@
 %model is sufficiently general to describe the common features of a
 %range of biopolymer filters.   A varying free energy landscape
 %along the axis of the NPC may play a role in selective transport
-%\cite{zilman07, tagliazucchi13, tu13, timney16}. 
+%\cite{zilman07, tagliazucchi13, tu13, timney16}.
 
-While the nuclear pore is an obvious example of a biological selective filter, many others exist as well.  These include mucus, liquid-liquid phase separation, PARP1 in the nucleus sort of, maybe that strep bacteria, and more.  The effect of particle binding on selectivity is not usually well understood.  We wanted to answer the question of why the binding of transport factors to the FG Nups within the nuclear pore enhances their flux through the pore compared to that of a non-binding protein.  Hopefully the answer will also help us understand how to manipulate binding in other biological filters to control what things get through, like with drug delivery.
+The nuclear pore is a clear example of a selective biofilter, but the precise mechanism of selectivity is not well understood.  In particular, an apparent paradox arises from the fact that transport factors, which bind to FG Nups within the pore, have a much higher flux through the pore than inert, nonbinding proteins.  This result is somewhat counterintuitive, given that binding must necessarily slow the passage of a transport factor through the pore.  In addition to nuclear transport, binding and diffusion are important in many other biofilters as well, including drug delivery through a mucus layer liquid-liquid phase separation (Sec.~\ref{sec:other-filters} \cite{schneider17, huang17, mastorakos15,brangwynne15, feric16,witten17}.  We wanted to understand how binding increases flux through selective biofilters.
 
-To answer this question, we developed a simple mathematical model of nuclear transport which has few enough parameters that we can actually understand what they are all doing.  People have made plenty of theoretical models, but almost all are simulations and/or use an effective potential which depends strongly on the details of Nup composition and location.  On the other hand, our model is applicable to the nuclear pore, bulk selective materials, and other biological systems.  It does not depend on the details of the nuclear pore.  A few other people have made similar models, but they have some serious flaws.  Especially the Olsen one.
+To that end, we developed a simple mathematical model of selective transport inspired by the nuclear pore.  While the model is based on nuclear transport, it is general enough that it can be applied to a wide range of biological systems and synthetic biofilters.  Unlike most existing theoretical models of nuclear transport, which reduce transport to diffusion in a single effective one-dimensional potential, this model does not require simulations or a precise accounting of the locations and composition of Nups along the pore axis \cite{pulupa17, vovk16,tagliazucchi13, tu13, timney16}.  It is equally applicable to a bulk material as to a nanopore.  A few other first-principles models of the pore have been developed using similar differential equations but making different assumptions about boundary conditions and binding equilibrium \cite{zilman07,yang18}.
+
+The primary surprising result of 
 
 The most surprising thing about our model was that bound-state diffusion emerged as the key parameter.  Without allowing the Nup-transport factor complex to diffuse, we couldn't make a selective material.  However, allowing for reasonable values of bound-state diffusion, we could reproduced the experimentally-observed selectivity of the nuclear pore.  This suggests that bound-state diffusion might be important in many biological filters.  Maybe we can use this result in other cases as well.
 
@@ -519,6 +521,7 @@ The anomalous diffusion plot indicates that the diffusion of transport factors i
 \end{SCfigure}
 
 \section{Bound diffusion in other biological systems}
+\label{sec:other-filters}
 %A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
 %we developed includes diffusion of TFs due to thermal fluctuations,
 %binding to polymeric tethers, and the hopping of bound species between
@@ -615,6 +618,12 @@ Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing boun
 Systems other than filters may make use of principles found in our model as well.  For example, the bacteria \textit{Staphylococcus aureus}, responsible for many antibiotic-resistant infections in hospitals, can exhibit resistance to the antibiotic vancomycin by constantly building and shedding its cell wall, to which vancomycin binds \cite{mcguinness17}.  Our model predicts that such a strategy should keep the vancomycin flux through the cell wall from reaching steady-state, in the transient regime where the flux of a binding molecule is suppressed (Fig.~\ref{fig:transient}).  The targeting of the DNA damage repair protein PARP1 to appropriate sites in the nucleus, described below, is another potential application of binding and diffusion principles.
 
 \subsection{DNA damage repair protein recruitment in the nucleus}
+
+PARP1 is a protein which assists in DNA damage repair.  It rapidly diffuses to and binds damaged DNA, even though it has some affinity for non-damaged DNA as well, of which there is a really lot inside the nucleus.  People think that PARP1 is essentially always bound inside the nucleus.  Therefore, it should move far too slowly unless there is a mechanism of bound diffusion to help it move.
+
+Both mechanisms discussed here for the nuclear pore could potentially apply to PARP1 as well.  Johannes Rudoloph, Jyothi Mahadevan, and Karolin Lugar have investigated the possibility of a multivalent``monkey-bar'' mechanism equivalent to inter-chain hopping between DNA strands \cite{rudolph18,mahadevan18}.  While they provide good evidence for such a mechanism, it still doesn't provide enough bound diffusion to explain the PARP1 targeting paradox.
+
+I applied both tethered diffusion and other hopping mechanisms to the situation.  When I estimated the tethered diffusion using parameters appropriate to chromatin in the nucleus, I got a number that might suffice to explain the diffusion they see.  It's difficult to test, though.  There are also other possible hopping mechanisms, since there are a total of four binding sites for DNA on PARP1, although some of these sites may necessarily act together.
 
 \section{Conclusions}
 
