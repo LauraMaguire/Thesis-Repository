@@ -3,6 +3,8 @@
 
 Following up on the principles of the bound-diffusion theory, we wanted to see whether we could measure bound diffusion in a biomaterial inspired by the nuclear pore complex.  In order to do that, we made Nup-filled hydrogels and measured the diffusion of transport factors and inert proteins within them.  We measured the diffusion in a few different ways: monitoring the concentration profile and total accumulation as the proteins diffused into the cell, and using fluorescence recovery after photobleaching (FRAP).
 
+Fluorescence recovery after photobleaching (FRAP) relies on the redistribution of fluorophores after patterned photobleaching in order to determine their diffusion constant.  After a small portion of the hydrogel is bleached, the bleached spot gradually exchanges with the non-bleached fluorophores outside, and the average fluorescence intensity within the bleached spot recovers.  The recovery lifetime can be used to determine the fluorophore's diffusion constant, and the final recovered intensity as compared to the intensity outside the bleach spot can be used to determine the mobile fraction of fluorophore.
+
 \section{Experimental parameters}
 
 Our reaction-diffusion model of selectivity is controlled by a relatively small number of parameters.  Ideally, we would like to vary all of these experimentally in order to verify the model's predictions.  In reality, most are highly difficult to alter in a well-controlled way.  Of the model's parameters, the contour length $L_C$ of the tethered Nups is the simplest to control.  Varying this contour length will very the bound diffusion coefficient $D_B$ according to Eqn.~\ref{eq:dbound}.  This section discusses $L_C$ and the other experimental parameters used in our hydrogel nuclear pore mimics.
@@ -49,9 +51,7 @@ The diffusion of the non-binding 30 kDa protein mCherry was used as a proxy for 
 
 \section{Experimental procedures}
 
-The lessons of the previous chapter were applied to these experiments.  We made hydrogels and looked at them under the microscope.  Thanks to Joe and the imaging core facility.
-
-Fluorescence recovery after photobleaching (FRAP) relies on the redistribution of fluorophores after patterned photobleaching in order to determine their diffusion constant.  After a small portion of the hydrogel is bleached, the bleached spot gradually exchanges with the non-bleached fluorophores outside, and the average fluorescence intensity within the bleached spot recovers.  The recovery lifetime can be used to determine the fluorophore's diffusion constant, and the final recovered intensity as compared to the intensity outside the bleach spot can be used to determine the mobile fraction of fluorophore.
+The nuclear pore mimics in this dataset were designed with the lessons of Chapter~\ref{ch03} in mind.  They consist of hydrogels with the largest average pore size and simplest geometry: a single microliter-scale droplet.  While this geometry does not allow for direct measurements of selectivity, the in-gel diffusion constants of both NTF2 and mCherry can be determined and bound diffusion calculated.  Two types of experiments were carried out: influx experiments, in which the entry of fluorescent proteins into the hydrogels was monitored, and FRAP experiments, in which a portion of an equilibrated hydrogel was bleached and the recovery observed.  Both experiments provide a measurement of the proteins' diffusion constants.  These experiments were performed at CU's BioFrontiers Advanced Light Microscopy Core Facility.  Thanks go to Joseph Dragavon for much assistance with the microscopy.
 
 \subsection{Hydrogel preparation}
 
