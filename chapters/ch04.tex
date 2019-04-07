@@ -81,7 +81,7 @@ Influx experiments on hydrogels containing FSFG show binding of NTF2-F to mCherr
 
 FRAP is typically performed using a confocal microscope, but we were able to bleach the hydrogels using an Olympus IX-81 widefield microscope.  The widefield was preferable because the greater depth of field allowed for thicker hydrogel samples, which were easier to fabricate and manipulate.  As described above, the hydrogel was first allowed to equilibrate with 20 $\mu$M NTF2-F and mCherry in PTB.  A reference image was taken at 4x magnification in both fluorescence channels.  A circular region of the hydrogel around $300 \mu$m (?? check this) in radius was then photobleached by taking a five-second exposure at 40x magnification using a DAPI (excitation 352-402 nm / emission 417-477 nm) filter cube.  Following the bleach, the 4x objective was rapidly returned and a time series recorded.  Typical series consisted of 15-30 frames taken as rapidly as possible (5-10 s per frame), followed by 30-60 frames taken at a slower rate (1-2 minutes per frame).  Total experiment time was 1-4 hours.  Typical exposure times were 10 ms for NTF2-F and 40 ms for mCherry, both with a gain of 3 dB.
 
-In order to increase throughput, up to three FRAP experiments were run concurrently by sequentially bleaching and then imaging several locations within a single chamber.  This led to a maximum delay time of approximately 35 s between the end of the bleach segment and the beginning of the time series.  Delay times were recorded and taken into account in the data processing.
+In order to increase throughput, up to three FRAP experiments were run concurrently by sequentially bleaching and then imaging several locations within a single chamber.  This led to a maximum delay time of approximately 35 s between the end of the bleach segment and the beginning of the time series.  Delay times were recorded and taken into account in the data processing. Figure~\ref{fig:frap-images} shows a representative series of images pre- and post-FRAP for both NTF2-F and mCherry.
 
 Despite allowing 24 hours for equilibration, the fluorescence intensity across the hydrogel was not always uniform at the beginning of a FRAP experiment.  This could be due to slow diffusion into the hydrogels, or to inhomogeneous crosslinking.  The center of a hydrogel is more likely to be tightly crosslinked than the edges, as swelling is most inhibited at the center.  Gels which were too inhomogenous to display a clear bleach spot were discarded, but many nonuniform hydrogels were used in the final dataset, with the lack of equilibrium addressed in the data analysis (Sec.~\ref{sec:FRAP-analysis}).  Smaller hydrogels (0.5 $\mu$L of precursor solution) equilibrated more readily, at the cost of increasing the effect of fluorescent protein exchange with the reservoir, since the bleach spot then covered a significant fraction of the hydrogel.  This effect was also taken into account during data analysis.
 
@@ -103,6 +103,7 @@ Despite allowing 24 hours for equilibration, the fluorescence intensity across t
 Both the influx and FRAP experiments rely on steady-state properties of the hydrogel as well as time-dependent ones.  These properties include the partition coefficients of transport factors and inert proteins, as well as some dependent on the geometry of the hydrogel.
 
 \subsection{Gel dimension estimates}
+\label{sec:gel-dim}
 
 % Hydrogel 19-2-6-21, grnScale [0.0;0.03], redScale [0.01;0.06], cropping rect 155.51 	0.51	1069.98 1023.98
 \begin{SCfigure} 
@@ -180,41 +181,86 @@ Note that neither the dissociation constant or the total Nup concentration need 
 \section{Influx analysis}
 \label{sec:influx-analysis}
 
-\begin{SCfigure}
-\caption{Influx plot series \\}
+%2/20/19 #2 , also 2-21-19 #5 first image, grn scale [0.0038; 0.023], red [0.00; 0.0381], crop rect [3.915100000000000e+02,1.755100000000000e+02,8.259800000000000e+02,7.979800000000000e+02]
+\begin{figure}
+\caption{Intensity profiles and total accumulation within hydrogel as determined from influx time series.  (A) Image of an FSFG concat-2 hydrogel with a nominal Nup concentration of 10 mg/mL. Reservoir contains 20 $\mu$M NTF2-F and mCherry in PTB. Reservoir mask is shown (red polygon) as well as accumulation area and rectangle over which the profile averaging was performed. (B) Normalized intensity profiles as calculated using the box in (A).  (C) Normalized average intensity within hydrogel.}
 \centering
-\includegraphics[width=0.7\textwidth]{figs/ch04/influx-plots.pdf}
+\includegraphics[width=\textwidth]{figs/ch04/influx-plots.pdf}
 \label{fig:influx-plots}
-\end{SCfigure} 
-In principle, the diffusion constants of NTF2-F and mCherry within the NPC mimics can be determined using the concentration profiles or total fluorescence accumulation within the hydrogel over time.  We used several mathematical models to fit the profiles and accumulation in an attempt to extract diffusion coefficients.  The noise inherent in the data made this difficult, and ultimately we used FRAP instead to find the diffusion constants.
+\end{figure}
 
-Fickian diffusion was always assumed, although in practice the presence of binding and of the hydrogel network lead to slightly non-Fickian behavior.  It was also assumed that the length of a binding event was negligible on the timescale of diffusion, so that the observed diffusion constant of the NTF2-F could be treated as Fickian diffusion and written as a weighted average of the diffusion constants while free and bound.  This is a good approximation because we think the dissociation constant of NTF2 and FSFG is $K_D \approx 1$ mM, with a diffusion-limited on-rate and correspondingly high off-rate.
+After recording a time series of fluorescent protein influx into a hydrogel, diffusion constants can be estimated using either a plot of the intensity profile across the gel or a plot of total accumulation within the gel.  Figure~\ref{fig:influx-plots} shows an example of each plot.  The intensity within the gel is normalized to the average intensity of the reservoir, as calculated using the mask shown in Fig~\ref{fig:influx-plots}A.  Therefore, each profile trace begins at $I=1$ within the reservoir and either dips or rises to the partition coefficient value within the gel.  As the gels are not equilibrated, much of the gel interior shows only background fluorescence.  Likewise, the average intensity within the hydrogel trends towards the partition coefficient but does not reach it on the time scale of an average experiment.
+
+Analysis of the accumulation and profile curves used the diffusion-equation solutions described by Mortensen, Okkels, and Bruus \cite{mortensen06}.  This method assumes that the edge of  a nearly-circular two-dimensional region is held at a fixed concentration while the interior equilibrates (Fig.~\ref{fig:mortensen}.  Such boundary conditions correspond to an infinite fluorophore reservoir.  Given that our reservoirs are 10-20 times larger than the hydrogel volume, this is a reasonable assumption.  In a slight modification, we allow for an arbitrary partition coefficient $\gamma$ by taking the fixed boundary concentration $c_0$ to be $\gamma T_0$, where $T_0$ is the fluorescent protein intensity in the reservoir.  The assumption of near-circularity is also a good one.
+
+\begin{SCfigure}
+\caption{Geometry used to solve diffusion equation in \cite{mortensen06}.  The reservoir concentration $c_0$ fixed the concentration at the edge of the region $\Omega$.  The concentration $c(\mathbf{r},t)$ is determined within $\Omega$ as a function of position and time.}
+\centering
+\includegraphics[width=0.4\textwidth]{figs/ch04/mortensen}
+\label{fig:mortensen}
+\end{SCfigure}
+
+The two most troublesome restrictions of the Mortensen equations are Fickian diffusion and the homogeneity of the hydrogel.  As discussed in Sec.~\ref{sec:fickian}, the presence of the hydrogel meshwork and binding make diffusion within the hydrogels slightly anomalous.  Additionally, despite the improvements to the fabrication protocol, the hydrogels likely contain some degree of nonuniformity in their density, with the centers most likely being slightly denser than the edges due to differential swelling.  The effects of swelling and non-uniform thickness are greatest at the gel edge.  Unfortunately, the points at the edge of the gel and earliest in the experiment are the most important to the following fits.  As a result, the diffusion constants extracted using the profile and accumulation plots are not reliable.  The analysis is presented below nonetheless, as a similar approach was taken in analyzing the FRAP experiments.
+
 \subsection{Profile analysis}
+% figure  '180209_FSFG-gel_2.vsi'
 \label{sec:profile-analysis}
-Using these assumptions, the method of \cite{mortensen06} was followed in order to fit the profile and accumulation data.  This method assumes that an arbitrary shape is initially empty but held in an infinite reservoir kept at a constant concentration.  The shape fills according to the diffusion equation.  Although there are slightly different numerical factors for different shapes, they show that a circle is a good approximation for many shapes.  Since our gels are usually nearly circular, the circular solution is a good one.  Using this method, the protein concentration $c(r,t)$ as a function of radial distance $r$ from the gel center and time $t$ is given by
-\begin{equation}
-\frac{c(r,t)}{c_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
-\label{eq:full-profile}
-\end{equation}
-where $c_0$ is the equilibrium concentration within the shape, $D$ is the diffusion constant, $a$ is the shape radius, and $\alpha_n a$ is the $n$th zero of the Bessel function of the first kind $J_0$.
 
-Mortensen et al define a characteristic timescale for equilibration $\tau = (\mathcal{A}/\mathcal{P})^2 (\pi/4D)$ where $\mathcal{A}$ and $\mathcal{P}$ are the shape's area and perimeter, respectively.  For a circle $\mathcal{A}/\mathcal{P} = a/2$, but this ratio can be numerically calculated for our hydrogels using their precise shapes.  For times $t \ll \tau$, the concentration profile can be approximated as 
+Mortensen \textit{et al} first define a characteristic timescale for equilibration $\tau = (\mathcal{A}/\mathcal{P})^2 (\pi/4D)$ where $\mathcal{A}$ and $\mathcal{P}$ are the area and perimeter, respectively, of $\Omega$.  For a circle $\mathcal{A}/\mathcal{P} = a/2$, but this ratio was numerically calculated for the hydrogels (Sec.~\ref{sec:gel-dim}).  For times $t \ll \tau$, the concentration profile as a function of the distance $r$ from the gel center can be approximated as 
 \begin{equation}
 c(r,t) = c_0 \,\mathrm{erfc}\left(\frac{r}{\sqrt{4Dt}}\right)
 \label{eq:approx-profile}
 \end{equation}
+where $D$ is the diffusion constant.
 
-In order to fit to these equations, I averaged the intensity of a thin slice cutting through the reservoir and the gel to the center of the gel.  I normalized the data by dividing by the average reservoir intensity (the entire reservoir in the field of view, not just the thin slice).  I normalized on a time-point basis to eliminate drift in the illumination or reservoir concentration.  After normalizing, I tried to fit the first time-points to Eqn.~\ref{eq:approx-profile}, both at a fixed time for many positions and vice versa.  The fits worked fairly well for the NTF2-F plots, as those had a well-defined gel edge.  It was more difficult for the mCherry fits.
+%% erfc position at fixed time '180525_FSFGPEGDA700_03.vsi'
+%% t is close to beginning but not right at beginning
 
-I also tried to use the full equation, Eqn.~\ref{eq:full-profile}.  I fit to the first 100 terms using Matlab, and that worked slightly better, but it was still difficult for the mCherry fits.
+\begin{figure}
+\caption{IFits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.  The entire intensity profile is shown in the top panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
+\centering
+\includegraphics[width=0.9\textwidth]{figs/ch04/erfc-position.pdf}
+\label{fig:erfc-position}
+\end{figure} 
+
+\begin{SCfigure}
+\caption{Fits to Eqn.~\ref{eq:approx-profile} at a fixed point near the gel edge for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  The short-time approximation likely only holds for times $t \lesssim 20$ minutes. Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.\\}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch04/erfc-time.pdf}
+\label{fig:erfc-time}
+\end{SCfigure} 
+
+The typical duration of an influx experiment was approximately $\tau$, making the short-time approximation questionable throughout most of the time series.  We attempted to fit the intensity profile (Fig.~\ref{fig:erfc-position}) and obtained fits with fairly low error but with unreliable fit parameters.  In addition to the issues of timescale, it was often difficult to determine where the gel edge was located, as well as the partition coefficient.  Given these problems, it is not surprising that fits at successive timepoints yielded incompatible values of diffusion constant for both mCherry and NTF2.  A similar problem prevented the use of diffusion constants obtained from intensity fits at a fixed position over time (Fig.~\ref{fig:erfc-time}).
+
+A more exact solution for $c(r,t)$ can be written if the gel is assumed to be circular.  Mortensen \textit{et al} quantify the error introduced by small deviations from circularity and find it to be small.  Assuming a circular gel, the concentration profile at an arbitrary time $t$ is given by
+\begin{equation}
+\frac{c(r,t)}{c_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
+\label{eq:full-profile}
+\end{equation}
+where $a$ is the gel radius and $\alpha_n a$ is the $n$th zero of the Bessel function of the first kind $J_0$.
+
+I fit the intensity profiles to Eqn.~\ref{eq:full-profile} using different numbers of terms $N$.  For the mCherry curves, the resulting fit parameters tended to converge as $N$ increased, and the RMSE stabilized.  However, neither was true for the NTF2 curves.  Increasing values of $N$ led to steadily decreasing values of diffusion constant.  This may be due to the effect of binding on NTF2 diffusion.
+
 \subsection{Accumulation analysis}
-Next, I tried to fit to the total accumulation.  From Mortensen et al, the averaged intensity inside the gel $N(t)$ is
+
+The total accumulation within the hydrogel can be modeled by integrating the concentration profile over the entire gel.  When this is done, the averaged intensity within the hydrogel $N(t)$ is found to be
 \begin{equation}
 \frac{N(t)}{N_0} = 1-\sum_{n=0}^\infty \frac{4}{(\alpha_na)^2}\exp\left(-\frac{(\alpha_na)^2\pi t}{16\tau}\right)
 \label{eq:full-accumulation}
-\end{equation}
+\end{equation} where$N_0$ is the equilibrium value, here equal to the partition coefficient $\gamma$ once the intensity has been normalized to that of the reservoir.
 
-I fit the first 100 terms of this in Matlab, but it didn't work terribly well either.  This one worked better for mCherry than for NTF2-F, likely because binding was throwing off the NTF2 results.  Overall, the most important data points were near the edge of the gel and the beginning of the experiment, and the edge effects and uncertainty in experiment start time meant that both of those types of points had lower signal-to-noise than the rest of the experiment.
+\begin{SCfigure}
+\caption{Accumulation fits to Eqn.~\ref{eq:full-accumulation} for (A) mCherry and (B) NTF2-Alexa488.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.\\}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch04/accumulation.pdf}
+\label{fig:acc}
+\end{SCfigure} 
+
+% figure ''180516-FSFGbis_2.vsi'' fit to 100 terms, made with processing-4 script, results 11-12-18.mat
+
+Fits to the first 100 terms of Eqn.~\ref{eq:full-accumulation} are shown in Fig.~\ref{fig:acc} for mCherry and NTF2.  These fits had systematic error, likely for the same reasons as the profile fits.
+
+While the profile and accumulation data do contain information on the diffusion constants of NTF2 and mCherry, I was unable to reliably extract that information using the influx experiments.  The model presented above is a remarkably good match to the experimental setup except for the presence of binding and the unpredictable gel-edge effects.  The FRAP experiments overcome the problem of edge effects by making use of equilibrated regions deep within the hydrogel.
 
 \section{FRAP analysis}
 \label{sec:FRAP-analysis}
