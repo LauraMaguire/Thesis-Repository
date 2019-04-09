@@ -286,35 +286,51 @@ The no-exchange model fits well to the larger hydrogels and those that are well-
 \subsection{Fourier transform solution to diffusion equation}
 %Carslaw 2nd ed. pg 377, sec. 14.13(6)
 
-To account for exchange of fluorescent proteins with the reservoir, as well as for incomplete equilibration, some of the assumptions of the previous section must be relaxed.  In particular, the assumption of radial symmetry must be abandoned.  The problem becomes that of diffusion in a circular region of radius $a$ whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image.  This situation is described in Carslaw \cite{h.s.carslaw59} and a series solution provided in terms of Bessel functions of the first kind and cosines.  I wrote scripts to apply this solution numerically to the experimental data.   Then I used these results to fit the recovery data.  I got results that seem pretty good.
+To account for exchange of fluorescent proteins with the reservoir, as well as for incomplete equilibration, some of the assumptions of the previous section must be relaxed.  In particular, the assumption of radial symmetry must be abandoned.  In order to incorporate angular as well as radial dependence, the solution must be written as a sum over Bessel function and cosine modes.  While such a solution is cumbersome, it allows for an accurate description of the concentration throughout the hydrogel immediately post-bleach.  Additionally, the boundary condition can be defined so as to allow exchange between the hydrogel and reservoir.
 
-This solution makes use of Green's functions and a 2D polar Fourier transform.  We assume the gel is a circle and constrain the edge of the circle to be at zero concentration.  Then we build up the mode coefficients using the initial post-bleach intensity distribution and use them to predict the time-evolution of the system.  
+This analysis begins by numerically calculating the two-dimensional polar Fourier transform of the initial concentration distribution within the gel, decomposing it into a finite number of modes weighted by their contribution to the image.  These mode coefficients are then used to create the equation to which the experimentally-measured recovery curve is fit.  The fit parameters include the observed diffusion coefficients for NTF2 and mCherry, allowing the bound diffusion constant to be determined as described in Sec.~\ref{sec:db-calc}.
 
 \subsubsection{Analytic series solution}
+
+The problem is that of diffusion in a circular region of radius $a$, centered at the origin, whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image (Fig.~\ref{fig:carslaw-geo}).  To find the concentration $c(r,\theta,t)$ for $r<a$, we used the Green's function integrals described in \cite{h.s.carslaw59}, as heat transfer obeys the same differential equation as diffusion of particles.  Green's functions describe a system's response to an instantaneous point source.  An initial distribution can be built by integrating the Green's function over the region of interest.  The correct Green's function must be identified for a particular geometry and set of boundary conditions, but a formal solution is straightforward to write once they have been obtained.
 
 \begin{SCfigure}
 \caption{Geometry for diffusion-equation solution Eqn.~\ref{eq:full-series}.  A circle of radius $a$ is centered at the origin.  The boundary $r=a$ is held at concentration $c=0$ and the interior has initial concentration profile $f(r,\theta)$.}
 \centering
-\includegraphics[width=0.4\textwidth]{figs/ch04/carslaw-geometry}
+\includegraphics[width=0.35\textwidth]{figs/ch04/carslaw-geometry}
 \label{fig:carslaw-geo}
 \end{SCfigure} 
 
-The overall solution is given by
+As this solution is two-dimensional, two sums must be taken over the basis functions.  Bessel functions $J_\nu$ of the first kind and integer order $\nu$ are the radial basis, and cosines are the angular basis.  The time dependence is carried by decaying exponentials whose time constant is related to the diffusion coefficient $D$ as well as to the zeros of the Bessel functions.  The terms are summed over the Bessel orders as well as over the zeros of each Bessel function.  For our situation, the full solution to the diffusion equation within the hydrogel is given by \cite{h.s.carlslaw59}
+
 \begin{equation}
-c(r,\theta,t) = C\sum_{n=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)\mathrm{J}_n\left(\alpha r\right)}{\left(\mathrm{J'}_n(\alpha a)\right)^2} \int_0^{2\pi} \int_0^a \cos\left(n(\theta-\theta')\right) \mathrm{J}_n(\alpha r') f(r',\theta') r' dr' d\theta'
+\begin{split}
+c(r,\theta,t) =& \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)J_\nu\left(\alpha r\right)}{\left(J'_\nu(\alpha a)\right)^2} \times \\ 
+&b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu(\theta-\theta')\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta'
+\end{split}
 \end{equation}
-Looking at just the integral part, we can rewrite it using a trig identity to separate the primed and unprimed coordinates.  The solution can then be written
-\begin{eqnarray}
-c(r,\theta,t) &=& \sum_{n=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)\mathrm{J}_n\left(\alpha r\right)}{\left(\mathrm{J'}_n(\alpha a)\right)^2} \left(c_{n,\alpha}\cos(n\theta') + s_{n,\alpha} \sin(n\theta')\right) \\
-c_{n,\alpha} & = &b_{n,\alpha} \int_0^{2\pi} \int_0^a \cos\left(n\theta'\right) \mathrm{J}_n(\alpha r')f(r',\theta') r' dr' d\theta'\\
-s_{n,\alpha} & = & b_{n,\alpha}\int_0^{2\pi} \int_0^a \sin\left(n\theta'\right) \mathrm{J}_n(\alpha r') f(r',\theta') r' dr' d\theta'
+where, as in the previous section, $\alpha a$ are the zeros of $J_\nu$, and $b_{\nu,\alpha}$ are normalization constants defined in Sec.~\ref{sec:calcCoeffs}.  Note that the sums run over all positive and negative integer Bessel orders and over all zeros of each Bessel function.  
+
+This solution applies to a circle whose boundary is held at $c=0$, so it must be shifted by an offset in order to match the experimental concentration at the boundary.  Note that the relevant boundary concentration is just within the hydrogel, not the concentration of the reservoir.  The reservoir is assumed to be infinite, in order to maintain the hydrogel edge at its equilibrium concentration, but the concentration of the reservoir itself is irrelevant.
+
+The integral above is difficult to use as written because it contains both primed and unprimed coordinates in the angular term, $\cos\left(\nu(\theta -\theta')\right)$.  The unprimed coordinate can be removed from the integral using the identity $$\cos(\phi_1-\phi_2) = \cos\phi_1\cos\phi_2 + \sin\phi_1\sin\phi_2$$ The mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ can then be defined as
+\begin{equation}
+c(r,\theta,t) = \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)J_\nu\left(\alpha r\right)}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos(\nu\theta) + S_{\nu,\alpha} \sin(\nu\theta)\right)
 \label{eq:full-series}
+\end{equation}
+with 
+\begin{eqnarray}
+C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta'\\
+\label{eq:c}
+S_{n,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta'
+\label{eq:s}
 \end{eqnarray}
-In order to implement this computationally, I actually integrate over the whole image but mask the parts that aren't in the gel.  I set the coordinate system to 
+The problem is reduced to determining the mode coefficients by evaluating the integrals.
 
 \subsubsection{Calculating mode coefficients}
+\label{sec:calcCoeffs}
 
-The coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ of the Fourier modes are calculated according to Eqns.~\ref{eq:full-series}.  If this were being solved analytically, the normalization factor $b_{\nu,\alpha}$ would be determined from the relation
+The coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ of the Fourier modes are calculated according to Eqns.~\ref{eq:c} and \ref{eq:s} .  If this were being solved analytically, the normalization factor $b_{\nu,\alpha}$ would be determined from the relation
 \begin{equation}
 1 = b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos^2\left(n\theta'\right) \mathrm{J}^2_\nu(\alpha r') r' dr' d\theta' = \frac{\pi a^2}{2}
 \label{eq:bna-theory}
