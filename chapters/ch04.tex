@@ -433,32 +433,40 @@ Fits such as those shown in Fig.~\ref{fig:series-fits} were typical results.  Va
 
 \section{Results}
 
-In all, FRAP analysis was performed on 36 hydrogels: 15 no-nup gels, 12 nominally containing 10 mg/mL FSFG concat-1, and 10 containing FSFG concat-2.
+In all, FRAP analysis was performed on 36 hydrogels: 15 no-nup gels, 12 nominally containing 10 mg/mL FSFG concat-1, and 10 containing FSFG concat-2. (lookup: double-check the ones with low concentration)  Of the FSFG concat-2 hydrogels, seven had a nominal concentration of 20 mg/mL FSFG concat-2, meaning that in principle they had the same molar concentration as the FSFG concat-1 gels, but twice as many FG repeats.  The other three nominally contained 10 mg/mL FSFG concat-2, giving them half as many chains but the same number of FG repeats as the FSFG concat-1 gels.  The mean partition coefficients and diffusion constants were not significantly different between the two groups of FSFG concat-2 gels and they were treated as one condition in the following results.
 
+Many of the FSFG concat-1 hydrogels showed an unusual bright ring in the NTF2-F channel around the photobleach spot which developed slowly after bleaching.  Figure~\ref{fig:ring} shows an example.  The ring is presumably due to photodamage by bleaching, but it is not clear why the edge of the bleach spot would exhibit increased NTF2-F binding.  When hydrogels showed this bright ring, care was taken when drawing the bleach spot mask to exclude the ring entirely.
 
-
-My results are shown in the following figures.  The partition coefficients and fraction of time bound did not rely on complicated analysis.  As expected, the partition coefficients were very similar for NTF2-F and mCherry in the control, No Nup gels, but the NTF2-F coefficient increased as a result of binding in the FSFG gels.  It's higher in the cct2 gels because they had more FG repeats.  I need to carefully go through and see which had what concentration.  Maybe split them into two datasets if possible.
-
-The observed diffusion coefficients are shown as well.  NTF2 and mCherry are (don't say it like this) not significantly different in the control gels but they are in the others.  The calculated bound diffusion constant is nonzero for both, give p values.  We can't tell the difference between concat 1 and concat 2.  In an appendix, put the table with all of the data.
-
-Somewhere I should talk about the bright rings around the bleach region and include a figure.
-
-\begin{figure}
-\caption{Heatmap of cosine and sine mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ for the reconstruction shown in Fig.~\ref{fig:initDist}E. Values are shown for each Bessel order $\nu$ and each zero $\alpha$. \\}
+% 19-2-6-21, final frame (70 min -ish)
+\begin{SCfigure}
+\caption{Bright NTF2-F ring surrounding photobleach spot, 70 minutes after bleaching.  This ring often developed in FSFG concat-1 gels.  Photobleach mask was chosen to be slightly smaller than the ring.  Contrast adjusted for ease of viewing. While circle added to guide the eye.\\}
 \centering
-\includegraphics[width=\textwidth]{figs/ch04/curves}
-\label{fig:curves}
-\end{figure} 
+\includegraphics[width=0.3\textwidth]{figs/ch04/ring}
+\label{fig:ring}
+\end{SCfigure} 
+
+The partition coefficients for NTF2-F and mCherry are shown in Fig.~\ref{fig:frac-bound} along with the corresponding fraction bound.  As expected, the partition coefficients NTF2-F and mCherry are very similar in the no-nup hydrogels, while the NTF2-F partition coefficient increases for FSFG hydrogels due to binding.  The FSFG concat-2 hydrogels show the highest NTF2-F partition coefficient, likely because there are more FG repeats in total.  The fraction bound follows similar trends, although the difference between the FSFG concat-1 and concat-2 hydrogels is less pronounced.  The fraction of NTF2-F bound to the no-nup hydrogels is indistinguishable from zero.
 
 \begin{SCfigure}
-\caption{Heatmap of cosine and sine mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ for the reconstruction shown in Fig.~\ref{fig:initDist}E. Values are shown for each Bessel order $\nu$ and each zero $\alpha$. \\}
+\caption{(A) Partition coefficients for NTF2-F and mCherry in each of the three experimental conditions.  (B) Fraction of NTF2-F bound as calculated using Sec.~\ref{sec:part-coeff}.  All errors are standard error of the mean.\\}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/ch04/fraction-bound}
 \label{fig:frac-bound}
 \end{SCfigure} 
 
+Figure~\ref{fig:curves} shows normalized recovery curves for all hydrogels in the dataset.  In addition to the normalization described in Sec.~\ref{sec:photobleaching}, these curves were also scaled so that the pre-bleach average bleach spot intensity was one.  Dark curves show the average NTF2 and mCherry recovery curves for each condition.  The most obvious difference between conditions is the greater bleach depth for NTF2-F in FSFG hydrogels.  Bleach depth stays roughly constant for mCherry between conditions.
+
+\begin{figure}
+\caption{Recovery curves for (A) no-nup, (B) FSFG concat-1, and (C) FSFG concat-2 hydrogels.  All curves are shown for both NTF2-F and mCherry.  Dark lines are averaged curves.  Pre-bleach intensity set to one. \\}
+\centering
+\includegraphics[width=\textwidth]{figs/ch04/curves}
+\label{fig:curves}
+\end{figure} 
+
+Finally, the observed diffusion constants for NTF2-F and mCherry were calculated using the Fourier series model.  Mean values for each of the experimental conditions are shown in Fig.~\ref{fig:bound-diffusion} along with calculated bound diffusion constants.  The observed diffusion for NTF2-F and mCherry was roughly equal in the no-nup hydrogels, but NTF2-F has a much lower diffusion constant in the FSFG conditions, due to binding.  Two-tailed t-tests were conducted with the null hypothesis that $D_B = 0$.  For FSFG concat-1, the resulting p-value was $p = 0.025$; for FSFG concat-2, it was $p = 0.083$.  There is no distinguishable difference between $D_B$ for FSFG concat-1 and FSFG concat-2, which may be due to the lack of sensitivity in our measurements.
+
 \begin{SCfigure}
-\caption{Heatmap of cosine and sine mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ for the reconstruction shown in Fig.~\ref{fig:initDist}E. Values are shown for each Bessel order $\nu$ and each zero $\alpha$. \\}
+\caption{(A) Observed diffusion constant for NTF2-F and mCherry in each of the three experimental conditions. (B) Calculated values of the bound diffusion constant $D_B$ for NTF2-F in the FSFG hydrogels.  All errors shown are standard error of the mean. \\}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/ch04/bound-diffusion}
 \label{fig:bound-diffusion}
@@ -472,5 +480,11 @@ Somewhere I should talk about the bright rings around the bleach region and incl
 
 %% cct2 red and green diffusion constants The t-value is -4.98352. The p-value is .000096. The result is significant at p < .05.
 
-\section{Discussion} We can measure bound diffusion in these gels, although we can't tell the difference between concat 1 and concat 2.  Higher tethered Nup concentrations should make our analysis more sensitive.  I did a really lot of math for the analysis and at this point we can't make it better without including binding.
+\section{Discussion} 
+
+Our goal was to create a material in which we could measure and test the properties of bound diffusion.  These results suggest that we can indeed measure non-zero bound diffusion, although there is no statistically significant difference between Nups of different lengths and valencies.  Smaller effects would be measurable if the fraction of transport factor bound ($p_B$) increased, as then the contribution of bound diffusion to the observed diffusion would become more prominent.  The most straightforward way of increasing the fraction bound is to increase the concentration of tethered Nups within the gel, a task which has proven difficult.  However, this dataset still provides a check on the predictions of our model.
+
+Our bound-state diffusion model can predict the values of bound diffusion constant $D_B$ that we expect to observe, provided we input an estimate of the off-rate $\koff$ and assume that tethered diffusion the only mechanism of bound-state mobility (Appendix~\ref{appx:dataset}).  Taking $K_D \approx 0.5$ mM for FSFG concat-1 and $K_D \approx 0.4$ mM for FSFG concat-2, we can predict $D_B$ for each FSFG hydrogel \cite{hayama18}.  For FSFG concat-1 hydrogels, the predicted bound diffusion constant is $D_B = 6.9\pm0.3$ $\mu$m$^2$/s; for FSFG concat-2 gels this value is $D_B = 9.3\pm0.3$ $\mu$m$^2$/s.  These values are consistent with our measured mean values of $D_B = 5.6\pm2.3$ $\mu$m$^2$/s for FSFG concat-1 gels and $D_B = 6.3\pm3.4$ $\mu$m$^2$/s for FSFG concat-2 gels.  However, the large standard error in our measurements suggests that better measurements are needed before we can strongly state that our model has accurately predicted the bound diffusion constant.
+
+The hydrogel nuclear pore mimics discussed in this chapter do not reproduce the selectivity properties of nuclear transport; the tethered Nup concentration is too low and the transport factor - Nup dissociation constant is too high.  However, they do provide a platform from which to measure bound diffusion.  Non-zero bound diffusion of transport factors was measured when Nups were tethered to the hydrogel.  This represents a first step towards understanding the effect of bound diffusion on selective biofilters.
 
