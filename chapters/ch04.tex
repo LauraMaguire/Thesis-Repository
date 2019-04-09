@@ -162,6 +162,7 @@ p_B= \frac{1}{1+\frac{K_D}{N_T}} = \frac{1}{1+\frac{\gamma_I}{\gamma_T - \gamma_
 \end{equation}
 
 \subsection{Bound-diffusion calculation}
+\label{sec:db-calc}
 
 Once the observed diffusion constants for NTF2 and mCherry have been calculated, along with the fraction of time spent bound $p_B$, the bound diffusion is given straightforwardly by the weighted average
 \begin{equation}
@@ -217,7 +218,7 @@ where $D$ is the diffusion constant.
 %% t is close to beginning but not right at beginning
 
 \begin{figure}
-\caption{IFits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.  The entire intensity profile is shown in the top panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
+\caption{Fits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.  The entire intensity profile is shown in the top panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch04/erfc-position.pdf}
 \label{fig:erfc-position}
@@ -265,22 +266,40 @@ While the profile and accumulation data do contain information on the diffusion 
 \section{FRAP analysis}
 \label{sec:FRAP-analysis}
 
-
-
 \subsection{Accounting for photobleaching}
 Small but noticeable amounts of photobleaching occur over the course of the FRAP experiment.  In order to correct for photobleaching, the intensity of the bleached spot must be normalized to that of the entire gel, including the bleached region.  The normalized intensity used to fit the recovery curves is given by
 \begin{equation}
 N(t) = \frac{c_b(t)}{c_g(t)}
-\end{equation} where the average intensity within the bleach spot is $c_b(t) = C_b(t)/A_b$ is the total intensity $C_b(t)$ within the bleach spot and $A_b$ is the area of the spot.  The average intensity within the gel $c_g(t)$ is defined similarly.  Using this normalization removes the effects of photobleaching, as verified by simulating recovery data with various photobleaching rates (Loren did this, I might have a copy of the code).
-\subsection{No-exchange analysis}
-A simple analysis of the recovery curve assumes that there is no exchange of transport factor or inert protein between the reservoir and the hydrogel, only between bleached and unbleached portions of the hydrogel.  It further assumes a uniform hydrogel which is completely equilibrated.  If those things are true, the normalized intensity within the bleach spot over time can be written as
+\end{equation} where the average intensity of the bleach spot is $c_b(t) = C_b(t)/A_b$. The total intensity within the bleach spot is $C_b(t)$ and $A_b$ is the area of the spot as shown in Fig.~\ref{fig:masks}.  The average intensity of the entire gel $c_g(t)$ is defined similarly.  Using this normalization removes the effects of photobleaching, as verified by simulating recovery data with various photobleaching rates.
+
+\subsection{No-exchange solution to diffusion equation}
+
+The simplest realistic model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equlibrated, that the presence of the gel is unimportant, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
 \begin{equation}
-N(t) = A\exp(-\tau/2t)\left(\mathrm{I}_0(\tau/2t)+\mathrm{I}_1(\tau/2t)\right)+C
-\end{equation}
+N(t) = A\exp(-\tau_D/2t)\left(\mathrm{I}_0(\tau_D/2t)+\mathrm{I}_1(\tau_D/2t)\right)+C
+\end{equation} where the diffusion lifetime $\tau_D$ is related to the diffusion constant by $D = w^2/\tau_D$ if $w$ is the bleach spot radius.  
 
-\subsection{Fourier transform solution}
+The amplitude $A$ and offset $C$ are related to the bleach depth (given by $C$) and final recovered value (given by $A+C$).  Typical bleach depths were 5-10\% of the initial intensity and tended to be smaller for mCherry than for NTF2.  In principle, the final recovered value reflects the immobile fraction of fluorophore.  If there is an immobile fraction, the bleached region will not recover to its intial value.  Given the weak binding between NTF2 and FSFG, we do not expect an appreciable immobile fraction of either NTF2 or mCherry.  For the most part, the hydrogels appear to recover to their initial value.  A few do not, for reasons that are unclear even after accounting for photobleaching.
 
-We have the problem that our gels are not perfectly equilibrated, and that they exchange with the reservoir.  In order to solve that problem, we analyzed the data using a model from the heat transfer book.  This solution makes use of Green's functions and a 2D polar Fourier transform.  We assume the gel is a circle and constrain the edge of the circle to be at zero concentration.  Then we build up the mode coefficients using the initial post-bleach intensity distribution and use them to predict the time-evolution of the system.  The overall solution is given by
+The no-exchange model fits well to the larger hydrogels and those that are well-equilibrated.  Many of the large gels, however, were not fully equlibrated even after a 24 hour incubation with the reservoir solution.  The concentration within these gels will change over the course of the experiment as they continue to equilibrate.  Smaller hydrogels were quicker to uniformly equlibrate; however, these gels are small enough that exchange of fluorescent proteins with the reservoir is important over the timescale of FRAP recovery.  Both of these problems can be accounted for using a more thorough solution to the diffusion equation.
+
+\subsection{Fourier transform solution to diffusion equation}
+%Carslaw 2nd ed. pg 377, sec. 14.13(6)
+
+To account for exchange of fluorescent proteins with the reservoir, as well as for incomplete equilibration, some of the assumptions of the previous section must be relaxed.  In particular, the assumption of radial symmetry must be abandoned.  The problem becomes that of diffusion in a circular region of radius $a$ whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image.  This situation is described in Carslaw \cite{h.s.carslaw59} and a series solution provided in terms of Bessel functions of the first kind and cosines.  I wrote scripts to apply this solution numerically to the experimental data.   Then I used these results to fit the recovery data.  I got results that seem pretty good.
+
+This solution makes use of Green's functions and a 2D polar Fourier transform.  We assume the gel is a circle and constrain the edge of the circle to be at zero concentration.  Then we build up the mode coefficients using the initial post-bleach intensity distribution and use them to predict the time-evolution of the system.  
+
+\subsubsection{Analytic series solution}
+
+\begin{SCfigure}
+\caption{Geometry for diffusion-equation solution Eqn.~\ref{eq:full-series}.  A circle of radius $a$ is centered at the origin.  The boundary $r=a$ is held at concentration $c=0$ and the interior has initial concentration profile $f(r,\theta)$.}
+\centering
+\includegraphics[width=0.4\textwidth]{figs/ch04/carslaw-geometry}
+\label{fig:carslaw-geo}
+\end{SCfigure} 
+
+The overall solution is given by
 \begin{equation}
 c(r,\theta,t) = C\sum_{n=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)\mathrm{J}_n\left(\alpha r\right)}{\left(\mathrm{J'}_n(\alpha a)\right)^2} \int_0^{2\pi} \int_0^a \cos\left(n(\theta-\theta')\right) \mathrm{J}_n(\alpha r') f(r',\theta') r' dr' d\theta'
 \end{equation}
@@ -289,7 +308,46 @@ Looking at just the integral part, we can rewrite it using a trig identity to se
 c(r,\theta,t) &=& \sum_{n=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)\mathrm{J}_n\left(\alpha r\right)}{\left(\mathrm{J'}_n(\alpha a)\right)^2} \left(c_{n,\alpha}\cos(n\theta') + s_{n,\alpha} \sin(n\theta')\right) \\
 c_{n,\alpha} & = &b_{n,\alpha} \int_0^{2\pi} \int_0^a \cos\left(n\theta'\right) \mathrm{J}_n(\alpha r')f(r',\theta') r' dr' d\theta'\\
 s_{n,\alpha} & = & b_{n,\alpha}\int_0^{2\pi} \int_0^a \sin\left(n\theta'\right) \mathrm{J}_n(\alpha r') f(r',\theta') r' dr' d\theta'
+\label{eq:full-series}
 \end{eqnarray}
 In order to implement this computationally, I actually integrate over the whole image but mask the parts that aren't in the gel.  I set the coordinate system to 
+
+\subsubsection{Calculating mode coefficients}
+
+The coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ of the Fourier modes are calculated according to Eqns.~\ref{eq:full-series}.  If this were being solved analytically, the normalization factor $b_{\nu,\alpha}$ would be determined from the relation
+\begin{equation}
+1 = b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos^2\left(n\theta'\right) \mathrm{J}^2_\nu(\alpha r') r' dr' d\theta' = \frac{\pi a^2}{2}
+\label{eq:bna-theory}
+\end{equation}
+Theoretically, therefore, $b_{\nu,\alpha} = 2/\pi a^2$ for every mode.  However, this result assumes that the integral covers the full area of the circular hydrogel (of radius $a$).  In reality, the hydrogel is not perfectly circular and does not fit entirely within the field of view.  (lookup: Add another mask example where this is true.)  The integral covers as much of the gel as is possible, but when edges are missing, Eqn.~\ref{eq:bna-theory} is no longer true.  The normalization must now account for the missing pieces of the integral.  In order to do this, the normalization should instead be
+\begin{equation}
+1 = b_{\nu,\alpha} \int_\Omega \cos^2\left(n\theta'\right) \mathrm{J}^2_\nu(\alpha r')r' dr' d\theta' 
+\label{eq:bna-real}
+\end{equation} where the integral is now over $\Omega$, the region covered by the hydrogel mask.  This integral was calculated numerically for every term in a hydrogel reconstruction.  The ratio $b_{\nu,\alpha} /(2/\pi a^2) = \pi a^2 b_{\nu,\alpha} /2$ quantifies the deviation of the normalization coefficient from the expected analytic value.  For small hydrogels, which entirely fit into the field of view, these values from 1.01 to 1.03, signifying deviations of up to 3\%.  Large hydrogels whose top and bottom were cut from the field of view had ratios of up to 1.1 or 10\%.  This effect should have been taken care of using this mode weighting though.
+
+In order to calculate the mode coefficients numerically, I had to use a slightly odd hybrid of polar and Cartesian coordinates.  To begin with, I defined a set of Cartesian axes the size of my field of view, with the center located at the hydrogel center, as described in Sec.~\ref{sec:gel-dim}.  I used these axes to make an array showing what the polar angle $\theta$ should be at every point on the image, as well as one showing the radius $r$.  Then I numerically integrated by summing up the ``integrand'' everywhere on the image.  I scaled the integrand by the pixel size, but it wound up cancelling out when I multiplied by the weighting coefficient.  I used the hydrogel mask to set the limits of integration; this mask is one everywhere inside the gel and zero outside, so nothing outside the gel contributed to the sum.  
+
+I did this for every Bessel order and zero, creating arrays of sine and cosine coefficients, as shown in Fig.~\ref{fig:arrays}.  In order to verify the coefficients, I reconstructed the initial concentration distribution $f(\theta,r)$, i.e. the post bleach image from which I calculated the coefficients.  This reconstruction was performed by numerically integrating Eqn~\ref{eq:full-series} over the entire gel mask as described above.  Example reconstructed images are shown in Fig.~\ref{fig:initDist} for varying numbers of terms.  The accuracy of the reconstruction increases noticeably as total number of terms increases from 4 to 400.  I decided to use 20 Bessel orders and 20 zeros because it made a nice reconstruction and it took too long to run anything more.  I tested the tradeoff between adding more orders and adding more zeros and found that they were about equal, with it maybe being better to add more orders.
+
+% #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
+\begin{figure}
+\caption{Reconstruction of initial concentration distribution. Reservoir is masked and not included.  (A) Heatmap of original image with average equilibrated gel intensity set to zero. (B) Reconstruction using two Bessel orders ($N_\nu = 2$) and two zeros ($N_\alpha = 2$) in each order. (C-E) Reconstructions with $N_\nu = N_\alpha = 4$, 10, and 20.}
+\centering
+\includegraphics[width=0.9\textwidth]{figs/ch04/reconstruction-16_2_4_10_20.pdf}
+\label{fig:initDist}
+\end{figure} 
+I should also mention that since the anaytic solution is for a region held at 0 concentration at the boundary, before calculating the coefficients, I subtracted the average concentration within the equilibrated parts of the gel.  Therefore, the bleached region is technically at a negative concentration.
+
+% #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
+\begin{SCfigure}
+\caption{Heatmap of cosine and sine mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ for the reconstruction shown in Fig.~\ref{fig:initDist}E. Values are shown for each Bessel order $\nu$ and each zero $\alpha$. \\}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch04/rec_16_cos_sin_array_20_terms.pdf}
+\label{fig:arrays}
+\end{SCfigure} 
+
+\subsubsection{Simulating recovery curves}
+
+\subsubsection{Fitting recovery curves}
 
 \section{Discussion}
