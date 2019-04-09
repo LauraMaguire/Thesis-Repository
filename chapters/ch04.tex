@@ -268,12 +268,14 @@ While the profile and accumulation data do contain information on the diffusion 
 \label{sec:FRAP-analysis}
 
 \subsection{Accounting for photobleaching}
+\label{sec:photobleaching}
 Small but noticeable amounts of photobleaching occur over the course of the FRAP experiment.  In order to correct for photobleaching, the intensity of the bleached spot must be normalized to that of the entire gel, including the bleached region.  The normalized intensity used to fit the recovery curves is given by
 \begin{equation}
 N(t) = \frac{c_b(t)}{c_g(t)}
 \end{equation} where the average intensity of the bleach spot is $c_b(t) = C_b(t)/A_b$. The total intensity within the bleach spot is $C_b(t)$ and $A_b$ is the area of the spot as shown in Fig.~\ref{fig:masks}.  The average intensity of the entire gel $c_g(t)$ is defined similarly.  Using this normalization removes the effects of photobleaching, as verified by simulating recovery data with various photobleaching rates.
 
 \subsection{No-exchange solution to diffusion equation}
+\label{sec:no-exchange}
 
 The simplest realistic model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equlibrated, that the presence of the gel is unimportant, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
 \begin{equation}
@@ -307,7 +309,7 @@ As this solution is two-dimensional, two sums must be taken over the basis funct
 \begin{equation}
 \begin{split}
 c(r,\theta,t) =& \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)J_\nu\left(\alpha r\right)}{\left(J'_\nu(\alpha a)\right)^2} \times \\ 
-&b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu(\theta-\theta')\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta'
+&b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu(\theta-\theta')\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta' \label{eq:full-series}
 \end{split}
 \end{equation}
 where, as in the previous section, $\alpha a$ are the zeros of $J_\nu$, and $b_{\nu,\alpha}$ are normalization constants defined in Sec.~\ref{sec:calcCoeffs}.  Note that the sums run over all positive and negative integer Bessel orders and over all zeros of each Bessel function.  
@@ -394,17 +396,46 @@ To verify the mode coefficients, I reconstructed the initial post-bleach image f
 
 \subsubsection{Fitting recovery curves}
 
-Once the mode coefficients had been calculated, a fit string was concstructed using the full series equation and fed into the Matlab curve fitter.  I used a Bessel function identity to deal with the derivative in the denominator. 
+Once the mode coefficients had been calculated, a fit string was constructed using the full series equation Eqn.~\ref{eq:c-s-series} and fed into the Matlab curve fitter.  Careful thought was required to ensure that the model was treated in the same way as the experimental data.
 
-In order to fit the results to the experimental data, built a fit string for both the bleach spot only and the entire gel mask.  I added the offset concentration value back to both of them and then divided them to mimic the way I account for photobleaching in the experimental data processing.  There's no photobleaching in the analysis but I needed to make the strings match.  Finally, I put in a multiplicative and additive parameter by hand, because I can't get it to fit right otherwise.  I'm pretty close even without those parameters, all things considered, but definitely not correct.
+To begin, the mode coefficients were used to predict the average intensity of the bleach spot at each time point.  Since the time dependence in each term is only in a decaying exponential, the average value of the bleach spot could be determined by integrating over the bleach spot:
+\begin{equation}
+\bar{c}_\mathrm{bleach}(D,t) = \frac{1}{A_B}\sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \exp\left(-D\alpha^2t\right)\int_{\Omega_B}\frac{J_\nu\left(\alpha r\right)}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos(\nu\theta) + S_{\nu,\alpha} \sin(\nu\theta)\right) dA
+\label{eq:c-s-series}
+\end{equation}
+where $\Omega_B$ is the region defined by the bleach-spot mask and $A_B$ its total area.  The Bessel function derivative $J'_\nu$ was computed using the identity
+\begin{equation*}
+J'_\nu(x) = \frac{1}{2}\left(J_{\nu-1}(x) - J_{\nu+1}(x)\right)
+\end{equation*}
 
-As an initial guess at the diffusion constant, I input the diffusion constant calculated using the simple no-exchange fit.
+The average intensity of the entire gel, including the bleach spot, was determined in the same way, using the hydrogel mask instead of the bleach-spot mask.  Both results were formatted as strings of sums, containing numerical values wherever possible as well as the diffusion constant parameter $D$ (units of $\mu$m$^2$/s)  and the time variable $t$, measured in seconds.
 
-Figure: I should show an example plot for NTF2 and mCherry.
+Once these strings were created, the equilibrium concentration value $c_0$ was added back to both of them, and their ratio was taken, in order to mimic the data processing in Sec.~\ref{sec:photobleaching}.  Mathematically, this gave a normalized string of
+\begin{equation}
+f(D,t) = \frac{\bar{c}_\mathrm{bleach}(D,t)+c_0}{\bar{c}_\mathrm{gel}(D,t)+c_0}
+\end{equation}
 
-I also have a similar script that simulates data for a given diffusion constant instead of producing a fit string.  The math is the same, but I can't fit the simulated data.  On the other hand, I can plot it.  I used this script for testing while I was getting the fitting working.
+At this point, I checked the normalization by simulating data using the value of $D$ calculated from the no-exchange analysis in Sec.~\ref{sec:no-exchange}.  Often the simulated data matched the experiment to within 10\%, but further fit parameters were needed in order to fit the data well.  Ultimately, the function to which the data were fit was
+\begin{equation}
+g(c_1,c_2,D,t) = c_1f(D,t) + c_2
+\end{equation}
+where $c_1$ and $c_2$ reflect the bleach depth and final recovered concentration similarly to $A$ and $C$ in Sec.~\ref{sec:no-exchange}.  Their values are less important than that of the diffusion constant $D$.
+
+Fits such as those shown in Fig.~\ref{fig:series-fits} were typical results.  Values for $c_1$ and $c_2$ were of order unity, except for a few fits that were clearly incorrect and were omitted from the final dataset.
+
+% #'s 5 and 7 in the dataset
+\begin{figure}
+\caption{Fits using the series expansion Eqn.~\ref{eq:full-series}. (A) NTF2-F and mCherry recovery curves for a no-nup hydrogel.  (B) NTF2-F and mCherry recovery curves for a hydrogel nominally containing 10 mg/mL FSFG concat-1.}
+\centering
+\includegraphics[width=0.9\textwidth]{figs/ch04/series-fits.pdf}
+\label{fig:series-fits}
+\end{figure} 
 
 \section{Results}
+
+In all, FRAP analysis was performed on 36 hydrogels: 15 no-nup gels, 12 nominally containing 10 mg/mL FSFG concat-1, and 10 containing FSFG concat-2.
+
+
 
 My results are shown in the following figures.  The partition coefficients and fraction of time bound did not rely on complicated analysis.  As expected, the partition coefficients were very similar for NTF2-F and mCherry in the control, No Nup gels, but the NTF2-F coefficient increased as a result of binding in the FSFG gels.  It's higher in the cct2 gels because they had more FG repeats.  I need to carefully go through and see which had what concentration.  Maybe split them into two datasets if possible.
 
