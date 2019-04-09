@@ -105,7 +105,8 @@ Both the influx and FRAP experiments rely on steady-state properties of the hydr
 \subsection{Gel dimension estimates}
 \label{sec:gel-dim}
 
-% Hydrogel 19-2-6-21, grnScale [0.0;0.03], redScale [0.01;0.06], cropping rect 155.51 	0.51	1069.98 1023.98
+% Small Hydrogel 19-2-6-21, grnScale [0.0;0.03], redScale [0.01;0.06], cropping rect 155.51 	0.51	1069.98 1023.98
+% Large hydrogel 16	, '19-2-12_3'	'cct1'
 \begin{SCfigure} 
 \caption{Sample hydrogel mask with radius and center calculations.  (A) An equilibrated hydrogel containing FSFG concat-1, immediately post-bleach. (B) The corresponding hydrogel mask (white), bleach spot mask (light gray), calculated gel diameter, and calculated gel center.}
 \centering
@@ -316,34 +317,64 @@ This solution applies to a circle whose boundary is held at $c=0$, so it must be
 The integral above is difficult to use as written because it contains both primed and unprimed coordinates in the angular term, $\cos\left(\nu(\theta -\theta')\right)$.  The unprimed coordinate can be removed from the integral using the identity $$\cos(\phi_1-\phi_2) = \cos\phi_1\cos\phi_2 + \sin\phi_1\sin\phi_2$$ The mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ can then be defined as
 \begin{equation}
 c(r,\theta,t) = \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\exp\left(-D\alpha^2t\right)J_\nu\left(\alpha r\right)}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos(\nu\theta) + S_{\nu,\alpha} \sin(\nu\theta)\right)
-\label{eq:full-series}
+\label{eq:c-s-series}
 \end{equation}
 with 
 \begin{eqnarray}
-C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta'\\
-\label{eq:c}
-S_{n,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta'
-\label{eq:s}
+C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta' \label{eq:cos-defn}\\
+S_{n,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta' \label{eq:sin-defn}
 \end{eqnarray}
 The problem is reduced to determining the mode coefficients by evaluating the integrals.
 
 \subsubsection{Calculating mode coefficients}
 \label{sec:calcCoeffs}
 
-The coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ of the Fourier modes are calculated according to Eqns.~\ref{eq:c} and \ref{eq:s} .  If this were being solved analytically, the normalization factor $b_{\nu,\alpha}$ would be determined from the relation
+Before mode coefficients can be calculated using Eqns.~\ref{eq:cos-defn} and \ref{eq:sin-defn}, the normalization constants $b_{\nu,\alpha}$ must be determined.  To find an expression for them, begin with Eqn.~\ref{eq:c-s-series} at $t=0$, when $c(r,\theta,0) = f(r,\theta)$.
 \begin{equation}
-1 = b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos^2\left(n\theta'\right) \mathrm{J}^2_\nu(\alpha r') r' dr' d\theta' = \frac{\pi a^2}{2}
-\label{eq:bna-theory}
+f(r,\theta)= \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{J_\nu\left(\alpha r\right)}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos(\nu\theta) + S_{\nu,\alpha} \sin(\nu\theta)\right)
+\label{eq:c-s-series-t-0}
 \end{equation}
-Theoretically, therefore, $b_{\nu,\alpha} = 2/\pi a^2$ for every mode.  However, this result assumes that the integral covers the full area of the circular hydrogel (of radius $a$).  In reality, the hydrogel is not perfectly circular and does not fit entirely within the field of view.  (lookup: Add another mask example where this is true.)  The integral covers as much of the gel as is possible, but when edges are missing, Eqn.~\ref{eq:bna-theory} is no longer true.  The normalization must now account for the missing pieces of the integral.  In order to do this, the normalization should instead be
+This expression for $f(r,\theta)$ can be substituted into Eqns.~\ref{eq:cos-defn} and \ref{eq:sin-defn}.  Using the cosine coefficients as an example,
+\begin{eqnarray*}
+C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r') \times\\
+& &\left[\sum_{\mu=-\infty}^{\infty} \sum_{\beta = 0}^\infty   \frac{J_\mu\left(\beta r'\right)}{\left(J'_\mu (\beta a)\right)^2} \left(C_{\mu,\beta}\cos(\mu\theta') + S_{\mu,\beta} \sin(\mu\theta')\right)\right] r' dr' d\theta'\\
+C_{n,\alpha} & = &b_{\nu,\alpha} \sum_{\mu=-\infty}^{\infty} \sum_{\beta = 0}^\infty\int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right)  \frac{ J_\nu(\alpha r')   J_\mu\left(\beta r'\right)}{\left(J'_\mu (\beta a)\right)^2} \times\\
+& & \left(C_{\mu,\beta}\cos(\mu\theta') + S_{\mu,\beta} \sin(\mu\theta')\right) r' dr' d\theta'\\
+C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a  \frac{ J_\nu^2(\alpha r')}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos^2(\nu\theta') + S_{\nu,\alpha}\cos\left(\nu\theta'\right)\sin(\nu\theta')\right) r' dr' d\theta'
+\end{eqnarray*}
+The integral and sum have been switched and the orthogonality of the basis functions used to collapse the sums.  The integral of the $S_{\nu,\alpha}$ term vanishes, as it is an odd function ($\cos\left(\nu\theta'\right)\sin(\nu\theta')$) integrated over all $\theta'$.  Similarly, the $C_{\nu,\alpha}$ term drops from the sine coefficient integral.  The remaining term gives
+\begin{eqnarray*}
+C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a  \frac{ J_\nu^2(\alpha r')}{\left(J'_\nu (\alpha a)\right)^2} C_{\nu,\alpha}\cos^2(\nu\theta') r' dr' d\theta'
+\end{eqnarray*} or finally
 \begin{equation}
-1 = b_{\nu,\alpha} \int_\Omega \cos^2\left(n\theta'\right) \mathrm{J}^2_\nu(\alpha r')r' dr' d\theta' 
-\label{eq:bna-real}
-\end{equation} where the integral is now over $\Omega$, the region covered by the hydrogel mask.  This integral was calculated numerically for every term in a hydrogel reconstruction.  The ratio $b_{\nu,\alpha} /(2/\pi a^2) = \pi a^2 b_{\nu,\alpha} /2$ quantifies the deviation of the normalization coefficient from the expected analytic value.  For small hydrogels, which entirely fit into the field of view, these values from 1.01 to 1.03, signifying deviations of up to 3\%.  Large hydrogels whose top and bottom were cut from the field of view had ratios of up to 1.1 or 10\%.  This effect should have been taken care of using this mode weighting though.
+\frac{1}{b_{\nu,\alpha}}  =  \int_0^{2\pi} \int_0^a  \frac{ J_\nu^2(\alpha r')\cos^2(\nu\theta') }{\left(J'_\nu (\alpha a)\right)^2} r' dr' d\theta' \label{eq:bna-theory}
+\end{equation}
 
-In order to calculate the mode coefficients numerically, I had to use a slightly odd hybrid of polar and Cartesian coordinates.  To begin with, I defined a set of Cartesian axes the size of my field of view, with the center located at the hydrogel center, as described in Sec.~\ref{sec:gel-dim}.  I used these axes to make an array showing what the polar angle $\theta$ should be at every point on the image, as well as one showing the radius $r$.  Then I numerically integrated by summing up the ``integrand'' everywhere on the image.  I scaled the integrand by the pixel size, but it wound up cancelling out when I multiplied by the weighting coefficient.  I used the hydrogel mask to set the limits of integration; this mask is one everywhere inside the gel and zero outside, so nothing outside the gel contributed to the sum.  
+So long as the integral is truly over the entire circle $r<a$, this constant is the same for both $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$.  In that case, Eqn.~\ref{eq:bna-theory} gives $b_{\nu,\alpha} = 2/\pi a^2$ for every mode.
 
-I did this for every Bessel order and zero, creating arrays of sine and cosine coefficients, as shown in Fig.~\ref{fig:arrays}.  In order to verify the coefficients, I reconstructed the initial concentration distribution $f(\theta,r)$, i.e. the post bleach image from which I calculated the coefficients.  This reconstruction was performed by numerically integrating Eqn~\ref{eq:full-series} over the entire gel mask as described above.  Example reconstructed images are shown in Fig.~\ref{fig:initDist} for varying numbers of terms.  The accuracy of the reconstruction increases noticeably as total number of terms increases from 4 to 400.  I decided to use 20 Bessel orders and 20 zeros because it made a nice reconstruction and it took too long to run anything more.  I tested the tradeoff between adding more orders and adding more zeros and found that they were about equal, with it maybe being better to add more orders.
+However, in many cases, it is not possible to numerically integrate over the entire gel, as seen in Fig.~\ref{fig:masks}D.  All numerical integrals are instead over the gel mask, which encompasses as much of the gel as fits into the field of view.  The value of this mask is one within the gel and zero outside, so it serves to define the limits of numerical integration.  Denoting the area covered by this mask as $\Omega$, the normalization constants for $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$, respectively, are
+\begin{eqnarray}
+1/b_{\nu,\alpha}^C  &= & \int_\Omega \frac{ J_\nu^2(\alpha r')\cos^2(\nu\theta') }{\left(J'_\nu (\alpha a)\right)^2} r' dr' d\theta' \label{eq:bna-c} \\
+1/b_{\nu,\alpha}^S  &=  &\int_\Omega \frac{ J_\nu^2(\alpha r')\sin^2(\nu\theta') }{\left(J'_\nu (\alpha a)\right)^2} r' dr' d\theta' \label{eq:bna-s}
+\end{eqnarray}
+
+Likewise, the numerical integrals in Eqns.~\ref{eq:cos-defn} and \ref{eq:sin-defn} are more precisely written 
+\begin{eqnarray}
+C_{n,\alpha} & = &b_{\nu,\alpha}^C \int_\Omega \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta' \label{eq:cos-defn2}\\
+S_{n,\alpha} & = & b_{\nu,\alpha}^S\int_\Omega \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta' \label{eq:sin-defn2}
+\end{eqnarray}
+
+The degree to which the resulting coefficients deviate from the ideal case of a perfect circle can be roughly quantified by the ratio $b_{\nu,\alpha} /(2/\pi a^2) = \pi a^2 b_{\nu,\alpha} /2$. For small hydrogels, which entirely fit into the field of view, these values range from 1.01 to 1.03, signifying deviations of up to 3\%.  Large hydrogels whose top and bottom were cut from the field of view had deviations of up to 10\%.  However, using Eqns.~\ref{eq:bna-c} and \ref{eq:bna-c} instead of the uniform mode weighting $b_{\nu,\alpha} = 2/\pi a^2$ should compensate for the irregular area of integration.
+
+For every hydrogel, Bessel order $\nu$, and Bessel zero $\alpha$, mode coefficients were calculated numerically.  The polar coordinates $(r,\theta)$ were converted to Cartesian $(x,y)$ and a sum taken over all the pixels of the initial post-bleach image $f(x,y)$, using the hydrogel mask to set the limits.  The center of the coordinate system was set at the center of the gel and the value of the gel radius $a$ calculated as described in Sec.~\ref{sec:gel-dim}. Before the sum was calculated, the average intensity of the equilibrated portions of the hydrogel was subtracted from the entire image, effectively setting the equilibrium concentration at $c=0$ as required by the series solution.
+
+The sum was scaled using the area represented by each pixel (using the scale 1.58 $\mu$m/pixel) and normalized using the weighting constants $b_{\nu,\alpha}$.  The final values of $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ were stored in two arrays for use in constructing the equation to which the experimental data was fit.
+
+%\texttt{C(nu,alpha) = scale\^{}2*sum(sum( bC(nu,alpha)*mask*cos(atan2(nu*y/x))\\*J\_nu(sqrt(x\^{}2+y\^{}2))*image}
+
+\subsubsection{Reconstruction of initial image}
+
+To verify the mode coefficients, I reconstructed the initial post-bleach image from which they were calculated.  The image was reconstructed by numerically integrating Eqn.~\ref{eq:c-s-series-t-0} using a similar method to that discussed in the previous section.  The area outside the gel mask was not reconstructed.  Figure~\ref{fig:initDist} shows the resulting reconstructions as the number of terms in the series increases.  The relative magnitudes of those terms are plotted in Fig.~\ref{fig:arrays}.  The reconstruction is adequate for our purposes by the time $N_\nu = 20$ and $N_\alpha = 20$, i.e. twenty Bessel orders and twenty zeros are used.  Note that the Bessel orders are given by $\nu = -10,-9,...0...8,9$.  A coefficient array of this size allowed a dataset of 43 hydrogels to be entirely processed and fit in approximately 24 hours on a desktop computer; larger coefficient arrays would require the use of a computing cluster.
 
 % #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
 \begin{figure}
@@ -352,7 +383,6 @@ I did this for every Bessel order and zero, creating arrays of sine and cosine c
 \includegraphics[width=0.9\textwidth]{figs/ch04/reconstruction-16_2_4_10_20.pdf}
 \label{fig:initDist}
 \end{figure} 
-I should also mention that since the anaytic solution is for a region held at 0 concentration at the boundary, before calculating the coefficients, I subtracted the average concentration within the equilibrated parts of the gel.  Therefore, the bleached region is technically at a negative concentration.
 
 % #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
 \begin{SCfigure}
@@ -362,11 +392,25 @@ I should also mention that since the anaytic solution is for a region held at 0 
 \label{fig:arrays}
 \end{SCfigure} 
 
-\subsubsection{Simulating recovery curves}
-
 \subsubsection{Fitting recovery curves}
 
+Once the mode coefficients had been calculated, a fit string was concstructed using the full series equation and fed into the Matlab curve fitter.  I used a Bessel function identity to deal with the derivative in the denominator. 
+
+In order to fit the results to the experimental data, built a fit string for both the bleach spot only and the entire gel mask.  I added the offset concentration value back to both of them and then divided them to mimic the way I account for photobleaching in the experimental data processing.  There's no photobleaching in the analysis but I needed to make the strings match.  Finally, I put in a multiplicative and additive parameter by hand, because I can't get it to fit right otherwise.  I'm pretty close even without those parameters, all things considered, but definitely not correct.
+
+As an initial guess at the diffusion constant, I input the diffusion constant calculated using the simple no-exchange fit.
+
+Figure: I should show an example plot for NTF2 and mCherry.
+
+I also have a similar script that simulates data for a given diffusion constant instead of producing a fit string.  The math is the same, but I can't fit the simulated data.  On the other hand, I can plot it.  I used this script for testing while I was getting the fitting working.
+
 \section{Results}
+
+My results are shown in the following figures.  The partition coefficients and fraction of time bound did not rely on complicated analysis.  As expected, the partition coefficients were very similar for NTF2-F and mCherry in the control, No Nup gels, but the NTF2-F coefficient increased as a result of binding in the FSFG gels.  It's higher in the cct2 gels because they had more FG repeats.  I need to carefully go through and see which had what concentration.  Maybe split them into two datasets if possible.
+
+The observed diffusion coefficients are shown as well.  NTF2 and mCherry are (don't say it like this) not significantly different in the control gels but they are in the others.  The calculated bound diffusion constant is nonzero for both, give p values.  We can't tell the difference between concat 1 and concat 2.  In an appendix, put the table with all of the data.
+
+Somewhere I should talk about the bright rings around the bleach region and include a figure.
 
 \begin{figure}
 \caption{Heatmap of cosine and sine mode coefficients $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ for the reconstruction shown in Fig.~\ref{fig:initDist}E. Values are shown for each Bessel order $\nu$ and each zero $\alpha$. \\}
@@ -389,8 +433,6 @@ I should also mention that since the anaytic solution is for a region held at 0 
 \label{fig:bound-diffusion}
 \end{SCfigure} 
 
-\section{Discussion}
-
 %% cct1 The t-value is 2.586766. The value of p is .025284. The result is significant at p < .05.
 %% cct2 The t-value is 1.952629. The value of p is .082617. The result is not significant at p < .05.
 %% ctrl diffusion constants green and red The t-value is 0.71937. The p-value is .477873. The result is not significant at p < .05.
@@ -398,4 +440,6 @@ I should also mention that since the anaytic solution is for a region held at 0 
 %% cct1 red and green diffusion constants The t-value is -3.42286. The p-value is .002435. The result is significant at p < .05.
 
 %% cct2 red and green diffusion constants The t-value is -4.98352. The p-value is .000096. The result is significant at p < .05.
+
+\section{Discussion} We can measure bound diffusion in these gels, although we can't tell the difference between concat 1 and concat 2.  Higher tethered Nup concentrations should make our analysis more sensitive.  I did a really lot of math for the analysis and at this point we can't make it better without including binding.
 

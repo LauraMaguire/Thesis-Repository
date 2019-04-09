@@ -52,3 +52,34 @@ imshow(K)
 diameter = equilMask(data{14}.y,:);
 startIndex = find(diameter~=0, 1, 'first');
 data{14}.x = startIndex+max(rmax)/2;
+
+%%
+initGreen = im2double(data{16}.greenImage);
+    initGreen = imadjust(initGreen,[0.002;0.02]);
+    
+    initRed = im2double(data{16}.redImage);
+    initRed = imadjust(initRed,[0.015;0.06]);
+    imageb = zeros(size(initRed));
+    image = cat(3,initRed,initGreen,imageb);
+
+imshow(image)
+
+%%
+%%
+for i = 1:size(image,1)
+    % count nonzero entries in gel mask image
+    % largest number of nonzero entries will be the "diameter" in pixels
+    rmax(i) = nnz(data{16}.gelMask(i,:));
+end
+
+%%
+[M,I] = max(rmax);
+%%
+test = ones(size(imageb));
+test(I-5:I+5,:) = 0.5*ones(11,1344);
+%imshow(test)
+c = ones(size(imageb));
+% c(data{14}.y-7:data{14}.y+7,data{14}.x-7:data{14}.x+7) = zeros(15,15);
+c(data{16}.y-10:data{16}.y+10,data{16}.x-10:data{16}.x+10) = zeros(21,21);
+%%
+imshow(test.*data{16}.gelMask.*c-0.25*data{16}.bleachSpot);
