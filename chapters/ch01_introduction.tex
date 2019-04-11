@@ -132,6 +132,22 @@ A case in point, further discussed in Sec.~\ref{sec:parp1}, is that of poly(ADP-
 
 %Also, some people have done modeling on the optimal compaction and number of loops for this kind of diffusion search \cite{cortini18}. 
 
+
+\section{Subcompartments in liquid-liquid phase separated droplets}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figs/ch01/feric16.pdf}
+\caption[Phase-separated subcompartments of the nucleolus.]{ Phase-separated subcompartments of \textit{Xenopus} nucleolus. (A) Schematic of subcompartments. (B)-(C) Fluorescence microscopy image of nucleoli with subcompartments in red, green, and blue. (D)-(G) Time-course showing dissolution of compartments after actin disruption. Figure adapted from \cite{feric16}.}
+\label{fig:nucleolus}
+\end{figure}
+
+Features of nuclear transport such as highly-concentrated disordered proteins and bound-state diffusion also appear in liquid-liquid phase separated droplets.  These membraneless organelles are rapidly gaining prominance as it becomes clear that many cellular functions are regulated through the phase separation of mixtures into phase rich in various proteins and other cellular components.  Membraneless organelles include nucleoli, which aid in processing ribosomal DNA genes within the nucleus, and RNA granules, which help sort mRNA \cite{shiina19, brangwynne15}.
+
+Liquid-liquid phase separation typically occurs for mixtures containing IDPs with ``sticker'' and ``spacer'' regions, similar to the hydrophobic FG repeats and hydrophilic linker regions in FG Nups \cite{posey18}.  These phases are highly concentrated, but the proteins that comprise them remain mobile.  Interestingly, evidence is developing for subcompartments of varying composition within some liquid droplets.  Nucleoli contain multiple subcompartments which are thought to perform distinct functions (Fig.~\ref{fig:nucleolus}) \cite{feric16,catalano15,oday19}, while RNA granules have recently also been shown to have a core-shell structure \cite{jain16,shiina19}.
+
+The investigation of subcompartments in membraneless organelles is in its very early stages, with much of the current work going towards simply identifying the components of the compartments.  Discussion of their purpose and mechanisms is still quite speculative.  However, it seems plausible that one function of these compartments is to selectively concentrate enzymes or other proteins to increase reaction rates.  RNA bodies in particular are known to sort and sequester mRNA \cite{shiina19}.  As such, the presence of disordered, multivalent proteins may not simply be necessary for the formation of phase separated droplets, but could potentially assist in selectively filtering the components of the subcompartments.  If nuclear transport is a guide, binding partners of the IDPs which form the outermost phase might have a higher flux into the inner compartments than nonbinding proteins.  Additionally, in the context of bound-state diffusion, liquid droplets represent maximal bound diffusion, as binding to an IDP in solution will not appreciably slow the diffusion of the binding partner.  While these possibilities will not be testable for some time, membraneless organelles may prove to be a fascinating application of selective biofiltering.
+
 \section{Why everyone else is wrong}
 
 %Starting with the papers most nearly related to our work, the Olsen group paper uses a really really similar model but does some weird things with the assumptions.  They only use the linear approximation, which might be good in the pore but Mike shows that it gets non-physical at surprisingly large values of $K_D$.  Just as troublingly, they allow flux of the bound complex out of the pore.  This would mean that Nups are constantly coming loose and drifting away into the cytoplasm all the time.  It makes the math simpler and gives a more elegant answer, but it really makes no sense at all physically.  Anton's paper doesn't make a mistake like that, but it does sweeping the binding kinetics under the rug.  It assumes that the on and off rate are infinitely fast compared to diffusion and therefore of necessity cannot probe the interesting things that happen when that's not true.  Furthermore, they actually do make an error by assuming chemical equilibrium in the presence of an artificial concentration gradient.  It makes all of their little Nup potentials into one big effective potential, but that's not allowed, mathematically.
