@@ -8,29 +8,57 @@ Things I need to explain in the introduction: intrinsically disordered proteins,
 
 \section{The nuclear pore complex as a selective filter}
 
-Okay, what else has been showing up recently in the nuclear pore field?  People finally seem to be agreeing that the affinity has to be micromolar or millimolar, and I agree with that.  They've identified weak, transient, multivalent binding as a special form of selectivity.  I agree with that too.  I feel like I've been seeing more new simulations than new experiments recently.  The sliding NTF2 paper was pretty good, and Zilman's stuff is interesting.  I thought the passive-diffusion-limit paper by Timney was good too.  The Milles paper from 2015 which focuses on the ultrafast binding kinetics is quite helpful.  I've been seeing several structure papers for the NPC as a whole, which aren't super interesting to me.  The thermo paper from the Rout lab was fascinating because they used ITC on exactly the same NTF2 and FSFG constructs that we did.  I should compare their results to ours more closely, because I'm not sure why they could get publishable data and we couldn't.  Probably I was just bad at ITC, but it merits closer investigation.  One paper I really hated was that AFM paper from a few years ago.  Sure, it's cool that they can even approach the temporal and spatial resolution needed to image the pore, but they were nowhere near fast enough to say anything meaningful about transport or Nup conformations.  Also they didn't run any negative controls.
-
-And I just remembered the Gorlich one about phase separation in that one Nup.  I forget if they were liquid droplets at any point, but at some point they were clearly aggregates because they weren't spherical at all.
+The nuclear pore is the filter that regulates all transport between the cell's nucleus and its cytoplasm.  It's a unique filter because it blocks the passage of proteins that are more than about five nanometers across, but allowed selected proteins called transport factors to pass through rapidly.  These transport factors can carry cargo, and the entire complex can be up to 40 nm across and still easily transit the pore.  Therefore, the nuclear pore is a filter that keeps small things out but lets selected large things pass.  We know what components are involved in nuclear transport, but we don't know exactly how it works.
 
 \subsection{Basics of nuclear transport}
 
-The nuclear pore complex (NPC) resides in the nuclear envelope of eukaryotes and regulates all macromolecular traffic between the nucleus and cytoplasm.  The NPC is one of the largest protein complexes in the cell, at about 60 MDa in yeast and 120 MDa in humans \cite{beck17}.  As the regulator of nucleocytoplasmic transport, the NPC must rapidly and specifically pass a wide array of macromolecules: transcription factors into the nucleus, and RNA into the cytoplasm.  Moreover, it must be robust to problems and able to accomodate mechanical strain as the nuclear envelope changes shape, and to passage large cargo.
+The nuclear pore complex (NPC) resides in the nuclear envelope of eukaryotes and regulates all macromolecular traffic between the nucleus and cytoplasm (Fig.~\ref{fig:NPC}).  The NPC is one of the largest protein complexes in the cell, at about 60 MDa in yeast and 120 MDa in humans \cite{beck17}.  As the regulator of nucleocytoplasmic transport, the NPC must rapidly and specifically allow a wide array of macromolecules to pass: transcription factors into the nucleus, and RNA into the cytoplasm.  It must also be robust to problems and able to accomodate mechanical strain as the nuclear envelope changes shape, as well as accomodating large cargo.  These functions are accomplished through a structure with two main parts, both made of proteins known as nucloporins, or Nups: the scaffold Nups, which form a ringlike complex, and the FG Nups, which are disordered and fill the central channel created by the scaffold Nups (Fig.~\ref{fig:NPC}).  
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figs/ch01/patel.pdf}
-\caption[Nuclear pore complex and FG Nups.]{Nuclear pore complex and FG Nups. \cite{patel07}}
-\label{fig:hydrogel-entropic-brush}
+\caption[Nuclear pore complex and FG Nups.]{Nuclear pore complex and FG Nups.  The cartoon shows the role of the FG Nups filling the central channel.  The left panel shows a schematic of the sequence of important FG Nups and the locations of their FG motifs. Figure adapted from \cite{patel07}.}
+\label{fig:NPC}
 \end{figure}
 
 %A typical yeast cell has xx nuclear pores, each with a dimension of xx.  Human cells have about xx pores with xx dimensions.
 %
 %There are about 30 different types of Nups, all present in multiple copy numbers.
 %
-These functions are accomplished through a structure with two main parts, both made of proteins known as nucloporins, or Nups: the scaffold Nups, which form a ringlike complex, and the FG Nups, which are disordered and fill the central channel created by the scaffold Nups.  Aside from the NPC itself, transport factors (TFs) are a class of proteins essential for selective transport.  The energetic cost of selectivity is captured in the Ran GTP/GDP cycle.
 %
 %\subsection{Scaffold nucleoporins are ordered and form ringlike complexes.}
-The nuclear pore itself is formed of scaffold Nups, which are ordered proteins that form ringlike complexes with eightfold symmetry \cite{beck17}.  There is an inner ring and two outer rings, the nuclear and cytoplasmic rings.  The outer rings are slightly larger.  The nuclear ring is on the side of the nucleus and includes the nuclear basket.  The cytoplasmic ring includes the cytoplasmic filaments, which are (probably?) disordered proteins extending out into the cytoplasm.
+The nuclear pore itself is formed of scaffold Nups, which are ordered proteins that form ringlike complexes with eightfold symmetry \cite{beck17,strambio-de-castillia10}.  The central channel of the pore is filled with disordered FG Nups.  FG Nups typically consist of an ordered domain that anchors them to the wall of the channel, and an entirely disordered domain that extends into the channel.  As with all Nups, FG Nups have eightfold symmetry in the pore, and some of them are present in much higher copy number. The disordered portion of every FG Nup contains phenylalanine- glycine (FG) motifs which bind to the hydrophobic binding pockets of transport factors.  While there are multiple binding motifs, all are short sequences which incorporate an FG repeat; for instance, FSFG, GLFG, and others.  Each FG Nup contains tens of FG repeats, leading to a high density of FG repeats within the pore \cite{strambio-de-castillia10,terry09}.
+
+Since the FG Nups are disordered, most conventional visualization techniques, such as cryogenic electron microscopy and x-ray crystallography, are ineffective.  When imaged over time or when several pores are imaged, the averaged results do not show the disordered portion of the FG Nups. Techniques such as NMR and very fast AFM can help gain insight into their conformationa ensembles \cite{hough15,sakiyama16}.  Early research suggested that the FG Nups formed a central plug or "transporter", but more recent work suggests that there is no central structure and the central channel is filled instead with highly dynamic disordered proteins \cite{moussavi-baygi16,schoch12,sakiyama16}. There is some evidence from simulations that the density of the FG Nups, as well as their charge density and hydrophobic properties, are not uniform along either the radial or axial directions \cite{yamada10,ando14,tagliazucchi13}.  This may contribute to selective transport, although the pore still functions without the asymmetric FG Nups \cite{zeitler04}.  Indeed, the NPC is remarkably robust to FG Nup deletion.  Over half of the mass of FG Nups can be removed without eliminating the selectivity barrier \cite{strawn04, zeitler04,kowalczyk11, jovanovic-talisman09}.
+
+Transport factors (TFs) are ordered proteins that carry cargo through the NPC.  While there are various types, they share several features in common, most notably the fact that all known transport factors have more than one hydrophobic binding pocket which binds to FG repeats.  Binding affinities between TFs and FG Nups are surprisingly difficult to measure accurately.  Values of the dissociation constant $K_D$ measured outside of the cellular context are often in the low nanomolar range, implying a binding lifetime which is inconsistent with the experimentally-observed rapid translocation through the nuclear pore \cite{pyhtila03, gilchrist02}.  Recent consensus is that binding is much weaker in the cellular environment, with $K_D$ values between hundreds of micromolar and millimolar \cite{tetenbaum-novatt12-1, milles15, hayama18}.  The extreme binding multivalency of Nup - transport factor interactions adds a further layer of complexity to interpreting affinity data.  It is increasingly accepted that the highly transient and multivalent binding of TFs to FG Nups is key to the combination of high specificity and rapid transport exhibited by the NPC \cite{jovanovic-talisman17}.
+%%%%%%
+
+
+The karyopherins (Kaps), also known as importins and exportins, are largest family of transport factors.  The  approximately twenty different Kaps are responsible for most nucleocytoplasmic transport \cite{kapinos17}. Kaps typically consist of multiple HEAT repeats, a helical motif which conveys structural flexibility \cite{yoshimura16}.
+
+
+
+They are also known (in human cells?) as importins and exportins, or collectively as the importin $\beta$ superfamily \cite{tu11}.     Most Kaps bind their cargo directly via a nuclear localization signal (NLS, for nuclear import) or nuclear export signal (NES, for nuclear export).  NLS and NES are 5-7 amino acid tags found on cargo \cite{}.  However, Kap95? (importin $\beta$) uses the adaptor protein Kap60? (importin $\alpha$) to bind its cargo. In general, Kaps are on the order of 100 kDa in size, well above the passive permeability limit \cite{}. Kaps may contribute to the selectivity barrier.
+
+Unlike the karyopherins, nuclear transport factor 2 (NTF2) does not transport a wide variety of cargo across the NPC.  Instead, NFT2 is focused on maintaining the Ran gradient needed for transport.  It transports RanGDP across the pore - why does this help maintain a gradient?  If it transports in both directions, wouldn't it help wash out the gradient?  NTF2 is a homodimer whose components are 14 kDa and have one FG binding site.  Although its small size of 28 kDa is near the 30 kDa cutoff for passive transit through the pore, its flux through the pore is still 30-150 that of similarly-sized proteins that do not bind to FG Nups.
+
+
+Aside from the NPC itself, transport factors (TFs) are a class of proteins essential for selective transport.  The energetic cost of selectivity is captured in the Ran GTP/GDP cycle.
+%
+%\subsection{Energy for selective transport is provided by the Ran cycle.}
+Selective transport requires an energy source, which in the case of the NPC is provided by the Ran cycle.  When a TF-cargo complex passes from the cytoplasm into the nucleus (nuclear import), it encounters a RanGTP on the nuclear side which binds to the TF and displaces the cargo.  Then the TF-RanGTP complex can collect a cargo destined for nuclear export, and this ternary complex can diffuse back through the NPC to the cytoplasm.  The protein RanGAP then hydrolyzes the RanGTP to RanGDP, disrupting the complex into its three original pieces.  Ultimately, the energy source for selective nuclear transport comes from the RanGTP-RanGDP gradient from the cytoplasm to the nucleus, a gradient which is maintained partially by NTF2, which carries RanGDP through the pore \cite{stanley17}.
+%
+From the perspective of transport, this means that the process of passing through the pore is itself passive and does not consume energy.  The selectivity arises from concentration gradients maintained by the Ran cycle.
+%
+%\subsection{Transport factors}
+%
+
+  I feel like I've been seeing more new simulations than new experiments recently.  The sliding NTF2 paper was pretty good, and Zilman's stuff is interesting.  I thought the passive-diffusion-limit paper by Timney was good too.  The Milles paper from 2015 which focuses on the ultrafast binding kinetics is quite helpful.  I've been seeing several structure papers for the NPC as a whole, which aren't super interesting to me.  The thermo paper from the Rout lab was fascinating because they used ITC on exactly the same NTF2 and FSFG constructs that we did.  I should compare their results to ours more closely, because I'm not sure why they could get publishable data and we couldn't.  Probably I was just bad at ITC, but it merits closer investigation.  One paper I really hated was that AFM paper from a few years ago.  Sure, it's cool that they can even approach the temporal and spatial resolution needed to image the pore, but they were nowhere near fast enough to say anything meaningful about transport or Nup conformations.  Also they didn't run any negative controls.
+
+And I just remembered the Gorlich one about phase separation in that one Nup.  I forget if they were liquid droplets at any point, but at some point they were clearly aggregates because they weren't spherical at all.
+
+%There is an inner ring and two outer rings, the nuclear and cytoplasmic rings.  The outer rings are slightly larger.  The nuclear ring is on the side of the nucleus and includes the nuclear basket.  The cytoplasmic ring includes the cytoplasmic filaments, which are (probably?) disordered proteins extending out into the cytoplasm.
 %
 %The eightfold symmetry of the pore arises from its modular nature.  Scaffold Nups form various stable subcomplexes, of which one of the most important is the Y-complex.  The Y-complex forms the inner ring; there are 32 copies of the complex per pore \cite{beck17}.  The rings themselves are relatively flexible, as they need to be in order to accomodate deformations of the nuclear envelope.  This flexibility is achieved in part by through short linear motifs (SLMs) which connect the subcomplexes to each other.
 %
@@ -42,24 +70,6 @@ The nuclear pore itself is formed of scaffold Nups, which are ordered proteins t
 %% Largest cargos are 40 nm also has a citation in Tu SM review article 2011
 %
 %\subsection{FG nucleoporins are disordered and fill the central channel of the pore.}
-The central channel of the pore is filled with disordered FG nucleoporins (FG Nups).  FG Nups typically consist of an ordered domain that anchors them to the wall of the channel, and an entirely disordered domain that extends into the channel.  As with all Nups, FG Nups have eightfold symmetry in the pore, and some of them are present in much higher copy number.
-The disordered portion of every FG Nup contains phenylalanine- glycine (FG) motifs which 
-bind to the hydrophobic binding pockets of transport factors.  While there are multiple binding motifs, all are short sequences which incorporate an FG repeat; for instance, FSFG, GLFG, and others. \cite{the rout paper I took that figure from}.  Each FG Nup contains x-x FG repeats, leading to an extremely high density of FG repeats within the pore.
-
-Since the FG Nups are disordered, most conventional visualization techniques do not work.  When imaged over time or when several pores are imaged, the averaged results do not show the disordered portion of the FG Nups.  Cryo-EM and x-ray crystallography don't work.  Techniques such as NMR and very fast AFM can help gain insight into their conformationa ensembles \cite{Loren's papers, the AFM paper}.  Early research suggested that the FG Nups formed a central plug or "transporter", but more recent work suggests that there is no central structure, just disordered proteins (the AFM study from Lim or Lemke group). There is some evidence from simulations that the density of the FG Nups, as well as their charge density and hydrophobic properties, are not uniform along either the radial or axial directions \cite{some energy landscape things, some simulations}.  This may contribute to selective transport, although the pore still functioned with all of the asymmetric FG Nups removed.  Indeed, the NPC is remarkably robust to FG Nup deletion.  Over half of the mass of FG Nups can be removed without eliminating the selectivity barrier \cite{beck17}.
-%
-%\subsection{Energy for selective transport is provided by the Ran cycle.}
-Selective transport requires an energy source, which in the case of the NPC is provided by the Ran cycle.  When a TF-cargo complex passes from the cytoplasm into the nucleus (nuclear import), it encounters a RanGTP on the nuclear side which binds to the TF and displaces the cargo.  Then the TF-RanGTP complex can collect a cargo destined for nuclear export, and this ternary complex can diffuse back through the NPC to the cytoplasm.  The protein RanGAP then hydrolyzes the RanGTP to RanGDP, disrupting the complex into its three original pieces.  Ultimately, the energy source for selective nuclear transport comes from the RanGTP-RanGDP gradient from the cytoplasm to the nucleus, a gradient which is maintained partially by NTF2, which carries RanGDP through the pore \cite{stanley17}.
-%
-From the perspective of transport, this means that the process of passing through the pore is itself passive and does not consume energy.  The selectivity arises from concentration gradients maintained by the Ran cycle.
-%
-%\subsection{Transport factors}
-%
-Transport factors (TFs) are ordered proteins that carry cargo through the NPC.  While there are various types, they share several features in common, most notably the fact that all known transport factors have more than one hydrophobic binding pocket which binds to FG repeats.  In fact, many TFs have several binding pockets.  Likewise, the binding affinity between TFs and FG Nups remains unknown for most TFs.  Estimates of dissociation constant $K_D$ vary from nanomolar to millimolar, depending on the environment (cellular, buffer, etc.) in which the measurement is made \cite{things}. There are many types of TF, of which some of the most important are the importins and exportins (karyopherins), NTF2, (and mRNA exporters? CRM? mex67?).
-
-The karyopherins (Kaps) are the most-studied family of TFs.  They are also known (in human cells?) as importins and exportins, or collectively as the importin $\beta$ superfamily \cite{tu11}.  The twenty or so different Kaps are responsible for most nucleocytoplasmic transport \cite{kapinos17}.  Kaps typically consist of multiple HEAT repeats, a helical motif which conveys structural flexibility \cite{yoshimura16}.  Most Kaps bind their cargo directly via a nuclear localization signal (NLS, for nuclear import) or nuclear export signal (NES, for nuclear export).  NLS and NES are 5-7 amino acid tags found on cargo \cite{}.  However, Kap95? (importin $\beta$) uses the adaptor protein Kap60? (importin $\alpha$) to bind its cargo. In general, Kaps are on the order of 100 kDa in size, well above the passive permeability limit \cite{}. Kaps may contribute to the selectivity barrier.
-
-Unlike the karyopherins, nuclear transport factor 2 (NTF2) does not transport a wide variety of cargo across the NPC.  Instead, NFT2 is focused on maintaining the Ran gradient needed for transport.  It transports RanGDP across the pore - why does this help maintain a gradient?  If it transports in both directions, wouldn't it help wash out the gradient?  NTF2 is a homodimer whose components are 14 kDa and have one FG binding site.  Although its small size of 28 kDa is near the 30 kDa cutoff for passive transit through the pore, its flux through the pore is still 30-150 that of similarly-sized proteins that do not bind to FG Nups.
 
 \subsection{Models of nuclear transport}
 
@@ -89,12 +99,12 @@ More generally, FG Nups exist on a continuum of ``cohesiveness,'' ranging from N
 
 Apart from the question of FG Nup conformation within the nuclear pore, the role of transport factors themselves in the permeability barrier has been under investigation \cite{kapinos18,kapinos17,schleicher14,kapinos14}.  There is evidence that the presence of karyopherins (Kaps) in the nuclear pore increases its selectivity for transport factors, possibily by establishing ``tight-binding'' and ``weak-binding'' subpopulations of Kaps which compete for binding sites on the Nups \cite{wagner15}.  Even non-specific ompetition may make the nuclear pore's selectivity barrier more robust as well \cite{tetenbaum-novatt12,zilman09,zilman10,timney06}.  The precise role of crowding and competition in nuclear pore selectivity is fascinating but as yet unclear.
 
-\begin{SCfigure}
-\centering
-\includegraphics[width=0.4\linewidth]{figs/ch01/Kap-centric-lim}
-\caption[Two important models of nuclear transport.]{The two major models of the nuclear pore \cite{elbaum06}}
-\label{fig:hydrogel-entropic-brush}
-\end{SCfigure}
+%\begin{SCfigure}
+%\centering
+%\includegraphics[width=0.4\linewidth]{figs/ch01/Kap-centric-lim}
+%\caption[Two important models of nuclear transport.]{The two major models of the nuclear pore \cite{elbaum06}}
+%\label{fig:hydrogel-entropic-brush}
+%\end{SCfigure}
 
 Relatively few non-computational, quantitative theories of nuclear transport exist.  Reaction-diffusion models have been proposed with varying degrees of complexity and different underlying assumptions but they do not take both binding kinetics and binding site saturation into account \cite{yang18,zilman07}.
 
