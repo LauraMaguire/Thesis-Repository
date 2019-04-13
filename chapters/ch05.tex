@@ -44,7 +44,7 @@ Then the normalized curves were fit to a sigmoid given by
 I(t) = C + \frac{A}{1+\exp \left(-k(t-T_{1/2})\right)}
 \label{eq:sig-fit}
 \end{equation}
-where $I(t)$ is the normalized fluoresence intensity as a function of time.  The aggregation dynamics are described by the rate $k$ and the half-time $T_{1/2}$, which reflects the time needed for the intensity to reach half of its asympotic value.  More descriptive than the half-time is the lag time $T_\ell$, calculated as
+where $I(t)$ is the normalized fluoresence intensity as a function of time (Fig.~\ref{fig:sigmoid-fit}).  The aggregation dynamics are described by the rate $k$ and the half-time $T_{1/2}$, which reflects the time needed for the intensity to reach half of its asympotic value.  More descriptive than the half-time is the lag time $T_\ell$, calculated as
 \begin{equation}
 T_l = T_{1/2} - \frac{2}{k}
 \end{equation}
@@ -58,10 +58,13 @@ Next we normalized once again to account for differences between timecourses.  I
 
 \subsection{Results}
 
-The final concentration of crowding agent was 19\% serine w/v, 13\% PEG, and 13\% PVP.  Lysate concentration varied between time courses and was in the 1-10 mg/mL range.  Two timecourses were run with varying PEG and PVP concentrations: 25\%, 20\%, 13\%, and 5\%.  Samples with no crowding agent ('buffer" samples) were run as a reference, and samples in 7M guanidine hydrochloride (GuHCl) with no crowding agent were run as negative controls in each timecourse.  No aggregation was observed in the GuHCl samples.  In every case, blanks were run alongside the sample conditions.  In the blanks, the FG124 was omitted.
+The mean fit parameters and number of replicates for each crowder condition are shown in Table~\ref{table:crowder-params} and Fig.~\ref{fig:tht-all-conditions}.  For both the aggregation rate $k$ and lag time $T_\ell$, a one-factor ANOVA rejected at the $p=0.05$ level the null hypothesis that there was no difference between the means.  Two-tailed t-tests were then run comparing all conditions shown in Fig.~\ref{fig:tht-all-conditions}.  The resulting $p$-values were below 0.05 except for those comparing no crowder to PVP (rate), no crowder to PEG (lag time), and serine to PVP (lag time).  All $p$-values are reported in Appendix~\ref{appx:p-values}.
+
+%The final concentration of crowding agent was 19\% serine w/v, 13\% PEG, and 13\% PVP. 
+% Lysate concentration varied between time courses and was in the 1-10 mg/mL range.  
 
 \begin{figure}
-\caption{(A) Aggregation lifetimes and (B) lag times for all crowding agents, normalized to the no-crowding condition.  Crowder concentrations were 19\% w/v serine, 13\% PEG, 13\% PVP, and 10 mg/mL cell lysate (lookup:check this).  Error bars are standard error of the mean.}
+\caption{(A) Aggregation lifetimes and (B) lag times for all crowding agents, normalized to the no-crowding condition.  Crowder concentrations were 19\% w/v serine, 13\% PEG, 13\% PVP, and approximately 10 mg/mL lysate.  Lysate concentration varied somewhat between experiments. Error bars are standard error of the mean.}
 \centering
 \includegraphics[width=0.8\textwidth]{figs/ch05/barCharts.pdf}
 \label{fig:tht-all-conditions}
@@ -75,121 +78,37 @@ The final concentration of crowding agent was 19\% serine w/v, 13\% PEG, and 13\
 %m07 = load('C:\Users\bit\Desktop\sophie\time course fits\170307\170307_workspace_final.mat');
 %which desktop was this?  Probably old lab desktop
 
-
 %use `dataforpaper.mat' in ch05 folder
 
-We then combined replicates from all timecourses by condition and took the final average and standard error of the mean for both fit parameters.  The results are shown in Fig.~\ref{fig:fitParams}.  I ran a one-factor ANOVA to reject the null hypothesis that all means were the same, and then two-sample t-tests on each pair of conditions to find which differences were statistically significant.  For the time constant, all pairs of conditions were significantly different from each other with $p < 0.05$ \emph{except} buffer-PVP.   For the lag time, all pairs of conditions were significantly different from each other with $p < 0.05$ \emph{except} buffer-PEG and serine-PVP.
-
 \begin{table}[b!]
-  \caption[Aggregation rate p-values for all crowding agents.]{Aggregation rate $k$ p-values for all crowding agents, two-tailed t-test.}
-    \label{table:p-k-values-all}
-    \begin{tabular}{p{4cm}|p{3.5cm}p{3cm}p{2cm}p{2cm}}
-        &10 mg/mL cell lysate &  19\% w/v serine & 13\% PEG & 13\% PVP\\
-      \hline
-	No crowder   & 0.031 & $1.2 \times 10^{-6}$ & $6.6\times 10^{-4}$ &0.41\\
-	10 mg/mL cell lysate   & N/A & 0.44 & 0.0010 &  0.022\\
-     	19\% w/v serine & N/A  & N/A & $4.4\times 10^{-9}$ & $2.2\times 10^{-6}$\\
-      	13\% PEG    & N/A & N/A  & N/A & 0.019\\
-	%13\% PVP & HeLa & a & b & 125 & N/A\\
-    \end{tabular}
-\end{table}
-
-\begin{table}[b!]
-  \caption[Lag time p-values for all crowding agents.]{Lag time $T_\ell$ p-values for all crowding agents, two-tailed t-test.}
-    \label{table:p-tl-values-all}
-    \begin{tabular}{p{4cm}|p{3.5cm}p{3cm}p{2cm}p{2cm}}
-        &10 mg/mL cell lysate &  19\% w/v serine & 13\% PEG & 13\% PVP\\
-      \hline
-	No crowder   & $5.4 \times 10^{-6}$ & $1.4 \times 10^{-8}$ & 0.77 &0.0012\\
-	10 mg/mL cell lysate   & N/A & 0.0051 & 0.00041 &  0.0060\\
-     	19\% w/v serine & N/A  & N/A & 0.0052 & 0.53\\
-      	13\% PEG    & N/A & N/A  & N/A & 0.039\\
-	%13\% PVP & HeLa & a & b & 125 & N/A\\
-    \end{tabular}
-\end{table}
-
-\begin{table}[b!]
-  \caption[Aggregation rate p-values for PEG.]{Aggregation rate $k$ p-values for PEG (\% w/v) , two-tailed t-test.}
-    \label{table:p-k-values-peg}
-    \begin{tabular}{p{2cm}|p{3cm}p{3cm}p{3cm}p{3cm}}
-        &20\% &  13\% & 5\% & 0\% \\ \hline
-	25\% & 0.0063 & 0.6167 & 0.0007 &0.8344\\
-	20\% & N/A &0.0131 & 0.7539 & 0.0815\\
-     	13\% & N/A  & N/A & 0.1196 & 0.6508\\
-      	5\% & N/A & N/A  & N/A & 0.0681\\
-    \end{tabular}
-\end{table}
-
-\begin{table}[b!]
-  \caption[Lag time p-values for PEG.]{Lag time $T_\ell$ p-values for PEG (\% w/v) , two-tailed t-test.}
-    \label{table:p-tl-values-peg}
-    \begin{tabular}{p{2cm}|p{3cm}p{3cm}p{3cm}p{3cm}}
-        &20\% &  13\% & 5\% & 0\% \\ \hline
-	25\% & 0.0071 & 0.0412 & 0.7726 &0.0221\\
-	20\% & N/A &0.5377 &  0.0206 & 0.1012\\
-     	13\% & N/A  & N/A & 0.1322 & 0.0927\\
-      	5\% & N/A & N/A  & N/A &0.2833\\
-    \end{tabular}
-\end{table}
-
-\begin{table}[b!]
-  \caption[Aggregation rate p-values for PVP.]{Aggregation rate $k$ p-values for PVP (\% w/v) , two-tailed t-test.}
-    \label{table:p-k-values-peg}
-    \begin{tabular}{p{2cm}|p{3cm}p{3cm}p{3cm}p{3cm}}
-        &20\% &  13\% & 5\% & 0\% \\ \hline
-	25\% & 0.8521 & 0.1327 & 0.4104 &0.1880\\
-	20\% & N/A &0.6607 & 0.6530 & 0.6815\\
-     	13\% & N/A  & N/A & 0.5991 & 0.8283\\
-      	5\% & N/A & N/A  & N/A & 0.6902\\
-    \end{tabular}
-\end{table}
-
-\begin{table}[b!]
-  \caption[Lag time p-values for PVP.]{Lag time $T_\ell$ p-values for PVP (\% w/v) , two-tailed t-test.}
-    \label{table:p-tl-values-pvp}
-    \begin{tabular}{p{2cm}|p{3cm}p{3cm}p{3cm}p{3cm}}
-        &20\% &  13\% & 5\% & 0\% \\ \hline
-	25\% & $4.7\times 10^{-5}$ & 0.0133 & 0.0012 &0.0628\\
-	20\% & N/A &0.2586 &  $8.6\times 10^{-06}$ & 0.0272\\
-     	13\% & N/A  & N/A & 0.0018 & 0.0709\\
-      	5\% & N/A & N/A  & N/A &0.6774\\
-    \end{tabular}
-\end{table}
-
-%\begin{table}[b!]
-%  \caption[Lag time p-values for all crowding agents.]{Lag time $T_\ell$ p-values for all crowding agents, two-tailed t-test.}
-%    \label{table:p-tl-values-all}
-%    \begin{tabular}{p{2cm}|p{2cm}p{2cm}p{2cm}p{2cm}p{2cm}}
-%        & 25 & 20 & 13 & 5 & 0 \\
-%      \hline
-%	25 & $5.4 \times 10^{-6}$ & $1.4 \times 10^{-8}$ & 0.77 &0.0012&\\
-%	20 & N/A & 0.0051 & 0.00041 &  0.0060&\\
-%     	13 & N/A  & N/A & 0.0052 & 0.53&\\
-%      	5 & N/A & N/A  & N/A & 0.039&\\
-%     	0 & N/A & N/A  & N/A & 0.039&\\
-%    \end{tabular}
-%\end{table}
-
-\begin{figure}
-\caption{test}
 \centering
-\includegraphics[width=\textwidth]{figs/ch05/peg-and-pvp-charts.pdf}
-\label{fig:peg-pvp}
-\end{figure}
+  \caption[Aggregation rate and lag time for all crowding agents.]{Mean aggregation rate and lag time for all crowding agents, normalized to no-crowder condition. Number of replicates is $N$. Errors are standard errors of the mean.}
+    \label{table:crowder-params}
+    \begin{tabular}{r |r |r| r}%{p{3cm}|p{3cm}p{3cm}p{2cm} }%p{2cm}p{2cm}}
+       Condition & Rate $k$ (1/hr) & Lag time $T_\ell$ (hr)  & $N$ \\
+      \hline
+	No crowder & $0\pm0.3$ & $0\pm0.1$& 32\\
+	Lysate & $2.7\pm1.6$  & $-1.7\pm0.4 $ & 16 \\
+     	Serine (19\%)& $3.7\pm0.7$  & $-0.7\pm0.05  $& 28 \\
+      	PEG (25\%) & $-1.9\pm0.4$  & $1.7\pm1.3  $ & 7 \\
+     	PEG (20\%) & $-0.3\pm0.3$   & $0.8\pm0.7$  & 7 \\
+	PEG (13\%) & $-2.2\pm 0.6$ & $-0.07\pm 0.2 $ & 31 \\
+	PEG (5\%) & $0.2\pm1.0$  & $-0.6\pm0.3 $ & 7 \\
+      	PVP (25\%) & $0.2\pm2.6$  & $2.7\pm1.2 $  & 7 \\
+     	PVP (20\%) & $-1.1\pm0.5$  & $0.9\pm0.7$   & 6\\
+	PVP (13\%) & $-0.5\pm0.5$  & $-0.6\pm0.2 $ & 32\\
+	PVP (5\%) & $-0.9\pm0.6$  & $-0.5\pm0.3$   & 7 \\
+    \end{tabular}
+\end{table}
 
-I followed the same process for the timecourses involving the concentration series for PEG and PVP, but there were fewer significant differences between concentrations, as seen in Fig.~\ref{fig:peg-pvp}.  The ANOVA for the PEG time constants gave $p=0.0024$ with the t-test showing differences between: buffer-25\% PEG, buffer-13\% PEG, and 25\% PEG-20\% PEG. The ANOVA for the PEG lag times was likewise significant with $p = 0.0102$.  The significant pairs were: buffer-25\% PEG, buffer-20\% PEG, buffer-5\% PEG, and 25\% PEG-13\% PEG.
-
-For PVP, there were no significant differences in the time constant.  For the lag time, after the ANOVA and t-tests, there were differences between: buffer and everything except 5\% PVP, 25\% PVP and everything but 20\% PVP, and 20\%PVP-13\% PVP.
-
-For both conditions, it looks roughly like the lag time increases with the crowder concentration, but given the large error bars, I wouldn't read too much into it.  The time constants don't follow any particular trend and are mostly indistinguishable anyway.
-
-We tested the effects of pH on FG124 aggregation by running several experiments in buffer at varying pH.  We ran six replicates of each condition, for pH values between 5 and 8.  No significant differences were found in the lifetimes or lag times of any pH condition.  Results are summarized in Table \ref{table:FG124-pH}. We concluded that aggregation is not affected by pH in the range 5-8.
+Several timecourses were run without crowders at varying pH.  Table~\ref{table:FG124-pH} shows the resulting fit parameters, given as lifetime $\tau = 1/k$ and lag time $T_\ell$.  Six replicates were run of each pH condition.  One-way ANOVAs fail to reject the null hypothesis at the $p=0.05$ level, suggesting that FG124 aggregation is not affected by pH in the range 5-8.
 
 \begin{table}[b!]
-  \caption{FG124 aggregation lifetime and lag time with varying pH. Each condition run with 6 replicates in PTB buffer.  One-way ANOVAs show no statistically significant differences between conditions.  Standard errors are shown.}
+\centering
+  \caption[Aggregation lifetime and lag time with varying pH.]{FG124 aggregation lifetime and lag time with varying pH. Each condition run with 6 replicates in PTB buffer.  Errors are standard errors of the mean.}
     \label{table:FG124-pH}
     \begin{tabular}{p{1cm}p{3cm}p{3cm}}
-      pH & Lifetime $\tau$ (hr) & Lag time $T_{lag}$ (hr) \\
+      pH & Lifetime $\tau$ (hr) & Lag time $T_\ell$ (hr) \\
       \hline
       5 & $0.34 \pm 0.09$ & $6.8 \pm 0.1$ \\
       6 & $0.35 \pm 0.12$ & $6.2 \pm 0.2$ \\
@@ -198,9 +117,33 @@ We tested the effects of pH on FG124 aggregation by running several experiments 
     \end{tabular}
 \end{table}
 
+Two crowders, PEG and PVP, warranted special attention.  These inert crowders are commonly used interchangeably, but the results of timecourses containing 13\% PEG or PVP suggest that they may in fact affect FG124 differently (Fig.~\ref{fig:tht-all-conditions}).  In order to investigate any differences between PEG and PVP, timecourses were run with varying crowder concentrations and analyzed as before.  Mean parameter values are shown in Fig.~\ref{fig:peg-pvp}.  Statistics are given in Appendix~\ref{appx:p-values} but do not strongly suggest differences between varying concentrations within the same crowder.
+
+\begin{figure}
+\caption{test}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/peg-and-pvp-charts.pdf}
+\label{fig:peg-pvp}
+\end{figure}
+
+% The ANOVA for the PEG time constants gave $p=0.0024$ with the t-test showing differences between: buffer-25\% PEG, buffer-13\% PEG, and 25\% PEG-20\% PEG. The ANOVA for the PEG lag times was likewise significant with $p = 0.0102$.  The significant pairs were: buffer-25\% PEG, buffer-20\% PEG, buffer-5\% PEG, and 25\% PEG-13\% PEG.
+
+%For PVP, there were no significant differences in the time constant.  For the lag time, after the ANOVA and t-tests, there were differences between: buffer and everything except 5\% PVP, 25\% PVP and everything but 20\% PVP, and 20\%PVP-13\% PVP.
+
+%For both conditions, it looks roughly like the lag time increases with the crowder concentration, but given the large error bars, I wouldn't read too much into it.  The time constants don't follow any particular trend and are mostly indistinguishable anyway.
+
 \subsection{Discussion}
 
+The results of the FG124 aggregation timecourses were difficult to interpret.  The reproducibility of thioflavin T fluorescence assays is notoriously poor, and many timecourses were run with high variability in results.  Results became more reproducible once the protocol was modified to include a bead in each well, which seemed to assist with mixing during the shaking incubation between time points.  Only data taken after this change are included in this dataset.
+
+The results indicate changes in both lag time and aggregation lifetime of FG124 as a result of changing crowder conditions.  The origin and magnitude of these changes is unclear.  We chose to target the crowders PEG and PVP for further investigation.  These crowders, while typically treated as interchangeable, behaved differently in during the fluorescence timecourses (Fig.~\ref{fig:tht-all-conditions}).  When added to FG124 at a final concentration of 13\% w/v, PEG reduced the aggregation rate below that of the no-crowder condition while PVP did not.  Conversely, the lag time of the PEG condition remained approximately that of the no-crowder condition, but the lag time of the PVP condition decreased.
+
+It's possible that the differences in aggregation time between PEG and PVP come from changes in viscosity.  The two samples do have widely different viscosity, as measured by Steve Whitten.  A 13\% PEG solution in PTB has a dynamic viscosity of 15.87 mPa s, while that of a 13\% PVP solution in PTB is 7.34 mPa s.  The literature doesn't entirely agree on what happens to aggregation as a function of viscosity, but what we see could be due to that change.  (lookup: Check in lab book where I have lit search notes.)
+
+To probe the origin of the differences in aggregation, we recorded NMR and fluorescence spectra for FG124 and FSFG in crowded PEG and PVP solutions.
+
 \section{NMR relaxation measurements}
+talk about why we used FSFG, why it was a good plan ... hmm
 \subsection{Methods}
 \subsection{Results}
 \subsection{Discussion}
@@ -244,4 +187,4 @@ I also measured PEG and PVP absorbance near 240 nm (see Fig.~\ref{fig:crowder-ab
 
 \section{Conclusions}
 
-It's possible that the differences in aggregation time between PEG and PVP come from changes in viscosity.  The two samples do have widely different viscosity, as measured by Steve Whitten.  A 13\% PEG solution in PTB has a dynamic viscosity of 15.87 mPa s, while that of a 13\% PVP solution in PTB is 7.34 mPa s.  The literature doesn't entirely agree on what happens to aggregation as a function of viscosity, but what we see could be due to that change.  (Check in lab book where I have lit search notes.)
+
