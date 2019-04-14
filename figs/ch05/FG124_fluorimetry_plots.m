@@ -80,3 +80,17 @@ legend({'Phenylalanine (from ref.)','100 $\mu$M FSFG',...
     'Location','northeast');
 
 hold off
+
+%% Make plot of PEG and PVP only to show background
+
+hold on
+plot(lambda,blank_PEG);
+plot(lambda,blank_PVP);
+%plot(lambda(1:81),FG124_fresh/max(FG124_fresh));
+%plot(lambda(1:81),FG124_agted/max(FG124_agted));
+axis([270 350 0 2.5e5])
+xlabel('Wavelength (nm)');
+ylabel('Intensity (counts)');
+legend({'5% PEG in PTB','5% PVP in PTB'},'Location','northwest');
+
+hold off
