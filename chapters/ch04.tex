@@ -221,7 +221,7 @@ where $D$ is the diffusion constant.
 %% t is close to beginning but not right at beginning
 
 \begin{figure}
-\caption[Fits to concentration profiles at a fixed time.]{Fits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.  The entire intensity profile is shown in the top panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
+\caption[Fits to concentration profiles at a fixed time.]{Fits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 Da.  The entire intensity profile is shown in the top panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch04/erfc-position.pdf}
 \label{fig:erfc-position}
@@ -308,7 +308,7 @@ The problem is that of diffusion in a circular region of radius $a$, centered at
 \label{fig:carslaw-geo}
 \end{SCfigure} 
 
-As this solution is two-dimensional, two sums must be taken over the basis functions.  Bessel functions $J_\nu$ of the first kind and integer order $\nu$ are the radial basis, and cosines are the angular basis.  The time dependence is carried by decaying exponentials whose time constant is related to the diffusion coefficient $D$ as well as to the zeros of the Bessel functions.  The terms are summed over the Bessel orders as well as over the zeros of each Bessel function.  For our situation, the full solution to the diffusion equation within the hydrogel is given by \cite{h.s.carlslaw59}
+As this solution is two-dimensional, two sums must be taken over the basis functions.  Bessel functions $J_\nu$ of the first kind and integer order $\nu$ are the radial basis, and cosines are the angular basis.  The time dependence is carried by decaying exponentials whose time constant is related to the diffusion coefficient $D$ as well as to the zeros of the Bessel functions.  The terms are summed over the Bessel orders as well as over the zeros of each Bessel function.  For our situation, the full solution to the diffusion equation within the hydrogel is given by \cite{h.s.carslaw59}
 
 \begin{equation}
 \begin{split}
@@ -327,8 +327,8 @@ c(r,\theta,t) = \sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \frac{\ex
 \end{equation}
 with 
 \begin{eqnarray}
-C_{n,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta' \label{eq:cos-defn}\\
-S_{n,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta' \label{eq:sin-defn}
+C_{\nu,\alpha} & = &b_{\nu,\alpha} \int_0^{2\pi} \int_0^a \cos\left(\nu\theta'\right) J_\nu(\alpha r')f(r',\theta') r' dr' d\theta' \label{eq:cos-defn}\\
+S_{\nu,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\right) J_\nu(\alpha r') f(r',\theta') r' dr' d\theta' \label{eq:sin-defn}
 \end{eqnarray}
 The problem is reduced to determining the mode coefficients by evaluating the integrals.
 
@@ -384,7 +384,7 @@ To verify the mode coefficients, I reconstructed the initial post-bleach image f
 
 % #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
 \begin{figure}
-\caption[Reconstruction of initial concentration distribution.]{Reconstruction of initial concentration distribution. Reservoir is masked and not included.  (A) Heatmap of original image with average equilibrated gel intensity set to zero. (B) Reconstruction using two Bessel orders ($N_\nu = 2$) and two zeros ($N_\alpha = 2$) in each order. (C-E) Reconstructions with $N_\nu = N_\alpha = 4$, 10, and 20.}
+\caption[Reconstruction of initial concentration distribution.]{Reconstruction of initial concentration distribution. Reservoir is masked and not included.  (A) Heatmap of original image with average equilibrated gel intensity set to zero. (B) Reconstruction using two Bessel orders ($N_\nu = 2$) and two zeros ($N_\alpha = 2$) in each order. (C-E) Reconstructions with $N_\nu = N_\alpha = 2$, 4, 10, and 20.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch04/reconstruction-16_2_4_10_20.pdf}
 \label{fig:initDist}
@@ -443,7 +443,7 @@ Many of the FSFG concat-1 hydrogels showed an unusual bright ring in the NTF2-F 
 
 % 19-2-6-21, final frame (70 min -ish)
 \begin{SCfigure}
-\caption[Bright NTF2-F ring surrounding photobleach spot.]{Bright NTF2-F ring surrounding photobleach spot, 70 minutes after bleaching.  This ring often developed in FSFG concat-1 gels.  Photobleach mask was chosen to be slightly smaller than the ring.  Contrast adjusted for ease of viewing. While circle added to guide the eye.\\}
+\caption[Bright NTF2-F ring surrounding photobleach spot.]{Bright NTF2-F ring surrounding photobleach spot, 70 minutes after bleaching.  This ring often developed in FSFG concat-1 gels.  Photobleach mask was chosen to be slightly smaller than the ring.  Contrast adjusted for ease of viewing. White circle added to guide the eye.\\}
 \centering
 \includegraphics[width=0.3\textwidth]{figs/ch04/ring}
 \label{fig:ring}
