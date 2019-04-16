@@ -1,16 +1,27 @@
 \chapter{FG Nup aggregation under crowded conditions}\label{ch05}
 
-Disordered proteins are often prone to aggregation, often causing disease, and the aggregation behavior of FG Nups is important to understand.  It is not clear what the aggregation state of Nups is within the pore or how their aggregation might play into nuclear transport \cite{things}.  \textit{In vitro}, many Nups spontaneously aggregate into amyoids over the course of a few hours, but there is evidence that this aggregation does not happen in the cellular environment \cite{frey07, Loren's paper}.  We investigated aggregation behavoir of an aggregation-prone Nup fragment in a number of different crowders.  Inert crowders such as PEG and PVP help mimic the extremely crowded cellular environment, but they may interact different with the protein than nonspecifically-binding crowders such as cell lysate or BSA.  We wanted to understand how different crowders affected the aggregation properties of Nups.
+The work so far has been based on the nuclear pore, which is an interesting biofilter.  Its selective properties are not well understood.  In our model, selectivity arises from bound-state diffusion, which itself happens in part because of the presence of flexible disordered tethers in the form of FG Nups.  Our model doesn't really care whether the Nups are forming transient crosslinks, like the hydrogel model says, because that will just change the effective Nup length.  As long as the Nups have some kind of dynamic motion we should be okay.
 
-We used a 124-amino-acid fragment of the Nup Nsp1.  The FG-repeat segment of Nsp1 contains an aggregation-resistant portion (used as the basis for the FSFG peptide) as well as one that aggregates in buffer over the course of a few hours.  This aggregation-prone portion is the basis of the FG124 peptide used in the following aggregation experiments.
+The exact conformation of Nups within the nuclear pore is unknown, due to the difficulty in imaging such a disordered system.  Some Nups, such as Nsp1, aggregate in buffer to form hydrogel structures \cite{frey06, frey07, ader10}, although evidence suggests it does not aggregate in the cellular environment \cite{hough15}.  Other Nups can form phase-separated liquid droplets \cite{schmidt15}.  Nup153 forms amyloid fibrils \textit{in vitro} (Fig.~\ref{fig:amyloid}B) at a rate which is increased by the addition of inert crowders \cite{milles13}.  Amyloid structures, as shown in in Fig.~\ref{fig:amyloid}A, are long chains of stacked $\beta$ sheets which are much less flexible and dynamic than individual disordered proteins, potentially limiting the effectiveness of the tethered bound diffusion of transport factors.  Amyoid fibrils are commonly formed by disordered proteins upon aggregation and are often implicated in disease \cite{jahn08}.    On the other hand, atomic force microscopy (AFM) data and simulations suggest that Nups in the nuclear pore remain highly dynamic \cite{sakiyama16,moussavi-baygi16}.
+
+\begin{figure}
+\caption[Aggregation of FG Nup into amyloid fibrils.]{Aggregation of FG Nup into amyloid fibrils. (A) Schematic of possible aggregation states of a disordered protein, including disordered aggregates, intermediate amyloid-like states, and fibrils composed of stacked beta-sheets. Rectangles denote secondary structure.  Figure adapted from \cite{jahn08}. (B) Negative-staining electron micrograph of amyloid fibrils consisting of the human Nup153 FG domain.  Arrows indicate characteristic twists of the fibrils.  Figure adapted from \cite{milles13}.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/amyloid-intro}
+\label{fig:amyloid}
+\end{figure}
+
+We decided to test the aggregation behavior of a fragment of the essential FG Nup Nsp1 known as FG124, described in Sec.~\ref{sec:Nups} and Appendix~\ref{appx:sequences}.  This 124-amino-acid peptide contains eight FG motifs and is known to aggregate in buffer over the course of several hours.  However, in-cell NMR shows it to remain disordered inside bacterial cells \cite{hough15}.  Given the disparity in aggregation behavior under these different conditions, we wanted to determine whether we could encourage or suppress aggregation and amyloid formation with our choice of crowding agents.
+
+
+
+The natural thing to do is to study proteins in buffers, but this often is wrong because it's not close enough to the enviornment of the cell.  Cells are really crowded.  Cite a number here from bionumbers or something.  Crowding interactions change the way cells do a lot of things, often like protein aggregation \cite{something}.  Crowders are typically small molecules that simulate the crowded environment of a cell. Some are inert, like PEG or PVP, while others simulate the nonspecific interactions that proteins might have with other proteins, for instance, BSA or cell lysate, which is a ton of stuff all mixed up.  Different crowders might have different interactions with FG124.  Generally, crowding speeds up aggregation \cite{milles13, other things}.  We wondered whether there was a difference between nonspecific interactions and inert crowders, given the difference found in Loren's paper \cite{hough15}.
 
 We used aggregation timecourses with thioflavin T as a readout, as well as fluorimetry, NMR, and x-ray scattering.  Our conclusion is something about the phenylalanines and how they behave differently in when crowded with PEG than with PVP (which also has an aromatic ring).
 
-need an intro kind of figure with amyloid structure, cartoon of aggregation
-
 \section{Fluorescence time courses}
 
-In order to probe the aggregation dynamics of FG124, we incubated samples in the presence of crowders and thioflavin T (ThT), a dye which is sensitive to the presence of amyloids.  Over the course of several hours, FG124 aggregated and the fluorescence intensity from ThT increased.  By recording the intensity at 10-minute intervals, we were able to plot sigmoidal aggregation curves for the samples, as shown in Fig.~\ref{fig:sigmoid-fit}.  These curves show a lag phase while the aggregates are nucleating, followed by a growth phase of rapid aggregation, ending in a plateau phase.  We recorded timecourses for multiple crowders, including inert crowders as well as nonspecifically binding ones, and analyzed the resulting aggregation parameters.  Poly(ethylene glycol) (PEG) and polyvinylpyrrolidone (PVP) were chosen as representative inert crowders.  Cell lysate was used to imitate the cellular environment and test the effect of nonspecific interactions on FG124 aggregation.  Finally, serine was used as a crowder as previous work demonstrated that it caused Nsp1, the FG Nup from which FG124 is derived, to aggregate more quickly \cite{frey07}.  Many of the timecourse experiments were performed by Sophie Reskin and Paul Marchando, and Sophie also took part in the analysis.
+In order to probe the aggregation dynamics of FG124, we incubated samples in the presence of crowders and thioflavin T (ThT), a dye which is sensitive to the presence of amyloids.  Over the course of several hours, FG124 aggregated and the fluorescence intensity from ThT increased.  By recording the intensity at 10-minute intervals, we were able to plot sigmoidal aggregation curves for the samples, as shown in Fig.~\ref{fig:sigmoid-fit}.  These curves show a lag phase while the aggregates are nucleating, followed by a growth phase of rapid aggregation, ending in a plateau phase.  We recorded timecourses for multiple crowders, including inert crowders as well as nonspecifically binding ones, and analyzed the resulting aggregation parameters.  Poly(ethylene glycol) (PEG) and polyvinylpyrrolidone (PVP) were chosen as representative inert crowders.  Cell lysate was used to imitate the cellular environment and test the effect of nonspecific interactions on FG124 aggregation.  Finally, serine was used as a crowder as previous work demonstrated that it caused Nsp1, the FG Nup from which FG124 is derived, to aggregate more quickly \cite{milles13}.  Many of the timecourse experiments were performed by Sophie Reskin and Paul Marchando, and Sophie also took part in the analysis.
 
 Thioflavin T is a dye that grows much brighter when bound to amyloids.  Upon binding, its absorption maximum shifts from from 385 nm to 450 nm and it emission maximum from 445 nm to 482 nm \cite{picken12}.  Although ThT is a more reliable indicator of amyloids than other fluorescence methods, notably Congo red stain, it suffers from reproducibility problems.  There is no consensus on the mechanism of ThT binding to amyloids.  Some proposed mechanisms rely on the presence of ThT micelles, which form above a critical concentration of about 4 $\mu$M, while others advocate for avoiding micelles \cite{khurana05, groenning09}.  There is some evidence that amyloid fibrils can adsorb to the plastic surface of a multiwell plate, decreasing ThT fluorescence intensity as the fibrils mature \cite{murray13}.  Often in our timecourse experiments, the ThT fluorescence did reach a maximum and then decrease.  The fluorescence intensity also depends on the sample viscosity, an effect which we noticed in our timecourses \cite{sulatskaya10}.  Despite these challenges, thioflavin T is the most consistent dye for detecting the process of amyloid formation.
 
@@ -19,7 +30,7 @@ Thioflavin T is a dye that grows much brighter when bound to amyloids.  Upon bin
 %date = '170126';
 %13% PEG rep 3
 \begin{SCfigure}
-\caption{Sample sigmoid fit to FG124 sample with 13\% w/v PEG.  Burst phase and stationary phase are shown; lag phase took place before data collection began.  Fit is to Eqn.~\ref{eq:sig-fit}.\\}
+\caption[Sample sigmoid fit to FG124 aggregation timecourse.]{Sample sigmoid fit to FG124 aggregation timecourse with 13\% w/v PEG.  Burst phase and stationary phase are shown; lag phase took place before data collection began.  Fit is to Eqn.~\ref{eq:sig-fit}.\\}
 \centering
 \includegraphics[width=0.5\textwidth]{figs/ch05/sample-sigmoid}
 \label{fig:sigmoid-fit}
@@ -31,7 +42,7 @@ Thioflavin T is a dye that grows much brighter when bound to amyloids.  Upon bin
 
 \subsubsection{FG124 preparation} His-tagged FG124 was expressed in \textit{E. coli} in the plasmid pRSF.  Cultures were grown in LB and  induced at 37$^\circ$C for 2-4 hr with 1 mM IPTG at OD 0.6-0.8.  Periplasmic matrix was removed prior to lysis.  Cells were then lysed via sonication and FG124 purified using TALON cobalt resin (Appendix~\ref{appx:protein-purification}).  All purification buffers were PTB with 7M guanidine hydrochloride (GuHCl) and protease inhibitor cocktail (PIC).  The elution buffer also contained 250 mM imidazole.
 
-\subsubsection{Timecourse preparation} Stocks of PEG (lookup) and PVP (lookups) in PTB were prepared at 20 or 40\% w/v; serine (lookup) stocks were prepared at 30\% w/v.  PEG and serine were at pH 7; PVP was pH 7 or pH 5.  Lyophilized lysate was prepared by homogenizing BL21 DE3 Gold cells and spinning them down.  The supernatant was lyophilized in a decomposing ammonium bicarbonate buffer and resuspended in PTB to the desired concentration when needed.  A 10 mM stock solution of ThT in PTB was prepared and filtered no more than a week before the timecourse, stored at room temperature and protected from light.  Immediately prior to starting the timecourse, FG124 was desalted into PTB to remove the imidazole and GuHCl.  Samples were promptly prepared containing the appropriate percentage of crowder, a final concentration of 1-2 mg/mL FG124, and 200 uM thioflavin T.  All samples in the same timecourse had the same concentration of FG124, including the buffer sample, which contained no crowding agent.  Blanks were prepared with crowding agent and thioflavin T, but no FG124.  Samples were pipetted into black, flat-bottomed, clear-bottomed 96-well plates with 150 uL per replicate.  Each sample yielded four to six replicates.  Only one blank replicate was used per condition.  One negative control and corresponding blank were prepared per timecourse containing 7M GuHCl and no crowding agent but using the same protein sample as all other conditions.  Each well contained a 3mm-diameter glass or teflon bead.  The plate was sealed with a PCR seal and taken to a Safire II plate reader.  The fluoresence was measured from the bottom at 10-minute intervals with an excitation wavelength of 450 nm, emission wavelength of 482 nm, and 5 nm bandwidths.  The plate shoook orbitally at high speed between measurements and was held at a temperature of 30 degrees C.  The time between desalting and beginning the plate reader measurements was typically about an hour; the time of desalting was taken as $t=0$ for the purposes of calculating lag time. In parallel with the sample preparation, the concentration of the desalted FG124 was measured with a BCA assay.
+\subsubsection{Timecourse preparation} Stocks of PEG (avg. MW 20 kDa, Sigma, Bio-Ultra) and PVP (avg. MW 40 kDa, Sigman) in PTB were prepared at 20 or 40\% w/v; L-serine (EMD Millipore Calbiochem) stocks were prepared at 30\% w/v.  PEG and serine were at pH 7; PVP was pH 7 or pH 5.  Lyophilized lysate was prepared by homogenizing BL21 DE3 Gold cells and spinning them down.  The supernatant was lyophilized in a decomposing ammonium bicarbonate buffer and resuspended in PTB to the desired concentration when needed.  A 10 mM stock solution of ThT in PTB was prepared and filtered no more than a week before the timecourse, stored at room temperature and protected from light.  Immediately prior to starting the timecourse, FG124 was desalted into PTB to remove the imidazole and GuHCl.  Samples were promptly prepared containing the appropriate percentage of crowder, a final concentration of 1-2 mg/mL FG124, and 200 uM thioflavin T.  All samples in the same timecourse had the same concentration of FG124, including the buffer sample, which contained no crowding agent.  Blanks were prepared with crowding agent and thioflavin T, but no FG124.  Samples were pipetted into black, flat-bottomed, clear-bottomed 96-well plates with 150 uL per replicate.  Each sample yielded four to six replicates.  Only one blank replicate was used per condition.  One negative control and corresponding blank were prepared per timecourse containing 7M GuHCl and no crowding agent but using the same protein sample as all other conditions.  Each well contained a 3mm-diameter glass or teflon bead.  The plate was sealed with a PCR seal and taken to a Safire II plate reader.  The fluoresence was measured from the bottom at 10-minute intervals with an excitation wavelength of 450 nm, emission wavelength of 482 nm, and 5 nm bandwidths.  The plate shoook orbitally at high speed between measurements and was held at a temperature of 30 degrees C.  The time between desalting and beginning the plate reader measurements was typically about an hour; the time of desalting was taken as $t=0$ for the purposes of calculating lag time. In parallel with the sample preparation, the concentration of the desalted FG124 was measured with a BCA assay.
 
 \subsubsection{Timecourse analysis}
 
@@ -64,7 +75,7 @@ The mean fit parameters and number of replicates for each crowder condition are 
 % Lysate concentration varied between time courses and was in the 1-10 mg/mL range.  
 
 \begin{figure}
-\caption{(A) Aggregation lifetimes and (B) lag times for all crowding agents, normalized to the no-crowding condition.  Crowder concentrations were 19\% w/v serine, 13\% PEG, 13\% PVP, and approximately 10 mg/mL lysate.  Lysate concentration varied somewhat between experiments. Error bars are standard error of the mean.}
+\caption[Aggregation rates and lag times for all crowding agents.]{(A) Aggregation rates and (B) lag times for all crowding agents, normalized to the no-crowding condition.  Crowder concentrations were 19\% w/v serine, 13\% PEG, 13\% PVP, and approximately 10 mg/mL lysate.  Lysate concentration varied somewhat between experiments. Error bars are standard error of the mean.}
 \centering
 \includegraphics[width=0.8\textwidth]{figs/ch05/barCharts.pdf}
 \label{fig:tht-all-conditions}
@@ -82,7 +93,7 @@ The mean fit parameters and number of replicates for each crowder condition are 
 
 \begin{table}[b!]
 \centering
-  \caption[Aggregation rate and lag time for all crowding agents.]{Mean aggregation rate and lag time for all crowding agents, normalized to no-crowder condition. Number of replicates is $N$. Errors are standard errors of the mean.}
+  \caption[Aggregation rates and lag times for all crowding agents.]{Mean aggregation rate and lag time for all crowding agents, normalized to no-crowder condition. Number of replicates is $N$. Errors are standard errors of the mean.}
     \label{table:crowder-params}
     \begin{tabular}{r |r |r| r}%{p{3cm}|p{3cm}p{3cm}p{2cm} }%p{2cm}p{2cm}}
        Condition & Rate $k$ (1/hr) & Lag time $T_\ell$ (hr)  & $N$ \\
@@ -105,7 +116,7 @@ Several timecourses were run without crowders at varying pH.  Table~\ref{table:F
 
 \begin{table}[b!]
 \centering
-  \caption[Aggregation lifetime and lag time with varying pH.]{FG124 aggregation lifetime and lag time with varying pH. Each condition run with 6 replicates in PTB buffer.  Errors are standard errors of the mean.}
+  \caption[Aggregation lifetimes and lag times with varying pH.]{FG124 aggregation lifetime and lag time with varying pH. Each condition run with 6 replicates in PTB buffer.  Errors are standard errors of the mean.}
     \label{table:FG124-pH}
     \begin{tabular}{p{1cm}p{3cm}p{3cm}}
       pH & Lifetime $\tau$ (hr) & Lag time $T_\ell$ (hr) \\
@@ -120,7 +131,7 @@ Several timecourses were run without crowders at varying pH.  Table~\ref{table:F
 Two crowders, PEG and PVP, warranted special attention.  These inert crowders are commonly used interchangeably, but the results of timecourses containing 13\% PEG or PVP suggest that they may in fact affect FG124 differently (Fig.~\ref{fig:tht-all-conditions}).  In order to investigate any differences between PEG and PVP, timecourses were run with varying crowder concentrations and analyzed as before.  Mean parameter values are shown in Fig.~\ref{fig:peg-pvp}.  Statistics are given in Appendix~\ref{appx:p-values} but do not strongly suggest differences between varying concentrations within the same crowder.
 
 \begin{figure}
-\caption{test}
+\caption[Aggregation rates and lag times for varying PEG and PVP concentrations.]{Aggregation rates and lag times for varying PEG and PVP concentrations. Error bars are standard error of the mean.}
 \centering
 \includegraphics[width=\textwidth]{figs/ch05/peg-and-pvp-charts.pdf}
 \label{fig:peg-pvp}
@@ -149,7 +160,9 @@ talk about why we used FSFG, why it was a good plan ... hmm
 \subsection{Discussion}
 
 \section{Fluorescence spectra}
-We hypothesized that the crowder-dependent difference in aggregation might arise from the aromatic ring in PVP, which could interact with the phenylalanine in FG124 in a ring-stacking interaction.  To test this idea, I collected emission spectra of fresh and aggregated FG124 in PEG and PVP crowders near the phenylalanine peak wavelength (see Fig. \ref{fig:FG124-fresh-vs-agg}). 
+
+An obvious potential difference between PEG and PVP as inert crowders is the presence of an aromatic ring in PVP.  The phenylalanines of FG124 also possess an aromatic ring, making ring-stacking or other interactions with PVP more likely.  As the phenylalanines are also key to transport factor binding, it is important to understand their interactions with crowders.  The presence of the ring itself makes fluorescence spectroscopy a natural choice for probing the differences between PEG and PVP as crowders.  While protein fluorescence is typically dominated by tryptophan and then tyrosine fluorescence, these amino acids are absent from both FG124 and FSFG, leaving phenylalanine with the strongest fluorescent signal.  Fluoresecence spectra were therefore collected near phenylalanine's emission maximum from both fresh and aggregaged FG124 in PEG or PVP.
+
 \subsection{Methods}
 
 \subsubsection{Sample preparation}
@@ -178,17 +191,13 @@ Unfortunately, both PEG and PVP presented obstacles to the collection of UV fluo
 Figure~\ref{fig:phe-comparison} compares the phenylalanine peaks in FSFG concat-1, fresh and aggregated FG124, and pure phenylalanine in water from \cite{prahl95}.  The phenylalanine peak slightly shifts toward longer wavelengths as the data progress from pure  phenylalanine to FSFG to fresh and aggregated FG124.  Additionally, a shoulder develops at longer wavelengths.
 
 \begin{SCfigure}
-\caption{Fluorescence spectra of FSFG, FG124, and pure phenylalanine in water \cite{prahl95}. Excitation wavelength is 240 nm for all samples. Buffer spectra are subtracted (from FSFG and FG124 traces) and the resulting data is normalized to a maximum of one. \\}
+\caption[Fluorescence spectra of FSFG, FG124, and phenylalanine.]{Fluorescence spectra of FSFG, FG124, and pure phenylalanine in water \cite{prahl95}. Excitation wavelength is 240 nm for all samples. Buffer spectra are subtracted (from FSFG and FG124 traces) and the resulting data is normalized to a maximum of one. \\}
 \centering
 \includegraphics[width=0.5\textwidth]{figs/ch05/phe-comparison.pdf}
 \label{fig:phe-comparison}
 \end{SCfigure}
 
-Fresh and aggregated FG124 samples are compared in Figs.~\ref{fig:FG124-fresh-vs-agg} and \ref{fig:stacked-FG124-fluorimetry}.
-
-The PEG sample showed the largest difference upon aggregation, both in peak height and location.  Figure \ref{fig:stacked-FG124-fluorimetry} shows the same data, normalized to a maximum amplitude of one and offset, in order to emphasize the changes in peak shape.
-
-In both crowder conditions, but not in the buffer condition, a small peak appears in the aggregated FG124 near 310 nm.
+Fresh and aggregated FG124 samples are compared in Figs.~\ref{fig:FG124-fresh-vs-agg} and \ref{fig:stacked-FG124-fluorimetry}.  The PEG sample showed the largest difference upon aggregation, both in peak height and location.  In both crowder conditions, but not in the buffer condition, a small peak appears in the aggregated FG124 near 310 nm.
 
 \begin{figure}
 \caption[FG124 fluorescence in crowded conditions.]{Fluorescence spectra of fresh and aggregated FG124 in crowded conditions: (A) PTB buffer only, (B) 5\% w/v PEG, (C) 5\% w/v PVP.  All data normalized by subtracting appropriate blank.}
