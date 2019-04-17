@@ -1,4 +1,5 @@
 
+%name = 'No crowder';
 name = 'PVP';
 
 %%
@@ -13,11 +14,11 @@ r1err = d.data(:,7);
 r2 = d.data(:,12);
 r2err = d.data(:,14);
 
-%%
-phe = [12 14 31 33 50 52 69 71 88 90 107 109];
+%% Figure out where FSFG's are in amino acid list
+phe = [12 14 31 33 50 52 69 71 88 90 107 109]; % amino acid numbers of Phe
 indPhe = [];
 for i=1:length(phe)
-    indPhe = [indPhe find(aa==phe(i))];
+    indPhe = [indPhe find(aa==phe(i))]; % tie Phe residues to index of aa list
 end
 indGly = indPhe(2:2:end)+1;
 indSer = indGly-2;
@@ -59,61 +60,29 @@ xlabel('Amino acid');
 ylabel('R2/R1')
 title(name);
 
-%%
-name = 'no crowder';
+%% Averaging across repeated regions
+repeatR1 = zeros(5,19);
+repeatR2 = zeros(5,19);
 
-%%
-d2 = open('/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FSFG crowders/FSFG-T2-excel.xlsx');
-d1 = open('/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FSFG crowders/FSFG-T1-excel.xlsx');
+%phe = [12 14 31 33 50 52 69 71 88 90 107 109]; % amino acid numbers of Phe
 
-%%
-aa2 = d2.data(:,5);
-r2 = d2.data(:,12);
-r1err = d2.data(:,14);
-
-aa1 = d1.data(:,5);
-r1 = d1.data(:,12);
-r2err = d1.data(:,14);
-
-%%
-phe = [12 14 31 33 50 52 69 71 88 90 107 109];
-indPhe = [];
-for i=1:length(phe)
-    indPhe = [indPhe find(aa2==phe(i))];
+for i=1:5
+    repeatR1(i,:) = r1((9+(i-1)*19)+strcmp(name,'No crowder'):(8+i*19)+strcmp(name,'No crowder'));
+    repeatR2(i,:) = r2((9+(i-1)*19):(8+i*19));
 end
-indGly = indPhe(2:2:end)+1;
-indSer = indGly-2;
 
-indPhe1 = [];
-for i=1:length(phe)
-    indPhe1 = [indPhe1 find(aa1==phe(i))];
-end
-indGly1 = indPhe1(2:2:end)+1;
-indSer1 = indGly1-2;
+r1Avg = nanmean(repeatR1);
+r2Avg = nanmean(repeatR2);
+r1AvgErr = nanstd(repeatR1)/sqrt(5);
+r2AvgErr = nanstd(repeatR2)/sqrt(5);
 
-%%
-
-
-
-%%
+%% 
 figure
 hold on
-errorbar(aa2,r2,r1err,'o')
-plot(aa2(indPhe),r2(indPhe),'ro')
-plot(aa2(indGly),r2(indGly),'ko')
-plot(aa2(indSer),r2(indSer),'go')
-hold off
-
-xlabel('Amino acid');
-ylabel('R2')
-title(name);
-
-figure
-hold on
-errorbar(aa1,r1,r2err,'o')
-plot(aa1(indPhe1),r1(indPhe1),'ro')
-plot(aa1(indGly1),r1(indGly1),'ko')
-plot(aa1(indSer1),r1(indSer1),'go')
+errorbar(r1Avg,r1AvgErr,'o')
+plot(r1Avg(1:3),'ro')
+plot(4,r1Avg(4),'ko')
+plot(2,r1Avg(2),'go')
 hold off
 
 xlabel('Amino acid');
@@ -122,15 +91,64 @@ title(name);
 
 figure
 hold on
-plot(aa2,r2./r1(2:end),'o')
-plot(aa1(indPhe),r2(indPhe)./r1(indPhe1),'ro')
-plot(aa1(indGly),r2(indGly)./r1(indGly1),'ko')
-plot(aa1(indSer),r2(indSer)./r1(indSer1),'go')
+errorbar(r2Avg,r2AvgErr,'o')
+plot(r2Avg(1:3),'ro')
+plot(4,r2Avg(4),'ko')
+plot(2,r2Avg(2),'go')
+hold off
+
+xlabel('Amino acid');
+ylabel('R2')
+title(name);
+
+figure
+hold on
+errorbar(r2Avg./r1Avg,(r2Avg./r1Avg).*sqrt((r1AvgErr./r1Avg).^2+(r2AvgErr./r2Avg).^2),'o')
+plot(r2Avg(1:3)./r1Avg(1:3),'ro')
+plot(4,r2Avg(4)./r1Avg(4),'ko')
+plot(2,r2Avg(2)./r1Avg(2),'go')
 hold off
 
 xlabel('Amino acid');
 ylabel('R2/R1')
 title(name);
+%%
+fsfg = load('/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FSFG crowders/FSFG.mat');
+peg = load('/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FSFG crowders/PEG.mat');
+pvp = load('/Users/lauramaguire/Google Drive/Hough Lab/Nuclear Pore Team/Data/FSFG crowders/PVP.mat');
+%%
+figure
+hold on
+errorbar(fsfg.r1Avg,fsfg.r1AvgErr,'o')
+errorbar(peg.r1Avg,peg.r1AvgErr,'o')
+errorbar(pvp.r1Avg,pvp.r1AvgErr,'o')
+hold off
+xlabel('Amino acid');
+ylabel('R1')
+%title(name);
+legend({'No crowder','PEG','PVP'});
 
+figure
+hold on
+errorbar(fsfg.r2Avg,fsfg.r2AvgErr,'o')
+errorbar(peg.r2Avg,peg.r2AvgErr,'o')
+errorbar(pvp.r2Avg,pvp.r2AvgErr,'o')
+hold off
+xlabel('Amino acid');
+ylabel('R2')
+%title(name);
+legend({'No crowder','PEG','PVP'});
 
-
+figure
+hold on
+errorbar(fsfg.r2Avg./fsfg.r1Avg,(fsfg.r2Avg./fsfg.r1Avg).*...
+    sqrt((fsfg.r1AvgErr./fsfg.r1Avg).^2+(fsfg.r2AvgErr./fsfg.r2Avg).^2),'o')
+errorbar(peg.r2Avg./peg.r1Avg,(peg.r2Avg./peg.r1Avg).*...
+    sqrt((peg.r1AvgErr./peg.r1Avg).^2+(peg.r2AvgErr./peg.r2Avg).^2),'o')
+errorbar(pvp.r2Avg./pvp.r1Avg,(pvp.r2Avg./pvp.r1Avg).*...
+    sqrt((pvp.r1AvgErr./pvp.r1Avg).^2+(pvp.r2AvgErr./pvp.r2Avg).^2),'o')
+hold off
+xlabel('Amino acid');
+ylabel('R2/R1')
+%title(name);
+legend({'No crowder','PEG','PVP'});

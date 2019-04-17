@@ -62,9 +62,9 @@ Detailed precursor solution recipes are given in Appendix~\ref{appx:precursor-re
 \subsection{Influx of transport factor and inert protein}
 After soaking in buffer, the buffer solution was removed by pipette or wicking with a Kimwipe and a fluorescent reservoir solution added.  Aspirating the chamber was avoided if possible, as it sometimes disturbed the seal between the gel and the chamber.  The reservoir solution contained 20 $\mu$M each freshly-thawed NTF2-fluorescein (NTF2-F) and mCherry in PTB.  The chamber was resealed after adding the solution.  If no influx experiment was planned, the gels were then allowed to  equilibrate for 24 hours before FRAP was performed.
 
-When influx experiments were run, they began as soon as possible after loading the reservoir solution.  Videos were recorded at 4x magnification on an Olympus IX-81 widefield microscope using FITC (excitation 464-500 nm / emission 516-556 nm) and TRITC (excitation 532-544 nm / emission 573-613 nm) filter cubes.  Exposure times were typically 30-100 ms with 3-8 dB gain.  Videos consisted of 120 frames at one frame per minute. Minimal photobleaching took place over the course of these experiments.  After the influx experiment, the chamber was usually stored for equilibration 4$^\circ$C, protected from light, and a FRAP experiment performed the following day.
+When influx experiments were run, they began as soon as possible after loading the reservoir solution.  Videos were recorded at 4x magnification on an Olympus IX-81 widefield microscope using FITC (excitation 464-500 nm / emission 516-556 nm) and TRITC (excitation 532-544 nm / emission 573-613 nm) filter cubes.  Exposure times were typically 30-100 ms with 3-8 dB gain.  Videos consisted of 120 frames at one frame per minute. Minimal photobleaching took place over the course of these experiments, as confirmed by tracking the average reservoir intensity over time.  After the influx experiment, the chamber was usually stored for equilibration 4$^\circ$C, protected from light, and a FRAP experiment performed the following day.
 
-Influx experiments on hydrogels containing FSFG show binding of NTF2-F to mCherry (Fig.~\ref{fig:influx-images}).  A bright wavefront  of NTF2-F slowly progresses into the gel, while mCherry remains largely excluded.  As expected, mCherry equilibrates more rapidly than does NTF2-F, due to the lack of binding.  Influx experiments were analyzed as described in Sec.~\ref{sec:influx-analysis}.
+Influx experiments on hydrogels containing FSFG show binding of NTF2-F bu not to mCherry (Fig.~\ref{fig:influx-images}).  A bright wavefront  of NTF2-F slowly progresses into the gel, while mCherry remains largely excluded.  As expected, mCherry equilibrates more rapidly than does NTF2-F, due to the lack of binding.  Influx experiments were analyzed as described in Sec.~\ref{sec:influx-analysis}.
 
  % '/Volumes/houghgrp/Processed Images/2019-2-21_5/results.mat'
 %'/Volumes/houghgrp/Microscopy/190220/190220_profiles_02.vsi’
@@ -75,13 +75,13 @@ Influx experiments on hydrogels containing FSFG show binding of NTF2-F to mCherr
 \begin{figure}
 \caption[Influx experiments images and accumulation.]{Influx image series.  (A) A hydrogel containing a nominal 10 mg/mL FSFG concat-2 was challenged with 20 $\mu$M NTF2-F and mCherry.  The hydrogel shows selective entry of NTF2-F and has largely equilibrated within 24 hours. (B) Fluorescence intensity within hydrogel over time, normalized to reservoir concentration.}
 \centering
-\includegraphics[width=0.9\textwidth]{figs/ch04/influx-images-clean.pdf}
+\includegraphics[width=\textwidth]{figs/ch04/influx-images-clean.pdf}
 \label{fig:influx-images}
 \end{figure} 
 
 \subsection{Fluorescence recovery after photobleaching}
 
-FRAP is typically performed using a confocal microscope, but we were able to bleach the hydrogels using an Olympus IX-81 widefield microscope.  The widefield was preferable because the greater depth of field allowed for thicker hydrogel samples, which were easier to fabricate and manipulate.  As described above, the hydrogel was first allowed to equilibrate with 20 $\mu$M NTF2-F and mCherry in PTB.  A reference image was taken at 4x magnification in both fluorescence channels.  A circular region of the hydrogel around $300 \mu$m (?? check this) in radius was then photobleached by taking a five-second exposure at 40x magnification using a DAPI (excitation 352-402 nm / emission 417-477 nm) filter cube.  Following the bleach, the 4x objective was rapidly returned and a time series recorded.  Typical series consisted of 15-30 frames taken as rapidly as possible (5-10 s per frame), followed by 30-60 frames taken at a slower rate (1-2 minutes per frame).  Total experiment time was 1-4 hours.  Typical exposure times were 10 ms for NTF2-F and 40 ms for mCherry, both with a gain of 3 dB.
+FRAP is typically performed using a confocal microscope, but we were able to bleach the hydrogels using an Olympus IX-81 widefield microscope.  The widefield was preferable because the greater depth of field allowed for thicker hydrogel samples, which were easier to fabricate and manipulate.  As described above, the hydrogel was first allowed to equilibrate with 20 $\mu$M NTF2-F and mCherry in PTB.  A reference image was taken at 4x magnification in both fluorescence channels.  A circular region of the hydrogel approximately $300 \mu$m in radius was then photobleached by taking a five-second exposure at 40x magnification using a DAPI (excitation 352-402 nm / emission 417-477 nm) filter cube.  Following the bleach, the 4x objective was rapidly returned and a time series recorded.  Typical series consisted of 15-30 frames taken as rapidly as possible (5-10 s per frame), followed by 30-60 frames taken at a slower rate (1-2 minutes per frame).  Total experiment time was 1-4 hours.  Typical exposure times were 10 ms for NTF2-F and 40 ms for mCherry, both with a gain of 3 dB.
 
 In order to increase throughput, up to three FRAP experiments were run concurrently by sequentially bleaching and then imaging several locations within a single chamber.  This led to a maximum delay time of approximately 35 s between the end of the bleach segment and the beginning of the time series.  Delay times were recorded and taken into account in the data processing. Figure~\ref{fig:frap-images} shows a representative series of images pre- and post-FRAP for both NTF2-F and mCherry.
 
@@ -94,15 +94,15 @@ Despite allowing 24 hours for equilibration, the fluorescence intensity across t
 %Both scales
 %Image_series_figures.m
 \begin{figure} 
-\caption[FRAP image series.]{FRAP image series. NTF2-FITC (top, green) and mCherry (bottom, red) bleaching and recovery shown separately.  Hydrogel contained... }
+\caption[FRAP image series.]{FRAP image series. NTF2-FITC (top, green) and mCherry (bottom, red) bleaching and recovery shown separately.  Hydrogel nominally contained 10 mg/mL FSFG concat-1.  Reservoir contained 20 $\mu$M each NTF2-F and mCherry. }
 \centering
 \includegraphics[width=\textwidth]{figs/ch04/FRAP-images.pdf}
 \label{fig:frap-images}
 \end{figure} 
 
-\section{Steady-state hydrogel properties}
+\section{Analysis of steady-state hydrogel properties}
 
-Both the influx and FRAP experiments rely on steady-state properties of the hydrogel as well as time-dependent ones.  These properties include the partition coefficients of transport factors and inert proteins, as well as some dependent on the geometry of the hydrogel.
+The first step in analyzing the experimental data is to extract key parameters of the hydrogel itself.  Both the influx and FRAP experiments rely on steady-state properties of the hydrogel as well as time-dependent ones.  These properties include the partition coefficients of transport factors and inert proteins, as well as some dependent on the geometry of the hydrogel.
 
 \subsection{Gel dimension estimates}
 \label{sec:gel-dim}
@@ -116,7 +116,7 @@ Both the influx and FRAP experiments rely on steady-state properties of the hydr
 \label{fig:masks}
 \end{SCfigure} 
 
-Although the hydrogels were not perfectly circular, all analysis treated them as circular or nearly so.  In total, the analysis made use of a gel's radius, center, perimeter, and area.  I began by manually defining two masks: one that covered the entire gel, and one that covered only the bleach spot (Fig.~\ref{fig:masks}).  The gel area was calculated by summing all of the pixels in the gel mask and, where necessary, making use of the 1.58 $\mu$m per pixel scale of the Olympus 4x objective.  The perimeter was calculated using Matlab's \texttt{bwperim} function, which takes a binary mask and returns a mask whose only nonzero entries are that mask's perimeter.  Summing over these pixels and scaling provides the gel perimeter.  It should be noted that in some cases the full area of the gel was not within the field of view.  In these cases, sometimes the partial area in the field of view was used as the area estimate, and sometimes I embedded the gel image in a larger frame and estimated the remaining area when drawing the mask.  Following sections indicate which method was used and the mathematical reasoning.  However, all perimeter calculations were performed with the estimated full area.
+Although the hydrogels were not perfectly circular, all analysis treated them as circular or nearly so.  In total, the analysis made use of a gel's radius, center, perimeter, and area.  I began by manually defining two masks: one that covered the entire gel, and one that covered only the bleach spot (Fig.~\ref{fig:masks}).  The gel area was calculated by summing all of the pixels in the gel mask and scaled using the 1.58 $\mu$m per pixel scale of the Olympus 4x objective.  The perimeter was calculated using Matlab's \texttt{bwperim} function, which takes a binary mask and returns a mask whose only nonzero entries are that mask's perimeter.  Summing over these pixels and scaling provides the gel perimeter.  It should be noted that in some cases the full area of the gel was not within the field of view.  In these cases, sometimes the partial area in the field of view was used as the area estimate, and sometimes I embedded the gel image in a larger frame and estimated the remaining area when drawing the mask.  Following sections indicate which method was used and the mathematical reasoning.  However, all perimeter calculations were performed with the estimated full area.
 
 The hydrogel radius was estimated taking the diameter to be the widest row of the gel mask.  The widest row also set the $y$-coordinate of the gel center, with the $x$-coordinate calculated to be midway along the non-zero values for that row.  As seen in Fig.~\ref{fig:masks}, this is a quick and relatively crude method, but in almost all cases it works reasonably well.  An advantage of this method is that it works even for hydrogels which do not fit in the vertical field of view.
 
@@ -195,7 +195,7 @@ Note that neither the dissociation constant or the total Nup concentration need 
 
 After recording a time series of fluorescent protein influx into a hydrogel, diffusion constants can be estimated using either a plot of the intensity profile across the gel or a plot of total accumulation within the gel.  Figure~\ref{fig:influx-plots} shows an example of each plot.  The intensity within the gel is normalized to the average intensity of the reservoir, as calculated using the mask shown in Fig~\ref{fig:influx-plots}A.  Therefore, each profile trace begins at $I=1$ within the reservoir and either dips or rises to the partition coefficient value within the gel.  As the gels are not equilibrated, much of the gel interior shows only background fluorescence.  Likewise, the average intensity within the hydrogel trends towards the partition coefficient but does not reach it on the time scale of an average experiment.
 
-Analysis of the accumulation and profile curves used the diffusion-equation solutions described by Mortensen, Okkels, and Bruus \cite{mortensen06}.  This method assumes that the edge of  a nearly-circular two-dimensional region is held at a fixed concentration while the interior equilibrates (Fig.~\ref{fig:mortensen}.  Such boundary conditions correspond to an infinite fluorophore reservoir.  Given that our reservoirs are 10-20 times larger than the hydrogel volume, this is a reasonable assumption.  In a slight modification, we allow for an arbitrary partition coefficient $\gamma$ by taking the fixed boundary concentration $c_0$ to be $\gamma T_0$, where $T_0$ is the fluorescent protein intensity in the reservoir.  The assumption of near-circularity is also a good one.
+Analysis of the accumulation and profile curves used the diffusion-equation solutions described by Mortensen, Okkels, and Bruus \cite{mortensen06}.  This method assumes that the edge of  a nearly-circular two-dimensional region is held at a fixed concentration while the interior equilibrates (Fig.~\ref{fig:mortensen}.  Such boundary conditions correspond to an infinite fluorophore reservoir.  Given that our reservoirs are 10-20 times larger than the hydrogel volume, this is a reasonable assumption.  In a slight modification, we allow for an arbitrary partition coefficient $\gamma$ by taking the fixed boundary concentration $c_0$ to be $\gamma T_0$, where $T_0$ is the fluorescent protein intensity in the reservoir.  The assumption of near-circularity is also reasonable.
 
 \begin{SCfigure}
 \caption[Geometry of profile and accumulation model.]{Geometry used to solve diffusion equation in \cite{mortensen06}.  The reservoir concentration $c_0$ fixed the concentration at the edge of the region $\Omega$.  The concentration $c(\mathbf{r},t)$ is determined within $\Omega$ as a function of position and time.}
@@ -228,7 +228,7 @@ where $D$ is the diffusion constant.
 \end{figure} 
 
 \begin{SCfigure}
-\caption[Fits to concentration profiles at a fixed position.]{Fits to Eqn.~\ref{eq:approx-profile} at a fixed point near the gel edge for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  The short-time approximation likely only holds for times $t \lesssim 20$ minutes. Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.\\}
+\caption[Fits to concentration profiles at a fixed position.]{Fits to Eqn.~\ref{eq:approx-profile} at a fixed point near the gel edge for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  The short-time approximation likely only holds for times $t \lesssim 20$ minutes. Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/ch04/erfc-time.pdf}
 \label{fig:erfc-time}
@@ -243,7 +243,7 @@ A more exact solution for $c(r,t)$ can be written if the gel is assumed to be ci
 \end{equation}
 where $a$ is the gel radius and $\alpha_n a$ is the $n$th zero of the Bessel function of the first kind $J_0$.
 
-I fit the intensity profiles to Eqn.~\ref{eq:full-profile} using different numbers of terms $N$.  For the mCherry curves, the resulting fit parameters tended to converge as $N$ increased, and the RMSE stabilized.  However, neither was true for the NTF2 curves.  Increasing values of $N$ led to steadily decreasing values of diffusion constant.  This may be due to the effect of binding on NTF2 diffusion.
+I fit the intensity profiles to Eqn.~\ref{eq:full-profile} using different numbers of terms $N$.  For the mCherry curves, the resulting fit parameters tended to converge as $N$ increased, and the RMSE stabilized.  However, neither was true for the NTF2 curves.  Increasing values of $N$ led to steadily decreasing values of diffusion constant.
 
 \subsection{Accumulation analysis}
 
@@ -264,14 +264,16 @@ The total accumulation within the hydrogel can be modeled by integrating the con
 
 Fits to the first 100 terms of Eqn.~\ref{eq:full-accumulation} are shown in Fig.~\ref{fig:acc} for mCherry and NTF2.  These fits had systematic error, likely for the same reasons as the profile fits.
 
-While the profile and accumulation data do contain information on the diffusion constants of NTF2 and mCherry, I was unable to reliably extract that information using the influx experiments.  The model presented above is a remarkably good match to the experimental setup except for the presence of binding and the unpredictable gel-edge effects.  The FRAP experiments overcome the problem of edge effects by making use of equilibrated regions deep within the hydrogel.
+While the profile and accumulation data do contain information on the diffusion constants of NTF2 and mCherry, I was unable to reliably extract that information using the influx experiments.  The model presented above is in principle a good match to the experimental setup, but the presence of binding and the unpredictable gel-edge effects make it unreliable in practice.  
+
+The FRAP experiments overcome the problem of edge effects by making use of equilibrated regions deep within the hydrogel.
 
 \section{FRAP analysis}
 \label{sec:FRAP-analysis}
 
 \subsection{Accounting for photobleaching}
 \label{sec:photobleaching}
-Small but noticeable amounts of photobleaching occur over the course of the FRAP experiment.  In order to correct for photobleaching, the intensity of the bleached spot must be normalized to that of the entire gel, including the bleached region.  The normalized intensity used to fit the recovery curves is given by
+Small but noticeable amounts of photobleaching occur over the course of the FRAP experiment.  An effective means of correcting for photobleaching is to normalize the intensity of the bleached area to that of the entire gel, including the bleached region.  The normalized intensity used to fit the recovery curves is given by
 \begin{equation}
 N(t) = \frac{c_b(t)}{c_g(t)}
 \end{equation} where the average intensity of the bleach spot is $c_b(t) = C_b(t)/A_b$. The total intensity within the bleach spot is $C_b(t)$ and $A_b$ is the area of the spot as shown in Fig.~\ref{fig:masks}.  The average intensity of the entire gel $c_g(t)$ is defined similarly.  Using this normalization removes the effects of photobleaching, as verified by simulating recovery data with various photobleaching rates.
@@ -279,7 +281,7 @@ N(t) = \frac{c_b(t)}{c_g(t)}
 \subsection{No-exchange solution to diffusion equation}
 \label{sec:no-exchange}
 
-The simplest realistic model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equlibrated, that the presence of the gel is unimportant, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
+The simplest model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equlibrated, that the presence of the gel does not cause anomalous diffusion, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
 \begin{equation}
 N(t) = A\exp(-\tau_D/2t)\left(\mathrm{I}_0(\tau_D/2t)+\mathrm{I}_1(\tau_D/2t)\right)+C
 \end{equation} where the diffusion lifetime $\tau_D$ is related to the diffusion constant by $D = w^2/\tau_D$ if $w$ is the bleach spot radius.  
