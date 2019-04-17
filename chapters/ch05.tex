@@ -154,7 +154,7 @@ To further probe the origin of the differences in aggregation, we recorded NMR s
 
 \section{Fluorescence spectra}
 
-An obvious potential difference between PEG and PVP as inert crowders is the presence of an aromatic ring in PVP (Fig.~\ref{fig:peg-pvp-struct}).  The phenylalanines of FG124 also possess an aromatic ring, making ring-stacking or other interactions with PVP more likely.  As the phenylalanines are also key to transport factor binding, it is important to understand their interactions with crowders.  The presence of the ring itself makes fluorescence spectroscopy a natural choice for probing the differences between PEG and PVP as crowders.  While protein fluorescence is typically dominated by tryptophan and then tyrosine fluorescence, these amino acids are absent from both FG124 and FSFG, leaving phenylalanine with the strongest fluorescent signal.  Fluoresecence spectra were therefore collected near phenylalanine's emission maximum from both fresh and aggregaged FG124 in PEG or PVP.
+An obvious structural difference between PEG and PVP as inert crowders is the presence of an aromatic ring in PVP (Fig.~\ref{fig:peg-pvp-struct}).  The phenylalanines of FG124 also possess an aromatic ring, making ring-stacking or other interactions with PVP more likely.  As the phenylalanines are also key to transport factor binding, it is important to understand their interactions with crowders.  The presence of the ring itself makes fluorescence spectroscopy a natural choice for probing the differences between PEG and PVP as crowders.  While protein fluorescence is typically dominated by tryptophan and then tyrosine fluorescence, these amino acids are absent from both FG124 and FSFG, leaving phenylalanine with the strongest fluorescent signal.  Fluoresecence spectra were therefore collected near phenylalanine's emission maximum from both fresh and aggregaged FG124 in PEG or PVP.
 
 \begin{SCfigure}
 \caption[Chemical structures of PEG and PVP.]{Chemical structures of PEG and PVP (Sigma).}
@@ -234,9 +234,36 @@ Isotopically-labeled, his-tagged 15N FSFG was expressed in BL21DE3 Gold cells in
 
 The NMR samples contained 13\% w/v of either PEG or PVP, 140 $\mu$M FSFG 15N, 10\% D$_2$O, 1\% 15 mM TSP, and 1\%, 1mM DSS in PTB.  Total sample volume was 336 $\mu$L.  Ideally the protein concentration would have been at least 300 $\mu$M, but the presence of the crowders reduced the available volume for protein.  An identical sample containing no crowders was also prepared.
 
+%15N Relaxation NMR (T1/T2) % Kathryn wrote this paragraph for me
+NMR experiments were run by Kathryn Wall on an Inova 600 MHz.  Using the standard 15N-HSQC experiment from the Varian BioPac, the parameter \texttt{relaxT} was adjusted for the measurement of $T_1$ and $T_2$ relaxation parameters.  For measurement of $T_1$, \texttt{relaxT} was arrayed (0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ms).  For the measurement of $T_2$, \texttt{relaxT} was arrayed (0.01, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21, 0.23, 0.25 ms).  The data was processed using standard scripts in NMRPipe, and analyzed using CCPNmr Analysis software.  
+
+
 \subsection{Results}
+% saved in Hough lab google drive, nuclear pore team, data, FSFG crowders
+
+Figure~\ref{fig:NMR} shows the relaxation rates $R_1$ and $R_2$ of FSFG in 13\% PEG, 13\% PVP, or PTB without a crowder, along with the ratio $R_2/R_1$.  Due to the disordered nature of FSFG, many peaks in the NMR spectra overlap.  Amino acids of the same type experience less difference in their average local chemical environment than they would in an ordered protein, with the result that a single peak often corresponds to several amino acids.  This effect is particularly pronounced for the FSFG motif itself, in which the six repeated motifs are almost entirely collapsed to four peaks, one for each residue of the sequence.  The sole exception is the phenylalanine closest to the N-terminal, which has a peak distinct from the others.  Therefore, we broke the sequence of the FSFG peptide into quasi-repeating segments, each 19 amino acids in length, which begin with an FSFG motif and contain the hydrophilic linker which separates it from the next FSFG (Fig.~\ref{fig:NMR}B, inset).  The errors in $R_1$ and $R_2$ are given by the weighted average of the fit errors for the unique peaks that are being averaged \cite{taylor97}.  The errors of the ratio $R_2/R_1$ were propagated from $R_1$ and $R_2$ errors.
+
+\begin{figure}
+\caption[Relaxation times of FSFG in crowded conditions.]{Relaxation rates for FSFG in 13\% PEG, 13\% PVP, or PTB only.  The 19-amino-acid quasi-repeating unit that begins with the FSFG motif has been averaged over the first five repeats as shown.  (A) Longitudinal relaxation rate $R_1$, (B) transverse relaxation rate $R_2$, (C) Ratio $R_2/R_1$.}
+\centering
+\includegraphics[width=\textwidth]{figs/ch05/NMR.pdf}
+\label{fig:NMR}
+\end{figure}
+
+There are noticeable differences between the crowded conditions and buffer condition, which are likely due to a combination of viscosity effects and differences in interactions with the crowders.  Surprisingly, the systemic differences in rates do not all correspond to viscosity changes.  For example, the PVP sample has the highest $R_1$ and $R_2$ values overall, despite having an intermediate viscosity.  The $R_1$ values are significantly lower for the PEG sample than the other two, which also is not obviously explained by viscosity changes.
+
 \subsection{Discussion}
 
+There are noticeable differences between the relaxation rates in 13\% PEG, 13\% PVP, and without crowders whose source is not obvious.  In addition to varying the crowding agent, the viscosity varies from sample to sample, with buffer having the lowest and PEG the highest viscosity.  Some differences in the rates are likely due to the change in viscosity, while others may be due to differences in the peptide's interaction with the crowders.  As mentioned above, PVP shows the highest relaxation rates overall despite having an intermediate viscosity.  On the other hand, the ratio $R_2/R_1$ generally shows higher rates for PEG, then for PVP, with the lowest rates belonging to the the buffer-only sample.
+
+\begin{SCfigure}
+\caption[Approximate dependence of relaxation times on viscosity.]{Approximate dependence of relaxation times $T_1$ and $T_2$ on solvent viscosity. Figure from \cite{reich18}.}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch05/viscosity-plot}
+\label{fig:viscosity}
+\end{SCfigure}
+
+The typical behavior of relaxation times (with $T_1 = 1/R_1$ and $T_2 = 1/R_2$) as a function of viscosity is shown in Fig.~\ref{fig:viscosity} \cite{reich18}.  As viscosity increases, the transverse relaxation time $T_2$ decreases monotonically.  However, the longitudinal relaxation time $T_1$ begins by decreasing, reaches a turnaround point, and increases afterwards.  The location of the turnaround point $\tau_0$ is related to the strength of the NMR magnetic field expressed as a frequency $\nu_0$ by $\tau_0 = 1/\nu_0$.  For the 600 MHz instrument used in these experiments, $\tau_0 \approx 1\times 10^{-9}$ s. (Am I getting this right?)  Given that the measured rates are on the order of 1 s, $T_1$ is likely in the region where it should decrease with increasing viscosity.  In addition, the viscosities span an order of magnitude from buffer ( 1 mP s) to 13\% PEG (15 mP s), and would be expected to produce a comparably large change in relaxation rates.  Instead, the rates change by approximately 25\% at most, and the PEG sample shows the lowest relaxation rates and therefore the largest relaxation times.  Overall, the relaxation rates show features that are not obviously explained by changes in sample viscosity and may be due to differences in their interactions with the crowding agents.
 
 \section{Conclusions}
 
