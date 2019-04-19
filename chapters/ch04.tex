@@ -301,7 +301,7 @@ Scripts to perform the following calculations are available at \url{https://gith
 
 \subsubsection{Analytic series solution}
 
-The problem is that of diffusion in a circular region of radius $a$, centered at the origin, whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image (Fig.~\ref{fig:carslaw-geo}).  To find the concentration $c(r,\theta,t)$ for $r<a$, we used the Green's function integrals described in \cite{h.s.carslaw59}, as heat transfer obeys the same differential equation as diffusion of particles.  Green's functions describe a system's response to an instantaneous point source.  An initial distribution can be built by integrating the Green's function over the region of interest.  The correct Green's function must be identified for a particular geometry and set of boundary conditions, but a formal solution is straightforward to write once they have been obtained.
+Mathematically, we need to solve the diffusion equation in a circular region of radius $a$, centered at the origin, whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image (Fig.~\ref{fig:carslaw-geo}).  To find the concentration $c(r,\theta,t)$ for $r<a$, we used the Green's function integrals described in \cite{h.s.carslaw59}, as heat transfer obeys the same differential equation as diffusion of particles.  Green's functions describe a system's response to an instantaneous point source.  An initial distribution can be built by integrating the Green's function over the region of interest.  The correct Green's function must be identified for a particular geometry and set of boundary conditions, but a formal solution is straightforward to write once they have been obtained.
 
 \begin{SCfigure}
 \caption[Geometry for Fourier transform solution.]{Geometry for diffusion-equation solution Eqn.~\ref{eq:full-series}.  A circle of radius $a$ is centered at the origin.  The boundary $r=a$ is held at concentration $c=0$ and the interior has initial concentration profile $f(r,\theta)$.}
@@ -334,8 +334,7 @@ S_{\nu,\alpha} & = & b_{\nu,\alpha}\int_0^{2\pi} \int_0^a \sin\left(\nu\theta'\r
 \end{eqnarray}
 The problem is reduced to determining the mode coefficients by evaluating the integrals.
 
-\subsubsection{Calculating mode coefficients}
-\label{sec:calcCoeffs}
+\subsubsection{Calculating normalization constants}
 
 Before mode coefficients can be calculated using Eqns.~\ref{eq:cos-defn} and \ref{eq:sin-defn}, the normalization constants $b_{\nu,\alpha}$ must be determined.  To find an expression for them, begin with Eqn.~\ref{eq:c-s-series} at $t=0$, when $c(r,\theta,0) = f(r,\theta)$.
 \begin{equation}
@@ -374,7 +373,10 @@ S_{n,\alpha} & = & b_{\nu,\alpha}^S\int_\Omega \sin\left(\nu\theta'\right) J_\nu
 
 The degree to which the resulting coefficients deviate from the ideal case of a perfect circle can be roughly quantified by the ratio $b_{\nu,\alpha} /(2/\pi a^2) = \pi a^2 b_{\nu,\alpha} /2$. For small hydrogels, which entirely fit into the field of view, these values range from 1.01 to 1.03, signifying deviations of up to 3\%.  Large hydrogels whose top and bottom were cut from the field of view had deviations of up to 10\%.  However, using Eqns.~\ref{eq:bna-c} and \ref{eq:bna-c} instead of the uniform mode weighting $b_{\nu,\alpha} = 2/\pi a^2$ should compensate for the irregular area of integration.
 
-For every hydrogel, Bessel order $\nu$, and Bessel zero $\alpha$, mode coefficients were calculated numerically.  The polar coordinates $(r,\theta)$ were converted to Cartesian $(x,y)$ and a sum taken over all the pixels of the initial post-bleach image $f(x,y)$, using the hydrogel mask to set the limits.  The center of the coordinate system was set at the center of the gel and the value of the gel radius $a$ calculated as described in Sec.~\ref{sec:gel-dim}. Before the sum was calculated, the average intensity of the equilibrated portions of the hydrogel was subtracted from the entire image, effectively setting the equilibrium concentration at $c=0$ as required by the series solution.
+\subsubsection{Calculating mode coefficients}
+\label{sec:calcCoeffs}
+
+For every hydrogel, Bessel order $\nu$, and Bessel zero $\alpha$, mode coefficients were calculated numerically.  The polar coordinates $(r,\theta)$ were converted to Cartesian $(x,y)$ and a sum taken over all the pixels of the initial post-bleach image $f(x,y)$, using the hydrogel mask to set the limits.  The center of the coordinate system was set at the center of the gel and the value of the gel radius $a$ calculated as described in Sec.~\ref{sec:gel-dim}. Before the sum was calculated, the average intensity of the equilibrated portions of the hydrogel was subtracted from the entire image, effectively setting the equilibrium concentration at $c=0$ as required by the series solution.  For well-equilibrated gels, a pre-bleach image of the entire gel was used to determine the average equilibrium concentration.  For gels which were not fully equilibrated, a mask was defined which contained only the equilibrated portions, and the mask was used to calculate the average concentration.
 
 The sum was scaled using the area represented by each pixel (using the scale 1.58 $\mu$m/pixel) and normalized using the weighting constants $b_{\nu,\alpha}$.  The final values of $C_{\nu,\alpha}$ and $S_{\nu,\alpha}$ were stored in two arrays for use in constructing the equation to which the experimental data was fit.
 
@@ -439,13 +441,13 @@ Fits such as those shown in Fig.~\ref{fig:series-fits} were typical results.  Va
 
 \section{Results}
 
-In all, FRAP analysis was performed on 36 hydrogels: 15 no-nup gels, 12 nominally containing 10 mg/mL FSFG concat-1, and 7 containing FSFG concat-2 nominally at 20 mg/mL. % Of the FSFG concat-2 hydrogels, seven had a nominal concentration of 20 mg/mL FSFG concat-2, meaning that in principle they had the same molar concentration as the FSFG concat-1 gels, but twice as many FG repeats.  The other three nominally contained 10 mg/mL FSFG concat-2, giving them half as many chains but the same number of FG repeats as the FSFG concat-1 gels.  The mean partition coefficients and diffusion constants were not significantly different between the two groups of FSFG concat-2 gels and they were treated as one condition in the following results.
+In all, FRAP analysis was performed on 36 hydrogels: 15 no-nup gels, 12 created from a precurse solution containing 10 mg/mL FSFG concat-1, and 7 containing FSFG concat-2 with 20 mg/mL protein in the precursor solution. % Of the FSFG concat-2 hydrogels, seven had a nominal concentration of 20 mg/mL FSFG concat-2, meaning that in principle they had the same molar concentration as the FSFG concat-1 gels, but twice as many FG repeats.  The other three nominally contained 10 mg/mL FSFG concat-2, giving them half as many chains but the same number of FG repeats as the FSFG concat-1 gels.  The mean partition coefficients and diffusion constants were not significantly different between the two groups of FSFG concat-2 gels and they were treated as one condition in the following results.
 
 Many of the FSFG concat-1 hydrogels showed an unusual bright ring in the NTF2-F channel around the photobleach spot which developed slowly after bleaching.  Figure~\ref{fig:ring} shows an example.  The ring is presumably due to photodamage by bleaching, but it is not clear why the edge of the bleach spot would exhibit increased NTF2-F binding.  When hydrogels showed this bright ring, care was taken when drawing the bleach spot mask to exclude the ring entirely.
 
 % 19-2-6-21, final frame (70 min -ish)
 \begin{SCfigure}
-\caption[Bright NTF2-F ring surrounding photobleach spot.]{Bright NTF2-F ring surrounding photobleach spot, 70 minutes after bleaching.  This ring often developed in FSFG concat-1 gels.  Photobleach mask was chosen to be slightly smaller than the ring.  Contrast adjusted for ease of viewing. White circle added to guide the eye.\\}
+\caption[Bright NTF2-F ring surrounding photobleach spot.]{Bright NTF2-F ring surrounding photobleach spot, 70 minutes after bleaching.  This ring often developed in FSFG concat-1 gels.  Photobleach mask was chosen to be slightly smaller than the ring.  FITC channel shown only, with contrast adjusted to make the ring easily visible.}
 \centering
 \includegraphics[width=0.3\textwidth]{figs/ch04/ring}
 \label{fig:ring}

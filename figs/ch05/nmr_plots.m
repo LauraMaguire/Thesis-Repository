@@ -260,4 +260,10 @@ for j=1:19
     fsfg.r1AvgErr = 1./sqrt(nansum(w));
 end
 
+%%
+peg.tc=(1./(4.*pi*60834000)).*sqrt(6.*(peg.r2Avg./peg.r1Avg)-7);%nu_N in Hz from Kathryn
+pvp.tc=(1./(4.*pi*60834000)).*sqrt(6.*(pvp.r2Avg./pvp.r1Avg)-7);%nu_N in Hz from Kathryn
+fsfg.tc=(1./(4.*pi*60834000)).*sqrt(6.*(fsfg.r2Avg./fsfg.r1Avg)-7);%nu_N in Hz from Kathryn
+
+
 
