@@ -114,10 +114,29 @@ Relatively few non-computational, quantitative theories of nuclear transport exi
 
 \subsection{Artificial nuclear pore mimics}
 
-Systems which mimic the selectivity of the nuclear pore have been attempted using a wide range of approaches, with mixed success.  Some nuclear pore mimics recreate the nanopore geometry of the NPC \cite{jovanovic-talisman09,ananth18a}.  Several others are based on hydrogels, whether hydrogels composed of aggregated FG Nups \cite{frey07,ader10, kim15} or inert hydrogels with tethered Nups or Nup-derived peptides \cite{yang18,friedman16a}. 
-An interesting preliminary work demonstrated the use of DNA origami to mimic the scaffold of the nuclear pore, complete with multiple sites for FG Nup attachment \cite{fisher18}.
+paragraphs on: Gorlich's gels; Ribbeck's pentameric gel, Olsen's gels like ours,the peptide gel,;Dekker's nanopore conductance thing;  DNA origami thing; the gold nanopore thing
+
+Systems which mimic the selectivity of the nuclear pore have been attempted using a wide range of approaches, with mixed success.  Some nuclear pore mimics recreate the nanopore geometry of the NPC \cite{jovanovic-talisman09,ananth18a,kowalczyk11}.  
+
+Dekker's nanopores are solid-state silicone nitr-something pores coated in Nups grafted on at one end.  They can measure conductance across the pore and see spikes when proteins transit.  They find that coating the pore with Nups significantly decreases the conductance of inert proteins but doesn't really stop transport factors (Imp beta).  They used the Nsp1 FG domain and Nup98 and Nup153.  Mutating the Fs to Ss stopped the selectivity.  Ions also had a lower conductance through the coated pores than the bare pores.
+
+Tijana's paper used 30 nm diameter polycarbonate solid state pores, Nsp1 or Nup100, 15 nm thick, threefold selectivity of NTF2-GST compared to BSA. Gold coated, then Nup coated.  selective for Kaps too,numbers in supplement, plus with cargo, looks like 2-fold ish selectivity with cargo? mutated NTF2 W7a wasn't as selective, more Nups = more selective, bigger diameter = less selective, hexanediol removes selectivity
+
+
+Some Nups will spontaneously aggregate when put into buffer into hydrogel-like things.  I could show a figure of the partitioning.  They show really strong selective influx (like in the table in the appendix) of transport factors and their fluorescent cargo.  They don't get out over reasonable length scales.\cite{frey06,frey07,ader10}.  They used a FG domain of Nsp1 containing FSFG and other FG repeats (was this the whole FG domain?).  It gels when they change the pH.  It forms amyloid-like bits in the gel and they studied that with NMR.  Transport factors and TF-cargo complexes partition really strongly (like 1000x) into the gel but do not move fast, despite their handwavy arguments that this is okay.  When they photobleach the gels after using fluoresecent Nups, they show a significant immobile fraction (this is bad too I think because of the later studies showing highly dynamic Nups in the pore).  Other free Nups also partition strongly into the gel and get stuck there.  I don't like their conclusions, but that's not news.
+
+Other people did things more like what we were trying to do and tethered Nup-derived peptides into hydrogels.  \cite{yang18,friedman16a,kim15}  The Yang paper made PEG gels like ours with Nups in it and looked at the diffusion of transport factors into the gels with FRAP.  It shouldn't have worked because they didn't worry about pore size or anything.  But they got some results.  They showed a nonmonotonic dependence of influx intensity on KD, getting sort of approximately what we predicted to be the max KD, but they didn't predict it because they only used the linear model.  They did some explicit modeling of multivalency too.  Their gels were PEG and peptides from the c-myc protein made to interact with IgG that was green.  FRAP showed reduced diffusion of IgG.
+
+The Kim paper used a pentameric domain fused to Nup parts to make a hydrogel.  They used the repeat part of FSFG and used either one or two repeats.  They used a fluorescent cargo with importin Beta and saw that it selectively got into the hydrogels.  It didn't equilibrate quickly.  It did partition quite strongly.  They stopped it partitioning by adding hexanediol, which messes with the FG motifs.  And they used the six-repeat FSFG too.
+
+The Friedman paper used little FG motifs only and I forget what they found.  They found that GFP-importinbeta got in over time and bound, but the gel they show is definitely not equilibrated.  They showed more binding with higher FSFG concentrations and that the mesh size changed with FSFG concentration.  They used really high FSFG motif concentrations (250-400 mM) but their gels are really not bright considering that fact.  
+
+
+An interesting preliminary work demonstrated the use of DNA origami to mimic the scaffold of the nuclear pore, complete with multiple sites for FG Nup attachment \cite{fisher18}.  Upt to 48 Nup attachement sites, 46 nm diameter and 14 nm high, dynamic nups filled center as shown by AFM, NSp1 or Nup100.
+
+
+
  While many of these mimics have shown selectivity to some extent, none have definitively shown a flux of transport factors into, through, and out of the mimic that matches that observed experimentally.  
-%One of Loren's colleagues in New York grafted FG Nups onto a gold-coated nanopore and monitored flux through the pore.  She saw low (less than 10-fold) selectivity.  I'm not sure whether other nanopore-based approaches have been tried.
 
 \section{Other selective biofilters}
 \label{sec:other-systems}
