@@ -40,6 +40,26 @@ hold off
 axis([0 3 0 10])
 xticklabels({'','','FSFG concat-1','','FSFG concat-2',''})
 title('Bound diffusion constant ($\mu$m/s$^2$)');
+
+%% Bound diffusion with predictions
+figure(1)
+hold on
+% hb = bar([0.71,-1.42]);
+% errorbar(1:2,[0.71,-1.42],[1.4,1.56],'k.')
+% hb = bar([5.62,5.22]);
+% errorbar(1:2,[5.62,5.22],[2.27,3.20],'k.')
+hb = bar(vertcat([6.9 5.62],[9.3 5.22]));
+errorbar(0.5*(1:4),[6.9 5.62 9.3 5.22],[0.3 2.27 0.3 3.20],'k.')
+
+hold off
+ set(hb(1), 'FaceColor','r')
+%  set(hb(2), 'FaceColor','b')
+% set(hb(3), 'FaceColor','g')
+%axis([0 3 0 10])
+xticklabels({'','','FSFG concat-1','','FSFG concat-2',''})
+title('Bound diffusion constant ($\mu$m/s$^2$)');
+legend({'Model prediction','Experiment'});
+
 %% Partition coefficients
 figure(1)
 hold on
