@@ -304,7 +304,7 @@ The no-exchange model fits well to the larger hydrogels and those that are well-
 \subsection{Fourier transform solution to diffusion equation}
 %Carslaw 2nd ed. pg 377, sec. 14.13(6)
 
-To account for exchange of fluorescent proteins with the reservoir, as well as for incomplete equilibration, some of the assumptions of the previous section must be relaxed.  In particular, the assumption of radial symmetry must be abandoned.  In order to incorporate angular as well as radial dependence, the solution must be written as a sum over Bessel function and cosine modes.  While such a solution is cumbersome, it allows for an accurate description of the concentration throughout the hydrogel immediately post-bleach.  Additionally, the boundary condition can be defined so as to allow exchange between the hydrogel and reservoir.
+To account for exchange of fluorescent proteins with the reservoir, as well as for incomplete equilibration, we need to solve the diffusion equation in a way that allows fluorophores from the reservoir to enter the hydrogel, and vice versa, over the course of the FRAP experiment.  This requires a Fourier series solution, which is cumbersome but allows for an accurate description of the concentration profile throughout the entire hydrogel immediately post-bleach.  This approach also allows the boundary condition at the edge of the hydrogel to be defined so as to permit exchange with the reservoir.
 
 This analysis begins by numerically calculating the two-dimensional polar Fourier transform of the initial concentration distribution within the gel, decomposing it into a finite number of modes weighted by their contribution to the image.  These mode coefficients are then used to create the equation to which the experimentally-measured recovery curve is fit.  The fit parameters include the observed diffusion coefficients for NTF2 and mCherry, allowing the bound diffusion constant to be determined as described in Sec.~\ref{sec:db-calc}.
 
@@ -321,7 +321,7 @@ Mathematically, we need to solve the diffusion equation in a circular region of 
 \label{fig:carslaw-geo}
 \end{SCfigure} 
 
-As this solution is two-dimensional, two sums must be taken over the basis functions.  Bessel functions $J_\nu$ of the first kind and integer order $\nu$ are the radial basis, and cosines are the angular basis.  The time dependence is carried by decaying exponentials whose time constant is related to the diffusion coefficient $D$ as well as to the zeros of the Bessel functions.  The terms are summed over the Bessel orders as well as over the zeros of each Bessel function.  For our situation, the full solution to the diffusion equation within the hydrogel is given by \cite{h.s.carslaw59}
+For our situation, the full solution to the diffusion equation within the hydrogel is given by \cite{h.s.carslaw59}
 
 \begin{equation}
 \begin{split}
