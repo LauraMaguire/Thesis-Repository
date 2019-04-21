@@ -13,13 +13,11 @@ Our reaction-diffusion model of selectivity is controlled by a relatively small 
 
 \subsection{Nup contour length and valency}
 
-The most straightforward way to vary $D_B$ is to change the contour length of the Nups that are anchored into the hydrogel.  To that end, we compared hydrogels containing the constructs FSFG concat-1 and FSFG concat-2 (Sec.~\ref{sec:Nups}, Appendix~\ref{appx:sequences}).  These Nup fragments have $L_C = 50$ nm and 100 nm, respectively.  Given the parameters described below, the bound diffusion constant should increase by roughly 40\% from FSFG concat-1 to FSFG concat-2.
-
-In addition to differing lengths, the FSFG concat-1 and concat-2 differ in their number of binding sites, with six and twelve respectively.  In order to control for the change in binding valency, we tested FSFG concat-2 hydrogels with the same molar concentration of FG repeats as the FSFG concat-1 gels as well as testing gels with the same molar concentration of Nups.
+The most straightforward way to vary $D_B$ is to change the contour length of the Nups that are anchored into the hydrogel.  To that end, we compared hydrogels containing the constructs FSFG concat-1 and FSFG concat-2 (Sec.~\ref{sec:Nups}, Appendix~\ref{appx:sequences}).  These Nup fragments have $L_C = 50$ nm and 100 nm, respectively.  Given the parameters described below, the bound diffusion constant should increase by roughly 40\% from FSFG concat-1 to FSFG concat-2.  In addition to differing lengths, the FSFG concat-1 and concat-2 differ in their number of binding sites, with six and twelve respectively.  %In order to control for the change in binding valency, we tested FSFG concat-2 hydrogels with the same molar concentration of FG repeats as the FSFG concat-1 gels as well as testing gels with the same molar concentration of Nups.
 
 \subsection{Binding affinity of NTF2 and FSFG}
 % ITC data is in book 1, a bit of book 2.  None of the fits were good.  Data shown here is taken from the runs on 6/18/14 and 6/23/14.  Fits aren't shown because we never really understood them.
-Although bound diffusion is the key parameter from our reaction-diffusion model of selectivity, the kinetic parameters of off-rate $\koff$, on rate $\kon$, and dissociation constant $K_D = \koff/\kon$ are also important. These parameters are surprisingly difficult to measure, yielding values between 10 nM and 10 $\mu$M depending on the experimental conditions.  We estimated the dissociation constant for NTF2 and FSFG concat-1 using isothermal titration calorimetry (ITC).  The heat of injection was recorded as FSFG was titrated into a stock of NTF2.  While the resulting titration curves had low signal-to-noise and did not reach saturation, they clearly indicated binding (Fig.~\ref{fig:ITC-runs}).  Simple fits are likely inaccurate, given the high degree of multivalent binding, but may provide an order-of-magnitude estimate of the affinity.  Several ITC curves agree on a dissociation constant of $K_D \approx 200 \mu$M.  Using ITC and NMR, the Rout lab measured a single FSFG motif to bind to NTF2 with $K_D\approx 4$ mM.  Addition of more motifs lowered the $K_D$ until it reached an asymptotic value just under 1 mM when six motifs or more were present \cite{hayama18}.   Similarly weak values of $K_D \approx$ 1-7 mM per single FSFG motif were predicted through NMR, simulation, and stopped-flow fluoresence anisotropy \cite{milles15}.  Due to the twin difficulties of varying $K_D$ in a controlled way and accurately measuring its value, we did not attempt to experimentally alter this parameter.  Assuming the tethered Nup concentration to be 1 mg/mL within the hydrogels, we estimate a $K_D$ of around 30 $\mu$M for FSFG concat-1 and 18 $\mu$M for FSFG concat-2 using the partition coefficients of NTF2 and mCherry (Sec.~\ref{sec:part-coeff}).  This value is lower than expected and may result from an underestimation of the tethered protein concentration.  Ideally, a transport factor - Nup pair with $K_D \approx 1 \mu$M would have been used to maximize selectivity.
+Although bound diffusion is the key parameter from our reaction-diffusion model of selectivity, the kinetic parameters of off-rate $\koff$, on rate $\kon$, and dissociation constant $K_D = \koff/\kon$ are also important. These parameters are surprisingly difficult to measure, yielding values between 10 nM and 10 $\mu$M depending on the experimental conditions.  We estimated the dissociation constant for NTF2 and FSFG concat-1 using isothermal titration calorimetry (ITC).  The heat of injection was recorded as FSFG was titrated into a stock of NTF2.  While the resulting titration curves had low signal-to-noise and did not reach saturation, they clearly indicated binding (Fig.~\ref{fig:ITC-runs}).  Simple fits are likely inaccurate, given the high degree of multivalent binding, but may provide an order-of-magnitude estimate of the affinity.  Several ITC curves agree on a dissociation constant of $K_D \approx 200 \mu$M.  Using ITC and NMR, the Rout lab measured a single FSFG motif to bind to NTF2 with $K_D\approx 4$ mM.  Addition of more motifs lowered the $K_D$ until it reached an asymptotic value just under 1 mM when six motifs or more were present \cite{hayama18}.   Similarly weak values of $K_D \approx$ 1-7 mM per single FSFG motif were predicted through NMR, simulation, and stopped-flow fluorescence anisotropy \cite{milles15}.  Due to the twin difficulties of varying $K_D$ in a controlled way and accurately measuring its value, we did not attempt to experimentally alter this parameter.  Assuming the tethered Nup concentration to be 1 mg/mL within the hydrogels, we estimate a $K_D$ of around 30 $\mu$M for FSFG concat-1 and 18 $\mu$M for FSFG concat-2 using the partition coefficients of NTF2 and mCherry (Sec.~\ref{sec:part-coeff}).  This value is lower than expected and may result from an underestimation of the tethered protein concentration.  Ideally, a transport factor - Nup pair with $K_D \approx 1 \mu$M would have been used to maximize selectivity.
 
 \begin{SCfigure}
 \caption[Isothermal titration calorimetry with NTF2 and FSFG.]{Isothermal calorimetry titration curve: heat of injection vs. molar ratio of FSFG to NTF2. Fits are questionable but multiple runs suggest $K_D \approx 200\ \mu$M.}
@@ -28,7 +26,7 @@ Although bound diffusion is the key parameter from our reaction-diffusion model 
 \label{fig:ITC-runs}
 \end{SCfigure} 
 
-Only the ratio $K_D/N_T$ is necessary for determining the bound diffusion constant, and it can be estimated using the partitioning of transport factors and inert proteins into the FSFG hydrogels (Sec.~\ref{sec:part-coeff}).  Unsuccessful attempts to vary the dissociation constanted included expressing the ubiquitin-associated (UBA) domain of the mRNA exporter Mex67 as a Nup-binding domain in GFP fusion proteins.  In principle, varying numbers of this small ($<$10 kDa) domain could be added to GFP to explore the effect of varying binding affinity and valency in transport factors.  The constructs GFP-UBA, GFP-UBAx2, and GFP-UBAx3 were created by Eric Verbeke, but did not express and/or bind well.
+Only the ratio $K_D/N_t$ is necessary for determining the bound diffusion constant, and it can be estimated using the partitioning of transport factors and inert proteins into the FSFG hydrogels (Sec.~\ref{sec:part-coeff}).  Unsuccessful attempts to vary the dissociation constant included expressing the ubiquitin-associated (UBA) domain of the mRNA exporter Mex67 as a Nup-binding domain in GFP fusion proteins.  In principle, varying numbers of this small ($<$10 kDa) domain could be added to GFP to explore the effect of varying binding affinity and valency in transport factors.  The constructs GFP-UBA, GFP-UBAx2, and GFP-UBAx3 were created by Eric Verbeke, but did not express and/or bind well.
 
 %Eric did most of the UBA cloning I think
 % Expression tests in LKM book 5 pgs 146-9
@@ -36,9 +34,9 @@ Only the ratio $K_D/N_T$ is necessary for determining the bound diffusion consta
 \subsection{Quantifying concentration of tethered Nups}
 \label{sec:Nup-conc}
 
-Another potentially-tunable parameter of the bound-diffusion model is $N_T$, the total concentration of tethered Nups.  It is straightforward to control the Nup concentration in the hydrogel precursor solution by resuspending a known mass of lyophilized proteion.  Nup concentrations up to $\sim 50$ mg/mL can be resuspended.  However, it is much more difficult to determine how much protein was tethered to the hydrogel upon crosslinking. 
+Another potentially-tunable parameter of the bound-diffusion model is $N_t$, the total concentration of tethered Nups.  It is straightforward to control the Nup concentration in the hydrogel precursor solution by resuspending a known mass of lyophilized protein.  Nup concentrations up to $\sim 50$ mg/mL can be resuspended.  However, it is much more difficult to determine how much protein was tethered to the hydrogel upon crosslinking. 
 
- BCA protein quantitation assays were used to place upper bounds on $N_T$.  Two methods were attempted: incubating the hydrogel itself in the working reagent, and soaking the hydrogel in a known volume of buffer and testing the concentration of FSFG released.  When applying the first method, the hydrogel was first soaked to remove excess precursor solution and thoroughly rinsed.  The gel was placed into a 96-well plate and buffer added until the appropriate sample volume was reached.  A standard BCA protocol was then followed.  Upon incubation with the working reagent, the hydrogels turned purple, as expected.  Standard absorption measurements and processing yielded an estimate of 0.5 mg/mL tethered FSFG-concat 1; this should be taken as an approximate value only.  The second method, that of soaking hydrogels and measuring the FSFG released, placed a similarly-low upper bound on tethered FSFG concentration.  Hydrogels made with 5 $\mu$L of precursor solution were soaked in 45 $\mu$L buffer to equilibrate, diluting any remaining free FSFG to a tenth of its original value.  The buffer was then measured to have a concentration of 1.0 mg/mL FSFG, implying a tethered FSFG concentration of $<1$ mg/mL.
+ BCA protein quantitation assays were used to place upper bounds on $N_t$.  Two methods were attempted: incubating the hydrogel itself in the working reagent, and soaking the hydrogel in a known volume of buffer and testing the concentration of FSFG released.  When applying the first method, the hydrogel was first soaked to remove excess precursor solution and thoroughly rinsed.  The gel was placed into a 96-well plate and buffer added until the appropriate sample volume was reached.  A standard BCA protocol was then followed.  Upon incubation with the working reagent, the hydrogels turned purple, as expected.  Standard absorption measurements and processing yielded an estimate of 0.5 mg/mL tethered FSFG-concat 1; this should be taken as an approximate value only.  The second method, that of soaking hydrogels and measuring the FSFG released, placed a similarly-low upper bound on tethered FSFG concentration.  Hydrogels made with 5 $\mu$L of precursor solution were soaked in 45 $\mu$L buffer to equilibrate, diluting any remaining free FSFG to a tenth of its original value.  The buffer was then measured to have a concentration of 1.0 mg/mL FSFG, implying a tethered FSFG concentration of $<1$ mg/mL.
 % LKM book 5 pgs 119 and later
 
 The concentration of Nups within the pore may reach 100 mg/mL, depending on how compact the disordered FG Nups are.  The low concentration of tethered Nups that we were able to achieve is therefore a major barrier to selectivity.  It is likely that the disordered nature of FSFG makes the labeled end less accessible to the hydrogel scaffold than would be the case for an ordered protein.  In an effort to overcome this limitation, we tested other linkers and conjugation methods.  We conjugated the FSFG-cys to PEG-diacrylate of varying lengths (700 Da and 10 kDa), to multi-armed PEG-diacrylate, and to maleimide-PEG-acrylate.  The decrease in free cysteines following the reaction was verified using Ellman's reagent (Appendix~\ref{appx:bis-labeling}), indicating that the labeling was successful.  However, there was no noticeable difference in transport factor partitioning into these hydrogels.
@@ -58,14 +56,10 @@ The nuclear pore mimics in this dataset were designed with the lessons of Chapte
 
 \subsection{Hydrogel preparation}
 
-Detailed precursor solution recipes are given in Appendix~\ref{appx:precursor-recipes}.  For the dataset analyzed in this chapter, we usd a precursor solution containing 6\% acrylamide and 2 mM LAP as a photoinitiator.  FSFG constructs were conjugated to bisacrylamide via their free thiol.   Lyophilized FSFG-bis was resuspended in PTB, allowed to sit at room temperature for at least 20 minutes, and added to the precursor solution.  After the precursor solution was thoroughly mixed, it was degassed in a vacuum desiccator for 10 minutes and immediately pipetted into a disassembled 400-$\mu$m-thick PDMS gasket chamber (Sec.~\ref{sec:gel-geometries}).  Drops between 0.5 and 2 $\mu$L were carefully pipetted onto the plastic slide and the chamber assembled around the drops.  Typically, each chamber measured a few centimeters on a side and contained a control gel with no Nups as well as one or more Nup-filled gels.  The chamber was then illuminated as uniformly as possible with 365 nm light at approximately 200 mW/cm$^2$ with a ThorLabs M365 LP1 LED.  Condensation around the gels resulted from the condensation polymerization reaction, indicative of crosslinking.  The chamber was immediately rinsed with at least 100 $\mu$L of PTB, filled with fresh PTB, and sealed with a PDMS slab and clingwrap.  The gels were left to soak at 4$^\circ$C for at least 12 hours so that any remaining precursor solution and protein could equilibrate with the surrounding reservoir, further reducing the concentration remaning in the gel 10- to 20-fold.
+Detailed precursor solution recipes are given in Appendix~\ref{appx:precursor-recipes}.  For the dataset analyzed in this chapter, we used a precursor solution containing 6\% acrylamide and 2 mM LAP as a photoinitiator.  FSFG constructs were conjugated to bisacrylamide via their free thiol.   Lyophilized FSFG-bis was resuspended in potassium transport buffer (PTB; 150 mM KCl, 20 mM HEPES, 2 mM $\tx{MgCl}_2$), allowed to sit at room temperature for at least 20 minutes, and added to the precursor solution.  After the precursor solution was thoroughly mixed, it was degassed in a vacuum desiccator for 10 minutes and immediately pipetted into a disassembled 400-$\mu$m-thick PDMS gasket chamber (Sec.~\ref{sec:gel-geometries}).  Drops between 0.5 and 2 $\mu$L were carefully pipetted onto the plastic slide and the chamber assembled around the drops.  Typically, each chamber measured a few centimeters on a side and contained a control gel with no Nups as well as one or more Nup-filled gels.  The chamber was then illuminated as uniformly as possible with 365 nm light at approximately 200 mW/cm$^2$ with a ThorLabs M365 LP1 LED.  Condensation around the gels resulted from the condensation polymerization reaction, indicative of crosslinking.  The chamber was immediately rinsed with at least 100 $\mu$L of PTB, filled with fresh PTB, and sealed with a PDMS slab and clingwrap.  The gels were left to soak at 4$^\circ$C for at least 12 hours so that any remaining precursor solution and protein could equilibrate with the surrounding reservoir, further reducing the concentration remaining in the gel 10- to 20-fold.
 
 \subsection{Influx of transport factor and inert protein}
 After soaking in buffer, the buffer solution was removed by pipette or wicking with a Kimwipe and a fluorescent reservoir solution added.  Aspirating the chamber was avoided if possible, as it sometimes disturbed the seal between the gel and the chamber.  The reservoir solution contained 20 $\mu$M each freshly-thawed NTF2-fluorescein (NTF2-F) and mCherry in PTB.  The chamber was resealed after adding the solution.  If no influx experiment was planned, the gels were then allowed to  equilibrate for 24 hours before FRAP was performed.
-
-When influx experiments were run, they began as soon as possible after loading the reservoir solution.  Videos were recorded at 4x magnification on an Olympus IX-81 widefield microscope using FITC (excitation 464-500 nm / emission 516-556 nm) and TRITC (excitation 532-544 nm / emission 573-613 nm) filter cubes.  Exposure times were typically 30-100 ms with 3-8 dB gain.  Videos consisted of 120 frames at one frame per minute. Minimal photobleaching took place over the course of these experiments, as confirmed by tracking the average reservoir intensity over time.  After the influx experiment, the chamber was usually stored for equilibration 4$^\circ$C, protected from light, and a FRAP experiment performed the following day.
-
-Influx experiments on hydrogels containing FSFG show binding of NTF2-F bu not to mCherry (Fig.~\ref{fig:influx-images}).  A bright wavefront  of NTF2-F slowly progresses into the gel, while mCherry remains largely excluded.  As expected, mCherry equilibrates more rapidly than does NTF2-F, due to the lack of binding.  Influx experiments were analyzed as described in Sec.~\ref{sec:influx-analysis}.
 
  % '/Volumes/houghgrp/Processed Images/2019-2-21_5/results.mat'
 %'/Volumes/houghgrp/Microscopy/190220/190220_profiles_02.vsi’
@@ -80,13 +74,13 @@ Influx experiments on hydrogels containing FSFG show binding of NTF2-F bu not to
 \label{fig:influx-images}
 \end{figure} 
 
+When influx experiments were run, they began as soon as possible after loading the reservoir solution.  Videos were recorded at 4x magnification on an Olympus IX-81 widefield microscope using FITC (excitation 464-500 nm / emission 516-556 nm) and TRITC (excitation 532-544 nm / emission 573-613 nm) filter cubes.  Exposure times were typically 30-100 ms with 3-8 dB gain.  Videos consisted of 120 frames at one frame per minute. Minimal photobleaching took place over the course of these experiments, as confirmed by tracking the average reservoir intensity over time.  After the influx experiment, the chamber was usually stored for equilibration 4$^\circ$C, protected from light, and a FRAP experiment performed the following day.
+
+Influx experiments on hydrogels containing FSFG show binding of NTF2-F but not to mCherry (Fig.~\ref{fig:influx-images}).  A bright wavefront  of NTF2-F slowly progresses into the gel, while mCherry remains largely excluded.  As expected, mCherry equilibrates more rapidly than does NTF2-F, due to the lack of binding.  Influx experiments were analyzed as described in Sec.~\ref{sec:influx-analysis}.
+
 \subsection{Fluorescence recovery after photobleaching}
 
 FRAP is typically performed using a confocal microscope, but we were able to bleach the hydrogels using an Olympus IX-81 widefield microscope.  The widefield was preferable because the greater depth of field allowed for thicker hydrogel samples, which were easier to fabricate and manipulate.  As described above, the hydrogel was first allowed to equilibrate with 20 $\mu$M NTF2-F and mCherry in PTB.  A reference image was taken at 4x magnification in both fluorescence channels.  A circular region of the hydrogel approximately $300 \mu$m in radius was then photobleached by taking a five-second exposure at 40x magnification using a DAPI (excitation 352-402 nm / emission 417-477 nm) filter cube.  Following the bleach, the 4x objective was rapidly returned and a time series recorded.  Typical series consisted of 15-30 frames taken as rapidly as possible (5-10 s per frame), followed by 30-60 frames taken at a slower rate (1-2 minutes per frame).  Total experiment time was 1-4 hours.  Typical exposure times were 10 ms for NTF2-F and 40 ms for mCherry, both with a gain of 3 dB.
-
-In order to increase throughput, up to three FRAP experiments were run concurrently by sequentially bleaching and then imaging several locations within a single chamber.  This led to a maximum delay time of approximately 35 s between the end of the bleach segment and the beginning of the time series.  Delay times were recorded and taken into account in the data processing. Figure~\ref{fig:frap-images} shows a representative series of images pre- and post-FRAP for both NTF2-F and mCherry.
-
-Despite allowing 24 hours for equilibration, the fluorescence intensity across the hydrogel was not always uniform at the beginning of a FRAP experiment.  This could be due to slow diffusion into the hydrogels, or to inhomogeneous crosslinking.  The center of a hydrogel is more likely to be tightly crosslinked than the edges, as swelling is most inhibited at the center.  Gels which were too inhomogenous to display a clear bleach spot were discarded, but many nonuniform hydrogels were used in the final dataset, with the lack of equilibrium addressed in the data analysis (Sec.~\ref{sec:FRAP-analysis}).  Smaller hydrogels (0.5 $\mu$L of precursor solution) equilibrated more readily, at the cost of increasing the effect of fluorescent protein exchange with the reservoir, since the bleach spot then covered a significant fraction of the hydrogel.  This effect was also taken into account during data analysis.
 
 % 19-2-6-21, final frame (70 min -ish)
 \begin{SCfigure}
@@ -96,6 +90,10 @@ Despite allowing 24 hours for equilibration, the fluorescence intensity across t
 \label{fig:ring}
 \end{SCfigure} 
 
+In order to increase throughput, up to three FRAP experiments were run concurrently by sequentially bleaching and then imaging several locations within a single chamber.  This led to a maximum delay time of approximately 35 s between the end of the bleach segment and the beginning of the time series.  Delay times were recorded and taken into account in the data processing. Figure~\ref{fig:frap-images} shows a representative series of images pre- and post-FRAP for both NTF2-F and mCherry.
+
+Despite allowing 24 hours for equilibration, the fluorescence intensity across the hydrogel was not always uniform at the beginning of a FRAP experiment.  This could be due to slow diffusion into the hydrogels, or to inhomogeneous crosslinking.  The center of a hydrogel is more likely to be tightly crosslinked than the edges, as swelling is most inhibited at the center.  Gels which were too inhomogeneous to display a clear bleach spot were discarded, but many nonuniform hydrogels were used in the final dataset, with the lack of equilibrium addressed in the data analysis (Sec.~\ref{sec:FRAP-analysis}).  Smaller hydrogels (0.5 $\mu$L of precursor solution) equilibrated more readily, at the cost of increasing the effect of fluorescent protein exchange with the reservoir, since the bleach spot then covered a significant fraction of the hydrogel.  This effect was also taken into account during data analysis.
+
 Many of the FSFG concat-1 hydrogels showed an unusual bright ring in the NTF2-F channel around the photobleach spot which developed slowly after bleaching.  Figure~\ref{fig:ring} shows an example.  The ring is presumably due to photodamage by bleaching, but it is not clear why the edge of the bleach spot would exhibit increased NTF2-F binding.  When hydrogels showed this bright ring, care was taken when drawing the bleach spot mask to exclude the ring entirely.
 
 % 2019-2-19, #21
@@ -104,12 +102,12 @@ Many of the FSFG concat-1 hydrogels showed an unusual bright ring in the NTF2-F 
 %[0.005;0.0222781719691768]
 %Both scales
 %Image_series_figures.m
-\begin{figure} 
-\caption[FRAP image series.]{FRAP image series. NTF2-FITC (top, green) and mCherry (bottom, red) bleaching and recovery shown separately.  Hydrogel nominally contained 10 mg/mL FSFG concat-1.  Reservoir contained 20 $\mu$M each NTF2-F and mCherry. }
+\begin{SCfigure} 
+\caption[FRAP image series.]{FRAP image series. NTF2-F (top, green) and mCherry (bottom, red) bleaching and recovery shown separately.  Hydrogel nominally contained 10 mg/mL FSFG concat-1.  Reservoir contained 20 $\mu$M each NTF2-F and mCherry. }
 \centering
-\includegraphics[width=\textwidth]{figs/ch04/FRAP-images.pdf}
+\includegraphics[width=0.7\textwidth]{figs/ch04/FRAP-images.pdf}
 \label{fig:frap-images}
-\end{figure} 
+\end{SCfigure} 
 
 \section{Analysis of steady-state hydrogel properties}
 
@@ -120,12 +118,12 @@ The first step in analyzing the experimental data is to extract key parameters o
 
 % Small Hydrogel 19-2-6-21, grnScale [0.0;0.03], redScale [0.01;0.06], cropping rect 155.51 	0.51	1069.98 1023.98
 % Large hydrogel 16	, '19-2-12_3'	'cct1'
-\begin{SCfigure} 
+\begin{figure} 
 \caption[Hydrogel masks with radius and center calculations.]{Sample hydrogel masks with radius and center calculations.  (A) An equilibrated 0.5-$\mu$L hydrogel containing FSFG concat-1, immediately post-bleach. (B) The corresponding hydrogel mask (white), bleach spot mask (light gray), calculated gel diameter, and calculated gel center. (C)-(D) A 1-$\mu$L hydrogel, showing that the gel is not entirely within the field of view.}
 \centering
-\includegraphics[width=0.5\textwidth]{figs/ch04/geometry.pdf}
+\includegraphics[width=\textwidth]{figs/ch04/geometry.pdf}
 \label{fig:masks}
-\end{SCfigure} 
+\end{figure} 
 
 Although the hydrogels were not perfectly circular, all analysis treated them as circular or nearly so.  In total, the analysis made use of a gel's radius, center, perimeter, and area.  I began by manually defining two masks: one that covered the entire gel, and one that covered only the bleach spot (Fig.~\ref{fig:masks}).  The gel area was calculated by summing all of the pixels in the gel mask and scaled using the 1.58 $\mu$m per pixel scale of the Olympus 4x objective.  The perimeter was calculated using Matlab's \texttt{bwperim} function, which takes a binary mask and returns a mask whose only nonzero entries are that mask's perimeter.  Summing over these pixels and scaling provides the gel perimeter.  It should be noted that in some cases the full area of the gel was not within the field of view.  In these cases, sometimes the partial area in the field of view was used as the area estimate, and sometimes I embedded the gel image in a larger frame and estimated the remaining area when drawing the mask.  Following sections indicate which method was used and the mathematical reasoning.  However, all perimeter calculations were performed with the estimated full area.
 
@@ -136,7 +134,7 @@ The hydrogel radius was estimated taking the diameter to be the widest row of th
 
 % Hydrogel 19-2-6-21, grnScale [0.01;0.03], redScale [0.01;0.06], cropping rect 155.51 	0.51	1069.98 1023.98
 \begin{SCfigure} 
-\caption[Partitioning of NTF2 and mCherry into FSFG hydrogel.]{Partitioning of NTF2 and mCherry into FSFG hydrogel.  (A) Partition coefficient $\gamma$ depends on whether the hydrogel excludes or binds protein. (B) Equilibrated FSFG concat-1 hydrogel (nominally 10 mg/mL) showing partitioning of $T_L = 20\ \mu$M each NTF2-FITC and mCherry.  Contrast adjusted for ease of viewing.\\}
+\caption[Partitioning of NTF2 and mCherry into FSFG hydrogel.]{Partitioning of NTF2 and mCherry into FSFG hydrogel.  (A) Partition coefficient $\gamma$ depends on whether the hydrogel excludes or binds protein. (B) Equilibrated FSFG concat-1 hydrogel (nominally 10 mg/mL) showing partitioning of $T_L = 20\ \mu$M each NTF2-F and mCherry.  Contrast adjusted for ease of viewing.\\}
 \centering
 \includegraphics[width=0.6\textwidth]{figs/ch04/partition.pdf}
 \label{fig:partition}
@@ -151,27 +149,27 @@ When the system is in chemical equilibrium, the concentration of free transport 
 %K_D = \frac{TN}{C}
 %\label{eq:chem-equil}
 %\end{equation}
-$K_D = NT/C \approx N_TT/C$ in the linear approximation $N \approx N_T$.   The total tethered Nup concentration, both free and bound, is the constant $N_T$.  The fraction of transport factors that are bound is then given by
+$K_D = NT/C \approx N_tT/C$ in the linear approximation $N \approx N_t$.   The total tethered Nup concentration, both free and bound, is the constant $N_t$.  The fraction of transport factors that are bound is then given by
 \begin{equation}
-p_B = \frac{C}{C+T} = \frac{C}{C+\frac{CK_D}{N_T}} = \frac{1}{1+\frac{K_D}{N_T}} %\approx 1 - \frac{K_D}{N_T}
+p_B = \frac{C}{C+T} = \frac{C}{C+\frac{CK_D}{N_t}} = \frac{1}{1+\frac{K_D}{N_t}} %\approx 1 - \frac{K_D}{N_t}
 \label{eq:bound-prob}
-\end{equation} %where the final step applies if $K_D \ll N_T$, which might be the case but now I'm confused again.
+\end{equation} %where the final step applies if $K_D \ll N_t$, which might be the case but now I'm confused again.
 
-To relate this expression to measureable quantities, write the protein concentrations within the hydrogel in terms of their partition coefficients. The concentration $c_0$ of the inert protein and the transport factor is equal in the reservoir.  If $\gamma_T$ is the partition coefficient of the transport factor and $\gamma_I$ that of the inert protein, then the transport factor concentrations can be expressed as
+To relate this expression to measurable quantities, write the protein concentrations within the hydrogel in terms of their partition coefficients. The concentration $T_0$ of the inert protein and the transport factor is equal in the reservoir.  If $\gamma_T$ is the partition coefficient of the transport factor and $\gamma_I$ that of the inert protein, then the transport factor concentrations can be expressed as
 \begin{eqnarray}
-T &=& \gamma_I c_0\\
-C & =& T_T - T = \gamma_Tc_0 - \gamma_I c_0
+T &=& \gamma_I T_0\\
+C & =& T_T - T = \gamma_TT_0 - \gamma_I T_0
 \label{eq:gamma}
 \end{eqnarray} 
 The total transport factor concentration within the gel is $T_T = T + C$ and is a constant.
 Therefore, within the gel, the chemical equilibrium condition can be expressed as
 \begin{equation}
-\frac{K_D}{N_T} = \frac{T}{C} = \frac{\gamma_I c_0}{\gamma_T c_0 - \gamma_I c_0} = \frac{\gamma_I}{\gamma_T - \gamma_I}
+\frac{K_D}{N_t} = \frac{T}{C} = \frac{\gamma_I T_0}{\gamma_T T_0 - \gamma_I T_0} = \frac{\gamma_I}{\gamma_T - \gamma_I}
 \label{eq:partition}
 \end{equation}
 Combining Eqns.~\ref{eq:bound-prob} and \ref{eq:partition}, the bound probability can be expressed in terms of the partition coefficients as
 \begin{equation}
-p_B= \frac{1}{1+\frac{K_D}{N_T}} = \frac{1}{1+\frac{\gamma_I}{\gamma_T - \gamma_I}} = 1 - \frac{\gamma_I}{\gamma_T}
+p_B= \frac{1}{1+\frac{K_D}{N_t}} = \frac{1}{1+\frac{\gamma_I}{\gamma_T - \gamma_I}} = 1 - \frac{\gamma_I}{\gamma_T}
 \label{eq:bound-prob-final}
 \end{equation}
 
@@ -206,12 +204,12 @@ Note that neither the dissociation constant or the total Nup concentration need 
 
 After recording a time series of fluorescent protein influx into a hydrogel, diffusion constants can be estimated using either a plot of the intensity profile across the gel or a plot of total accumulation within the gel.  Figure~\ref{fig:influx-plots} shows an example of each plot.  The intensity within the gel is normalized to the average intensity of the reservoir, as calculated using the mask shown in Fig~\ref{fig:influx-plots}A.  Therefore, each profile trace begins at $I=1$ within the reservoir and either dips or rises to the partition coefficient value within the gel.  As the gels are not equilibrated, much of the gel interior shows only background fluorescence.  Likewise, the average intensity within the hydrogel trends towards the partition coefficient but does not reach it on the time scale of an average experiment.
 
-Analysis of the accumulation and profile curves used the diffusion-equation solutions described by Mortensen, Okkels, and Bruus \cite{mortensen06}.  This method assumes that the edge of  a nearly-circular two-dimensional region is held at a fixed concentration while the interior equilibrates (Fig.~\ref{fig:mortensen}.  Such boundary conditions correspond to an infinite fluorophore reservoir.  Given that our reservoirs are 10-20 times larger than the hydrogel volume, this is a reasonable assumption.  In a slight modification, we allow for an arbitrary partition coefficient $\gamma$ by taking the fixed boundary concentration $c_0$ to be $\gamma T_0$, where $T_0$ is the fluorescent protein intensity in the reservoir.  The assumption of near-circularity is also reasonable.
+Analysis of the accumulation and profile curves used the diffusion-equation solutions described by Mortensen, Okkels, and Bruus \cite{mortensen06}.  This method assumes that the edge of  a nearly-circular two-dimensional region is held at a fixed concentration while the interior equilibrates (Fig.~\ref{fig:mortensen}.  Such boundary conditions correspond to an infinite fluorophore reservoir.  Given that our reservoirs are 10-20 times larger than the hydrogel volume, this is a reasonable assumption.  In a slight modification, we allow for an arbitrary partition coefficient $\gamma$ by taking the fixed boundary concentration $c_0$ to be $\gamma c_0$, where $c_0$ is the fluorescent protein intensity in the reservoir.  The assumption of near-circularity is also reasonable.
 
 \begin{SCfigure}
 \caption[Geometry of profile and accumulation model.]{Geometry used to solve diffusion equation in \cite{mortensen06}.  The reservoir concentration $c_0$ fixed the concentration at the edge of the region $\Omega$.  The concentration $c(\mathbf{r},t)$ is determined within $\Omega$ as a function of position and time.}
 \centering
-\includegraphics[width=0.4\textwidth]{figs/ch04/mortensen}
+\includegraphics[width=0.3\textwidth]{figs/ch04/mortensen}
 \label{fig:mortensen}
 \end{SCfigure}
 
@@ -221,7 +219,7 @@ The two most troublesome restrictions of the Mortensen equations are Fickian dif
 % figure  '180209_FSFG-gel_2.vsi'
 \label{sec:profile-analysis}
 
-Mortensen \textit{et al} first define a characteristic timescale for equilibration $\tau = (\mathcal{A}/\mathcal{P})^2 (\pi/4D)$ where $\mathcal{A}$ and $\mathcal{P}$ are the area and perimeter, respectively, of $\Omega$.  For a circle $\mathcal{A}/\mathcal{P} = a/2$, but this ratio was numerically calculated for the hydrogels (Sec.~\ref{sec:gel-dim}).  For times $t \ll \tau$, the concentration profile as a function of the distance $r$ from the gel center can be approximated as 
+Mortensen et al first define a characteristic timescale for equilibration $\tau = (\mathcal{A}/\mathcal{P})^2 (\pi/4D)$ where $\mathcal{A}$ and $\mathcal{P}$ are the area and perimeter, respectively, of $\Omega$.  For a circle $\mathcal{A}/\mathcal{P} = a/2$, but this ratio was numerically calculated for the hydrogels (Sec.~\ref{sec:gel-dim}).  For times $t \ll \tau$, the concentration profile as a function of the distance $r$ from the gel center can be approximated as 
 \begin{equation}
 c(r,t) = c_0 \,\mathrm{erfc}\left(\frac{r}{\sqrt{4Dt}}\right)
 \label{eq:approx-profile}
@@ -232,27 +230,23 @@ where $D$ is the diffusion constant.
 %% t is close to beginning but not right at beginning
 
 \begin{figure}
-\caption[Fits to concentration profiles at a fixed time.]{Fits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 Da.  Theoretical profiles with a sharp edge are shown in the top panel.  The hydrogel intensity profile is shown in the middle panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluoresence level, and partition coefficient are also shown.}
+\caption[Fits to concentration profiles at a fixed time.]{Fits to Eqn.~\ref{eq:approx-profile} near the beginning of the influx experiment for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 Da.  Theoretical profiles with a sharp edge are shown in the top panel.  The hydrogel intensity profile is shown in the middle panel with the portion used for fitting highlighted in red.  Approximate locations of the gel edge, background fluorescence level, and partition coefficient are also shown.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch04/mCherry-erfc-position.pdf}
 \label{fig:erfc-position}
 \end{figure} 
 
-\begin{SCfigure}
-\caption[Fits to concentration profiles at a fixed position.]{Fits to Eqn.~\ref{eq:approx-profile} at a fixed point near the gel edge for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  The short-time approximation likely only holds for times $t \lesssim 20$ minutes. Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.}
-\centering
-\includegraphics[width=0.7\textwidth]{figs/ch04/erfc-time.pdf}
-\label{fig:erfc-time}
-\end{SCfigure} 
-
 The typical duration of an influx experiment was approximately $\tau$, making the short-time approximation questionable throughout most of the time series.  We attempted to fit the intensity profile (Fig.~\ref{fig:erfc-position}) and obtained fits with fairly low error but with unreliable fit parameters.  In addition to the issues of timescale, it was often difficult to determine where the gel edge was located, as well as the partition coefficient.  Given these problems, it is not surprising that fits at successive timepoints yielded incompatible values of diffusion constant for both mCherry and NTF2.  A similar problem prevented the use of diffusion constants obtained from intensity fits at a fixed position over time (Fig.~\ref{fig:erfc-time}).
+
+
 
 A more exact solution for $c(r,t)$ can be written if the gel is assumed to be circular.  Mortensen \textit{et al} quantify the error introduced by small deviations from circularity and find it to be small.  Assuming a circular gel, the concentration profile at an arbitrary time $t$ is given by
 \begin{equation}
-\frac{c(r,t)}{c_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
+\frac{c(r,t)}{T_0} = 1 - 2\sum_{n=0}^\infty \frac{J_0(\alpha_n r)}{\alpha_n a J_1(\alpha_n a)}\exp(-\alpha_n D t)
 \label{eq:full-profile}
 \end{equation}
 where $a$ is the gel radius and $\alpha_n a$ is the $n$th zero of the Bessel function of the first kind $J_0$.
+
 
 I fit the intensity profiles to Eqn.~\ref{eq:full-profile} using different numbers of terms $N$.  For the mCherry curves, the resulting fit parameters tended to converge as $N$ increased, and the RMSE stabilized.  However, neither was true for the NTF2 curves.  Increasing values of $N$ led to steadily decreasing values of diffusion constant.
 
@@ -265,7 +259,14 @@ The total accumulation within the hydrogel can be modeled by integrating the con
 \end{equation} where$N_0$ is the equilibrium value, here equal to the partition coefficient $\gamma$ once the intensity has been normalized to that of the reservoir.
 
 \begin{SCfigure}
-\caption[Fits to accumulation curves.]{Accumulation fits to Eqn.~\ref{eq:full-accumulation} for (A) mCherry and (B) NTF2-Alexa488.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.\\}
+\caption[Fits to concentration profiles at a fixed position.]{Fits to Eqn.~\ref{eq:approx-profile} at a fixed point near the gel edge for (A) mCherry and (B) NTF2-Alexa488 intensity profiles.  The short-time approximation likely only holds for times $t \lesssim 20$ minutes. Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.}
+\centering
+\includegraphics[width=0.7\textwidth]{figs/ch04/erfc-time.pdf}
+\label{fig:erfc-time}
+\end{SCfigure} 
+
+\begin{SCfigure}
+\caption[Fits to accumulation curves.]{Accumulation fits to Eqn.~\ref{eq:full-accumulation} for (A) mCherry and (B) NTF2-Alexa488.  Hydrogel nominally contains 10 mg/mL FSFG-PEGDA 700 kDa.}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/ch04/accumulation.pdf}
 \label{fig:acc}
@@ -292,14 +293,14 @@ N(t) = \frac{c_b(t)}{c_g(t)}
 \subsection{No-exchange solution to diffusion equation}
 \label{sec:no-exchange}
 
-The simplest model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equlibrated, that the presence of the gel does not cause anomalous diffusion, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
+The simplest model of fluorescence recovery assumes that the hydrogel is perfectly uniform and equilibrated, that the presence of the gel does not cause anomalous diffusion, and that there is no exchange of fluorescent proteins between the hydrogel and the reservoir during the experiment.  Upon making those assumptions, the recovery curve can be fit using a sum of two Bessel functions as described in \cite{yang18,sprague04}.  The model used in \cite{sprague04} distinguishes between binding affinity regimes; NTF2-FSFG binding is sufficiently transient that it falls into the effective diffusion regime, allowing standard diffusion equations to be used without modification to calculate an effective diffusion constant as described in Sec.~\ref{sec:db-calc}.  The solution to fluorescence recovery with effective diffusion is given by
 \begin{equation}
 N(t) = A\exp(-\tau_D/2t)\left(\mathrm{I}_0(\tau_D/2t)+\mathrm{I}_1(\tau_D/2t)\right)+C
 \end{equation} where the diffusion lifetime $\tau_D$ is related to the diffusion constant by $D = w^2/\tau_D$ if $w$ is the bleach spot radius.  
 
-The amplitude $A$ and offset $C$ are related to the bleach depth (given by $C$) and final recovered value (given by $A+C$).  Typical bleach depths were 5-10\% of the initial intensity and tended to be smaller for mCherry than for NTF2.  In principle, the final recovered value reflects the immobile fraction of fluorophore.  If there is an immobile fraction, the bleached region will not recover to its intial value.  Given the weak binding between NTF2 and FSFG, we do not expect an appreciable immobile fraction of either NTF2 or mCherry.  For the most part, the hydrogels appear to recover to their initial value.  A few do not, for reasons that are unclear even after accounting for photobleaching.
+The amplitude $A$ and offset $C$ are related to the bleach depth (given by $C$) and final recovered value (given by $A+C$).  Typical bleach depths were 5-10\% of the initial intensity and tended to be smaller for mCherry than for NTF2.  In principle, the final recovered value reflects the immobile fraction of fluorophore.  If there is an immobile fraction, the bleached region will not recover to its initial value.  Given the weak binding between NTF2 and FSFG, we do not expect an appreciable immobile fraction of either NTF2 or mCherry.  For the most part, the hydrogels appear to recover to their initial value.  A few do not, for reasons that are unclear even after accounting for photobleaching.
 
-The no-exchange model fits well to the larger hydrogels and those that are well-equilibrated.  Many of the large gels, however, were not fully equlibrated even after a 24 hour incubation with the reservoir solution.  The concentration within these gels will change over the course of the experiment as they continue to equilibrate.  Smaller hydrogels were quicker to uniformly equlibrate; however, these gels are small enough that exchange of fluorescent proteins with the reservoir is important over the timescale of FRAP recovery.  Both of these problems can be accounted for using a more thorough solution to the diffusion equation.
+The no-exchange model fits well to the larger hydrogels and those that are well-equilibrated.  Many of the large gels, however, were not fully equilibrated even after a 24 hour incubation with the reservoir solution.  The concentration within these gels will change over the course of the experiment as they continue to equilibrate.  Smaller hydrogels were quicker to uniformly equilibrate; however, these gels are small enough that exchange of fluorescent proteins with the reservoir is important over the timescale of FRAP recovery.  Both of these problems can be accounted for using a more thorough solution to the diffusion equation.
 
 \subsection{Fourier transform solution to diffusion equation}
 %Carslaw 2nd ed. pg 377, sec. 14.13(6)
@@ -312,7 +313,7 @@ Scripts to perform the following calculations are available at \url{https://gith
 
 \subsubsection{Analytic series solution}
 
-Mathematically, we need to solve the diffusion equation in a circular region of radius $a$, centered at the origin, whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitary intial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image (Fig.~\ref{fig:carslaw-geo}).  To find the concentration $c(r,\theta,t)$ for $r<a$, we used the Green's function integrals described in \cite{h.s.carslaw59}, as heat transfer obeys the same differential equation as diffusion of particles.  Green's functions describe a system's response to an instantaneous point source.  An initial distribution can be built by integrating the Green's function over the region of interest.  The correct Green's function must be identified for a particular geometry and set of boundary conditions, but a formal solution is straightforward to write once they have been obtained.
+Mathematically, we need to solve the diffusion equation in a circular region of radius $a$, centered at the origin, whose boundary is held at a fixed concentration.  The region $r<a$ has an arbitrary initial concentration distribution $f(r,\theta)$ which consists of the first post-bleach image (Fig.~\ref{fig:carslaw-geo}).  To find the concentration $c(r,\theta,t)$ for $r<a$, we used the Green's function integrals described in \cite{h.s.carslaw59}, as heat transfer obeys the same differential equation as diffusion of particles.  Green's functions describe a system's response to an instantaneous point source.  An initial distribution can be built by integrating the Green's function over the region of interest.  The correct Green's function must be identified for a particular geometry and set of boundary conditions, but a formal solution is straightforward to write once they have been obtained.
 
 \begin{SCfigure}
 \caption[Geometry for Fourier transform solution.]{Geometry for diffusion-equation solution Eqn.~\ref{eq:full-series}.  A circle of radius $a$ is centered at the origin.  The boundary $r=a$ is held at concentration $c=0$ and the interior has initial concentration profile $f(r,\theta)$.}
@@ -399,7 +400,7 @@ To verify the mode coefficients, I reconstructed the initial post-bleach image f
 
 % #16 in dataset, '19-2-12_3', avg. gel intensity set to zero before calculating coefficients, green channel reconstruction
 \begin{figure}
-\caption[Reconstruction of initial concentration distribution.]{Reconstruction of initial concentration distribution. Reservoir is masked and not included.  (A) Heatmap of original image with average equilibrated gel intensity set to zero. (B) Reconstruction using two Bessel orders ($N_\nu = 2$) and two zeros ($N_\alpha = 2$) in each order. (C-E) Reconstructions with $N_\nu = N_\alpha = 2$, 4, 10, and 20.}
+\caption[Reconstruction of initial concentration distribution.]{Reconstruction of initial concentration distribution. Reservoir is masked and not included.  (A) Heatmap of original image with average equilibrated gel intensity set to zero. (B) Reconstruction using two Bessel orders ($N_\nu = 2$) and two zeros ($N_\alpha = 2$) in each order. (C-E) Reconstructions with $N_\nu = N_\alpha = 4$, 10, and 20.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch04/reconstruction-16_2_4_10_20.pdf}
 \label{fig:initDist}
@@ -428,10 +429,17 @@ J'_\nu(x) = \frac{1}{2}\left(J_{\nu-1}(x) - J_{\nu+1}(x)\right)
 \end{equation*}
 
 The average intensity of the entire gel, including the bleach spot, was determined in the same way, using the hydrogel mask instead of the bleach-spot mask.  Both results were formatted as strings of sums, containing numerical values wherever possible as well as the diffusion constant parameter $D$ (units of $\mu$m$^2$/s)  and the time variable $t$, measured in seconds.
+% #'s 5 and 7 in the dataset
+\begin{figure}
+\caption[Fits to recovery curves using Fourier transform solution.]{Fits using the series expansion Eqn.~\ref{eq:full-series}. (A) NTF2-F and mCherry recovery curves for a no-Nup hydrogel.  (B) NTF2-F and mCherry recovery curves for a hydrogel nominally containing 10 mg/mL FSFG concat-1.}
+\centering
+\includegraphics[width=0.9\textwidth]{figs/ch04/series-fits.pdf}
+\label{fig:series-fits}
+\end{figure} 
 
-Once these strings were created, the equilibrium concentration value $c_0$ was added back to both of them, and their ratio was taken, in order to mimic the data processing in Sec.~\ref{sec:photobleaching}.  Mathematically, this gave a normalized string of
+Once these strings were created, the equilibrium concentration value $T_0$ was added back to both of them, and their ratio was taken, in order to mimic the data processing in Sec.~\ref{sec:photobleaching}.  Mathematically, this gave a normalized string of
 \begin{equation}
-f(D,t) = \frac{\bar{c}_\mathrm{bleach}(D,t)+c_0}{\bar{c}_\mathrm{gel}(D,t)+c_0}
+f(D,t) = \frac{\bar{c}_\mathrm{bleach}(D,t)+T_0}{\bar{c}_\mathrm{gel}(D,t)+T_0}
 \end{equation}
 
 At this point, I checked the normalization by simulating data using the value of $D$ calculated from the no-exchange analysis in Sec.~\ref{sec:no-exchange}.  Often the simulated data matched the experiment to within 10\%, but further fit parameters were needed in order to fit the data well.  Ultimately, the function to which the data were fit was
@@ -442,14 +450,12 @@ where $c_1$ and $c_2$ reflect the bleach depth and final recovered concentration
 
 Fits such as those shown in Fig.~\ref{fig:series-fits} were typical results.  Values for $c_1$ and $c_2$ were of order unity, except for a few fits that were clearly incorrect and were omitted from the final dataset.
 
-% #'s 5 and 7 in the dataset
-\begin{figure}
-\caption[Fits to recovery curves using Fourier transform solution.]{Fits using the series expansion Eqn.~\ref{eq:full-series}. (A) NTF2-F and mCherry recovery curves for a no-Nup hydrogel.  (B) NTF2-F and mCherry recovery curves for a hydrogel nominally containing 10 mg/mL FSFG concat-1.}
+\begin{SCfigure}
+\caption[Partition coefficients and fraction of NTF2 bound.]{(A) Partition coefficients for NTF2-F and mCherry in each of the three experimental conditions.  (B) Fraction of NTF2-F bound as calculated using Sec.~\ref{sec:part-coeff}.  All errors are standard error of the mean.}
 \centering
-\includegraphics[width=0.9\textwidth]{figs/ch04/series-fits.pdf}
-\label{fig:series-fits}
-\end{figure} 
-
+\includegraphics[width=0.7\textwidth]{figs/ch04/fraction-bound}
+\label{fig:frac-bound}
+\end{SCfigure} 
 \section{Results}
 
 In all, FRAP analysis was performed on 34 hydrogels: 15 no-Nup gels, 12 created from a precursor solution containing 10 mg/mL FSFG concat-1, and 7 containing FSFG concat-2 with 20 mg/mL protein in the precursor solution. % Of the FSFG concat-2 hydrogels, seven had a nominal concentration of 20 mg/mL FSFG concat-2, meaning that in principle they had the same molar concentration as the FSFG concat-1 gels, but twice as many FG repeats.  The other three nominally contained 10 mg/mL FSFG concat-2, giving them half as many chains but the same number of FG repeats as the FSFG concat-1 gels.  The mean partition coefficients and diffusion constants were not significantly different between the two groups of FSFG concat-2 gels and they were treated as one condition in the following results.
@@ -457,17 +463,12 @@ In all, FRAP analysis was performed on 34 hydrogels: 15 no-Nup gels, 12 created 
 % concentration measurements in LKM book 6, April 2019
 The partition coefficients for NTF2-F and mCherry are shown in Fig.~\ref{fig:frac-bound} along with the corresponding fraction bound.  As expected, the partition coefficients NTF2-F and mCherry are very similar in the no-Nup hydrogels, while the NTF2-F partition coefficient increases for FSFG hydrogels due to binding.  The FSFG concat-2 hydrogels show a slightly higher fraction bound than the FSFG concat-1 gels.  We measured the final tethered Nup concentration to be roughly equal  at $\sim 1$ mg/mL in both types of gels, although the method used was not reliable (Sec.~\ref{sec:Nup-conc}).  If the concentration is in fact the same between the FSFG concat-1 and concat-2 hydrogels and the fraction bound is higher in the FSFG concat-2 gels, NTF2 must bind more strongly to FSFG concat-2 than to FSFG concat-1.  This would contradict work which measured approximately the same binding affinity for both constructs \cite{hayama18}.  The crowded, confined environment of the Nup-filled hydrogel might be responsible for any change in binding affinity between FSFG concat-1 and concat-2.  However, the measurements of the tethered Nup concentration are not precise enough to rule out similar binding affinities for FSFG concat-1 and FSFG concat-2.
 
-\begin{SCfigure}
-\caption[Partition coefficients and fraction of NTF2 bound.]{(A) Partition coefficients for NTF2-F and mCherry in each of the three experimental conditions.  (B) Fraction of NTF2-F bound as calculated using Sec.~\ref{sec:part-coeff}.  All errors are standard error of the mean.\\}
-\centering
-\includegraphics[width=0.7\textwidth]{figs/ch04/fraction-bound}
-\label{fig:frac-bound}
-\end{SCfigure} 
+
 
 Figure~\ref{fig:curves} shows normalized recovery curves for all hydrogels in the dataset.  In addition to the normalization described in Sec.~\ref{sec:photobleaching}, these curves were also scaled so that the pre-bleach average bleach spot intensity was one.  Dark curves show the average NTF2 and mCherry recovery curves for each condition.  The most obvious difference between conditions is the greater bleach depth for NTF2-F in FSFG hydrogels.  Bleach depth stays roughly constant for mCherry between conditions.
 
 \begin{figure}
-\caption[Recovery curves.]{Recovery curves for (A) no-Nup, (B) FSFG concat-1, and (C) FSFG concat-2 hydrogels.  All curves are shown for both NTF2-F and mCherry.  Dark lines are averaged curves.  Data normalized so that pre-bleach intensity is one.}
+\caption[FRAP recovery curves.]{FRAP recovery curves for (A) no-Nup, (B) FSFG concat-1, and (C) FSFG concat-2 hydrogels.  All curves are shown for both NTF2-F and mCherry.  Dark lines are averaged curves.  Data normalized so that pre-bleach intensity is one.}
 \centering
 \includegraphics[width=\textwidth]{figs/ch04/curves}
 \label{fig:curves}
@@ -506,7 +507,7 @@ Using the above values, we calculated a predicted $D_B$ value for each FSFG hydr
 
 \section{Discussion}
 
-Our goal was to create a material in which we could measure and test the properties of bound diffusion.  These results suggest that we can indeed measure non-zero bound diffusion, although there is no measureable difference between Nups of different lengths and valencies.  Smaller effects would be measurable if the fraction of transport factor bound ($p_B$) increased, as then the contribution of bound diffusion to the observed diffusion would become more prominent.  The most straightforward way of increasing the fraction bound is to increase the concentration of tethered Nups within the gel, a task which has proven difficult.  However, this dataset still provides a check on the predictions of our model.
+Our goal was to create a material in which we could measure and test the properties of bound diffusion.  These results suggest that we can indeed measure non-zero bound diffusion, although there is no measurable difference between Nups of different lengths and valencies.  Smaller effects would be measurable if the fraction of transport factor bound ($p_B$) increased, as then the contribution of bound diffusion to the observed diffusion would become more prominent.  The most straightforward way of increasing the fraction bound is to increase the concentration of tethered Nups within the gel, a task which has proven difficult.  However, this dataset still provides a check on the predictions of our model.
 
 Remarkably, the simple model of tethered diffusion described in Chapter~\ref{ch02} yields a prediction which is in agreement with the experimentally-observed bound diffusion constant in FSFG concat-1 hydrogels.  This result suggests that the flexible nature of the Nups is indeed important to bound diffusion within our hydrogel nuclear pore mimics.  Non-zero bound diffusion was measured for two values of Nup length, in both the FSFG concat-1 and FSFG concat-2 hydrogels.  While the FSFG concat-1 gels showed good agreement with the model, the bound diffusion in FSFG concat-2 gels was slightly lower than predicted.  This could be due to a number of factors: relatively high variability between hydrogels, lower tethered Nup concentration than expected, a problem with the model, or changes in binding affinity between FSFG concat-1 and concat-2.  If, as rough measurements of the tethered Nup concentration suggest, both types of hydrogel had a similar mass density of Nups, then the higher NTF2 partition coefficients observed in FSFG concat-2 gels would imply tighter binding of NTF2 to FSFG concat-2 than to concat-1.  If the on-rate is diffusion limited for both constructs, FSFG concat-2 would necessarily have a lower off-rate.  In our tethered diffusion model, the bound diffusion constant is predicted to increase when the Nup contour length increases but decrease when the off-rate decreases (Eqn.~\ref{eq:dbound-ch4}).  If the affinity is indeed changing between the two Nup conditions, the net result of the two effects would not be possible to predict without knowledge of the change in off-rate constant $\koff$.
 
