@@ -91,8 +91,8 @@ GOF = nan(size(data,1),size(data,2),5);
 close all
 for i=1:size(data,1) % number of conditions
     for j=1:reps(i) % number of reps
-        %norm = squeeze(data(i,j,:))/mean(blanks(i,:));
-        norm = squeeze(data(i,j,1:end))./smooth(blanks(i,1:end));
+        norm = squeeze(data(i,j,:))/mean(blanks(i,:));
+        %norm = squeeze(data(i,j,1:end))./smooth(blanks(i,1:end));
         [fitresult, gof] = sigmoidFit(time(1:end), norm.');
         title([label(i) ' Rep ' num2str(j)])
         A(i,j) = fitresult.A;
