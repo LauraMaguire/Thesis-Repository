@@ -424,7 +424,7 @@ Once the mode coefficients had been calculated, a fit string was constructed usi
 To begin, the mode coefficients were used to predict the average intensity of the bleach spot at each time point.  Since all the time dependence in each term is contained in one decaying exponential, the average value of the bleach spot could be determined by integrating over the bleach spot:
 \begin{equation}
 \bar{c}_\mathrm{bleach}(D,t) = \frac{1}{A_B}\sum_{\nu=-\infty}^{\infty} \sum_{\alpha = 0}^\infty   \exp\left(-D\alpha^2t\right)\int_{\Omega_B}\frac{J_\nu\left(\alpha r\right)}{\left(J'_\nu (\alpha a)\right)^2} \left(C_{\nu,\alpha}\cos(\nu\theta) + S_{\nu,\alpha} \sin(\nu\theta)\right) dA
-\label{eq:c-s-series}
+\label{eq:avg-intensity}
 \end{equation}
 where $\Omega_B$ is the region defined by the bleach-spot mask and $A_B$ is its total area.  The Bessel function derivative $J'_\nu$ was computed using the identity
 \begin{equation*}
