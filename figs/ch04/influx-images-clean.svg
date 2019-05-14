@@ -29,10 +29,10 @@
      id="namedview61"
      showgrid="false"
      inkscape:zoom="1.2844482"
-     inkscape:cx="343.03121"
+     inkscape:cx="245.71316"
      inkscape:cy="883.09099"
-     inkscape:window-x="48"
-     inkscape:window-y="29"
+     inkscape:window-x="68"
+     inkscape:window-y="72"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg24595" />
   <defs
@@ -70,7 +70,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -163,7 +163,7 @@
        y="75.432053"
        style="font-size:9.35597897px"><tspan
    id="tspan24437"
-   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro Italic'">t</tspan> = 0 hr</tspan></text>
+   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro Italic'">t</tspan> = 5 min</tspan></text>
   <text
      id="text24439"
      y="75.432053"
@@ -176,7 +176,7 @@
        x="251.68163"
        id="tspan24441"><tspan
    style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro Italic'"
-   id="tspan24443">t</tspan> = 2 hr</tspan></text>
+   id="tspan24443">t</tspan> = 100 min</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.47463799px;line-height:1000%;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

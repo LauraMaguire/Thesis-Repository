@@ -134,7 +134,7 @@ image = cat(3,imager,imageg,imageb);
 imshow(image);
 
 subplot(2,3,3)
-imageg = imcrop(imadjust(im2double((9/3.75)*r.GreenImages{1,1}),grnScale),rect3);
+imageg = imcrop(imadjust(im2double((9/3.75)*r.GreenImages{1,1}),grnScale),rect2);
 imager = zeros(size(imageg));
 imageb = zeros(size(imager));
 image = cat(3,imager,imageg,imageb);
@@ -159,7 +159,7 @@ image = cat(3,imager,imageg,imageb);
 imshow(image);
 
 subplot(2,3,6)
-imager = imcrop(imadjust(im2double((23/29)*r.RedImages{1,1}),redScale),rect3);
+imager = imcrop(imadjust(im2double((23/29)*r.RedImages{1,1}),redScale),rect2);
 imageg = zeros(size(imager));
 imageb = zeros(size(imager));
 image = cat(3,imager,imageg,imageb);
@@ -175,4 +175,60 @@ imshow(J);
 J2 = imcrop(imadjust(im2double((9/8)*GreenImages{1,end}),grnScale),rect2);
 %%
 imshow(J2)
+
+%%
+%% Show green and red channels separately for influx
+n=316;
+subplot(1,3,1)
+imageg = imcrop(imadjust(im2double(GreenImages{1,1}),grnScale),rect2);
+imager = imcrop(imadjust(im2double(RedImages{1,1}),redScale),rect2);
+imageb = zeros(size(imager));
+image = cat(3,imager,imageg,imageb);
+% Display the image as a figure.
+% imshow(image, 'InitialMagnification',50);
+imshow(image);
+hold on
+line([500,n+500],[700,700]);
+hold off
+
+subplot(1,3,2)
+imageg = imcrop(imadjust(im2double((9/8)*GreenImages{1,end}),grnScale),rect2);
+imager = imcrop(imadjust(im2double((23/22)*RedImages{1,end}),redScale),rect2);
+imageb = zeros(size(imager));
+image = cat(3,imager,imageg,imageb);
+% Display the image as a figure.
+imshow(image);
+
+subplot(1,3,3)
+imageg = imcrop(imadjust(im2double((9/3.75)*r.GreenImages{1,1}),grnScale),rect3);
+imager = imcrop(imadjust(im2double((23/29)*r.RedImages{1,1}),redScale),rect3);
+imageb = zeros(size(imager));
+image = cat(3,imager,imageg,imageb);
+% Display the image as a figure.
+imshow(image);
+
+% subplot(2,3,4)
+% imager = imcrop(imadjust(im2double(RedImages{1,1}),redScale),rect2);
+% imageg = zeros(size(imager));
+% imageb = zeros(size(imager));
+% image = cat(3,imager,imageg,imageb);
+% % Display the image as a figure.
+% % imshow(image, 'InitialMagnification',50);
+% imshow(image);
+% 
+% subplot(2,3,5)
+% imager = imcrop(imadjust(im2double((23/22)*RedImages{1,end}),redScale),rect2);
+% imageg = zeros(size(imager));
+% imageb = zeros(size(imager));
+% image = cat(3,imager,imageg,imageb);
+% % Display the image as a figure.
+% imshow(image);
+% 
+% subplot(2,3,6)
+% imager = imcrop(imadjust(im2double((23/29)*r.RedImages{1,1}),redScale),rect2);
+% imageg = zeros(size(imager));
+% imageb = zeros(size(imager));
+% image = cat(3,imager,imageg,imageb);
+% % Display the image as a figure.
+% imshow(image);
 
