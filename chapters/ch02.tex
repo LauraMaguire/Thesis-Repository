@@ -85,18 +85,18 @@
 %along the axis of the NPC may play a role in selective transport
 %\cite{zilman07, tagliazucchi13, tu13, timney16}.
 
-The nuclear pore is an unusual selective biofilter whose precise mechanism of selectivity is not well understood.  In particular, an apparent paradox arises from the fact that transport factors, which bind to FG Nups within the pore, have a much higher flux through the pore than inert, nonbinding proteins.  This fact is surprising, given that binding must necessarily slow the passage of a transport factor through the pore.  We wanted to understand how binding increases flux through the nuclear pore and other similar selective biofilters.
+The nuclear pore complex (NPC) is an unusual selective biofilter whose precise mechanism of selectivity is not well understood.  In particular, an apparent paradox arises from the fact that transport factors, which bind to FG Nups within the pore, have a much higher flux through the pore than inert, nonbinding proteins.  This fact is surprising, given that binding must necessarily slow the passage of a transport factor through the pore.  We wanted to understand how binding increases flux through the nuclear pore and other similar selective biofilters.
 
-To that end, we developed a simple mathematical model of selective transport inspired by the nuclear pore.  While the model is based on nuclear transport, it is general enough that it can be applied to a wide range of biological systems and synthetic biofilters.  Unlike most existing quantitative models of nuclear transport, which reduce transport to diffusion in a single one-dimensional effective potential, this model does not require simulations or a precise accounting of the locations and composition of Nups along the pore axis \cite{pulupa17, vovk16,tagliazucchi13, tu13, timney16}.  It is equally applicable to a bulk material as to a nanopore.  A few other first-principles models of the pore have been developed using similar differential equations but making different assumptions about boundary conditions and binding equilibrium \cite{zilman07,yang18}.  Our model is the only one we know of to explicitly include both binding kinetics and binding site saturation.
+To that end, we developed a simple mathematical model of selective transport inspired by the nuclear pore.  While the model is based on nuclear transport, it is general enough that it can be applied to a wide range of biological systems and synthetic biofilters.  Unlike most existing quantitative models of nuclear transport, which reduce transport to diffusion in a single one-dimensional effective potential, this model does not require simulations or a precise accounting of the locations and composition of Nups along the pore axis \cite{pulupa17, vovk16,tagliazucchi13, tu13, timney16}.  It is equally applicable to bulk materials and to nanopores.  A few other first-principles models of the pore have been developed using similar differential equations but making different assumptions about boundary conditions and binding equilibrium \cite{zilman07,yang18}.  Our model is the only one we know of to explicitly include both binding kinetics and binding site saturation.
 
 The primary surprising result of our model was the importance of bound-state diffusion for selectivity.  No selective filtering was possible if the transport factor - Nup complex was immobile, regardless of the other parameters.  However, if bound diffusion within the pore was permitted, the selective flux of transport factor through the pore as compared to that of an inert protein approached that measured experimentally.  These results suggest that bound-state diffusion is a key parameter to selective transport within the nuclear pore and perhaps to a number of other biofilters as well.
 
-The work in this chapter was a collaboration between myself, Mike Stefferson, and Loren Hough.  Mike contributed significantly to developing the model and wrote the numerical simulations in both the linear and non-linear cases.
+The work in this chapter was a collaboration between myself and Mike Stefferson under the direction of Loren Hough.  Mike contributed significantly to developing the model and wrote the numerical simulations in both the linear and non-linear cases.
 
 \section{Simplified model of nuclear transport}
 \label{sec:model}
 
-Nuclear transport is quite complex, but its unusual selective properties can be modeled much more simply than can the entirety of transport.  A major goal of our model was to reproduce the selectivity of the nuclear pore in most straightforward way possible.  To that end, we made many simplifying assumptions.  The nuclear pore was treated as a one-dimensional selective membrane uniformly filled with Nups.  While the nuclear pore itself has a non-uniform, asymmetric distribution of Nups along its axis, as well as variation in the FG motif density along its radius, its selectivity remains intact when the asymmetric Nups are removed.  In fact, a significant fraction of Nups can be removed without destroying selectivity \cite{strawn04, zeitler04,kowalczyk11, jovanovic-talisman09}.  Any possible wide capture area outside the pore was also neglected \cite{pagliara14}, leaving a simplified system as shown in Fig.~\ref{fig:cartoon}A.
+Nuclear transport is quite complex, but its unusual selective properties can be modeled much more simply than can the entirety of transport.  A major goal of our model was to reproduce the selectivity of the nuclear pore in most straightforward way possible.  To that end, we made many simplifying assumptions.  The nuclear pore was treated as a one-dimensional selective membrane uniformly filled with Nups.  While the nuclear pore itself has a non-uniform, asymmetric distribution of Nups along its axis, as well as variation in the FG motif density along its radius, its selectivity remains intact when the asymmetric Nups are removed.  In fact, a significant fraction of Nups can be removed without destroying selectivity \cite{strawn04, zeitler04,kowalczyk11, jovanovic-talisman09}.  The possibility of a wide capture area outside the pore was also neglected \cite{pagliara14}, leaving a simplified system as shown in Fig.~\ref{fig:cartoon}A.
 
 \begin{figure}[t!]
 \centering
@@ -117,13 +117,13 @@ Nuclear transport is quite complex, but its unusual selective properties can be 
 \label{fig:cartoon}
 \end{figure}
 
-Many transport factors require active release from the pore and from their cargo \cite{lowe15, mincer11, gorlich96, gilchrist02}.  To avoid the complications of facilitated release, we focused on the diffusion of Nuclear Transport Factor 2 (NTF2) through the selective barrier.  NTF2 leaves the pore without consuming energy, and, while it is on the cusp of the passive  diffusion limit at 30 kDa, its flux through the pore is 30-120 times higher than that of a similarly-sized non-binding protein \cite{mincer11, zilman07}.  The small size of NTF2 is also a benefit in that it is significantly smaller ($\sim 5$ nm) than the depth of the nuclear pore ($\sim 100$ nm), meaning that our approximation of the pore as a bulk material is appropriate.
+Many transport factors require active release from the pore and from their cargo \cite{lowe15, mincer11, gorlich96, gilchrist02}.  To avoid the complications of facilitated release, we focused on the diffusion of Nuclear Transport Factor 2 (NTF2) through the selective barrier.  NTF2 leaves the pore without consuming energy.  While it is on the cusp of the passive diffusion limit at 30 kDa, its flux through the pore is 30-120 times higher than that of a similarly-sized non-binding protein \cite{mincer11, zilman07}.  The small size of NTF2 is also a benefit in that it is significantly smaller ($\sim 5$ nm) than the depth of the nuclear pore ($\sim 100$ nm), meaning that our approximation of the pore as a bulk material is appropriate.
 
 Our model also assumed that the rate-limiting step of nuclear transport is motion within the pore, not entry or exit.  In single-molecule measurements, most of the transport time is spent in a random walk within the central channel, supporting this assumption \cite{yang04, tu13}.
 
 %%%%% bare-bones description of model, not sure if I should try to alter
 We considered a channel of length $L$ separating two reservoirs and filled homogeneously with Nups
-(Fig.~\ref{fig:cartoon}A).  A concentration difference was imposed between the two reservoirs in order to drive flux.  Within the channel were free transport factor (concentration $T$), free FG Nups ($N$), and bound TF-FG complex ($C$), with total Nup concentration $N_t= N+C$.  Transport factor diffusion within the channel ($0<x<L$) is described by the reaction-diffusion equations
+(Fig.~\ref{fig:cartoon}A).  A concentration difference was imposed between the two reservoirs in order to drive flux.  Within the channel were free transport factor (concentration $T$), free FG Nups ($N$), and bound transport factor-FG Nup complex ($C$), with total Nup concentration $N_t= N+C$.  Transport factor diffusion within the channel ($0<x<L$) was described by the reaction-diffusion equations
 \begin{eqnarray}
   \frac{\partial T}{\partial t} &=& -\kon T N+\koff C +D_F
        \frac{\partial^2 T}{\partial x^2},\label{eq:continuum_main} 
@@ -132,11 +132,11 @@ We considered a channel of length $L$ separating two reservoirs and filled homog
         D_B \frac{\partial^2 C}{\partial x^2} .
 \label{eq:continuum_main_2} 
 \end{eqnarray}
-Transport factor - Nup interactions have on-rate constant $\kon$, off-rate $\koff$, and
+Transport factor - Nup interactions had on-rate constant $\kon$, off-rate $\koff$, and
 dissociation constant $K_D =\koff/\kon$.  We included competition
 between transport factors for FG binding sites by allowing the concentration of free Nups $N$ to vary\cite{timney16}.  The
-diffusion constants of free ($D_F$) and bound ($D_F$) transport factors are
-spatially constant. The fixed reservoir transport factor concentrations are $T_0$
+diffusion constants of free ($D_F$) and bound ($D_B$) transport factors were
+spatially constant. The fixed reservoir transport factor concentrations were $T_0$
 (inlet, left) and 0 (outlet, right).
 
 The flux of transport factor out of the pore is
@@ -148,13 +148,13 @@ We defined a figure of merit, selectivity, to describe the steady-state enhancem
 
 Mike Stefferson developed code that numerically integrated the full, nonlinear reaction-diffusion equations and calculated selectivity \cite{stefferson18}.
 
-\subsection{Linear appoximation and analytic solution}
+\subsection{Linear approximation and analytic solution}
 \label{sec:linear}
 % I'm not sure whether I should put this in, because Loren was really the one who developed it.
-Experimental evidence suggests that the flux of transport factors within the pore is linearly related to their concentration \cite{timney06, schmidt15}.  This would imply that few of the Nup binding motifs are occupied, so that $C \ll N$.  In this case, the concentration $N$ of unbound Nups is approximately equal to the total Nup concentration $N_t$.  Letting $N \approx N_t$ linearizes the reaction-diffusion equations (Eqns.~\ref{eq:continuum_main} and \ref{eq:continuum_main_2}), at which point they can be solved analytically.  The solution was developed by Loren Hough and Mike Stefferson and is presented here.  The full nonlinear numerical solution was used in all other sections unless noted otherwise.
+Experimental evidence suggests that the flux of transport factors within the pore is linearly related to their concentration \cite{timney06, schmidt15}.  This would imply that few of the Nup binding motifs are occupied, so that $C \ll N$.  In this case, the concentration $N$ of unbound Nups is approximately equal to the total Nup concentration $N_t$.  Letting $N \approx N_t$ linearizes the reaction-diffusion equations (Eqns.~\ref{eq:continuum_main} and \ref{eq:continuum_main_2}), at which point they can be solved analytically.  The solution was developed by Loren Hough and Mike Stefferson and is presented here.  A similar system was solved in the linear case by \cite{yang18}. The full nonlinear numerical solution was used in all other sections unless noted otherwise.
 
 % I wrote up the math here for the paper.
-The analytical solution for flux can be directly derived in the linear
+The analytic solution for flux can be directly derived in the linear
 case.  For ease of calculation, we reverse the concentration gradient
 used in the nonlinear model, so that $T(0) = 0$ and $T(L) = T_0$, allowing
 us to calculate flux at $x=0$.  The reaction-diffusion equations at steady state
@@ -164,7 +164,7 @@ in the linear limit $N \approx N_t$ are
 0 &=& \kon N_tT -\koff C + D_B \frac{\partial^2 C}{\partial x^2} .
 \label{eq:continuum_linear} 
 \end{eqnarray}
-The change of variables $C = C_x + N_t K_A T$ ($K_A =  \kon / \koff  = 1/K_D $ ) yields
+The change of variables $C = C_x + N_t K_A T$ (where $K_A =  \kon / \koff  = 1/K_D $) yields
 \begin{eqnarray}
   0 &=& \koff C_x +D_F\frac{\partial^2 T}{\partial x^2}   \\ 
   0 &=& -\koff C_x  + D_B \frac{\partial^2 C_x}{\partial x^2} + N_t
@@ -172,7 +172,7 @@ The change of variables $C = C_x + N_t K_A T$ ($K_A =  \kon / \koff  = 1/K_D $ )
 \label{eq:continuum_change_variables} 
 \end{eqnarray}
 Substituting $C_x(x) = -\frac{D_F}{\koff}\partial^2T/\partial x^2$
-makes Eqn.\ref{eq:continuum_change_variables} into a fourth-order
+makes Eqn. \ref{eq:continuum_change_variables} into a fourth-order
 ODE
 \begin{equation}
   \lambda^2 \frac{\partial^2 T}{\partial x^2} =  \frac{\partial^4
@@ -209,12 +209,12 @@ J&=& \frac{{T_0 (D_F^2/\koff) { \lambda}^3 \left(e^{L  \lambda}
      \lambda - (D_F/\koff) L  \lambda^3 - (D_F/\koff) L  \lambda^3
      e^{L  \lambda} + L \zeta  \lambda e^{L  \lambda}} 
 \end{eqnarray}
-For a non-binding particle, $C(x) = 0$, $T = T_0 x / L$, and
+The dependence on $D_B$ enters through $\lambda$. For a non-binding particle, $C(x) = 0$, $T = T_0 x / L$, and
 \begin{equation}
   J_n =-\frac{D_F T_0}{L}. 
 \end{equation}
 The selectivity $J/J_n$ is then independent of $T_0$ in
-the linear approximation.
+the linear approximation (Fig.~\ref{fig:linear-selectivity}).
 
 \subsection{Effect of bound-state diffusion constant}
 
@@ -230,19 +230,31 @@ the linear approximation.
 \label{fig:transient}
 \end{figure}
 
-When the selectivity is calculated for the full nonlinear equations, bound-state mobility is immediately obvious as the key parameter.  We were unable to create a selective material if the bound diffusion constant $D_B$ was set to zero, i.e. if the Nup-transport factor complex was immobile while bound.  In those cases, the steady-state flux of transport factor and inert protein was identical regardless of the values chosen for $\kon$ or $\koff$, giving a selectivity of $S = 1$.  The transient flux ratio did depend on binding kinetics, as shown in Fig.~\ref{fig:transient}A and B.  As would be expected, the transient flux of transport factor out of the material was suppressed relative to that of the inert protein, as a population of the transport factor filled binding sites throughout the material.  Once binding equilibrium has been established, however, the immobile population of bound transport factors cannot contribute to the flux out of the pore, and the steady-state flux of binding and non-binding proteins is identical.
+When the selectivity is calculated for the full nonlinear equations, bound-state mobility is immediately obvious as the key parameter.  We were unable to create a selective material if the bound diffusion constant $D_B$ was set to zero, i.e. if the Nup-transport factor complex was immobile while bound.  In those cases, the steady-state flux of transport factor and inert protein was identical regardless of the values chosen for $\kon$ or $\koff$, giving a selectivity of $S = 1$.  The transient flux ratio did depend on binding kinetics, as shown in Fig.~\ref{fig:transient}A and B.  As would be expected, the transient flux of transport factor out of the material was suppressed relative to that of the inert protein while a subpopulation of the transport factor filled binding sites throughout the material.  Once binding equilibrium has been established, however, the immobile population of bound transport factors cannot contribute to the flux out of the pore, and the steady-state flux of binding and non-binding proteins is identical in the absence of bound diffusion.
 
 However, when bound-state mobility is allowed and $D_B > 0$, the system's selectivity can greatly increase, as shown in Figure~\ref{fig:transient}C.  The transient response is dramatically different as well.  Now transport factor flux very rapidly outpaces that of inert protein.  It should be noted that the timescale for equilibration is similar to the dwell time observed experimentally for NTF2 in the nuclear pore, approximately 10 ms.
 
 In order to create these plots, we used the FG-filled pore length $L = 100\ \nm$
-\cite{frenkiel-krispin10, maimon12}.  Total FG Nup concentration was determined from an estimate of the number of transport factor binding sites (800), and the volume of a cylinder of diameter $60\ \nm$ and length $L$.  Finally, an estimate of the free diffusion constant of NTF2 moving within the nuclear pore was needed.  This value has not been directly measured, but it was estimated at $D_F = 0.12 \ \mu\tx{m}^2$/s using a similar value for a non-binding protein \cite{ribbeck01}.  As would be expected, this diffusion constant is smaller than that of a karyopherin in the nucleus, which has been estimated at $D_F =1 \ \mu\tx{m}^2$/s \cite{cardarelli10}.  In order to estimate the concentration gradient between nucleus and cytoplasm, we need to know the concentration of transport factor just inside the cytoplasmic side of the nuclear pore.  There will be an energy barrier to any protein entering the pore because of the entropic penalty of the Nups.  We estimate this barrier is approximately $1.5\ k_B T$ for an NTF2-sized molecule \cite{timney16}.  We estimate the cytoplasmic concentration of NTF2 is 5 $\mu$M.  Then $T_0= 5 \times e^{-1.5} \mu \tx{M} = 1 \tx{\ \mu M}$.  
+\cite{frenkiel-krispin10, maimon12}.  Total FG Nup concentration was determined from an estimate of the number of transport factor binding sites (800), and the volume of a cylinder of diameter $60\ \nm$ and length $L$.  We also need an estimate of the free diffusion constant of NTF2 moving within the nuclear pore.  This value has not been directly measured, but it was estimated at $D_F = 0.12 \ \mu\tx{m}^2$/s using a similar value for a non-binding protein \cite{ribbeck01}.  As would be expected, this diffusion constant is smaller than that of a karyopherin in the nucleus, which has been estimated at $D_F =1 \ \mu\tx{m}^2$/s \cite{cardarelli10}.  In order to estimate the concentration gradient between nucleus and cytoplasm, we need to know the concentration of transport factor just inside the cytoplasmic side of the nuclear pore.  There will be an energy barrier to any protein entering the pore because of the entropic penalty of the Nups.  We estimate this barrier is approximately $1.5\ k_B T$ for an NTF2-sized molecule \cite{timney16}.  We estimate the cytoplasmic concentration of NTF2 is 5 $\mu$M.  Then $T_0= 5 \times e^{-1.5} \mu \tx{M} = 1 \tx{\ \mu M}$.  
 
-Experimental evidence suggests that the on-rate constant of Nup-transport factor binding is diffusion-limited, with $\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15, hough15}.  The off-rate constant is given by $\koff ~=~\kon K_D$.  Measured values of the dissociation constant $K_D$ span several orders of magnitude, between approximately between 10 nM and 1 mM \cite{pyhtila03, gilchrist02, tetenbaum-novatt12-1, milles15, timney16, vovk16, hayama18}; therefore the off-rate constant is not well-determined.  Figure~\ref{fig:tethers}B and C show the bound diffusion constant and selectivity for a range of $K_D$ values spanning those measured experimentally, with a fixed, diffusion-limited on-rate.  Throughout this work, we consider a wide range of dissociation constants.
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figs/ch02/linear-selectivity.pdf}
+\caption[Selectivity in the linear approximation.]{(A, B) Selectivity as a function of diffusion coefficient
+  ratio, with varying dissociation constant, in the full nonlinear
+  model (A) or in the linear approximation (B).  (C) Selectivity as a
+  function of dissociation constant, with varying diffusion
+  coefficient ratio, in the linear approximation.  The region to the
+  left of the dotted line is non-physical; the full nonlinear solution
+  should be used there instead.}
+\label{fig:linear-selectivity}
+\end{figure}
+
+Experimental evidence suggests that the on-rate constant of Nup-transport factor binding is diffusion-limited, with $\kon = 10^{-3}\mu \tx{M}^{-1} \, \mu \tx{s}^{-1}$ \cite{milles15, hough15}.  The off-rate is given by $\koff ~=~\kon K_D$.  Measured values of the dissociation constant $K_D$ span several orders of magnitude, between approximately between 10 nM and 1 mM \cite{pyhtila03, gilchrist02, tetenbaum-novatt12-1, milles15, timney16, vovk16, hayama18}; therefore the off-rate constant is not well-determined.  Figure~\ref{fig:tethers}B and C show the bound diffusion constant and selectivity for a range of $K_D$ values spanning those measured experimentally, with a fixed, diffusion-limited on-rate.  Throughout this work, we consider a wide range of dissociation constants.
 
 \begin{table}[b]
-  \caption[Comparison between flux measurements and model predictions.]{Comparison between experimental results for NTF2 and GFP
-    (a similarly-sized non-binding protein) and model
-    predictions. Flux measured in units of molecules per pore per
+  \caption[Comparison between flux measurements and model predictions.]{Comparison between experimental results for NTF2 and GFP ( a similarly-sized non-binding protein) and model
+    predictions. Flux is measured in units of molecules per pore per
     second.}
     \label{table:NTF2-flux}
     \begin{tabular}{p{2.3cm}p{1.4cm}p{2cm}p{1.3cm}p{1.8cm}p{0.8cm}}
@@ -287,26 +299,11 @@ significantly increase transport factor concentration in the pore.  For low $K_D
 %of binding affinity \cite{bickel02}.  This result led us to consider
 %whether TFs may be mobile while bound to FG Nups.
 
-\begin{figure}
-\centering
-\includegraphics[width=\linewidth]{figs/ch02/linear-selectivity.pdf}
-\caption[Selectivity in the linear approximation.]{(A, B) Selectivity as a function of diffusion coefficient
-  ratio, with varying dissociation constant, in the full nonlinear
-  model (A) or in the linear approximation (B).  (C) Selectivity as a
-  function of dissociation constant, with varying diffusion
-  coefficient ratio, in the linear approximation.  The region to the
-  left of the dotted line is non-physical; the full nonlinear solution
-  should be used.}
-\label{fig:linear-selectivity}
-\end{figure}
-
 \subsection{Bound diffusion in the linear model}
 
 In the linear approximation described in Sec.~\ref{sec:linear}, bound diffusion plays a similar role as in the full nonlinear model.  By definition, the Nup binding sites don't saturate in the linear model.  This leads to a plateau in the selectivity at tighter binding, rather than a peak (Fig~\ref{fig:linear-selectivity}).  However, the linear model becomes non-physical for $K_D < N_t$, denoted by the dotted line in Fig.~\ref{fig:linear-selectivity}C.
 
 The role of individual parameters can be more easily investigated using the linear approximation.  Figure~\ref{fig:parameter-variations} illustrates the effect on selectivity of varying the on-rate constant, total FG Nup concentration, free diffusion constant, and pore length.  Figure~\ref{fig:parameter-variations-abs-flux} does the same for the absolute flux of transport factor through the pore.  These results show that increasing the on-rate constant or the total Nup concentration results in both higher selectivity and transport factor flux, a conclusion which is supported by the fact that these values are maximized within the nuclear pore \cite{milles15, hough15}.  However, there is a trade-off between selectivity and flux for the pore length and free diffusion constant.  Increasing pore length or decreasing free diffusion constant makes the pore more selective but lowers the absolute flux of transport factor.
-
-
 
 \begin{figure}
 \centering
@@ -320,7 +317,7 @@ The role of individual parameters can be more easily investigated using the line
 \begin{figure}
 \centering
 \includegraphics[width=0.8\linewidth]{figs/ch02/parameter-variations-abs-flux.pdf}
-\caption[Dependence of absolute flux on model parameters.]{Dependence of flux on variation of individual parameters: (A) on-rate constant, (B) total FT Nup concentration $N_t$, (C) inverse
+\caption[Dependence of absolute flux on model parameters.]{Dependence of flux on variation of individual parameters: (A) on-rate constant, (B) total FG Nup concentration $N_t$, (C) inverse
   of the free diffusion coefficient, and (D) pore length, with varying
   dissociation constant. All values calculated using the linear solution to the binding-diffusion equations. Bound diffusion coefficient is $D_B = 0.1D_F$. Other parameters fixed at values described in the text.}
 \label{fig:parameter-variations-abs-flux}
@@ -337,7 +334,7 @@ One possible mechanism of bound-state diffusion within the nuclear pore is tethe
 
 Flexible polymers behave as entropic springs \cite{howard01} if they are not highly stretched. Therefore, a bound transport factor diffuses while attached to a spring-like tether, which can be represented as diffusion in a harmonic potential well (Fig.~\ref{fig:tethers}A).  The width of the harmonic well is related to the length of the flexible domain.  The effective length is the full FG Nup length if the FG Nups are not crosslinked, while the effective length is reduced if they are crosslinked or entangled \cite{ribbeck01}.  
 
-In order to calculate the bound diffusion coefficient of the transport factors, an averaging procedure is followed.  The diffusion is assumed to be Fickian, which is a reasonably good though not perfect assumption. (See discussion in Sec.~\ref{sec:fickian}.)  In the Fickian diffusion case, the diffusion coefficient is proportional to a mean-squared displacement (MSD) divided by time.  We calculate the mean binding lifetime $\tau$ and the MSD corresponding to this ``typical'' binding event of duration $\tau$ and divide them.
+In order to calculate the bound diffusion coefficient of the transport factors, an averaging procedure is followed.  The diffusion is assumed to be Fickian, which is a reasonably good though not perfect assumption. (See discussion in Sec.~\ref{sec:fickian}.)  In the Fickian diffusion case, the diffusion coefficient is proportional to mean-squared displacement (MSD) divided by time.  We calculate the mean binding lifetime $\tau$ and the MSD corresponding to this ``typical'' binding event of duration $\tau$ and divide them.
 
 To begin, note that the duration of a binding event follows the exponential distribution 
 \begin{equation}
@@ -352,7 +349,7 @@ P(x,t) &=& e^{-\frac{x^2}{2 \alpha(t)}}/\sqrt{2\pi \alpha(t)}\,,\\
 \end{eqnarray}
  where $k$ is the spring constant of the FG Nup tether and $1/\beta = k_BT$ is the thermal energy \cite{doi88}.  The center of the well is set at $x=0$.
 
-The mean-squared displacement (MSD) of the transport factor as a function of time is calculated, as any expected value, with the integral
+The MSD of the transport factor as a function of time is calculated, as any expected value, with the integral
 \begin{equation}
 \ev{x^2(t)} = \int_{-\infty}^{\infty} P(x,t) x^2 dx = \alpha(t)\,.
 \end{equation}
@@ -370,24 +367,24 @@ Combining these results, the one-dimensional bound diffusion coefficient is
     k_\un{off}}{L_c \ell_p k_\un{off} + 3D_F} =
   \frac{D_F}{1+3\frac{D_F}{D_{P}}}.  
 \end{equation}
-Here $D_P = L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the transport factor by the tether and greater bound mobility. Bound mobility increases with increasing chain length and persistence length, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long chains barely affect transport factor motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), transport factor motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  
+Here $D_P \equiv L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the transport factor by the tether and greater bound mobility. Bound mobility increases with increasing chain length and persistence length, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long chains barely affect transport factor motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), transport factor motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{figs/ch02/fig3.pdf}
 \caption[Selectivity from tethered diffusion.]{(A) Schematic of the flexible tether model of bound-state
   diffusion. FG Nups are treated as entropic springs that constrain
-  the motion of transport factors more (top and center left, longer FG Nup) or less
-  (top and center right, shorter Nup), which corresponds to changing
-  width of the harmonic potential well (lower).  (B) Ratio of bound to
+  the motion of transport factors to a greater (top and center left, longer Nup) or lesser
+  (top and center right, shorter Nup) extent, which corresponds to changing
+  the width of the harmonic potential well (lower).  (B) Ratio of bound to
   free diffusion coefficient as a function of dissociation constant,
-  with varying polymer length in the tethered-diffusion model.  (C)
-  Selectivity as a function of $K_D$, with varying polymer length in
+  with varying polymer length, in the tethered-diffusion model.  (C)
+  Selectivity as a function of $K_D$, with varying polymer length, in
   the tethered-diffusion model.  Selectivity calculated by Mike Stefferson.}
 \label{fig:tethers}
 \end{figure}
 
-Physiological values can be estimated for all of the relevant parameters.  Disordered proteins are relatively flexible, with persistence lengths around $\ell_p \approx 1$ nm \cite{receveur-brechot12}.  The contour lengths of the disordered regions of FG Nups are in the range $L_c\approx$ 100--280 nm (250--700 amino acids long \cite{patel07} with a contour length of $\approx 0.4$ nm per amino acid ).
+Physiological values can be estimated for all of the relevant parameters.  Disordered proteins are relatively flexible, with persistence lengths around $\ell_p \approx 1$ nm \cite{receveur-brechot12}.  The contour lengths of the disordered regions of FG Nups are in the range $L_c\approx$ 100--280 nm (250--700 amino acids long \cite{patel07} with a contour length of approximately 0.4 nm per amino acid).
 
 Using these parameters, along with those described in earlier sections, Mike Stefferson calculated the selectivity due to tethered diffusion for several tether lengths (Fig.~\ref{fig:tethers}C).  Selectivity was also calculated for two values of the total Nup concentration $N_t$, mimicking the possible effect of Nup crosslinking within the pore (Fig~\ref{fig:chainComparison}).  The product of contour length and Nup concentration $L_cN_t$ was held constant, and selectivity was calculated for a long Nup length of 100 nm as well as a shorter length of 25 nm, reflecting the possibility of crosslinking.  Corresponding total Nup concentrations of 4.7 and 18.8 nm, respectively, were determined from an estimate of the number of transport factor binding sites ($800$), and the volume of a cylinder of diameter $60\ \nm$ and length $L = 100$ nm. 
 
@@ -404,9 +401,7 @@ Using these parameters, along with those described in earlier sections, Mike Ste
 \subsection{Bound mobility through inter-chain hopping}
 \label{sec:hopping}
 
-Another possible mechanism of bound-state diffusion is inter-chain hopping enabled by multivalent binding interactions.  All known transport factors have at least two hydrophobic binding pockets which bind to FG motifs, and some have many more \cite{wagner15}.  FG Nups in turn each possess many FG motifs, leading to a highly multivalent binding interaction.  This feature allows a transport factor to bind to multiple Nups at once, moving between them with a hand-over-hand or sliding motion without ever fully unbinding \cite{raveh16, tetenbaum-novatt12}.  While binding to multiple FG motifs on the same Nup will not lead to bound diffusion, inter-chain hopping will cause the origin site of tethered transport factor diffusion to change over time.  In order to understand the effect of hopping on the overall bound diffusion constant, we model a transport factor that undergoes tethered diffusion when bound to an FG Nup and hops between neighboring, randomly distributed tethers (Fig.~\ref{fig:hopping}).
-
-
+Another possible mechanism of bound-state diffusion is inter-chain hopping enabled by multivalent binding interactions.  All known transport factors have at least two hydrophobic binding pockets which bind to FG motifs, and some have many more \cite{wagner15}.  FG Nups in turn each possess many FG motifs, leading to a highly multivalent binding interaction.  This feature allows a transport factor to bind to multiple Nups at once, moving between them with a hand-over-hand or sliding motion without ever fully unbinding \cite{raveh16, tetenbaum-novatt12}.  While binding to multiple FG motifs on the same Nup will not lead to bound diffusion, inter-chain hopping will cause the origin site of tethered transport factor diffusion to move with time.  In order to understand the effect of hopping on the overall bound diffusion constant, we model a transport factor that undergoes tethered diffusion when bound to an FG Nup and hops between neighboring, randomly distributed tethers (Fig.~\ref{fig:hopping}).
 
 In our simulation of transport factor motion with hopping between FG Nups while bound, we represented each FG Nup as an entropic spring (i.e. as a harmonic potential well).  Well positions were randomly chosen from a uniform distribution, with the exception that we always placed one well at the starting position of the transport factor.  The transport factor started the simulation bound to this FG Nup, and remained bound throughout the simulation.  While bound to one FG Nup, the transport factor diffused within the harmonic well representing that FG Nup. We recorded the position and mean-squared displacement of the transport factor from its starting location, which we then used to determine a bound diffusion coefficient, as described in more detail below.  The transport factor could hop between tethers by changing which well it moved in.
 
@@ -431,7 +426,7 @@ where $F$ is the force acting on the transport factor, $\Gamma$ is the drag coef
 \Gamma= \frac{k_B T}{D}\,.
 \end{equation}
  
-The force $F = -k\Delta x$, where $k$ is the spring constant of the FG Nup and $\Delta x$ is the displacement of the transport factor from the Nup attachment point.  We model the FG Nup as a worm-like-chain at small extension, so that $k = 3 k_B T/(2\ell_pL_c)$, where $\ell_p$ is the tether persistence length and $L_c$ is the contour length.  Then 
+The force is $F = -k\Delta x$, where $k$ is the spring constant of the FG Nup and $\Delta x$ is the displacement of the transport factor from the Nup attachment point.  We model the FG Nup as a worm-like-chain at small extension, so that $k = 3 k_B T/(2\ell_pL_c)$, where $\ell_p$ is the tether persistence length and $L_c$ is the contour length.  Then 
 \begin{equation}
   x(t+\delta t) = x(t) - \frac{3 D \Delta x \delta t}{2\ell_p L_c }+
   \delta x = x(t) - D K \Delta x \delta t+ \delta x\,,
@@ -464,13 +459,11 @@ We ran each simulation for $10^7$ time steps with $\delta t = 0.01$ $\mu$s, and 
 \rho_\tx{MSD} (t)= \ev{x^2(t)} \rho(\koff,t) = \koff \ev{x^2(t)}
 e^{-\koff t}, 
 \end{equation}
-as shown in Fig.~\ref{fig:integrand}B and numerically integrated the distribution in time. We determined the bound diffusion coefficient from the typical MSD-per-binding-event $\overline{\ev{x^2}}$ using
+as shown in Fig.~\ref{fig:integrand}B and numerically integrated the distribution over all times $t > 0$. We determined the bound diffusion coefficient from the typical MSD-per-binding-event $\overline{\ev{x^2}}$ using
 \begin{equation}
 D_B = \frac{\koff \overline{\ev{x^2}}}{2}. 
 \end{equation}   
 Here, the factor of $1/2$ is appropriate because we consider a one-dimensional random walk.
-
-
 
 \subsubsection{Bound diffusion and selectivity from hopping simulation}
 
@@ -478,7 +471,7 @@ Upon calculating the bound diffusion constant using the hopping simulation descr
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{figs/ch02/hopping_lc4-fig.pdf}
+\includegraphics[width=0.7\linewidth]{figs/ch02/all_hopping_results.pdf}
 \caption[Effect of Nup contour length and hopping rate on selectivity.]{Bound diffusion and selectivity as a function of dissociation
   constant, with varying hopping rate for FG Nups with (A,B) $L_c = 4$ nm; (C,D) $L_c = 12$ nm; (E,F) $L_c = 40$ nm; (G,H) $L_c = 120$ nm.}
 \label{fig:hop-results}
@@ -506,7 +499,7 @@ Throughout this analysis, we have assumed that all proteins are experiencing Fic
 
 In order to quantify the extent of anomalous diffusion, we ran a modified version of the hopping simulation described in Sec.~\ref{sec:hopping} in which the transport factor was not solely limited to hopping but also able to entirely unbind from and rebind to Nups with rates $\koff$ and $\kon$ respectively.   The resulting MSD $\langle x^2(t) \rangle$ can then be used to investigate anomalous diffusion.  Figure~\ref{fig:anomalous-diffusion} is a log-log plot of $\langle x^2(t) \rangle/t$ vs time $t$, generated using a script created by Mike Stefferson \cite{stefferson18}.  In such a plot, a horizontal asymptote indicates Fickian diffusion, while a non-zero slope $m$ indicates anomalous diffusion with $m = \alpha -1$.
 
-Figure~\ref{fig:anomalous-diffusion} shows several hopping rates.  When the transport factor is not able to hop between Nups, diffusion remains anomalous until well past the binding lifetime $1/\koff$ (not shown).  Larger hopping rates cause diffusion to become Fickian over shorter timescales.  The hopping lifetime $1/k_\mathrm{hop}$ is shown for each nonzero hopping rate, as well as the binding lifetime ($\koff = 10^{-4}$ $\mu$s in all cases).  The time to explore the potential well caused by binding to Nups is also shown.  The vertical line marks the experimentally-measured time for NTF2 to pass through the nuclear pore, $t_\mathrm{NTF2} = 10$ ms.
+Figure~\ref{fig:anomalous-diffusion} shows several hopping rates.  When the transport factor is not able to hop between Nups, diffusion remains anomalous until well past the binding lifetime $1/\koff$ (not shown).  Larger hopping rates cause diffusion to become Fickian over shorter timescales.  The hopping lifetime $1/k_\mathrm{hop}$ is shown for each nonzero hopping rate, as well as the binding lifetime ($\koff = 10^{-4}$ $\mu$s$^{-1}$ in all cases).  The time to explore the potential well caused by binding to Nups is also shown.  The vertical line marks the experimentally-measured time for NTF2 to pass through the nuclear pore, $t_\mathrm{NTF2} = 10$ ms.
 
 The anomalous diffusion plot indicates that the diffusion of transport factors is not entirely Fickian, but that shorter binding lifetimes and higher hopping rates lead to less anomalous diffusion.  Most hopping rates used in the simulation are high enough that diffusion is Fickian over the timescale of NTF2 transport.
 
@@ -604,7 +597,7 @@ The anomalous diffusion plot indicates that the diffusion of transport factors i
 
 While the above model was inspired by nuclear transport, it is sufficiently general that it can be applied to other biological systems as well, as described in more detail in Chapter~\ref{ch01_introduction}.  A variety of selective filters exist \textit{in vivo}, and bound-state diffusion could be relevant to many of them.  Our model predicts that higher bound diffusion will lead to higher selectivity in biofilters.  
 
-Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing bound-to-free diffusion ratio ($D_B/D_F$).  Mucus, such as the mucus which lines the lungs, permits very little bound diffusion of particles that bind to it.  Research in targeted drug delivery to lung cells has observed that inert nanoparticles may be more effective at penetrating the mucus barrier than binding particles \cite{witten17}.  This observation agrees with the prediction that binding will only enhance transport if bound diffusion occurs.   On the other hand, Fig~\ref{fig:other-filters}C depicts a system with maximal bound-state diffusion: a phase-separated liquid droplet.  Such a droplet, consisting of a phase rich in an intrinsically disordered protein, may be used in order to concentrate binding partners and speed up reactions within the cell \cite{brangwynne15, feric16}.  In this case, complexes of IDPs and their binding partners would have approximately the same diffusion constant as free binding partners ($D_B/D_F \approx 1$), leading to high selectivity for binding partners to pass to the center of the droplet.
+Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing bound-to-free diffusion ratio ($D_B/D_F$).  Mucus, such as the mucus which lines the lungs, permits very little bound diffusion of particles that bind to it.  Research in targeted drug delivery to lung cells has observed that inert nanoparticles may be more effective at penetrating the mucus barrier than binding particles \cite{witten17}.  This observation agrees with the prediction that binding will only enhance transport if bound diffusion occurs.   On the other hand, Fig~\ref{fig:other-filters}C depicts a system with maximal bound-state diffusion: a phase-separated liquid droplet.  Such a droplet, consisting of a phase rich in an intrinsically disordered protein, may be used in order to concentrate binding partners and speed up reactions within the cell \cite{brangwynne15, feric16}.  In this case, complexes of intrinsically disordered proteins and their binding partners would have approximately the same diffusion constant as free binding partners ($D_B/D_F \approx 1$), leading to high selectivity for binding partners to pass to the center of the droplet.
 
 \begin{figure}
 \centering
@@ -617,8 +610,8 @@ Systems other than filters may make use of principles found in our model as well
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/ch02/PARP1.pdf}
-\caption[Possible bound-diffusion mechanisms of PARP1.]{PARP1 and its possible mechanisms of bound diffusion. (A) Schematic of PARP1 structure showing its four DNA-binding domains \cite{rudolph18}. (B) ``Monkey-bar'' inter-strand hopping mechanism cartoon and reaction showing on- and off- rates for binding two subsequent DNA strands \cite{rudolph18}.  (C) Flexible tether structure of chromatin within the nucleus.  (Image from Florida State University.)}
+\includegraphics[width=0.8\linewidth]{figs/ch02/PARP1.pdf}
+\caption[Possible bound-diffusion mechanisms of PARP1.]{PARP1 and its possible mechanisms of bound diffusion. (A) Schematic of PARP1 structure showing its four DNA-binding domains \cite{rudolph18}. (B) ``Monkey-bar'' inter-strand hopping mechanism cartoon and reaction showing on- and off- rates for binding a second strand of DNA and subsequently releasing the first \cite{rudolph18}.  (C) Mean-squared displacement of a nucleosome bound to chromatin, corresponding to a spring constant on the order of $10^{-4}$ pN/nm.  Figure adapted from \cite{nozaki17}.}
 \label{fig:parp1}
 \end{figure}
 
@@ -633,12 +626,12 @@ Poly(ADP-ribose) polymerase 1 (PARP1) is a protein  which assists in DNA damage 
     \begin{tabular}{p{5cm}p{3cm}p{2.7cm}p{5.4cm}}
       Parameter & Lower estimate & Upper estimate  & Notes\\
       \hline
-	On-rate constant $\kon$ & $10^9$ M$^{-1}$ s$^{-1}$  & ---  & \cite{rudolph18}\\ \hline
+	On-rate constant $\kon$ & $10^9$ M$^{-1}$ s$^{-1}$  & ---  &Diffusion limit, \cite{rudolph18}\\ \hline
 On-rate constant for binding 2nd strand $k_{on,2}$ & $0.043 \times 10^{-9}$ nM$^{-1}$ s$^{-1}$  & ---  & \cite{rudolph18}\\ \hline
 	Off-rate constant, $\koff$, damaged DNA & --- & 10 s$^{-1}$  & Upper bound, \cite{rudolph18} \\ \hline
 	Off-rate constant, $\koff$, intact DNA & $10^3$ s$^{-1}$ & ---  & Calculated from  $K_D$ measurements, Johannes Rudolph.\\ \hline
 	Intact DNA binding site concentration $N_t$ & 100 $\mu$M & 10 mM & Varies depending on how unique binding sites are counted.\\ \hline
-	Chromatin spring constant $k$ & 0.025 pN/nm & 0.65 pN/nm  & \cite{kruithof09, norouzi18}\\ \hline
+	Chromatin spring constant $k$ & $5\times10^{-4}$ pN/nm & 0.65 pN/nm  & \cite{nozaki17, norouzi18}\\ \hline
 	PARP1 size $R$ & 5 nm & ---  & PDB 1UK1 structure\\ \hline
 	Bound diffusion constant $D_B$ & 3 $\mu$m$^2$/s & ---  & \cite{mahadevan18}\\ \hline
 	Free diffusion constant $D_F$ & --- & 30 $\mu$m$^2$/s  & Upper bound based on diffusion in buffer, Johannes Rudolph.\\
@@ -648,21 +641,24 @@ On-rate constant for binding 2nd strand $k_{on,2}$ & $0.043 \times 10^{-9}$ nM$^
 
 The mechanisms of PARP1's bound diffusion may be similar to those used by the nuclear pore.  First, PARP1 binds DNA multivalently.  It possesses four DNA binding domains, though some may work in tandem (Fig.~\ref{fig:parp1}A).  PARP1 binds to nonspecific DNA sequences, meaning that a strand of DNA also has many binding sites along its length, reminiscent of the numerous FG motifs of Nups.  The high degree of multivalency suggests that inter-strand hopping may be important to PARP1 bound diffusion, as transport factor hopping may be to nuclear transport.  In fact, Johannes Rudolph, Jyothi Mahadevan, and Karolin Luger have recently demonstrated the existence of a multivalent ``monkey-bar'' mechanism equivalent to inter-chain hopping between DNA strands \cite{rudolph18}.  However, disruption of this mechanism reduces PARP1 diffusion only twofold, suggesting that there are more methods of bound diffusion available to PARP1 \cite{mahadevan18}.
 
-
-
-First, we investigated whether the already-identified ``monkey bar'' hopping mechanism could produce bound diffusion in agreement with experimental measurements.   Analytic models of hopping are complicated and difficult to apply to PARP1\cite{yang18}, but a highly-simplified model can be used to estimate the maximum expected contribution to bound diffusion from hopping.   Using the reaction scheme described in Fig.~\ref{fig:parp1}B, assume PARP1 takes a ``step'' of its own size whenever a second strand of DNA binds.  The bound diffusion constant would then be on the order of $$D_B \sim R^2 k_{on,2} N_t$$ where $R$ is the size of PARP1 and $k_{on,2}$ is the on-rate constant for binding a second strand of DNA.  Using the parameters given in Table~\ref{table:parp1}, we have $D_B \approx 10\ \mu\mathrm{m}^2/\mathrm{s}$.  This is a naive calculation of the upper limit on the bound diffusion constant that we could expect from inter-strand hopping.  This calculation is of the same order of magnitude as the observed diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$, suggesting that hopping can indeed produce the diffusion seen in the nucleus.
+First, we investigated whether the already-identified ``monkey bar'' hopping mechanism could produce bound diffusion in agreement with experimental measurements.   Analytic models of hopping are complicated and difficult to apply to PARP1 \cite{yang18}, but a highly-simplified model can be used to estimate the maximum expected contribution to bound diffusion from hopping.   Using the reaction scheme described in Fig.~\ref{fig:parp1}B, assume PARP1 takes a ``step'' of its own size whenever a second strand of DNA binds.  The bound diffusion constant would then be on the order of $$D_B \sim R^2 k_{on,2} N_t$$ where $R$ is the size of PARP1 and $k_{on,2}$ is the on-rate constant for binding a second strand of DNA.  Using the parameters given in Table~\ref{table:parp1}, we have $D_B \approx 10\ \mu\mathrm{m}^2/\mathrm{s}$.  This is a naive calculation of the upper limit on the bound diffusion constant that we could expect from inter-strand hopping.  This calculation is of the same order of magnitude as the observed diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$, suggesting that hopping can indeed produce the diffusion seen in the nucleus.
 
 %However, given the high concentration of chromatin in the nucleus, the upper bound on bound-state diffusion from hopping can be estimated assuming that there is always a second strand of DNA ``within reach'' of PARP1, i.e. that the binding-site number density is $\rho \approx $ 1 molecule/(5 nm)$^3$.  This assumption leads to a DNA concentration of 13 mM and a bound diffusion constant of $D_B \approx  100\ \mu$m$^2$/s.
 
-
-
-Next, we examined the feasibility of an additional possible mechanism of bound-state diffusion: tethered diffusion from the thermal motion of chromatin.  Several studies suggest that chromatin is flexible and dynamic, with nucleosomes moving 50 nm over 30 ms in mammalian cells \cite{nozaki17, maeshima16, hihara12,nozaki13}.  It's therefore reasonable to treat chromatin as a flexible entropic spring and apply our model of tethered diffusion.  Chromatin's spring constant $k$ in vitro has been measured with low-force single-molecule force spectroscopy (Table~\ref{table:parp1}).  Using our model of tethered diffusion (Eqn.~\ref{eq:dbound}) along with worm-like chain spring constant equation $k = 3 k_B T/(2\ell_pL_c)$, the predicted off-rate needed in order to produce a given value of bound diffusion $D_B$ is
-
+Next, we examined the feasibility of an additional possible mechanism of bound-state diffusion: tethered diffusion from the thermal motion of chromatin.  Several studies suggest that chromatin is flexible and dynamic, with nucleosomes moving 50 nm over 30 ms in mammalian cells \cite{nozaki17, maeshima16, hihara12,nozaki13}.  A representative MSD plot is shown in Fig.~\ref{fig:parp1}C.  Treating the nucleosome as a particle bound irreversibly to a flexible tether, the MSD shown corresponds to a chromatin spring constant of approximately $5\times 10^{-4}$ pN/nm.  This data can be combined with the values given in Table~\ref{table:parp1} to give a predicted bound diffusion constant  using the tethered-diffusion equation identified earlier in this chapter:
 \begin{equation}
-\koff = \left(\frac{2kD_F}{k_BT}\right)\left(\frac{D_F}{D_B}-1\right)^{-1}
+D_B = \frac{D_F}{1+\frac{2D_Fk}{k_BT\koff}}
 \end{equation}
 
-where the thermal energy is $k_BT \approx 4.1$ pN nm at room temperature.  Using the range of values given in Table~\ref{table:parp1}, we predict that an off-rate constant $\koff$ between $4\times10^3$ s$^{-1}$ and $1\times 10^5$ s$^{-1}$ could give rise to the observed bound diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$. This range is rather higher than Johannes Rudolph's calculation of the off-rate for intact DNA ($\sim 10^3$ s$^{-1}$) but not inconsistent with it.
+%It's therefore reasonable to treat chromatin as a flexible entropic spring and apply our model of tethered diffusion.  Chromatin's spring constant $k$ \textit{in vitro} has been measured with low-force single-molecule force spectroscopy (Table~\ref{table:parp1}).  Using our model of tethered diffusion (Eqn.~\ref{eq:dbound}) along with worm-like chain spring constant equation $k = 3 k_B T/(2\ell_pL_c)$, the predicted off-rate needed in order to produce a given value of bound diffusion $D_B$ is
+%
+%\begin{equation}
+%\koff = \left(\frac{2kD_F}{k_BT}\right)\left(\frac{D_F}{D_B}-1\right)^{-1}
+%\end{equation}
+
+where the thermal energy is $k_BT \approx 4.1$ pN nm at room temperature.  The predicted bound diffusion constant is 3.6 $\mu$m$^2$/s, which is consistent with the experimentally-observed value of $\sim 3\ \mu$m$^2$/s \cite{mahadevan18}.
+
+%Using the range of values given in Table~\ref{table:parp1}, we predict that an off-rate constant $\koff$ between $4\times10^3$ s$^{-1}$ and $1\times 10^5$ s$^{-1}$ could give rise to the observed bound diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$. This range is rather higher than Johannes Rudolph's calculation of the off-rate for intact DNA ($\sim 10^3$ s$^{-1}$) but not inconsistent with it.
 
 
 %Our treatment of chromatin as a dynamic and flexible entropic spring is supported by measurements of nucleosomes moving 50 nm over 30 ms in mammalian cells, implying a ``diffusion constant'' on the order of 0.1 $\mu$m$^2$/s, although histones are tightly bound to DNA and will therefore undergo strongly anomalous diffusion \cite{nozaki17,maeshima16,hihara12,nozaki13}.
@@ -680,8 +676,8 @@ where the thermal energy is $k_BT \approx 4.1$ pN nm at room temperature.  Using
 
 %Johannes Rudolph has observed a diffusion-limited on-rate of $\kon = 10^{9}\ \mathrm{M}^{-1}\ \mathrm{s}^{-1}$ for binding of PARP1 to DNA and a total binding site concentration of up to 1 mM.    Finally, measurements of PARP1 diffusion in the nucleus and in buffer give $D_\mathrm{obs} \approx 3\ \mu\mathrm{m/s}^2$ and an upper bound of $D_F = 9D\mathrm{obs}$ \cite{mahadevan18}.  Using these parameters, we predict that an off-rate between $1.2\times 10^2$ and $1.2\times 10^3\ \mathrm{s}^{-1}$ would account for the observed diffusion.  Recent measurements in the Luger lab show a dissociation constant of $K_D \approx 1$ $\mu$M for the binding of PARP1 to DNA, which gives $\koff = 10^3$ s$^-1$ if the on-rate is diffusion-limited.  The off-rate constant predicted by the tethered diffusion model is consistent with this calculated off-rate from intact DNA.
 
-Using these order-of-magnitude calculations, either tethered diffusion or hopping could provide enough bound-state mobility to explain the rapid diffusion of PARP1 to sites of DNA damage within the nucleus.  It may be thanks to either tethered diffusion or additional hopping that PARP1 retains significant mobility even when its ``monkey-bar'' hopping mechanism is removed.  Future work will attempt to experimentally test for the presence of tethered diffusion.
+Using these order-of-magnitude calculations, either tethered diffusion or hopping could provide enough bound-state mobility to explain the rapid diffusion of PARP1 to sites of DNA damage within the nucleus.  It may be thanks to either tethered diffusion or additional hopping that PARP1 retains significant mobility even when its ``monkey-bar'' hopping mechanism is removed.  It would be interesting to experimentally test for the presence of tethered diffusion.
 
 \section{Conclusions}
 
-In the above chapter, we have developed a simple model of selective nuclear transport which may apply more broadly to other biofilters as well.  Surprisingly, this simple model can reproduce the high selectivity of the nuclear pore for proteins which can bind to the filter.  The diffusion coefficient of the bound complex proved to be the most important factor in predicting selectivity.  In order to test the predictions of our model, we next began developing nuclear-pore-inspired biofilters to investigate the effect of bound-state diffusion on protein separation \textit{in vitro}.
+In the above chapter, we have developed a simple model of selective nuclear transport which may apply more broadly to other biofilters as well.  Surprisingly, this simple model can reproduce the high selectivity of the nuclear pore.  The diffusion coefficient of the bound complex proved to be the most important factor in predicting selectivity.  In order to test the predictions of our model, we next began developing nuclear-pore-inspired biofilters to investigate the effect of bound-state diffusion on protein separation \textit{in vitro}.

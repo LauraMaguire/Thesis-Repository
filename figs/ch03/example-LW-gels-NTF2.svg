@@ -28,13 +28,14 @@
      inkscape:window-height="683"
      id="namedview4524"
      showgrid="false"
-     inkscape:zoom="0.46086794"
-     inkscape:cx="529.44174"
-     inkscape:cy="786.55938"
+     inkscape:zoom="0.92423468"
+     inkscape:cx="373.45356"
+     inkscape:cy="876.24505"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg13691" />
+     inkscape:current-layer="svg13691"
+     showguides="false" />
   <defs
      id="defs13693">
     <defs
@@ -82,31 +83,27 @@
        x="0" />
   </g>
   <g
-     id="g13829"
-     transform="matrix(0.7826087,0,0,0.7826087,552.40706,-30.329132)">
-    <g
-       transform="translate(34.778635,52.862207)"
-       style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#0072bd;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
-       id="g13774">
-      <line
-         y2="72.5"
-         style="fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-         x1="114.5"
-         x2="178"
-         y1="72.5"
-         id="line13776" />
-    </g>
-    <text
-       sodipodi:linespacing="100%"
-       id="text13825"
-       y="145.64053"
-       x="154.02887"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;line-height:100%;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="145.64053"
-         x="154.02887"
-         id="tspan13827">100 μm</tspan></text>
+     id="g13774"
+     style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#0072bd;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+     transform="matrix(0.7826087,0,0,0.7826087,579.62512,11.041291)">
+    <line
+       id="line13776"
+       y1="72.5"
+       x2="178"
+       x1="114.5"
+       style="fill:none;stroke:#000000;stroke-width:10;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       y2="72.5" />
   </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.69565201px;line-height:100%;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="672.95142"
+     y="83.650414"
+     id="text13825"
+     sodipodi:linespacing="100%"><tspan
+       id="tspan13827"
+       x="672.95142"
+       y="83.650414">100 μm</tspan></text>
   <image
      y="45.074284"
      x="7.7873383"
@@ -137,4 +134,26 @@
        id="tspan198302"
        x="334.68091"
        y="69.302963">B</tspan></text>
+  <g
+     id="g5241"
+     style="font-style:normal;font-weight:normal;font-size:medium;font-family:Dialog;color-interpolation:linearRGB;fill:#0072bd;fill-opacity:1;stroke:#000000;stroke-width:12.47062683;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
+     transform="matrix(0.62546975,0,0,0.62546975,96.934779,221.63678)">
+    <line
+       id="line5243"
+       y1="122.5"
+       x2="291.08231"
+       x1="164.5"
+       style="fill:none;stroke:#000000;stroke-width:12.47062683;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+       y2="122.5" />
+  </g>
+  <text
+     sodipodi:linespacing="100%"
+     id="text5310"
+     y="314.81628"
+     x="218.80829"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.69565201px;line-height:100%;font-family:'Minion Pro';-inkscape-font-specification:'Minion Pro, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     xml:space="preserve"><tspan
+       y="314.81628"
+       x="218.80829"
+       id="tspan5312">200 μm</tspan></text>
 </svg>
