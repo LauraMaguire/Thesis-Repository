@@ -237,7 +237,7 @@ However, when bound-state mobility is allowed and $D_B > 0$, the system's select
 In order to create these plots, we used the FG-filled pore length $L = 100\ \nm$
 \cite{frenkiel-krispin10, maimon12}.  Total FG Nup concentration was determined from an estimate of the number of transport factor binding sites (800), and the volume of a cylinder of diameter $60\ \nm$ and length $L$.  We also need an estimate of the free diffusion constant of NTF2 moving within the nuclear pore.  This value has not been directly measured, but it was estimated at $D_F = 0.12 \ \mu\tx{m}^2$/s using a similar value for a non-binding protein \cite{ribbeck01}.  As would be expected, this diffusion constant is smaller than that of a karyopherin in the nucleus, which has been estimated at $D_F =1 \ \mu\tx{m}^2$/s \cite{cardarelli10}.  In order to estimate the concentration gradient between nucleus and cytoplasm, we need to know the concentration of transport factor just inside the cytoplasmic side of the nuclear pore.  There will be an energy barrier to any protein entering the pore because of the entropic penalty of the Nups.  We estimate this barrier is approximately $1.5\ k_B T$ for an NTF2-sized molecule \cite{timney16}.  We estimate the cytoplasmic concentration of NTF2 is 5 $\mu$M.  Then $T_0= 5 \times e^{-1.5} \mu \tx{M} = 1 \tx{\ \mu M}$.  
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=\linewidth]{figs/ch02/linear-selectivity.pdf}
 \caption[Selectivity in the linear approximation.]{(A, B) Selectivity as a function of diffusion coefficient
@@ -305,7 +305,7 @@ In the linear approximation described in Sec.~\ref{sec:linear}, bound diffusion 
 
 The role of individual parameters can be more easily investigated using the linear approximation.  Figure~\ref{fig:parameter-variations} illustrates the effect on selectivity of varying the on-rate constant, total FG Nup concentration, free diffusion constant, and pore length.  Figure~\ref{fig:parameter-variations-abs-flux} does the same for the absolute flux of transport factor through the pore.  These results show that increasing the on-rate constant or the total Nup concentration results in both higher selectivity and transport factor flux, a conclusion which is supported by the fact that these values are maximized within the nuclear pore \cite{milles15, hough15}.  However, there is a trade-off between selectivity and flux for the pore length and free diffusion constant.  Increasing pore length or decreasing free diffusion constant makes the pore more selective but lowers the absolute flux of transport factor.
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.8\linewidth]{figs/ch02/parameter-variations.pdf}
 \caption[Dependence of selectivity on model parameters.]{Dependence of selectivity on variation of individual
@@ -314,7 +314,7 @@ The role of individual parameters can be more easily investigated using the line
 \label{fig:parameter-variations}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.8\linewidth]{figs/ch02/parameter-variations-abs-flux.pdf}
 \caption[Dependence of absolute flux on model parameters.]{Dependence of flux on variation of individual parameters: (A) on-rate constant, (B) total FG Nup concentration $N_t$, (C) inverse
@@ -369,7 +369,7 @@ Combining these results, the one-dimensional bound diffusion coefficient is
 \end{equation}
 Here $D_P \equiv L_c \ell_p k_\un{off}$ controls the bound-state diffusion coefficient: higher $D_P$ corresponds to a lower constraint of the transport factor by the tether and greater bound mobility. Bound mobility increases with increasing chain length and persistence length, or decreasing binding lifetime. When $D_P$ is large ($D_F/D_P\ll1$), $D_B$ approaches $D_F$, since the long chains barely affect transport factor motion during the short binding event. For small $D_P$ ($D_F/D_P\gg1$), transport factor motion is inhibited by a short tether, giving $D_B\approx D_P/3\ll D_F$.  
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=\textwidth]{figs/ch02/fig3.pdf}
 \caption[Selectivity from tethered diffusion.]{(A) Schematic of the flexible tether model of bound-state
@@ -407,7 +407,7 @@ In our simulation of transport factor motion with hopping between FG Nups while 
 
 The source code of the hopping simulation is available at \url{https://github.com/LauraMaguire/hoppingSim}.
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width = \textwidth]{figs/ch02/fig4.pdf}
 \caption[Selectivity from inter-chain hopping.]{(A) Schematic of the inter-chain hopping model of bound-state diffusion. FG Nups are treated as entropic springs that constrain the motion of transport factors, and inter-chain hopping allows a transport factor to move from one FG Nup (top and center left, green Nup) to another (top and center right, red Nup) without unbinding, which corresponds to switching from one harmonic potential well to another (lower). (B) Ratio of bound to free diffusion coefficient as a function of dissociation constant, with varying hopping rate in the inter-chain hopping model.  (C) Selectivity as a function of $K_D$ with varying hopping rate. FG Nup contour length $L_c = 40$ nm in (B, C). }
@@ -446,7 +446,7 @@ Here the base hopping rate $r_\tx{hop}$ is a dimensionless input parameter, and 
 \end{equation}
 where $K$ is the normalized spring constant, $x$ is the particle's current position, $x_\tx{cur}$ is the anchor location of the Nup to which the particle is currently bound, and $x_\tx{new}$ is the anchor location of the proposed new Nup. Note that when a hop succeeds, the energy landscape changes to that of the new Nup, but the transport factor's position does not change during the hop.  There is no upper bound on $\Phop$, but we adjusted the timestep to ensure that $\Phop$ was greater than
 unity no more than 0.5\% of the time that a hop was attempted.
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.7\linewidth]{figs/ch02/integrand-example-plots.pdf}
 \caption[Mean-squared displacement in the hopping simulation.]{(A) Examples of mean-squared displacement (MSD) of a simulated transport factor in the inter-chain hopping model, with varying hopping rate.  (B) Examples of MSD distributions $\rho_\tx{MSD} (t)$ used in estimating the diffusion coefficient, with varying unbinding rate. Tethers have 40 nm contour length; other parameters are as discussed in the text.}
@@ -469,7 +469,7 @@ Here, the factor of $1/2$ is appropriate because we consider a one-dimensional r
 
 Upon calculating the bound diffusion constant using the hopping simulation described above, it was clear that inter-chain hopping could lead to a relatively large bound diffusion constant, with a corresponding increase in selectivity (Figs.~\ref{fig:hopping}, \ref{fig:hop-results}).  In the limit of a hopping rate of zero, the tethered-diffusion-only result is recovered, as anticipated.  Hopping most enhances selectivity when the Nup length or dissociation constant are small.  This is the regime where tethered diffusion is limited, corresponding to crosslinked Nups within the nuclear pore.  If the pore is highly crosslinked, binding multivalency may be essential to selectivity.
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.7\linewidth]{figs/ch02/all_hopping_results.pdf}
 \caption[Effect of Nup contour length and hopping rate on selectivity.]{Bound diffusion and selectivity as a function of dissociation
@@ -599,7 +599,7 @@ While the above model was inspired by nuclear transport, it is sufficiently gene
 
 Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing bound-to-free diffusion ratio ($D_B/D_F$).  Mucus, such as the mucus which lines the lungs, permits very little bound diffusion of particles that bind to it.  Research in targeted drug delivery to lung cells has observed that inert nanoparticles may be more effective at penetrating the mucus barrier than binding particles \cite{witten17}.  This observation agrees with the prediction that binding will only enhance transport if bound diffusion occurs.   On the other hand, Fig~\ref{fig:other-filters}C depicts a system with maximal bound-state diffusion: a phase-separated liquid droplet.  Such a droplet, consisting of a phase rich in an intrinsically disordered protein, may be used in order to concentrate binding partners and speed up reactions within the cell \cite{brangwynne15, feric16}.  In this case, complexes of intrinsically disordered proteins and their binding partners would have approximately the same diffusion constant as free binding partners ($D_B/D_F \approx 1$), leading to high selectivity for binding partners to pass to the center of the droplet.
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.8\linewidth]{figs/ch02/concluding-cartoon-large.pdf}
 \caption[Bound diffusion in other systems.]{Possible effect of bound diffusion on other biological systems, ordered by increasing bound diffusion constant.}
@@ -608,38 +608,19 @@ Figure~\ref{fig:other-filters} shows three biofilters ordered by increasing boun
 
 Systems other than filters may make use of principles found in our model as well.  For example, the bacteria \textit{Staphylococcus aureus}, responsible for many antibiotic-resistant infections in hospitals, can exhibit resistance to the antibiotic vancomycin by constantly building and shedding its cell wall, to which vancomycin binds \cite{mcguinness17}.  Our model predicts that such a strategy should keep the vancomycin flux through the cell wall from reaching steady-state, in the transient regime where the flux of a binding molecule is suppressed (Fig.~\ref{fig:transient}).  The targeting of the DNA damage repair protein PARP1 to appropriate sites in the nucleus, described below, is another potential application of binding and diffusion principles.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\linewidth]{figs/ch02/PARP1.pdf}
-\caption[Possible bound-diffusion mechanisms of PARP1.]{PARP1 and its possible mechanisms of bound diffusion. (A) Schematic of PARP1 structure showing its four DNA-binding domains \cite{rudolph18}. (B) ``Monkey-bar'' inter-strand hopping mechanism cartoon and reaction showing on- and off- rates for binding a second strand of DNA and subsequently releasing the first \cite{rudolph18}.  (C) Mean-squared displacement of a nucleosome bound to chromatin, corresponding to a spring constant on the order of $10^{-4}$ pN/nm.  Figure adapted from \cite{nozaki17}.}
-\label{fig:parp1}
-\end{figure}
-
 \subsection{DNA damage repair protein recruitment in the nucleus}
 \label{sec:parp1}
 
 Poly(ADP-ribose) polymerase 1 (PARP1) is a protein  which assists in DNA damage repair.  As discussed in Sec.~\ref{sec:DNA-diffusion}, PARP1 must rapidly diffuse to and bind sites of damage, a task made difficult by the large amounts of intact chromatin within the nucleus.  PARP1 binds to damaged DNA with a low-nanomolar dissociation constant and appears to bind intact DNA only a few orders of magnitude more weakly \cite{rudolph18,sukhanova16}.  Given the millimolar concentration of potential binding sites in the nucleus, it is thought that virtually all PARP1 is bound.  Therefore, the rapid migration of PARP1 to damaged DNA is dependent on bound-state mobility.
 
-\begin{table}[b]
-  \caption[Experimentally-measured parameters for PARP1 bound diffusion.]{Experimentally-measured parameters for PARP1 bound diffusion.}
-    \label{table:parp1}
-    \begin{tabular}{p{5cm}p{3cm}p{2.7cm}p{5.4cm}}
-      Parameter & Lower estimate & Upper estimate  & Notes\\
-      \hline
-	On-rate constant $\kon$ & $10^9$ M$^{-1}$ s$^{-1}$  & ---  &Diffusion limit, \cite{rudolph18}\\ \hline
-On-rate constant for binding 2nd strand $k_{on,2}$ & $0.043 \times 10^{-9}$ nM$^{-1}$ s$^{-1}$  & ---  & \cite{rudolph18}\\ \hline
-	Off-rate constant, $\koff$, damaged DNA & --- & 10 s$^{-1}$  & Upper bound, \cite{rudolph18} \\ \hline
-	Off-rate constant, $\koff$, intact DNA & $10^3$ s$^{-1}$ & ---  & Calculated from  $K_D$ measurements, Johannes Rudolph.\\ \hline
-	Intact DNA binding site concentration $N_t$ & 100 $\mu$M & 10 mM & Varies depending on how unique binding sites are counted.\\ \hline
-	Chromatin spring constant $k$ & $5\times10^{-4}$ pN/nm & 0.65 pN/nm  & \cite{nozaki17, norouzi18}\\ \hline
-	PARP1 size $R$ & 5 nm & ---  & PDB 1UK1 structure\\ \hline
-	Bound diffusion constant $D_B$ & 3 $\mu$m$^2$/s & ---  & \cite{mahadevan18}\\ \hline
-	Free diffusion constant $D_F$ & --- & 30 $\mu$m$^2$/s  & Upper bound based on diffusion in buffer, Johannes Rudolph.\\
- \hline
-    \end{tabular}
-\end{table}
-
 The mechanisms of PARP1's bound diffusion may be similar to those used by the nuclear pore.  First, PARP1 binds DNA multivalently.  It possesses four DNA binding domains, though some may work in tandem (Fig.~\ref{fig:parp1}A).  PARP1 binds to nonspecific DNA sequences, meaning that a strand of DNA also has many binding sites along its length, reminiscent of the numerous FG motifs of Nups.  The high degree of multivalency suggests that inter-strand hopping may be important to PARP1 bound diffusion, as transport factor hopping may be to nuclear transport.  In fact, Johannes Rudolph, Jyothi Mahadevan, and Karolin Luger have recently demonstrated the existence of a multivalent ``monkey-bar'' mechanism equivalent to inter-chain hopping between DNA strands \cite{rudolph18}.  However, disruption of this mechanism reduces PARP1 diffusion only twofold, suggesting that there are more methods of bound diffusion available to PARP1 \cite{mahadevan18}.
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=0.8\linewidth]{figs/ch02/PARP1.pdf}
+\caption[Possible bound-diffusion mechanisms of PARP1.]{PARP1 and its possible mechanisms of bound diffusion. (A) Schematic of PARP1 structure showing its four DNA-binding domains \cite{rudolph18}. (B) ``Monkey-bar'' inter-strand hopping mechanism cartoon and reaction showing on- and off- rates for binding a second strand of DNA and subsequently releasing the first \cite{rudolph18}.  (C) Mean-squared displacement of a nucleosome bound to chromatin, corresponding to a spring constant on the order of $10^{-4}$ pN/nm.  Figure adapted from \cite{nozaki17}.}
+\label{fig:parp1}
+\end{figure}
 
 First, we investigated whether the already-identified ``monkey bar'' hopping mechanism could produce bound diffusion in agreement with experimental measurements.   Analytic models of hopping are complicated and difficult to apply to PARP1 \cite{yang18}, but a highly-simplified model can be used to estimate the maximum expected contribution to bound diffusion from hopping.   Using the reaction scheme described in Fig.~\ref{fig:parp1}B, assume PARP1 takes a ``step'' of its own size whenever a second strand of DNA binds.  The bound diffusion constant would then be on the order of $$D_B \sim R^2 k_{on,2} N_t$$ where $R$ is the size of PARP1 and $k_{on,2}$ is the on-rate constant for binding a second strand of DNA.  Using the parameters given in Table~\ref{table:parp1}, we have $D_B \approx 10\ \mu\mathrm{m}^2/\mathrm{s}$.  This is a naive calculation of the upper limit on the bound diffusion constant that we could expect from inter-strand hopping.  This calculation is of the same order of magnitude as the observed diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$, suggesting that hopping can indeed produce the diffusion seen in the nucleus.
 
@@ -657,6 +638,25 @@ D_B = \frac{D_F}{1+\frac{2D_Fk}{k_BT\koff}}
 %\end{equation}
 
 where the thermal energy is $k_BT \approx 4.1$ pN nm at room temperature.  The predicted bound diffusion constant is 3.6 $\mu$m$^2$/s, which is consistent with the experimentally-observed value of $\sim 3\ \mu$m$^2$/s \cite{mahadevan18}.
+
+\begin{table}[t!]
+  \caption[Experimentally-measured parameters for PARP1 bound diffusion.]{Experimentally-measured parameters for PARP1 bound diffusion.}
+    \label{table:parp1}
+    \begin{tabular}{p{3cm}p{3cm}p{2.7cm}p{5.4cm}}
+      Parameter & Lower estimate & Upper estimate  & Notes\\
+      \hline
+	On-rate constant $\kon$ & $10^9$ M$^{-1}$ s$^{-1}$  & ---  &Diffusion limit, \cite{rudolph18}\\ \hline
+On-rate constant for binding 2nd strand $k_{on,2}$ & $0.043 \times 10^{-9}$ nM$^{-1}$ s$^{-1}$  & ---  & \cite{rudolph18}\\ \hline
+	Off-rate constant, $\koff$, damaged DNA & --- & 10 s$^{-1}$  & Upper bound, \cite{rudolph18} \\ \hline
+	Off-rate constant, $\koff$, intact DNA & $10^3$ s$^{-1}$ & ---  & Calculated from  $K_D$ measurements, Johannes Rudolph.\\ \hline
+	Intact DNA binding site concentration $N_t$ & 100 $\mu$M & 10 mM & Varies depending on how unique binding sites are counted.\\ \hline
+	Chromatin spring constant $k$ & $5\times10^{-4}$ pN/nm & 0.65 pN/nm  & \cite{nozaki17, norouzi18}\\ \hline
+	PARP1 size $R$ & 5 nm & ---  & PDB 1UK1 structure\\ \hline
+	Bound diffusion constant $D_B$ & 3 $\mu$m$^2$/s & ---  & \cite{mahadevan18}\\ \hline
+	Free diffusion constant $D_F$ & --- & 30 $\mu$m$^2$/s  & Upper bound based on diffusion in buffer, Johannes Rudolph.\\
+ \hline
+    \end{tabular}
+\end{table}
 
 %Using the range of values given in Table~\ref{table:parp1}, we predict that an off-rate constant $\koff$ between $4\times10^3$ s$^{-1}$ and $1\times 10^5$ s$^{-1}$ could give rise to the observed bound diffusion constant of $\sim 3\ \mu\mathrm{m}^2/\mathrm{s}$. This range is rather higher than Johannes Rudolph's calculation of the off-rate for intact DNA ($\sim 10^3$ s$^{-1}$) but not inconsistent with it.
 

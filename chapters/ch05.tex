@@ -6,7 +6,7 @@ The exact conformation of Nups within the nuclear pore is unknown, due to the di
 
 We decided to test the aggregation behavior of a fragment of Nsp1 known as FG124, described in Sec.~\ref{sec:Nups} and Appendix~\ref{appx:sequences}.  This 124-amino-acid peptide contains eight FG motifs and is known to aggregate in buffer over the course of several hours.  However, in-cell NMR shows it to remain disordered inside bacterial cells \cite{hough15}.  Given the disparity in aggregation behavior under these different conditions, we wanted to determine whether we could encourage or suppress aggregation and amyloid formation with our choice of crowding agents.
 
-\begin{figure}
+\begin{figure}[t!]
 \caption[Aggregation of FG Nups into amyloid fibrils.]{Aggregation of FG Nups into amyloid fibrils. (A) Schematic of possible aggregation states of a disordered protein, including disordered aggregates, intermediate amyloid-like states, and fibrils composed of stacked $\beta$ sheets. Rectangles denote secondary structure.  Figure adapted from \cite{jahn08}. (B) Negative-staining electron micrograph of amyloid fibrils consisting of the human Nup153 FG domain.  Arrows indicate characteristic twists of the fibrils.  Figure adapted from \cite{milles13}.}
 \centering
 \includegraphics[width=\textwidth]{figs/ch05/amyloid-intro}
@@ -68,7 +68,7 @@ Next we normalized once again to account for differences between timecourses.  I
 %The final concentration of crowding agent was 19\% serine w/v, 13\% PEG, and 13\% PVP. 
 % Lysate concentration varied between time courses and was in the 1-10 mg/mL range.  
 
-\begin{figure}
+\begin{figure}[t!]
 \caption[Aggregation rates and lag times for all crowding agents.]{(A) Aggregation rates and (B) lag times for all crowding agents, normalized to the no-crowding condition.  Crowder concentrations were 19\% w/v serine, 13\% PEG, 13\% PVP, and approximately 10 mg/mL lysate.  Lysate concentration varied somewhat between experiments. Error bars are standard error of the mean.}
 \centering
 \includegraphics[width=0.8\textwidth]{figs/ch05/barCharts.pdf}
@@ -130,7 +130,7 @@ Two crowders, PEG and PVP, warranted special attention.  These inert crowders ar
     \end{tabular}
 \end{table}
 
-\begin{figure}
+\begin{figure}[t!]
 \caption[Aggregation rates and lag times for varying PEG and PVP concentrations.]{Aggregation rates and lag times for varying PEG and PVP concentrations, normalized to the no-crowding condition. Error bars are standard error of the mean.}
 \centering
 \includegraphics[width=\textwidth]{figs/ch05/peg-and-pvp-charts.pdf}
@@ -177,18 +177,18 @@ A micro quartz UV cuvette with approximately 12 $\mu$L sample volume was used fo
 
 The fluorimeter was set to 4 nm excitation and emission slits and an excitation wavelength of 240 nm.  Emission spectra were recorded at 1 nm intervals and automatically averaged over two runs.  The PMT detector was set to 1000 V.
 
-\subsubsection{Data processing}
-Data were normalized by averaging over two separate spectra and subtracting the appropriate blank spectrum containing the relevant crowder and buffer but no protein.
-
-\subsection{Results}
-Unfortunately, both PEG and PVP presented obstacles to the collection of UV fluorescence spectra. As shown in Fig.~\ref{fig:crowder-prop}A, PEG displayed a prominent fluorescence peak centered at 320 nm.  This may have been due to impurities in the PEG source, despite using the high-purity BioUltra brand from Sigma.  At low PEG concentrations, this peak was still small compared to that of FG124 (Fig.~\ref{fig:FG124-fresh-vs-agg}B) and could be subtracted from the signal.  However, the PEG peak limited the maximum concentration of crowder to 5\%.  PVP, on the contrary, did not display a large peak within the region of interest, but its absorbance is quite high from 240-280 nm (Fig.~\ref{fig:crowder-prop}B).  The high PEG absorbance suppresses the fluorescence signal from FG124 (Fig.~\ref{fig:FG124-fresh-vs-agg}C).  While higher crowder concentrations might be expected to produce more dramatic effects on the FG124 fluorescence spectrum, the limit of 5\% w/v does serve to minimize any viscosity effects.
-
 \begin{SCfigure}
 \caption[Fluorescence and absorbance of crowders.]{(A) Fluorescence spectrum of 5\% w/v PEG and 5\% w/v PVP in PTB.  Normalized by subtracting PTB spectrum.  (B) Absorbance spectrum of same samples.  Measured on a SpectraMax spectrophotometer in a cuvette with a 1 cm path length.  Normalized by subtracting PTB absorbance.}
 \centering
 \includegraphics[width=0.7\textwidth]{figs/ch05/crowder-properties}
 \label{fig:crowder-prop}
 \end{SCfigure}
+
+\subsubsection{Data processing}
+Data were normalized by averaging over two separate spectra and subtracting the appropriate blank spectrum containing the relevant crowder and buffer but no protein.
+
+\subsection{Results}
+Unfortunately, both PEG and PVP presented obstacles to the collection of UV fluorescence spectra. As shown in Fig.~\ref{fig:crowder-prop}A, PEG displayed a prominent fluorescence peak centered at 320 nm.  This may have been due to impurities in the PEG source, despite using the high-purity BioUltra brand from Sigma.  At low PEG concentrations, this peak was still small compared to that of FG124 (Fig.~\ref{fig:FG124-fresh-vs-agg}B) and could be subtracted from the signal.  However, the PEG peak limited the maximum concentration of crowder to 5\%.  PVP, on the contrary, did not display a large peak within the region of interest, but its absorbance is quite high from 240-280 nm (Fig.~\ref{fig:crowder-prop}B).  The high PEG absorbance suppresses the fluorescence signal from FG124 (Fig.~\ref{fig:FG124-fresh-vs-agg}C).  While higher crowder concentrations might be expected to produce more dramatic effects on the FG124 fluorescence spectrum, the limit of 5\% w/v does serve to minimize any viscosity effects.
 
 Figure~\ref{fig:phe-comparison} compares the phenylalanine peaks in FSFG concat-1, fresh and aggregated FG124, and pure phenylalanine in water from \cite{prahl95}.  The peak shifts slightly toward longer wavelengths as the data progress from pure  phenylalanine to FSFG to fresh and aggregated FG124.  Additionally, a shoulder develops at longer wavelengths.
 
@@ -201,7 +201,7 @@ Figure~\ref{fig:phe-comparison} compares the phenylalanine peaks in FSFG concat-
 
 Fresh and aggregated FG124 samples are compared in Figs.~\ref{fig:FG124-fresh-vs-agg} and \ref{fig:stacked-FG124-fluorimetry}.  The PEG sample showed the largest difference upon aggregation, both in peak height and location.  In both crowder conditions, but not in the buffer condition, a small peak appears in the aggregated FG124 near 310 nm.
 
-\begin{figure}
+\begin{figure}[t!]
 \caption[FG124 fluorescence in crowded conditions.]{Fluorescence spectra of fresh and aggregated FG124 in crowded conditions: (A) PTB buffer only, (B) 5\% w/v PEG, (C) 5\% w/v PVP.  All data normalized by subtracting appropriate blank.}
 \centering
 \includegraphics[width=0.9\textwidth]{figs/ch05/FG124-fresh-vs-agg.pdf}
@@ -252,7 +252,7 @@ NMR experiments were run by Kathryn Wall on an Inova 600 MHz.  Using the standar
 
 Figure~\ref{fig:NMR} shows the relaxation rates $R_1$ and $R_2$ of FSFG in 13\% PEG, 13\% PVP, or PTB without a crowder, along with the ratio $R_2/R_1$.  Due to the disordered nature of FSFG, many peaks in the NMR spectra overlap.  Amino acids of the same type experience less difference in their average local chemical environment than they would in an ordered protein, with the result that a single peak often corresponds to several amino acids.  This effect is particularly pronounced for the FSFG motif itself, in which the six repeated motifs are almost entirely collapsed to four peaks, one for each residue of the sequence.  The sole exception is the phenylalanine closest to the N-terminal, which has a peak distinct from the others.  Therefore, we broke the sequence of the FSFG peptide into quasi-repeating segments, each 19 amino acids in length, which begin with an FSFG motif and contain the hydrophilic linker which separates it from the next FSFG (Fig.~\ref{fig:NMR}B, inset).  The errors in $R_1$ and $R_2$ are given by the weighted average of the fit errors for the unique peaks that are being averaged \cite{taylor97}.  The errors of the ratio $R_2/R_1$ were propagated from $R_1$ and $R_2$ errors.
 
-\begin{figure}
+\begin{figure}[t!]
 \caption[Relaxation times of FSFG in crowded conditions.]{Relaxation rates for FSFG in 13\% PEG, 13\% PVP, or PTB only.  The 19-amino-acid quasi-repeating unit that begins with the FSFG motif has been averaged over the first five repeats as shown.  Experiments performed by Kathryn Wall.  (A) Longitudinal relaxation rate $R_1$, (B) transverse relaxation rate $R_2$, (C) Ratio $R_2/R_1$.}
 \centering
 \includegraphics[width=\textwidth]{figs/ch05/NMR.pdf}

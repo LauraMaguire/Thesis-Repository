@@ -28,9 +28,9 @@
      inkscape:window-height="680"
      id="namedview47445"
      showgrid="false"
-     inkscape:zoom="0.58632596"
-     inkscape:cx="155.70523"
-     inkscape:cy="674.83099"
+     inkscape:zoom="1.3402568"
+     inkscape:cx="591.71852"
+     inkscape:cy="908.83342"
      inkscape:window-x="34"
      inkscape:window-y="14"
      inkscape:window-maximized="0"
@@ -76,7 +76,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -494,7 +494,7 @@
            sodipodi:linespacing="1000%"><tspan
              y="46.786541"
              x="40.557175"
-             id="tspan30122">NTF2-FITC</tspan></text>
+             id="tspan30122">NTF2-F</tspan></text>
         <text
            id="text30132"
            y="60.576836"
