@@ -100,7 +100,7 @@ Nuclear transport is quite complex, but its unusual selective properties can be 
 
 \begin{figure}[t!]
 \centering
-\includegraphics[width=17.8cm]{figs/ch02/fig1.pdf}
+\includegraphics[width=\textwidth]{figs/ch02/fig1.pdf}
 \caption[Schematics of the nuclear pore complex and model.]{Schematics of the nuclear pore complex and model. (A) The
   nuclear pore complex (gray) is filled with FG Nups (green polymers)
   that selectively passage transport factors that bind to FG Nups
@@ -499,16 +499,18 @@ Throughout this analysis, we have assumed that all proteins are experiencing Fic
 
 In order to quantify the extent of anomalous diffusion, we ran a modified version of the hopping simulation described in Sec.~\ref{sec:hopping} in which the transport factor was not solely limited to hopping but also able to entirely unbind from and rebind to Nups with rates $\koff$ and $\kon$ respectively.   The resulting MSD $\langle x^2(t) \rangle$ can then be used to investigate anomalous diffusion.  Figure~\ref{fig:anomalous-diffusion} is a log-log plot of $\langle x^2(t) \rangle/t$ vs time $t$, generated using a script created by Mike Stefferson \cite{stefferson18}.  In such a plot, a horizontal asymptote indicates Fickian diffusion, while a non-zero slope $m$ indicates anomalous diffusion with $m = \alpha -1$.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{figs/ch02/171103-DvsT-with-lifetimes.pdf}
+\caption[Anomalous diffusion in the hopping simulation.]{Anomalous diffusion of transport factors at several hopping rates.  The hopping, binding, and well-exploration lifetimes are also shown where applicable.  NTF2 transit time (10 ms) is indicated with a vertical line.}
+\label{fig:anomalous-diffusion}
+\end{figure}
+
 Figure~\ref{fig:anomalous-diffusion} shows several hopping rates.  When the transport factor is not able to hop between Nups, diffusion remains anomalous until well past the binding lifetime $1/\koff$ (not shown).  Larger hopping rates cause diffusion to become Fickian over shorter timescales.  The hopping lifetime $1/k_\mathrm{hop}$ is shown for each nonzero hopping rate, as well as the binding lifetime ($\koff = 10^{-4}$ $\mu$s$^{-1}$ in all cases).  The time to explore the potential well caused by binding to Nups is also shown.  The vertical line marks the experimentally-measured time for NTF2 to pass through the nuclear pore, $t_\mathrm{NTF2} = 10$ ms.
 
 The anomalous diffusion plot indicates that the diffusion of transport factors is not entirely Fickian, but that shorter binding lifetimes and higher hopping rates lead to less anomalous diffusion.  Most hopping rates used in the simulation are high enough that diffusion is Fickian over the timescale of NTF2 transport.
 
-\begin{SCfigure}
-\centering
-\includegraphics[width=0.5\linewidth]{figs/ch02/171103-DvsT-with-lifetimes.pdf}
-\caption[Anomalous diffusion in the hopping simulation.]{Anomalous diffusion of transport factors at several hopping rates.  The hopping, binding, and well-exploration lifetimes are also shown where applicable.  NTF2 transit time (10 ms) is indicated with a vertical line.}
-\label{fig:anomalous-diffusion}
-\end{SCfigure}
+
 
 %A key puzzle of the NPC is how transport-factor binding allows rapid transport through the pore.  Binding typically immobilizes the bound particle, and so the increase in concentration resulting from binding does not, in general, result in increased flux. The biophysical theory
 %we developed includes diffusion of TFs due to thermal fluctuations,
