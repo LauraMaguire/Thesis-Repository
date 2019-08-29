@@ -105,11 +105,21 @@ grnScale = [0;0.07];
 redScale = [0.0183566033417258;0.0502479591058213];
 %% Test one image at at time
 imageg = imadjust(im2double((9/3.75)*r.GreenImages{1,1}),grnScale);
-imager = zeros(size(imageg));
+imager = imadjust(im2double((0.6)*r.RedImages{1,1}),redScale);
 imageb = zeros(size(imager));
 image = cat(3,imager,imageg,imageb);
 imshow(image, 'InitialMagnification',50);
+
+%% Crop the combined images
+figure
+[J,rect3] = imcrop(image);
 %%
+l = 300; %scale length in um
+n=l/1.58; %conversion using 1.58 um per px
+imshow(J)
+hold on
+line([500,n+500],[700,700]);
+hold off
 
 %% Show green and red channels separately for influx
 n=316;
